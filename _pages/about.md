@@ -17,18 +17,26 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. Suspendisse condimentum, libero vel tempus mattis, risus risus vulputate libero, elementum fermentum mi neque vel nisl. Maecenas facilisis maximus dignissim. Curabitur mattis vulputate dui, tincidunt varius libero luctus eu. Mauris mauris nulla, scelerisque eget massa id, tincidunt congue felis. Sed convallis tempor ipsum rhoncus viverra. Pellentesque nulla orci, accumsan volutpat fringilla vitae, maximus sit amet tortor. Aliquam ultricies odio ut volutpat scelerisque. Donec nisl nisl, porttitor vitae pharetra quis, fringilla sed mi. Fusce pretium dolor ut aliquam consequat. Cras volutpat, tellus accumsan mattis molestie, nisl lacus tempus massa, nec malesuada tortor leo vel quam. Aliquam vel ex consectetur, vehicula leo nec, efficitur eros. Donec convallis non urna quis feugiat.
+Hi there! I’m a 4th year Ph.D. student of Computer Science at City University of Hong Kong, advised by Prof. Chun Jason Xue at CityU and Prof. Tei-Wei Kuo at National Taiwan University. I obtained MS degree in Information and Communication Engineering in Beijing University of Posts and Telecommunication and BE in Electronic and Information Engineering in South China University of Technology.
 
-My research interest includes neural machine translation and computer vision. I have published more than 100 papers at the top international AI conferences with total <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'>google scholar citations <strong><span id='total_cit'>260000+</span></strong></a> (You can also use google scholar badge <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>).
+My research interests lie in building next-generation data compression algorithms and systems (e.g., combined with neural networks), neural-network acceleration, and edge computing. I currently serve as a reviewer of Nips, CVPR, TKDE, MM and ERC of ATC. 
+
 
 
 # 🔥 News
-- *2022.02*: &nbsp;🎉🎉 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2022.02*: &nbsp;🎉🎉 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+- *2024.05*: &nbsp; I successfully completed my thesis defense 🎉. 
+- *2023.10*: &nbsp; We won the second prize at the ICCAD TinyML Contest. 
+- *2023.05*: &nbsp; I was invited as female student representitive to give a talk at CityU PhD forum. 
+- *2023.08*: &nbsp; Our paper “Moby: Empowering 2D Models for Efficient Point Cloud Analytics on the Edge” was accepted in MM 2023. 
+- *2023.02*: &nbsp; Our paper “Faster and stronger Lossless Compression with Optimized Autoregressive framework” was accepted in DAC 2023.
 
-# 📝 Publications 
+# 📝 Selected Publications 
+- Faster and Stronger Lossless Compression with Optimized Autoregressive Framework, **Yu Mao**, Jingzong Li, Yufei Cui, Chun Jason Xue, **DAC**, San Francisco, 2023.
+- Accelerating General-Purpose Lossless Compression via Simple and Scalable Parameterization, **Yu Mao**, Yufei Cui, Tei-Wei Kuo, Chun Jason Xue, **MM**, Lisbon, 2022.
+- TRACE: A Fast Transformer-based General-Purpose Lossless Compressor, **Yu Mao**, Yufei Cui, Tei-Wei Kuo, Chun Jason Xue, **WWW**, Lyon, 2022.
+- Variational Nested Dropout, Yufei Cui, **Yu Mao**, Ziquan Liu, Qiao Li, Antoni Bert Chan, Xue Liu, Tei-Wei Kuo, Chun Jason Xue, **TPAMI**, 2023.
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">CVPR 2016</div><img src='images/500x300.png' alt="sym" width="100%"></div></div>
+<!-- <div class='paper-box'><div class='paper-box-image'><div><div class="badge">CVPR 2016</div><img src='images/500x300.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 [Deep Residual Learning for Image Recognition](https://openaccess.thecvf.com/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf)
@@ -40,19 +48,41 @@ My research interest includes neural machine translation and computer vision. I 
 </div>
 </div>
 
-- [Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet](https://github.com), A, B, C, **CVPR 2020**
+- [Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet](https://github.com), A, B, C, **CVPR 2020** -->
 
 # 🎖 Honors and Awards
-- *2021.10* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2021.09* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+- *2023.10* TinyML Contest ICCAD 2023 Second Place, San Francisco, USA.
+- *2023.9* Research Tuition Scholarship, City University of Hong Kong.
+- *2023.9* Outstanding Academic Performance Award, City University of Hong Kong, 2023.
+- *2023.7* DAC Young Research Fellow, San Francisco, USA. 
+- *2022.10* EDAthon 2022 Second Place, Hong Kong, 2022.
+- *2022.9* Research Tuition Scholarship, City University of Hong Kong, 2022.
 
-# 📖 Educations
-- *2019.06 - 2022.04 (now)*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2015.09 - 2019.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+# 💡 Patents
+
+**US Patents**
+- Autoregressive Based Data Compression, 2023
+
+**Chinese Patents**
+- A data processing method and related devices, 2023
+- Image deformation method, apparatus, and system, 2021
+- Yolov3 quantization method, apparatus, devices, and media for FPGA applications, 2021
+- Image deformation acceleration processing method, apparatus, electronic devices, and readable storage media, 2021
+- An image recognition method and related apparatus, 2021
+- Pavement crack detection method, apparatus, computer devices, and storage media, 2021
+- Method and apparatus for panorama content completion and restoration based on neural networks, 2018
+- A method, apparatus, and server for searching content resources, 2018
+- A photo management method and system based on deep learning facial recognition, 2017
+
+
+<!-- # 📖 Educations
+- *2016.06 - 2022.04 (now)*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+- *2012.09 - 2016.06*, Bachelor at South China University of Techinology.  -->
 
 # 💬 Invited Talks
-- *2021.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2021.03*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet.  \| [\[video\]](https://github.com/)
+- *2023.10*, Invited talk of Efficient Large Language Models at Institute of Microelectronics of the Chinese Academy of Sciences 
+
 
 # 💻 Internships
-- *2019.05 - 2020.02*, [Lorem](https://github.com/), China.
+- *2018.05 - 2018.10*, Microsoft, Beijing, China.
+- *2017.10 - 2018.05*, Baidu, Beijing, China.
