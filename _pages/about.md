@@ -30,11 +30,19 @@ My research interests lie in building next-generation data compression algorithm
 - *2023.08*: &nbsp; Our paper “Moby: Empowering 2D Models for Efficient Point Cloud Analytics on the Edge” was accepted in MM 2023. 
 - *2023.02*: &nbsp; Our paper “Faster and stronger Lossless Compression with Optimized Autoregressive framework” was accepted in DAC 2023.
 
-# 📝 Selected Publications 
-- Faster and Stronger Lossless Compression with Optimized Autoregressive Framework, **Yu Mao**, Jingzong Li, Yufei Cui, Chun Jason Xue, **DAC**, San Francisco, 2023.
-- Accelerating General-Purpose Lossless Compression via Simple and Scalable Parameterization, **Yu Mao**, Yufei Cui, Tei-Wei Kuo, Chun Jason Xue, **MM**, Lisbon, 2022.
-- TRACE: A Fast Transformer-based General-Purpose Lossless Compressor, **Yu Mao**, Yufei Cui, Tei-Wei Kuo, Chun Jason Xue, **WWW**, Lyon, 2022.
-- Variational Nested Dropout, Yufei Cui, **Yu Mao**, Ziquan Liu, Qiao Li, Antoni Bert Chan, Xue Liu, Tei-Wei Kuo, Chun Jason Xue, **TPAMI**, 2023.
+# 📝 Publications (Listed by timeline)
+
+- Weight Rescaling: Effective and Robust Regularization for Deep Neural Networks with Batch Normalization, Ziquan Liu, Yufei Cui, Jia Wan, **Yu Mao**, Antoni Bert Chan, arXiv preprint arXiv:2102.03497, 2021
+- Trace: A fast transformer-based general-purpose lossless compressor, **Yu Mao**, Yufei Cui, Tei-Wei Kuo, Chun Jason Xue, Proceedings of the ACM Web Conference 2022, 1829-1838, 2022 
+- Accelerating general-purpose lossless compression via simple and scalable parameterization
+**Yu Mao**, Yufei Cui, Tei-Wei Kuo, Chun Jason Xue, Proceedings of the 30th ACM International Conference on Multimedia, 3205-3213, 2022 
+- Variational Nested Dropout, Yufei Cui, **Yu Mao**, Ziquan Liu, Qiao Li, Antoni Bert Chan, Xue Liu, Tei-Wei Kuo, Chun Jason Xue, IEEE Transactions on Pattern Analysis and Machine Intelligence, 2023
+- Faster and Stronger Lossless Compression with Optimized Autoregressive Framework, **Yu Mao**, Jingzong Li, Yufei Cui, Chun Jaon Xue, 2023 60th ACM/IEEE Design Automation Conference (DAC), 1-6, 2023 
+- Moby: Empowering 2D Models for Efficient Point Cloud Analytics on the Edge, Jingzong Li, Yik Hong Cai, Libing Liu, **Yu Mao**, Chun Jason Xue, Hong Xu, Proceedings of the 31st ACM International Conference on Multimedia, 9012-9021, 2023
+- On the compressibility of quantized large language models, **Yu Mao**, Weilan Wang, Hongchao Du, Nan Guan, Chun Jason Xue, arXiv preprint arXiv:2403.01384, 2024 
+- STEM: Streaming-based FPGA Acceleration for Large-Scale Compactions in LSM KV, Dongdong Tang, Weilan Wang, **Yu Mao**, Jinghuan Yu, Tei-Wei Kuo, Chun Jason Xue, 40th IEEE International Conference on Data Engineering, 2024 *(Corresponding author)*
+- Pre-processing matters: A segment search method for WSI classification, Jun Wang, Yufei Cui, **Yu Mao**, Nan Guan, Chun Jason Xue, arXiv preprint arXiv:2404.11161, 2024
+- IHC Matters: Incorporating IHC analysis to H&E Whole Slide Image Analysis for Improved Cancer Grading via Two-stage Multimodal Bilinear Pooling Fusion, Jun Wang, **Yu Mao**, Yufei Cui, Nan Guan, Chun Jason Xue, arXiv preprint arXiv:2405.08197, 2024
 
 <!-- <div class='paper-box'><div class='paper-box-image'><div><div class="badge">CVPR 2016</div><img src='images/500x300.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
