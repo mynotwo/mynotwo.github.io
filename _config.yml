@@ -6,7 +6,7 @@
 # `jekyll serve`. If you change this file, please restart the server process.
 
 # Site Settings
-title                    : "Yu (Maggie) Mao's Home Page"
+title                    : "Yu Mao's Home Page"
 description              : "Hope you have a nice day :)"
 repository               : "mynotwo/mynotwo.github.io"
 google_scholar_stats_use_cdn : true
@@ -21,7 +21,7 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 
 # Site Author
 author:
-  name             : "Yu (Maggie) Mao"
+  name             : "Yu Mao"
   avatar           : "./images/selfie.jpg"
   bio              : "City University of Hong Kong"
   location         : "Hong Kong"
@@ -37,7 +37,7 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : mynotwo
+  github           : "mynotwo/mynotwo.github.io"
   google_plus      :
   keybase          :
   instagram        :
