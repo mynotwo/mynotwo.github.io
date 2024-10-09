@@ -17,20 +17,15 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-Hi there! I’m a 4th year Ph.D. student of Computer Science at City University of Hong Kong, advised by Prof. Chun Jason Xue at CityU and Prof. Tei-Wei Kuo at National Taiwan University. I obtained MS degree in Information and Communication Engineering in Beijing University of Posts and Telecommunication and BE in Electronic and Information Engineering in South China University of Technology.
-
-My research interests lie in building next-generation data compression algorithms and systems (e.g., combined with neural networks), neural-network acceleration, and edge computing. I currently serve as a reviewer of Nips, CVPR, TKDE, MM and ERC of ATC. 
-
-
+Hi there! I’m a 4th year Ph.D. student of Computer Science at City University of Hong Kong, advised by Prof. Chun Jason Xue at CityU and Prof. Tei-Wei Kuo at National Taiwan University. My research interests lie in building next-generation data compression algorithms and systems (e.g., combined with neural networks), neural-network acceleration, and edge computing. 
 
 # 🔥 News
 - *2024.05*: &nbsp; I successfully completed my thesis defense 🎉. 
 - *2023.10*: &nbsp; We won the second prize at the ICCAD TinyML Contest. 
 - *2023.05*: &nbsp; I was invited as female student representitive to give a talk at CityU PhD forum. 
-- *2023.08*: &nbsp; Our paper “Moby: Empowering 2D Models for Efficient Point Cloud Analytics on the Edge” was accepted in MM 2023. 
 - *2023.02*: &nbsp; Our paper “Faster and stronger Lossless Compression with Optimized Autoregressive framework” was accepted in DAC 2023.
 
-# 📝 Publications (Listed by timeline)
+# 📝 Selected Preprints and Publications
 
 - Weight Rescaling: Effective and Robust Regularization for Deep Neural Networks with Batch Normalization, Ziquan Liu, Yufei Cui, Jia Wan, **Yu Mao**, Antoni Bert Chan, arXiv preprint arXiv:2102.03497, 2021
 - Trace: A fast transformer-based general-purpose lossless compressor, **Yu Mao**, Yufei Cui, Tei-Wei Kuo, Chun Jason Xue, Proceedings of the ACM Web Conference 2022, 1829-1838, 2022 
@@ -47,10 +42,6 @@ My research interests lie in building next-generation data compression algorithm
 <!-- <div class='paper-box'><div class='paper-box-image'><div><div class="badge">CVPR 2016</div><img src='images/500x300.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
-[Deep Residual Learning for Image Recognition](https://openaccess.thecvf.com/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf)
-
-**Kaiming He**, Xiangyu Zhang, Shaoqing Ren, Jian Sun
-
 [**Project**](https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=DhtAFkwAAAAJ&citation_for_view=DhtAFkwAAAAJ:ALROH1vI_8AC) <strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>
 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
 </div>
@@ -60,11 +51,9 @@ My research interests lie in building next-generation data compression algorithm
 
 # 🎖 Honors and Awards
 - *2023.10* TinyML Contest ICCAD 2023 Second Place, San Francisco, USA.
-- *2023.9* Research Tuition Scholarship, City University of Hong Kong.
 - *2023.9* Outstanding Academic Performance Award, City University of Hong Kong, 2023.
 - *2023.7* DAC Young Research Fellow, San Francisco, USA. 
 - *2022.10* EDAthon 2022 Second Place, Hong Kong, 2022.
-- *2022.9* Research Tuition Scholarship, City University of Hong Kong, 2022.
 
 # 💡 Patents
 
@@ -88,7 +77,10 @@ My research interests lie in building next-generation data compression algorithm
 - *2012.09 - 2016.06*, Bachelor at South China University of Techinology.  -->
 
 # 💬 Invited Talks
-- *2023.10*, Invited talk of Efficient Large Language Models at Institute of Microelectronics of the Chinese Academy of Sciences 
+- *2023.10*, Invited talk of Efficient Large Language Models at Institute of Microelectronics of the Chinese Academy of Sciences
+
+# Services
+- I currently serve as a reviewer of ICLR, Neurips, CVPR, TKDE, MM and ERC of ATC. 
 
 
 # 💻 Internships
