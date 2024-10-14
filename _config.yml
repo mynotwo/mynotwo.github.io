@@ -6,7 +6,7 @@
 # `jekyll serve`. If you change this file, please restart the server process.
 
 # Site Settings
-title                    : "Yu Mao's Home Page"
+title                    : "Yu Mao"
 description              : "Hope you have a nice day :)"
 repository               : "mynotwo/mynotwo.github.io"
 google_scholar_stats_use_cdn : true
@@ -14,8 +14,8 @@ google_scholar_stats_use_cdn : true
 # google analytics
 google_analytics_id      :  "G-CVMVD1QDDP" # get google_analytics_id from https://analytics.google.com/analytics/
 
-# SEO Related
-google_site_verification : ""Zmb453m2JQfmkhV6IRhBgSu2l7UpaNW9w-JPEXONxiw"" # get google_site_verification from https://search.google.com/search-console/about
+# SEO Related 
+google_site_verification : "Zmb453m2JQfmkhV6IRhBgSu2l7UpaNW9w-JPEXONxiw" # get google_site_verification from https://search.google.com/search-console/about
 bing_site_verification   :  # get bing_site_verification from https://www.bing.com/webmasters/about
 baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.baidu.com/login/index?u=/site/index
 
