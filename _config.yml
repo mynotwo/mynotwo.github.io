@@ -23,7 +23,7 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 author:
   name             : "Yu Mao"
   avatar           : "./images/selfie.jpg"
-  bio              : "City University of Hong Kong"
+  bio              : "City University of Hong Kong (CityU)"
   location         : "Hong Kong"
   employer         :
   pubmed           : 
