@@ -325,3 +325,7 @@
 .fa.fa-pull-right {
   margin-left: .3em;
 }
+
+.sidebar-img {
+  max-width: 35%;
+}
