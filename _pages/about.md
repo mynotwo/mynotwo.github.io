@@ -17,7 +17,7 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-Hi there! I’m a 4th year Ph.D. student of Computer Science at City University of Hong Kong, advised by Prof. Chun Jason Xue at CityU and Prof. Tei-Wei Kuo at National Taiwan University. My research interests lie in building next-generation data compression algorithms and systems (e.g., combined with neural networks), neural-network acceleration, and edge computing. 
+Hi there! I’m a 4th year Ph.D. student of Computer Science at City University of Hong Kong (CityU), advised by Prof. Chun Jason Xue at CityU and Prof. Tei-Wei Kuo at National Taiwan University. My research interests lie in building next-generation data compression algorithms and systems (e.g., combined with neural networks), neural-network acceleration, and edge computing. 
 
 # 🔥 News
 - *2024.05*: &nbsp; I successfully completed my thesis defense 🎉. 
