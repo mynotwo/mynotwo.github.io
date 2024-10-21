@@ -55,22 +55,6 @@ Hi there! I’m a 4th year Ph.D. student of Computer Science at City University 
 - *2023.7* DAC Young Research Fellow, San Francisco, USA. 
 - *2022.10* EDAthon 2022 Second Place, Hong Kong, 2022.
 
-# 💡 Patents
-
-**US Patents**
-- Autoregressive Based Data Compression, 2023
-
-**Chinese Patents**
-- A data processing method and related devices, 2023
-- Image deformation method, apparatus, and system, 2021
-- Yolov3 quantization method, apparatus, devices, and media for FPGA applications, 2021
-- Image deformation acceleration processing method, apparatus, electronic devices, and readable storage media, 2021
-- An image recognition method and related apparatus, 2021
-- Pavement crack detection method, apparatus, computer devices, and storage media, 2021
-- Method and apparatus for panorama content completion and restoration based on neural networks, 2018
-- A method, apparatus, and server for searching content resources, 2018
-- A photo management method and system based on deep learning facial recognition, 2017
-
 
 <!-- # 📖 Educations
 - *2016.06 - 2022.04 (now)*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
