@@ -57,9 +57,9 @@ Hi there! I’m a 4th year Ph.D. student of Computer Science at City University 
 - *2023.10*, Invited talk of Efficient Large Language Models at Institute of Microelectronics of the Chinese Academy of Sciences
 
 # Services
-- **ML Conference referee:** NeurIPS 24/25, MM 23/24/25, ICLR 25, ICML 25, CVPR 25, ICCV 25, EMNLP 24, ACL 25
+- **ML Conference referee:** NeurIPS 24/25/26, MM 23/24, ICLR 25/26, ICML 25/26, CVPR 25/26, ICML 25, AAAI 26, ARR
 - **System Technical Program Committee:** ATC 25, GLSVLSI, RTSCA
-- **Journal referee:** TECS, TMLR
+- **Journal referee:** TECS, TMLR, TKDE
 
 # 💻 Internships
 - *2018.05 - 2018.10*, Microsoft, Beijing, China.
