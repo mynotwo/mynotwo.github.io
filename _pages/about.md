@@ -58,7 +58,7 @@ Hi there! I’m a 4th year Ph.D. student of Computer Science at City University 
 
 # Services
 - **ML Conference referee:** NeurIPS 24/25/26, MM 23/24, ICLR 25/26, ICML 25/26, CVPR 25/26, ICML 25, AAAI 26, ARR
-- **System Technical Program Committee:** ATC 25, GLSVLSI, RTSCA
+- **System Technical Program Committee:** ATC 25, GLSVLSI, RTCSA
 - **Journal referee:** TECS, TMLR, TKDE
 
 # 💻 Internships
