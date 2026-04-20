@@ -17,7 +17,7 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-Hi there! I’m a Research Scientist at ByteDance (San Jose), focusing on AI infrastructure and system efficiency at scale. I received my Ph.D. in Computer Science from City University of Hong Kong (CityU)). My work centers on designing next-generation data compression techniques (including neural approaches) and building high-performance systems for neural network acceleration and edge computing.
+Hi there! I’m a Research Scientist at ByteDance (San Jose), focusing on AI infrastructure and system efficiency at scale. I received my Ph.D. in Computer Science from City University of Hong Kong. My work centers on designing next-generation data compression techniques (including neural approaches) and building high-performance systems for neural network acceleration and edge computing.
 
 # 🔥 News
 - *2026.04*: &nbsp; I joined ByteDance (San Jose) as a Research Scientist, focusing on AI infrastructure and system efficiency at scale.
