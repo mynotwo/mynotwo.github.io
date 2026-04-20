@@ -23,8 +23,8 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 author:
   name             : "Yu Mao"
   avatar           : "./images/selfie.jpg"
-  bio              : "City University of Hong Kong (CityU)"
-  location         : "Hong Kong"
+  bio              : "ByteDance"
+  location         : "San Jose, California, USA"
   employer         :
   pubmed           : 
   googlescholar    : "https://scholar.google.com/citations?user=Iw3bTCAAAAAJ&hl=en"
