@@ -17,16 +17,17 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-Hi there! I’m a 4th year Ph.D. student of Computer Science at City University of Hong Kong (CityU), advised by Prof. Chun Jason Xue at CityU and Prof. Tei-Wei Kuo at National Taiwan University. My research interests lie in building next-generation data compression algorithms and systems (e.g., combined with neural networks), neural-network acceleration, and edge computing. 
+Hi there! I’m a Research Scientist at ByteDance (San Jose), focusing on AI infrastructure and system efficiency at scale. I received my Ph.D. in Computer Science from City University of Hong Kong (CityU)). My work centers on designing next-generation data compression techniques (including neural approaches) and building high-performance systems for neural network acceleration and edge computing.
 
 # 🔥 News
+- *2026.04*: &nbsp; I joined ByteDance (San Jose) as a Research Scientist, focusing on AI infrastructure and system efficiency at scale.
 - *2025.05*: &nbsp; Our paper “WISE: A Framework for Gigapixel Whole-Slide-Image Lossless Compression” was accepted at CVPR 2025 🎉  
 - *2025.05*: &nbsp; Our paper “PMR: Fast Application Response via Parallel Memory Reclaim on Mobile Devices” was accepted at USENIX ATC 2025  
 - *2025.05*: &nbsp; Our paper “Easz: A Transformer-based Image Compression Framework for IoT” was accepted at DAC 2025  
 - *2025.04*: &nbsp; I started my postdoctoral research at MBZUAI and a visiting researcher position at Imperial College London  
 - *2024.05*: &nbsp; I successfully completed my thesis defense 🎉. 
 - *2023.10*: &nbsp; We won the second prize at the ICCAD TinyML Contest. 
-- *2023.05*: &nbsp; I was invited as female student representitive to give a talk at CityU PhD forum. 
+- *2023.05*: &nbsp; I was invited as a female student representative to give a talk at CityU PhD forum. 
 - *2023.02*: &nbsp; Our paper “Faster and stronger Lossless Compression with Optimized Autoregressive framework” was accepted in DAC 2023.
 
 # 📝 Selected Preprints and Publications
