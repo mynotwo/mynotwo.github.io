@@ -40,18 +40,10 @@ Hi there! I’m a Research Scientist at ByteDance (San Jose), focusing on AI inf
 {% for a in site.data.awards %}- *{{ a.date }}* {{ a.content }}
 {% endfor %}
 
-# 💬 Invited Talks
-- *2023.10* — "Efficient Large Language Models", Institute of Microelectronics of the Chinese Academy of Sciences
-
 # Services
 - **ML conference referee:** NeurIPS 24/25/26, ACM MM 23/24, ICLR 25/26, ICML 25/26, CVPR 25/26, AAAI 26, ARR
 - **System TPC:** USENIX ATC 25, GLSVLSI, RTCSA
 - **Journal referee:** ACM TECS, TMLR, IEEE TKDE
-
-# 🎓 Teaching
-- CS3103 Operating Systems (TA) — 2020 Fall, 2021/22/23 Spring
-- CS2115 Computer Organization (TA) — 2021/22/23 Fall
-- CS1302 Introduction to Computer Programming (TA) — 2020 Spring
 
 # 👩‍🏫 Supervision
 - Jun Wang, Ph.D. student with Prof. Jason Xue (2024–present)
