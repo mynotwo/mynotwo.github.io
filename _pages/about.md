@@ -24,8 +24,6 @@ Hi there! I’m a Research Scientist at ByteDance (San Jose), focusing on AI inf
 - System efficiency at scale (memory, storage, edge)
 - Hardware-aware acceleration for ML workloads
 
-📄 [CV (PDF)](/files/Yu_Mao_CV.pdf){:target="_blank"}  &nbsp;·&nbsp;  [Google Scholar](https://scholar.google.com/citations?user=Iw3bTCAAAAAJ&hl=en){:target="_blank"}
-
 # 🔥 News
 - *2026.04*: &nbsp; I joined ByteDance (San Jose) as a Research Scientist, focusing on AI infrastructure and system efficiency at scale.
 - *2025.05*: &nbsp; Three papers accepted — **WISE** at CVPR 2025 🎉, **PMR** at USENIX ATC 2025, and **Easz** at DAC 2025.
