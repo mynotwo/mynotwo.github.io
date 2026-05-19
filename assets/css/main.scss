@@ -40,6 +40,13 @@
 @import "vendor/magnific-popup/magnific-popup";
 @import "print";
 
+.sidebar {
+    background: #fdf4f5;
+    border-radius: 6px;
+    padding: 14px 12px;
+    box-shadow: 0 1px 3px rgba(139, 44, 44, 0.06);
+}
+
 .pub-theme {
     color: #8b2c2c;
     font-size: 1.05em;
