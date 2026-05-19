@@ -1,9 +1,9 @@
 # 顺序 = 显示顺序(最新在最上)
-- date: "2026.05"
-  content: "Two papers accepted at **ICASSP 2026** — *BAHOP* (similarity-based basin hopping for hyper-parameter search) and *ECM* (compressibility of quantized vision encoder + LLM)."
-
 - date: "2026.04"
   content: "I joined ByteDance (San Jose) as a Research Scientist, focusing on AI infrastructure and system efficiency at scale."
+
+- date: "2026.01"
+  content: "Two papers accepted at **ICASSP 2026** — *BAHOP* (similarity-based basin hopping for hyper-parameter search) and *ECM* (compressibility of quantized vision encoder + LLM)."
 
 - date: "2025.05"
   content: "Three papers accepted — **WISE** at CVPR 2025 🎉, **PMR** at USENIX ATC 2025, and **Easz** at DAC 2025."
