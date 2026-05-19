@@ -7,6 +7,10 @@
 #   scholar_id: Google Scholar paper ID(可选,有则显示引用数 badge)
 #   image: 缩略图路径(取自论文架构图)
 
+- title: "ECM: Enhancing Compressibility of Quantized Vision Encoder and LLM for Large Vision-Language Models"
+  authors: "W. Wang, **Yu Mao**, D. Tang, N. Guan, C.J. Xue"
+  venue: "ICASSP 2026"
+
 - title: "WISE: A Framework for Gigapixel Whole-Slide-Image Lossless Compression"
   authors: "**Yu Mao**, J. Wang, N. Guan, C.J. Xue"
   venue: "CVPR 2025"
