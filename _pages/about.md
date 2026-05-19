@@ -40,7 +40,7 @@ Hi there! I’m a Research Scientist at ByteDance (San Jose), focusing on AI inf
 {% for a in site.data.awards %}- *{{ a.date }}* {{ a.content }}
 {% endfor %}
 
-# Services
+# 🤝 Services
 - **ML conference referee:** NeurIPS 24/25/26, ACM MM 23/24, ICLR 25/26, ICML 25/26, CVPR 25/26, AAAI 26, ARR
 - **System TPC:** USENIX ATC 25, GLSVLSI, RTCSA
 - **Journal referee:** ACM TECS, TMLR, IEEE TKDE
