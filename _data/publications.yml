@@ -2,17 +2,16 @@
 #   title: paper 标题
 #   authors: 作者列表(可用 markdown,**Yu Mao** 加粗)
 #   venue: 会议 / 期刊 + 年
-#   first_author: true 时前面加 ★
-#   corresponding: true 时标 (Corresponding author)
-#   arxiv / pdf / code: 链接(可选,缺则不显示按钮)
+#   first_author: true / corresponding: true (用于内部标识)
+#   arxiv / pdf / code: 链接(可选)
 #   scholar_id: Google Scholar paper ID(可选,有则显示引用数 badge)
-#                 取法:scholar 主页点 paper title,URL 里 citation_for_view=XXXX 的 XXXX
+#   image: 缩略图路径(取自论文架构图)
 
 - title: "WISE: A Framework for Gigapixel Whole-Slide-Image Lossless Compression"
   authors: "**Yu Mao**, J. Wang, N. Guan, C.J. Xue"
   venue: "CVPR 2025"
   first_author: true
-  # scholar_id: # TODO
+  image: /images/papers/wise.png
 
 - title: "PMR: Fast Application Response via Parallel Memory Reclaim on Mobile Devices"
   authors: "W. Li, L.-P. Chang, **Yu Mao**, L. Shi"
@@ -22,19 +21,30 @@
   authors: "**Yu Mao**, J. Li, J. Wang, H. Xu, T.W. Kuo, N. Guan, C.J. Xue"
   venue: "DAC 2025"
   first_author: true
+  image: /images/papers/easz.png
 
 - title: "DAWN: Accelerating Point Cloud Object Detection"
   authors: "D. Tang, **Yu Mao**, W. Wang, N. Guan, T.W. Kuo, C.J. Xue"
   venue: "DAC 2025"
+  image: /images/papers/dawn.png
+
+- title: "Lossless Compression of Large Language Model-Generated Text via Next-Token Prediction"
+  authors: "**Yu Mao**, H. Pirk, C.J. Xue"
+  venue: "Preprint 2025"
+  first_author: true
+  arxiv: "https://arxiv.org/abs/2505.06297"
+  image: /images/papers/llm-text-compression.png
 
 - title: "When Compression Meets Model Compression"
   authors: "W. Wang, **Yu Mao**, D. Tang, H. Du, N. Guan, C.J. Xue"
   venue: "EMNLP Findings 2024"
+  image: /images/papers/compression-meets.png
 
 - title: "STEM: Streaming-based FPGA Acceleration for Large-Scale Compactions in LSM KV"
   authors: "D. Tang, W. Wang, **Yu Mao**, J. Yu, T.-W. Kuo, C.J. Xue"
   venue: "ICDE 2024"
   corresponding: true
+  image: /images/papers/stem.png
 
 - title: "IHC Matters: Incorporating IHC analysis to H&E Whole Slide Image Analysis for Improved Cancer Grading via Two-stage Multimodal Bilinear Pooling Fusion"
   authors: "J. Wang, **Yu Mao**, Y. Cui, N. Guan, C.J. Xue"
@@ -48,12 +58,17 @@
   arxiv: "https://arxiv.org/abs/2404.11161"
   image: /images/papers/pre-processing.png
 
+- title: "SHAP-CAT: An Interpretable Multi-Modal Framework Enhancing WSI Classification via Virtual Staining and Shapley-Value-Based Multimodal Fusion"
+  authors: "J. Wang, **Yu Mao**, N. Guan, C.J. Xue"
+  venue: "Preprint 2024"
+  arxiv: "https://arxiv.org/abs/2410.01408"
+  image: /images/papers/shap-cat.png
+
 - title: "Advances in Multiple Instance Learning for Whole Slide Image Analysis: Techniques, Challenges, and Future Directions"
   authors: "J. Wang, **Yu Mao**, N. Guan, C.J. Xue"
   venue: "Preprint 2024"
   scholar_id: "Iw3bTCAAAAAJ:WF5omc3nYNoC"
-
-# 下面 4 篇配了首页 thumbnail(取自 arxiv PDF page 1)
+  image: /images/papers/mil-wsi-survey.png
 
 - title: "On the Compressibility of Quantized Large Language Models"
   authors: "**Yu Mao**, W. Wang, H. Du, N. Guan, C.J. Xue"
@@ -68,23 +83,28 @@
   venue: "DAC 2023"
   first_author: true
   scholar_id: "Iw3bTCAAAAAJ:IjCSPb-OGe4C"
+  image: /images/papers/faster-stronger.png
 
 - title: "Moby: Empowering 2D Models for Efficient Point Cloud Analytics on the Edge"
   authors: "J. Li, Y.H. Cai, L. Liu, **Yu Mao**, C.J. Xue, H. Xu"
   venue: "ACM MM 2023"
+  image: /images/papers/moby.png
 
 - title: "Variational Nested Dropout"
   authors: "Y. Cui, **Yu Mao**, Z. Liu, Q. Li, A.B. Chan, X. Liu, T.-W. Kuo, C.J. Xue"
   venue: "IEEE TPAMI 2023"
+  image: /images/papers/variational-nested-dropout.png
 
 - title: "Accelerating General-purpose Lossless Compression via Simple and Scalable Parameterization"
   authors: "**Yu Mao**, Y. Cui, T.-W. Kuo, C.J. Xue"
   venue: "ACM MM 2022"
   first_author: true
   scholar_id: "Iw3bTCAAAAAJ:d1gkVwhDpl0C"
+  image: /images/papers/accelerating-lossless.png
 
 - title: "Trace: A Fast Transformer-based General-purpose Lossless Compressor"
   authors: "**Yu Mao**, Y. Cui, T.-W. Kuo, C.J. Xue"
   venue: "The Web Conference (WWW) 2022"
   first_author: true
   scholar_id: "Iw3bTCAAAAAJ:u-x6o8ySG0sC"
+  image: /images/papers/trace.png
