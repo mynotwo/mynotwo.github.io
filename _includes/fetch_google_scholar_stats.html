@@ -1,19 +1,33 @@
 <script>
-    $(document).ready(function () {
-        {% if site.google_scholar_stats_use_cdn %}
-        var gsDataBaseUrl = 'https://cdn.jsdelivr.net/gh/{{ site.repository }}@'
-        {% else %}
-        var gsDataBaseUrl = 'https://raw.githubusercontent.com/{{ site.repository }}/'
-        {% endif %}
-        $.getJSON(gsDataBaseUrl + "google-scholar-stats/gs_data.json", function (data) {
-            var totalCitation = data['citedby']
-            document.getElementById('total_cit').innerHTML = totalCitation;
-            var citationEles = document.getElementsByClassName('show_paper_citations')
-            Array.prototype.forEach.call(citationEles, element => {
-                var paperId = element.getAttribute('data')
-                var numCitations = data['publications'][paperId]['num_citations']
-                element.innerHTML = '| Citations: ' + numCitations;
-            });
+(function() {
+    {% if site.google_scholar_stats_use_cdn %}
+    var base = 'https://cdn.jsdelivr.net/gh/{{ site.repository }}@';
+    {% else %}
+    var base = 'https://raw.githubusercontent.com/{{ site.repository }}/';
+    {% endif %}
+    var url = base + 'google-scholar-stats/gs_data.json';
+
+    function render(data) {
+        var total = document.getElementById('total_cit');
+        if (total && data.citedby != null) total.innerHTML = data.citedby;
+        var pubs = data.publications || {};
+        document.querySelectorAll('.show_paper_citations').forEach(function(el) {
+            var id = el.getAttribute('data');
+            var n = pubs[id] && pubs[id].num_citations;
+            if (n != null) el.innerHTML = '| Citations: ' + n;
         });
-    })
+    }
+
+    function go() {
+        fetch(url, {cache: 'no-store'})
+            .then(function(r) { return r.json(); })
+            .then(render)
+            .catch(function(e) { console.warn('scholar stats fetch failed:', e); });
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', go);
+    } else {
+        go();
+    }
+})();
 </script>
