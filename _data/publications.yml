@@ -27,6 +27,7 @@
 - title: "DAWN: Accelerating Point Cloud Object Detection"
   authors: "D. Tang, **Yu Mao**, W. Wang, N. Guan, T.W. Kuo, C.J. Xue"
   venue: "DAC 2025"
+  corresponding: true
   image: /images/papers/dawn.png
 
 - title: "Lossless Compression of Large Language Model-Generated Text via Next-Token Prediction"
@@ -39,6 +40,7 @@
 - title: "When Compression Meets Model Compression"
   authors: "W. Wang, **Yu Mao**, D. Tang, H. Du, N. Guan, C.J. Xue"
   venue: "EMNLP Findings 2024"
+  corresponding: true
   image: /images/papers/compression-meets.png
 
 - title: "STEM: Streaming-based FPGA Acceleration for Large-Scale Compactions in LSM KV"
@@ -50,24 +52,28 @@
 - title: "IHC Matters: Incorporating IHC analysis to H&E Whole Slide Image Analysis for Improved Cancer Grading via Two-stage Multimodal Bilinear Pooling Fusion"
   authors: "J. Wang, **Yu Mao**, Y. Cui, N. Guan, C.J. Xue"
   venue: "Preprint 2024"
+  corresponding: true
   arxiv: "https://arxiv.org/abs/2405.08197"
   image: /images/papers/ihc-matters.png
 
 - title: "Pre-processing matters: A segment search method for WSI classification"
   authors: "J. Wang, Y. Cui, **Yu Mao**, N. Guan, C.J. Xue"
   venue: "Preprint 2024"
+  corresponding: true
   arxiv: "https://arxiv.org/abs/2404.11161"
   image: /images/papers/pre-processing.png
 
 - title: "SHAP-CAT: An Interpretable Multi-Modal Framework Enhancing WSI Classification via Virtual Staining and Shapley-Value-Based Multimodal Fusion"
   authors: "J. Wang, **Yu Mao**, N. Guan, C.J. Xue"
   venue: "Preprint 2024"
+  corresponding: true
   arxiv: "https://arxiv.org/abs/2410.01408"
   image: /images/papers/shap-cat.png
 
 - title: "Advances in Multiple Instance Learning for Whole Slide Image Analysis: Techniques, Challenges, and Future Directions"
   authors: "J. Wang, **Yu Mao**, N. Guan, C.J. Xue"
   venue: "Preprint 2024"
+  corresponding: true
   scholar_id: "Iw3bTCAAAAAJ:WF5omc3nYNoC"
   image: /images/papers/mil-wsi-survey.png
 
