@@ -20,32 +20,46 @@ sitemap: false
     .bar {
       display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
       padding: 10px 14px; background: white; border: 1px solid #ddd;
-      border-radius: 6px; margin-bottom: 12px;
+      border-radius: 6px; margin-bottom: 10px;
       font-size: 13px;
+    }
+    .bar.sticky {
+      position: sticky; top: 0; z-index: 10;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     }
     .bar button, .bar input[type=number], .bar input[type=text] {
       padding: 4px 10px; border: 1px solid #ccc; border-radius: 4px;
       background: white; font-size: 13px; cursor: pointer;
     }
     .bar button:hover { background: #eef; }
-    .bar button:disabled { color: #aaa; cursor: not-allowed; }
+    .bar button:disabled { color: #aaa; cursor: not-allowed; background: white; }
     .bar input[type=number] { width: 56px; cursor: text; }
     .bar input[type=text] { width: 240px; cursor: text; }
     .bar .sep { color: #aaa; }
     #status { color: #666; font-size: 12px; }
-    .canvas-wrap {
-      position: relative; display: inline-block;
-      background: white; padding: 8px; border: 1px solid #ddd;
-      border-radius: 6px; max-width: 100%; overflow: auto;
+
+    #pages-container { display: flex; flex-direction: column; gap: 14px; }
+    .page-wrap {
+      position: relative;
+      background: white; padding: 10px 14px 14px;
+      border: 1px solid #ddd; border-radius: 6px;
+      width: fit-content; max-width: 100%;
     }
+    .page-wrap.active { border-color: #d2691e; box-shadow: 0 0 0 2px rgba(210,105,30,0.18); }
+    .page-label {
+      font-size: 12px; color: #888; margin-bottom: 6px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .page-label .hint { color: #d2691e; font-size: 11px; }
     canvas { display: block; cursor: crosshair; max-width: 100%; height: auto; }
-    #crop-rect {
+    .crop-rect {
       position: absolute; pointer-events: none; display: none;
       border: 2px solid #d2691e; background: rgba(210,105,30,0.12);
       box-sizing: border-box;
     }
-    .hint {
-      font-size: 12px; color: #888; margin-top: 8px;
+
+    .hint-box {
+      font-size: 12px; color: #666; margin-top: 8px;
       padding: 8px 12px; background: #fffbe6; border-left: 3px solid #d2691e;
       border-radius: 3px;
     }
@@ -54,24 +68,23 @@ sitemap: false
 </head>
 <body>
   <h1>📐 论文图裁剪工具</h1>
+
   <div class="bar">
     <label>① 选 PDF: <input type="file" id="pdf-file" accept="application/pdf"></label>
-  </div>
-  <div class="bar">
-    ② 翻页:
-    <button id="prev" disabled>← 上一页</button>
-    <input id="page-num" type="number" min="1" value="1" disabled>
-    <span class="sep">/</span>
-    <span id="total-pages">-</span>
-    <button id="next" disabled>下一页 →</button>
+    <span class="sep">|</span>
+    渲染:
+    <input id="page-limit" type="number" min="1" value="3" style="width:56px"> 页
+    <button id="render-more">渲染更多</button>
+    <button id="render-all">渲染全部</button>
     <span class="sep">|</span>
     缩放:
     <button id="zoom-out">−</button>
     <span id="scale-display">1.5×</span>
     <button id="zoom-in">+</button>
   </div>
-  <div class="bar">
-    ③ 鼠标在图上<b>拖选</b>区域 → ④ 命名:
+
+  <div class="bar sticky">
+    <span>② 在任一页上<b>拖选</b> → ③ 命名:</span>
     <input id="filename" type="text" placeholder="paper-slug.png" value="crop.png">
     →
     <button id="save" disabled>💾 下载 PNG</button>
@@ -79,13 +92,10 @@ sitemap: false
     <span id="status"></span>
   </div>
 
-  <div class="canvas-wrap" id="canvas-wrap">
-    <canvas id="canvas" width="600" height="400"></canvas>
-    <div id="crop-rect"></div>
-  </div>
+  <div id="pages-container"></div>
 
-  <div class="hint">
-    PNG 下到下载文件夹后,丢进 <code>mynotwo.github.io/images/papers/</code>,然后在 <code>_data/publications.yml</code> 对应条目加 <code>image: /images/papers/&lt;文件名&gt;.png</code>。<br>
+  <div class="hint-box">
+    PNG 下到下载文件夹后,丢进 <code>mynotwo.github.io/images/papers/</code>,在 <code>_data/publications.yml</code> 对应条目加 <code>image: /images/papers/&lt;文件名&gt;.png</code>。<br>
     一切在浏览器本地,PDF 不上传。
   </div>
 
@@ -93,124 +103,147 @@ sitemap: false
     import * as pdfjsLib from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.7.76/build/pdf.min.mjs';
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.7.76/build/pdf.worker.min.mjs';
 
-    const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
-    const cropRect = document.getElementById('crop-rect');
-    const wrap = document.getElementById('canvas-wrap');
     const $ = id => document.getElementById(id);
+    const container = $('pages-container');
 
-    let pdfDoc = null, currentPage = 1, currentScale = 1.5;
+    let pdfDoc = null;
+    let currentScale = 1.5;
+    let renderedCount = 0;                      // 已渲染页数
+    let activeCanvas = null, activePage = null; // 当前正在裁剪的页
     let cropStart = null, cropEnd = null, dragging = false;
-
-    $('pdf-file').addEventListener('change', async e => {
-      const file = e.target.files[0];
-      if (!file) return;
-      setStatus('加载中…');
-      const data = await file.arrayBuffer();
-      pdfDoc = await pdfjsLib.getDocument({data}).promise;
-      $('total-pages').textContent = pdfDoc.numPages;
-      $('page-num').max = pdfDoc.numPages;
-      currentPage = 1;
-      $('page-num').value = 1;
-      for (const id of ['prev','next','page-num','save','reset']) $(id).disabled = false;
-      // default filename from PDF file
-      const base = file.name.replace(/\.pdf$/i,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,40);
-      $('filename').value = base + '.png';
-      await renderPage();
-    });
-
-    async function renderPage() {
-      if (!pdfDoc) return;
-      setStatus(`渲染 page ${currentPage}…`);
-      const page = await pdfDoc.getPage(currentPage);
-      const viewport = page.getViewport({scale: currentScale});
-      canvas.width = viewport.width;
-      canvas.height = viewport.height;
-      await page.render({canvasContext: ctx, viewport}).promise;
-      $('prev').disabled = currentPage <= 1;
-      $('next').disabled = currentPage >= pdfDoc.numPages;
-      resetCrop();
-      setStatus(`page ${currentPage} / ${pdfDoc.numPages}`);
-    }
 
     function setStatus(s) { $('status').textContent = s; }
 
-    function resetCrop() {
-      cropStart = cropEnd = null;
-      cropRect.style.display = 'none';
-    }
-    $('reset').addEventListener('click', resetCrop);
-
-    $('prev').addEventListener('click', () => { if (currentPage > 1) { currentPage--; $('page-num').value = currentPage; renderPage(); }});
-    $('next').addEventListener('click', () => { if (currentPage < pdfDoc.numPages) { currentPage++; $('page-num').value = currentPage; renderPage(); }});
-    $('page-num').addEventListener('change', () => {
-      const p = parseInt($('page-num').value);
-      if (p >= 1 && p <= pdfDoc.numPages) { currentPage = p; renderPage(); }
+    $('pdf-file').addEventListener('change', async e => {
+      const file = e.target.files[0]; if (!file) return;
+      setStatus('加载 PDF…');
+      const data = await file.arrayBuffer();
+      pdfDoc = await pdfjsLib.getDocument({data}).promise;
+      const base = file.name.replace(/\.pdf$/i,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,40);
+      $('filename').value = base + '.png';
+      container.innerHTML = '';
+      renderedCount = 0;
+      resetCrop();
+      const initial = Math.min(parseInt($('page-limit').value) || 3, pdfDoc.numPages);
+      await renderPages(1, initial);
     });
 
-    $('zoom-in').addEventListener('click', () => { currentScale = Math.min(3, currentScale + 0.25); $('scale-display').textContent = currentScale + '×'; renderPage(); });
-    $('zoom-out').addEventListener('click', () => { currentScale = Math.max(0.75, currentScale - 0.25); $('scale-display').textContent = currentScale + '×'; renderPage(); });
-
-    function canvasCoords(e) {
-      const rect = canvas.getBoundingClientRect();
-      const sx = canvas.width / rect.width;
-      const sy = canvas.height / rect.height;
-      return {
-        x: Math.max(0, Math.min(canvas.width, (e.clientX - rect.left) * sx)),
-        y: Math.max(0, Math.min(canvas.height, (e.clientY - rect.top) * sy)),
-      };
+    async function renderPages(from, to) {
+      for (let p = from; p <= to; p++) {
+        await renderPage(p);
+      }
+      setStatus(`渲染了 ${renderedCount} / ${pdfDoc.numPages} 页`);
     }
 
-    canvas.addEventListener('mousedown', e => {
-      cropStart = canvasCoords(e);
+    async function renderPage(p) {
+      const wrap = document.createElement('div');
+      wrap.className = 'page-wrap';
+      wrap.dataset.page = p;
+
+      const label = document.createElement('div');
+      label.className = 'page-label';
+      label.innerHTML = `<span>Page ${p}</span><span class="hint">在这页拖选 →</span>`;
+      wrap.appendChild(label);
+
+      const cv = document.createElement('canvas');
+      cv.dataset.page = p;
+      wrap.appendChild(cv);
+
+      const overlay = document.createElement('div');
+      overlay.className = 'crop-rect';
+      wrap.appendChild(overlay);
+      container.appendChild(wrap);
+
+      const page = await pdfDoc.getPage(p);
+      const viewport = page.getViewport({scale: currentScale});
+      cv.width = viewport.width;
+      cv.height = viewport.height;
+      await page.render({canvasContext: cv.getContext('2d'), viewport}).promise;
+
+      cv.addEventListener('mousedown', e => onMouseDown(e, cv, p, wrap, overlay));
+      renderedCount++;
+    }
+
+    function onMouseDown(e, cv, p, wrap, overlay) {
+      // 切换 active
+      document.querySelectorAll('.page-wrap').forEach(w => w.classList.remove('active'));
+      document.querySelectorAll('.crop-rect').forEach(r => r.style.display = 'none');
+      wrap.classList.add('active');
+      activeCanvas = cv;
+      activePage = p;
+      activeOverlay = overlay;
+      activeWrap = wrap;
+      activeCanvasOffset = { x: cv.offsetLeft, y: cv.offsetTop };
+
+      cropStart = canvasCoords(cv, e);
       cropEnd = cropStart;
       dragging = true;
       updateRect();
-    });
+    }
+
+    let activeOverlay = null, activeWrap = null, activeCanvasOffset = null;
+
     window.addEventListener('mousemove', e => {
-      if (!dragging) return;
-      cropEnd = canvasCoords(e);
+      if (!dragging || !activeCanvas) return;
+      cropEnd = canvasCoords(activeCanvas, e);
       updateRect();
     });
     window.addEventListener('mouseup', e => {
       if (!dragging) return;
       dragging = false;
-      cropEnd = canvasCoords(e);
+      if (activeCanvas) cropEnd = canvasCoords(activeCanvas, e);
       updateRect();
     });
 
+    function canvasCoords(cv, e) {
+      const rect = cv.getBoundingClientRect();
+      const sx = cv.width / rect.width;
+      const sy = cv.height / rect.height;
+      return {
+        x: Math.max(0, Math.min(cv.width, (e.clientX - rect.left) * sx)),
+        y: Math.max(0, Math.min(cv.height, (e.clientY - rect.top) * sy)),
+      };
+    }
+
     function updateRect() {
-      if (!cropStart || !cropEnd) return;
+      if (!cropStart || !cropEnd || !activeCanvas || !activeOverlay) return;
       const x1 = Math.min(cropStart.x, cropEnd.x);
       const y1 = Math.min(cropStart.y, cropEnd.y);
       const x2 = Math.max(cropStart.x, cropEnd.x);
       const y2 = Math.max(cropStart.y, cropEnd.y);
-      const rect = canvas.getBoundingClientRect();
-      const wrapRect = wrap.getBoundingClientRect();
-      const sx = rect.width / canvas.width;
-      const sy = rect.height / canvas.height;
-      cropRect.style.left = (rect.left - wrapRect.left + x1 * sx) + 'px';
-      cropRect.style.top = (rect.top - wrapRect.top + y1 * sy) + 'px';
-      cropRect.style.width = ((x2 - x1) * sx) + 'px';
-      cropRect.style.height = ((y2 - y1) * sy) + 'px';
-      cropRect.style.display = 'block';
+      const rect = activeCanvas.getBoundingClientRect();
+      const sx = rect.width / activeCanvas.width;
+      const sy = rect.height / activeCanvas.height;
+      activeOverlay.style.left = (activeCanvas.offsetLeft + x1 * sx) + 'px';
+      activeOverlay.style.top  = (activeCanvas.offsetTop  + y1 * sy) + 'px';
+      activeOverlay.style.width  = ((x2 - x1) * sx) + 'px';
+      activeOverlay.style.height = ((y2 - y1) * sy) + 'px';
+      activeOverlay.style.display = 'block';
     }
 
+    function resetCrop() {
+      cropStart = cropEnd = null;
+      document.querySelectorAll('.crop-rect').forEach(r => r.style.display = 'none');
+      document.querySelectorAll('.page-wrap').forEach(w => w.classList.remove('active'));
+      activeCanvas = activePage = activeOverlay = activeWrap = null;
+    }
+
+    $('reset').addEventListener('click', resetCrop);
+
     $('save').addEventListener('click', () => {
-      if (!cropStart || !cropEnd) { alert('先在图上拖选一个区域'); return; }
+      if (!cropStart || !cropEnd || !activeCanvas) { alert('先在某一页上拖选一个区域'); return; }
       const x1 = Math.min(cropStart.x, cropEnd.x);
       const y1 = Math.min(cropStart.y, cropEnd.y);
       const w = Math.abs(cropEnd.x - cropStart.x);
       const h = Math.abs(cropEnd.y - cropStart.y);
       if (w < 10 || h < 10) { alert('选区太小'); return; }
 
-      // 缩放到 max 900 宽,跟项目风格一致
       const MAX_W = 900;
       const ratio = Math.min(1, MAX_W / w);
       const outW = Math.round(w * ratio), outH = Math.round(h * ratio);
       const out = document.createElement('canvas');
       out.width = outW; out.height = outH;
-      out.getContext('2d').drawImage(canvas, x1, y1, w, h, 0, 0, outW, outH);
+      out.getContext('2d').drawImage(activeCanvas, x1, y1, w, h, 0, 0, outW, outH);
 
       const name = $('filename').value.trim() || 'crop.png';
       out.toBlob(blob => {
@@ -219,9 +252,41 @@ sitemap: false
         a.href = url; a.download = name.endsWith('.png') ? name : name + '.png';
         a.click();
         setTimeout(() => URL.revokeObjectURL(url), 1000);
-        setStatus(`✓ 已下载 ${a.download} (${outW}×${outH})`);
+        setStatus(`✓ 已下载 ${a.download} (p${activePage}, ${outW}×${outH})`);
       }, 'image/png');
     });
+
+    // 启用 save/reset 按钮(总是可用,缺选区时弹提示)
+    $('save').disabled = false;
+    $('reset').disabled = false;
+
+    $('render-more').addEventListener('click', async () => {
+      if (!pdfDoc) return;
+      const more = parseInt($('page-limit').value) || 3;
+      const start = renderedCount + 1;
+      const end = Math.min(renderedCount + more, pdfDoc.numPages);
+      if (start > pdfDoc.numPages) { setStatus('已经全部渲染'); return; }
+      setStatus(`渲染 page ${start}–${end}…`);
+      await renderPages(start, end);
+    });
+
+    $('render-all').addEventListener('click', async () => {
+      if (!pdfDoc) return;
+      if (renderedCount >= pdfDoc.numPages) { setStatus('已经全部渲染'); return; }
+      setStatus(`渲染剩余 ${pdfDoc.numPages - renderedCount} 页…`);
+      await renderPages(renderedCount + 1, pdfDoc.numPages);
+    });
+
+    async function rerenderAll() {
+      if (!pdfDoc) return;
+      const cnt = renderedCount;
+      container.innerHTML = '';
+      renderedCount = 0;
+      resetCrop();
+      await renderPages(1, cnt);
+    }
+    $('zoom-in').addEventListener('click',  async () => { currentScale = Math.min(3, currentScale + 0.25); $('scale-display').textContent = currentScale + '×'; await rerenderAll(); });
+    $('zoom-out').addEventListener('click', async () => { currentScale = Math.max(0.75, currentScale - 0.25); $('scale-display').textContent = currentScale + '×'; await rerenderAll(); });
   </script>
 </body>
 </html>
