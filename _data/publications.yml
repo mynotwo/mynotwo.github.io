@@ -113,6 +113,12 @@
 # ============================ Systems · Edge AI ============================
 
 - theme: "Systems · Edge AI"
+  title: "Parallel-SA: Point Cloud Processing Acceleration via Parallel Set Abstraction"
+  authors: "D. Tang, W. Wang, **Yu Mao**, W. Xie, N. Guan, T.-W. Kuo, C.J. Xue"
+  venue: "DATE 2026"
+  corresponding: true
+
+- theme: "Systems · Edge AI"
   title: "PMR: Fast Application Response via Parallel Memory Reclaim on Mobile Devices"
   authors: "W. Li, L.-P. Chang, **Yu Mao**, L. Shi"
   venue: "USENIX ATC 2025"
