@@ -1,0 +1,30 @@
+{% comment %}
+  Usage: {% include publication-card.html pub=pub %}
+  Expected fields in `pub`: title, authors, venue, [first_author, corresponding, arxiv, pdf, code, scholar_id, image]
+{% endcomment %}
+<div class="paper-box">
+  <div class="paper-box-image">
+    {% if include.pub.image %}
+      <img src="{{ include.pub.image | relative_url }}" alt="{{ include.pub.title | escape }}">
+    {% else %}
+      {% assign abbrev = include.pub.venue | split: ' ' | first %}
+      <div class="paper-thumb-fallback">{{ abbrev }}</div>
+    {% endif %}
+  </div>
+  <div class="paper-box-text">
+    <div class="paper-title">{% if include.pub.first_author %}<span class="paper-star">★</span>{% endif %}{{ include.pub.title }}</div>
+    <div class="paper-authors">{{ include.pub.authors | markdownify | remove: '<p>' | remove: '</p>' }}</div>
+    <div class="paper-venue">
+      <span class="paper-venue-chip">{{ include.pub.venue }}</span>
+      {% if include.pub.corresponding %}<span class="paper-tag">Corresponding</span>{% endif %}
+    </div>
+    {% if include.pub.arxiv or include.pub.pdf or include.pub.code or include.pub.scholar_id %}
+    <div class="paper-links">
+      {% if include.pub.arxiv %}<a href="{{ include.pub.arxiv }}" target="_blank">arXiv</a>{% endif %}
+      {% if include.pub.pdf %}<a href="{{ include.pub.pdf }}" target="_blank">PDF</a>{% endif %}
+      {% if include.pub.code %}<a href="{{ include.pub.code }}" target="_blank">Code</a>{% endif %}
+      {% if include.pub.scholar_id %}<span class='show_paper_citations' data='{{ include.pub.scholar_id }}'></span>{% endif %}
+    </div>
+    {% endif %}
+  </div>
+</div>

@@ -47,8 +47,10 @@
     flex-direction: row;
     flex-wrap: wrap;
     border-bottom: 1px #efefef solid;
-    padding: 2em 0 2em 0;
-    
+    padding: 1.2em 0;
+    transition: background 0.15s ease;
+
+    &:hover { background: rgba(0,0,0,0.018); }
 
     .paper-box-image{
         justify-content: center;
@@ -59,26 +61,91 @@
             max-width: 400px;
             box-shadow: 3px 3px 6px #888;
             object-fit: cover;
+            border-radius: 4px;
+        }
+        .paper-thumb-fallback {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 240px;
+            height: 140px;
+            background: linear-gradient(135deg, #4a6cf7, #8b5cf6);
+            color: white;
+            font-weight: 600;
+            border-radius: 4px;
+            font-size: 1.05em;
+            letter-spacing: 0.6px;
+            box-shadow: 3px 3px 6px #888;
         }
     }
-    
+
     .paper-box-text{
         max-width: 100%;
         order: 1;
     }
-    
+
+    .paper-title {
+        font-size: 1.02em;
+        font-weight: 600;
+        line-height: 1.35;
+        margin-bottom: 6px;
+        color: #1a1a1a;
+    }
+    .paper-star { color: #d2691e; margin-right: 4px; }
+    .paper-authors {
+        font-size: 0.92em;
+        color: #444;
+        margin-bottom: 6px;
+        line-height: 1.45;
+    }
+    .paper-venue { margin-bottom: 6px; }
+    .paper-venue-chip {
+        display: inline-block;
+        font-size: 0.8em;
+        font-weight: 600;
+        padding: 2px 10px;
+        border-radius: 3px;
+        background: #eef2ff;
+        color: #4a5fd1;
+        letter-spacing: 0.3px;
+    }
+    .paper-tag {
+        display: inline-block;
+        font-size: 0.76em;
+        padding: 1px 7px;
+        border-radius: 3px;
+        background: #fef3c7;
+        color: #92400e;
+        margin-left: 6px;
+    }
+    .paper-links {
+        font-size: 0.84em;
+        a {
+            display: inline-block;
+            margin-right: 6px;
+            padding: 1px 8px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            text-decoration: none;
+            color: #333;
+            background: #fafafa;
+            &:hover { background: #f0f1f5; border-color: #888; }
+        }
+        .show_paper_citations { margin-left: 4px; vertical-align: middle; }
+    }
+
     @include breakpoint($medium) {
         .paper-box-image{
             justify-content: left;
             min-width: 200px;
-            max-width: 40%;
+            max-width: 35%;
             order: 1;
         }
-        
+
         .paper-box-text{
             justify-content: left;
-            padding-left: 2em;
-            max-width: 60%;
+            padding-left: 1.6em;
+            max-width: 65%;
             order: 2;
         }
 

@@ -30,9 +30,10 @@ Hi there! I’m a Research Scientist at ByteDance (San Jose), focusing on AI inf
 
 # 📝 Publications
 
-(★ = first author)
+★ = first author. Paper thumbnails: drop a PNG into `images/papers/<name>.png` and add `image: /images/papers/<name>.png` to the entry in `_data/publications.yml` — until then, venue placeholder shows.
 
-{% for p in site.data.publications %}- {% if p.first_author %}★ {% endif %}{{ p.title }}, {{ p.authors }}, {{ p.venue }}{% if p.corresponding %} *(Corresponding author)*{% endif %}{% if p.arxiv %} [[arXiv]]({{ p.arxiv }}){% endif %}{% if p.pdf %} [[PDF]]({{ p.pdf }}){% endif %}{% if p.code %} [[Code]]({{ p.code }}){% endif %}{% if p.scholar_id %} <span class='show_paper_citations' data='{{ p.scholar_id }}'></span>{% endif %}
+{% for pub in site.data.publications %}
+  {% include publication-card.html pub=pub %}
 {% endfor %}
 
 # 🎖 Honors and Awards
