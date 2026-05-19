@@ -88,9 +88,3 @@
   venue: "The Web Conference (WWW) 2022"
   first_author: true
   scholar_id: "Iw3bTCAAAAAJ:u-x6o8ySG0sC"
-
-- title: "Weight Rescaling: Effective and Robust Regularization for Deep Neural Networks with Batch Normalization"
-  authors: "Z. Liu, Y. Cui, J. Wan, **Yu Mao**, A.B. Chan"
-  venue: "Preprint 2021"
-  arxiv: "https://arxiv.org/abs/2102.03497"
-  image: /images/papers/weight-rescaling.png
