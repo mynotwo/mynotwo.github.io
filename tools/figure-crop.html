@@ -69,8 +69,12 @@ sitemap: false
 <body>
   <h1>📐 论文图裁剪工具</h1>
 
+  <div class="bar" id="papers-bar">
+    <span>① 论文(点一下载入):</span>
+    <span id="papers-list" style="display:inline-flex;flex-wrap:wrap;gap:6px;"></span>
+  </div>
   <div class="bar">
-    <label>① 选 PDF: <input type="file" id="pdf-file" accept="application/pdf"></label>
+    或上传别的 PDF: <input type="file" id="pdf-file" accept="application/pdf">
     <span class="sep">|</span>
     渲染:
     <input id="page-limit" type="number" min="1" value="3" style="width:56px"> 页
@@ -82,6 +86,14 @@ sitemap: false
     <span id="scale-display">1.5×</span>
     <button id="zoom-in">+</button>
   </div>
+  <style>
+    #papers-list button {
+      padding: 3px 9px; border: 1px solid #ccc; border-radius: 12px;
+      background: white; font-size: 12px; cursor: pointer;
+    }
+    #papers-list button:hover { background: #fff5e6; border-color: #d2691e; }
+    #papers-list button.loaded { background: #d2691e; color: white; border-color: #d2691e; }
+  </style>
 
   <div class="bar sticky">
     <span>② 在任一页上<b>拖选</b> → ③ 命名:</span>
@@ -114,11 +126,61 @@ sitemap: false
 
     function setStatus(s) { $('status').textContent = s; }
 
+    // 预载论文列表 — 跟 _data/publications.yml 的 slug 对齐
+    const PAPERS = [
+      ['wise', 'WISE'],
+      ['pmr', 'PMR'],
+      ['easz', 'Easz'],
+      ['dawn', 'DAWN'],
+      ['llm-text-compression', 'LLM-Text'],
+      ['compression-meets', 'Compression×MC'],
+      ['stem', 'STEM'],
+      ['ihc-matters', 'IHC Matters'],
+      ['pre-processing', 'BAHOP'],
+      ['shap-cat', 'SHAP-CAT'],
+      ['mil-wsi-survey', 'MIL Survey'],
+      ['quantized-llm', 'Quantized LLM'],
+      ['faster-stronger', 'Faster&Stronger'],
+      ['moby', 'Moby'],
+      ['variational-nested-dropout', 'VND'],
+      ['accelerating-lossless', 'Accelerating Lossless'],
+      ['trace', 'Trace'],
+    ];
+    const papersList = $('papers-list');
+    PAPERS.forEach(([slug, label]) => {
+      const btn = document.createElement('button');
+      btn.textContent = label;
+      btn.dataset.slug = slug;
+      btn.addEventListener('click', () => loadFromUrl(`/assets/pdfs/${slug}.pdf`, slug, btn));
+      papersList.appendChild(btn);
+    });
+
+    async function loadFromUrl(url, slug, btn) {
+      setStatus('下载 ' + slug + ' …');
+      try {
+        const r = await fetch(url);
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        const data = await r.arrayBuffer();
+        pdfDoc = await pdfjsLib.getDocument({data}).promise;
+        document.querySelectorAll('#papers-list button').forEach(b => b.classList.remove('loaded'));
+        if (btn) btn.classList.add('loaded');
+        $('filename').value = slug + '.png';
+        container.innerHTML = '';
+        renderedCount = 0;
+        resetCrop();
+        const initial = Math.min(parseInt($('page-limit').value) || 3, pdfDoc.numPages);
+        await renderPages(1, initial);
+      } catch (err) {
+        setStatus('载入失败: ' + err.message);
+      }
+    }
+
     $('pdf-file').addEventListener('change', async e => {
       const file = e.target.files[0]; if (!file) return;
       setStatus('加载 PDF…');
       const data = await file.arrayBuffer();
       pdfDoc = await pdfjsLib.getDocument({data}).promise;
+      document.querySelectorAll('#papers-list button').forEach(b => b.classList.remove('loaded'));
       const base = file.name.replace(/\.pdf$/i,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,40);
       $('filename').value = base + '.png';
       container.innerHTML = '';
