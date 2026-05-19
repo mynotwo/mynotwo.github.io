@@ -3,28 +3,28 @@
 #   theme: 主题分组 — 一个 paper 一个 theme,与 _pages/about.md 里的 themes 列表对应
 #   组内顺序 = 显示顺序,通常按年逆序
 
-# ============================ Compression & LLM Efficiency ============================
+# ============================ Compression · LLM Efficiency ============================
 
-- theme: "Compression & LLM Efficiency"
+- theme: "Compression · LLM Efficiency"
   title: "ECM: Enhancing Compressibility of Quantized Vision Encoder and LLM for Large Vision-Language Models"
   authors: "W. Wang, **Yu Mao**, D. Tang, N. Guan, C.J. Xue"
   venue: "ICASSP 2026"
 
-- theme: "Compression & LLM Efficiency"
+- theme: "Compression · LLM Efficiency"
   title: "WISE: A Framework for Gigapixel Whole-Slide-Image Lossless Compression"
   authors: "**Yu Mao**, J. Wang, N. Guan, C.J. Xue"
   venue: "CVPR 2025"
   first_author: true
   image: /images/papers/wise.png
 
-- theme: "Compression & LLM Efficiency"
+- theme: "Compression · LLM Efficiency"
   title: "Easz: A Transformer-based Image Compression Framework for IoT"
   authors: "**Yu Mao**, J. Li, J. Wang, H. Xu, T.W. Kuo, N. Guan, C.J. Xue"
   venue: "DAC 2025"
   first_author: true
   image: /images/papers/easz.png
 
-- theme: "Compression & LLM Efficiency"
+- theme: "Compression · LLM Efficiency"
   title: "Lossless Compression of Large Language Model-Generated Text via Next-Token Prediction"
   authors: "**Yu Mao**, H. Pirk, C.J. Xue"
   venue: "Preprint 2025"
@@ -32,14 +32,14 @@
   arxiv: "https://arxiv.org/abs/2505.06297"
   image: /images/papers/llm-text-compression.png
 
-- theme: "Compression & LLM Efficiency"
+- theme: "Compression · LLM Efficiency"
   title: "When Compression Meets Model Compression"
   authors: "W. Wang, **Yu Mao**, D. Tang, H. Du, N. Guan, C.J. Xue"
   venue: "EMNLP Findings 2024"
   corresponding: true
   image: /images/papers/compression-meets.png
 
-- theme: "Compression & LLM Efficiency"
+- theme: "Compression · LLM Efficiency"
   title: "On the Compressibility of Quantized Large Language Models"
   authors: "**Yu Mao**, W. Wang, H. Du, N. Guan, C.J. Xue"
   venue: "Preprint 2024"
@@ -48,7 +48,7 @@
   scholar_id: "Iw3bTCAAAAAJ:Tyk-4Ss8FVUC"
   image: /images/papers/quantized-llm.png
 
-- theme: "Compression & LLM Efficiency"
+- theme: "Compression · LLM Efficiency"
   title: "Faster and Stronger Lossless Compression with Optimized Autoregressive Framework"
   authors: "**Yu Mao**, J. Li, Y. Cui, C.J. Xue"
   venue: "DAC 2023"
@@ -56,7 +56,7 @@
   scholar_id: "Iw3bTCAAAAAJ:IjCSPb-OGe4C"
   image: /images/papers/faster-stronger.png
 
-- theme: "Compression & LLM Efficiency"
+- theme: "Compression · LLM Efficiency"
   title: "Accelerating General-purpose Lossless Compression via Simple and Scalable Parameterization"
   authors: "**Yu Mao**, Y. Cui, T.-W. Kuo, C.J. Xue"
   venue: "ACM MM 2022"
@@ -64,7 +64,7 @@
   scholar_id: "Iw3bTCAAAAAJ:d1gkVwhDpl0C"
   image: /images/papers/accelerating-lossless.png
 
-- theme: "Compression & LLM Efficiency"
+- theme: "Compression · LLM Efficiency"
   title: "Trace: A Fast Transformer-based General-purpose Lossless Compressor"
   authors: "**Yu Mao**, Y. Cui, T.-W. Kuo, C.J. Xue"
   venue: "The Web Conference (WWW) 2022"
@@ -72,9 +72,9 @@
   scholar_id: "Iw3bTCAAAAAJ:u-x6o8ySG0sC"
   image: /images/papers/trace.png
 
-# ============================ Whole-Slide-Image & Medical Imaging ============================
+# ============================ Whole-Slide-Image · Medical Imaging ============================
 
-- theme: "Whole-Slide-Image & Medical Imaging"
+- theme: "Whole-Slide-Image · Medical Imaging"
   title: "BAHOP: Similarity-based Basin Hopping for A fast hyper-parameter search in WSI classification"
   authors: "J. Wang, **Yu Mao**, Y. Cui, N. Guan, C.J. Xue"
   venue: "ICASSP 2026"
@@ -82,7 +82,7 @@
   arxiv: "https://arxiv.org/abs/2404.11161"
   image: /images/papers/pre-processing.png
 
-- theme: "Whole-Slide-Image & Medical Imaging"
+- theme: "Whole-Slide-Image · Medical Imaging"
   title: "SHAP-CAT: An Interpretable Multi-Modal Framework Enhancing WSI Classification via Virtual Staining and Shapley-Value-Based Multimodal Fusion"
   authors: "J. Wang, **Yu Mao**, N. Guan, C.J. Xue"
   venue: "Preprint 2024"
@@ -90,7 +90,7 @@
   arxiv: "https://arxiv.org/abs/2410.01408"
   image: /images/papers/shap-cat.png
 
-- theme: "Whole-Slide-Image & Medical Imaging"
+- theme: "Whole-Slide-Image · Medical Imaging"
   title: "Advances in Multiple Instance Learning for Whole Slide Image Analysis: Techniques, Challenges, and Future Directions"
   authors: "J. Wang, **Yu Mao**, N. Guan, C.J. Xue"
   venue: "Preprint 2024"
@@ -98,37 +98,37 @@
   scholar_id: "Iw3bTCAAAAAJ:WF5omc3nYNoC"
   image: /images/papers/mil-wsi-survey.png
 
-# ============================ Systems & Edge AI ============================
+# ============================ Systems · Edge AI ============================
 
-- theme: "Systems & Edge AI"
+- theme: "Systems · Edge AI"
   title: "PMR: Fast Application Response via Parallel Memory Reclaim on Mobile Devices"
   authors: "W. Li, L.-P. Chang, **Yu Mao**, L. Shi"
   venue: "USENIX ATC 2025"
   image: /images/papers/pmr.png
 
-- theme: "Systems & Edge AI"
+- theme: "Systems · Edge AI"
   title: "DAWN: Accelerating Point Cloud Object Detection"
   authors: "D. Tang, **Yu Mao**, W. Wang, N. Guan, T.W. Kuo, C.J. Xue"
   venue: "DAC 2025"
   corresponding: true
   image: /images/papers/dawn.png
 
-- theme: "Systems & Edge AI"
+- theme: "Systems · Edge AI"
   title: "STEM: Streaming-based FPGA Acceleration for Large-Scale Compactions in LSM KV"
   authors: "D. Tang, W. Wang, **Yu Mao**, J. Yu, T.-W. Kuo, C.J. Xue"
   venue: "ICDE 2024"
   corresponding: true
   image: /images/papers/stem.png
 
-- theme: "Systems & Edge AI"
+- theme: "Systems · Edge AI"
   title: "Moby: Empowering 2D Models for Efficient Point Cloud Analytics on the Edge"
   authors: "J. Li, Y.H. Cai, L. Liu, **Yu Mao**, C.J. Xue, H. Xu"
   venue: "ACM MM 2023"
   image: /images/papers/moby.png
 
-# ============================ ML & Theory ============================
+# ============================ ML · Theory ============================
 
-- theme: "ML & Theory"
+- theme: "ML · Theory"
   title: "Variational Nested Dropout"
   authors: "Y. Cui, **Yu Mao**, Z. Liu, Q. Li, A.B. Chan, X. Liu, T.-W. Kuo, C.J. Xue"
   venue: "IEEE TPAMI 2023"
