@@ -1,9 +1,9 @@
 # 顺序 = 显示顺序(最新在最上)
 - date: "2026.04"
-  content: "I joined ByteDance (San Jose) as a Research Scientist, focusing on AI infrastructure and system efficiency at scale."
+  content: "Joined ByteDance San Jose as Research Scientist."
 
 - date: "2026.01"
-  content: "Two papers accepted at **ICASSP 2026** — *BAHOP* (similarity-based basin hopping for hyper-parameter search) and *ECM* (compressibility of quantized vision encoder + LLM)."
+  content: "**BAHOP** and **ECM** accepted at **ICASSP 2026**."
 
 - date: "2025.05"
-  content: "Three papers accepted — **WISE** at CVPR 2025 🎉, **PMR** at USENIX ATC 2025, and **Easz** at DAC 2025."
+  content: "**WISE** accepted at CVPR 2025 🎉, **PMR** at USENIX ATC 2025, **Easz** at DAC 2025."
