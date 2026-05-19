@@ -30,8 +30,6 @@ Hi there! I’m a Research Scientist at ByteDance (San Jose), focusing on AI inf
 
 # 📝 Publications
 
-★ = first author. Paper thumbnails: drop a PNG into `images/papers/<name>.png` and add `image: /images/papers/<name>.png` to the entry in `_data/publications.yml` — until then, venue placeholder shows.
-
 {% for pub in site.data.publications %}
   {% include publication-card.html pub=pub %}
 {% endfor %}

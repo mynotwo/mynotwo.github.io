@@ -40,16 +40,20 @@
   authors: "J. Wang, **Yu Mao**, Y. Cui, N. Guan, C.J. Xue"
   venue: "Preprint 2024"
   arxiv: "https://arxiv.org/abs/2405.08197"
+  image: /images/papers/ihc-matters.png
 
 - title: "Pre-processing matters: A segment search method for WSI classification"
   authors: "J. Wang, Y. Cui, **Yu Mao**, N. Guan, C.J. Xue"
   venue: "Preprint 2024"
   arxiv: "https://arxiv.org/abs/2404.11161"
+  image: /images/papers/pre-processing.png
 
 - title: "Advances in Multiple Instance Learning for Whole Slide Image Analysis: Techniques, Challenges, and Future Directions"
   authors: "J. Wang, **Yu Mao**, N. Guan, C.J. Xue"
   venue: "Preprint 2024"
   scholar_id: "Iw3bTCAAAAAJ:WF5omc3nYNoC"
+
+# 下面 4 篇配了首页 thumbnail(取自 arxiv PDF page 1)
 
 - title: "On the Compressibility of Quantized Large Language Models"
   authors: "**Yu Mao**, W. Wang, H. Du, N. Guan, C.J. Xue"
@@ -57,6 +61,7 @@
   first_author: true
   arxiv: "https://arxiv.org/abs/2403.01384"
   scholar_id: "Iw3bTCAAAAAJ:Tyk-4Ss8FVUC"
+  image: /images/papers/quantized-llm.png
 
 - title: "Faster and Stronger Lossless Compression with Optimized Autoregressive Framework"
   authors: "**Yu Mao**, J. Li, Y. Cui, C.J. Xue"
@@ -88,3 +93,4 @@
   authors: "Z. Liu, Y. Cui, J. Wan, **Yu Mao**, A.B. Chan"
   venue: "Preprint 2021"
   arxiv: "https://arxiv.org/abs/2102.03497"
+  image: /images/papers/weight-rescaling.png

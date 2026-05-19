@@ -12,7 +12,7 @@
     {% endif %}
   </div>
   <div class="paper-box-text">
-    <div class="paper-title">{% if include.pub.first_author %}<span class="paper-star">★</span>{% endif %}{{ include.pub.title }}</div>
+    <div class="paper-title">{{ include.pub.title }}</div>
     <div class="paper-authors">{{ include.pub.authors | markdownify | remove: '<p>' | remove: '</p>' }}</div>
     <div class="paper-venue">
       <span class="paper-venue-chip">{{ include.pub.venue }}</span>
