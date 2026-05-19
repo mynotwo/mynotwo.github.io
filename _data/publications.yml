@@ -10,6 +10,7 @@
   authors: "W. Wang, **Yu Mao**, D. Tang, N. Guan, C.J. Xue"
   venue: "ICASSP 2026"
   corresponding: true
+  pdf: /assets/pdfs/ecm.pdf
 
 - theme: "Compression · LLM Efficiency"
   title: "WISE: A Framework for Gigapixel Whole-Slide-Image Lossless Compression"
