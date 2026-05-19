@@ -1,0 +1,81 @@
+# Schema:
+#   title: paper 标题
+#   authors: 作者列表(可用 markdown,**Yu Mao** 加粗)
+#   venue: 会议 / 期刊 + 年
+#   first_author: true 时前面加 ★
+#   corresponding: true 时标 (Corresponding author)
+#   arxiv / pdf / code: 链接(可选,缺则不显示按钮)
+#   scholar_id: Google Scholar paper ID(可选,有则显示引用数 badge)
+#                 取法:scholar 主页点 paper title,URL 里 citation_for_view=XXXX 的 XXXX
+
+- title: "WISE: A Framework for Gigapixel Whole-Slide-Image Lossless Compression"
+  authors: "**Yu Mao**, J. Wang, N. Guan, C.J. Xue"
+  venue: "CVPR 2025"
+  first_author: true
+  # scholar_id: # TODO
+
+- title: "PMR: Fast Application Response via Parallel Memory Reclaim on Mobile Devices"
+  authors: "W. Li, L.-P. Chang, **Yu Mao**, L. Shi"
+  venue: "USENIX ATC 2025"
+
+- title: "Easz: A Transformer-based Image Compression Framework for IoT"
+  authors: "**Yu Mao**, J. Li, J. Wang, H. Xu, T.W. Kuo, N. Guan, C.J. Xue"
+  venue: "DAC 2025"
+  first_author: true
+
+- title: "DAWN: Accelerating Point Cloud Object Detection"
+  authors: "D. Tang, **Yu Mao**, W. Wang, N. Guan, T.W. Kuo, C.J. Xue"
+  venue: "DAC 2025"
+
+- title: "When Compression Meets Model Compression"
+  authors: "W. Wang, **Yu Mao**, D. Tang, H. Du, N. Guan, C.J. Xue"
+  venue: "EMNLP Findings 2024"
+
+- title: "STEM: Streaming-based FPGA Acceleration for Large-Scale Compactions in LSM KV"
+  authors: "D. Tang, W. Wang, **Yu Mao**, J. Yu, T.-W. Kuo, C.J. Xue"
+  venue: "ICDE 2024"
+  corresponding: true
+
+- title: "IHC Matters: Incorporating IHC analysis to H&E Whole Slide Image Analysis for Improved Cancer Grading via Two-stage Multimodal Bilinear Pooling Fusion"
+  authors: "J. Wang, **Yu Mao**, Y. Cui, N. Guan, C.J. Xue"
+  venue: "Preprint 2024"
+  arxiv: "https://arxiv.org/abs/2405.08197"
+
+- title: "Pre-processing matters: A segment search method for WSI classification"
+  authors: "J. Wang, Y. Cui, **Yu Mao**, N. Guan, C.J. Xue"
+  venue: "Preprint 2024"
+  arxiv: "https://arxiv.org/abs/2404.11161"
+
+- title: "On the Compressibility of Quantized Large Language Models"
+  authors: "**Yu Mao**, W. Wang, H. Du, N. Guan, C.J. Xue"
+  venue: "Preprint 2024"
+  first_author: true
+  arxiv: "https://arxiv.org/abs/2403.01384"
+
+- title: "Faster and Stronger Lossless Compression with Optimized Autoregressive Framework"
+  authors: "**Yu Mao**, J. Li, Y. Cui, C.J. Xue"
+  venue: "DAC 2023"
+  first_author: true
+
+- title: "Moby: Empowering 2D Models for Efficient Point Cloud Analytics on the Edge"
+  authors: "J. Li, Y.H. Cai, L. Liu, **Yu Mao**, C.J. Xue, H. Xu"
+  venue: "ACM MM 2023"
+
+- title: "Variational Nested Dropout"
+  authors: "Y. Cui, **Yu Mao**, Z. Liu, Q. Li, A.B. Chan, X. Liu, T.-W. Kuo, C.J. Xue"
+  venue: "IEEE TPAMI 2023"
+
+- title: "Accelerating General-purpose Lossless Compression via Simple and Scalable Parameterization"
+  authors: "**Yu Mao**, Y. Cui, T.-W. Kuo, C.J. Xue"
+  venue: "ACM MM 2022"
+  first_author: true
+
+- title: "Trace: A Fast Transformer-based General-purpose Lossless Compressor"
+  authors: "**Yu Mao**, Y. Cui, T.-W. Kuo, C.J. Xue"
+  venue: "The Web Conference (WWW) 2022"
+  first_author: true
+
+- title: "Weight Rescaling: Effective and Robust Regularization for Deep Neural Networks with Batch Normalization"
+  authors: "Z. Liu, Y. Cui, J. Wan, **Yu Mao**, A.B. Chan"
+  venue: "Preprint 2021"
+  arxiv: "https://arxiv.org/abs/2102.03497"

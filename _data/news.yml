@@ -1,0 +1,21 @@
+# 顺序 = 显示顺序(最新在最上)
+- date: "2026.04"
+  content: "I joined ByteDance (San Jose) as a Research Scientist, focusing on AI infrastructure and system efficiency at scale."
+
+- date: "2025.05"
+  content: "Three papers accepted — **WISE** at CVPR 2025 🎉, **PMR** at USENIX ATC 2025, and **Easz** at DAC 2025."
+
+- date: "2025.04"
+  content: "I started my postdoctoral research at MBZUAI and a visiting researcher position at Imperial College London."
+
+- date: "2024.05"
+  content: "I successfully completed my thesis defense 🎉."
+
+- date: "2023.10"
+  content: "We won the second prize at the ICCAD TinyML Contest."
+
+- date: "2023.05"
+  content: "I was invited as a female student representative to give a talk at the CityU PhD forum."
+
+- date: "2023.02"
+  content: "Our paper *“Faster and Stronger Lossless Compression with Optimized Autoregressive Framework”* was accepted at DAC 2023."
