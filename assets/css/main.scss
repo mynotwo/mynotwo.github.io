@@ -40,54 +40,6 @@
 @import "vendor/magnific-popup/magnific-popup";
 @import "print";
 
-/* ============ 粉调主题 ============ */
-
-body { background: #fef7f9 !important; }
-
-.masthead {
-    background: #fdeef1 !important;
-    border-bottom: 1px solid rgba(139, 44, 44, 0.12) !important;
-}
-
-.sidebar {
-    background: #fdf4f5;
-    border-radius: 6px;
-    padding: 14px 12px;
-    box-shadow: 0 1px 3px rgba(139, 44, 44, 0.08);
-}
-
-/* 朱砂 accents 加重 */
-
-.paper-authors strong {
-    color: #8b2c2c !important;
-    font-weight: 700 !important;
-    background: rgba(139, 44, 44, 0.08);
-    padding: 1px 4px;
-    border-radius: 2px;
-}
-
-.paper-box {
-    .paper-venue-chip {
-        background: #fce7eb !important;
-        color: #8b2c2c !important;
-    }
-    .paper-tag {
-        background: #fce7eb !important;
-        color: #8b2c2c !important;
-    }
-    .paper-title {
-        color: #5a1414 !important;   // 更深的朱砂头
-    }
-}
-
-.pub-theme {
-    background: linear-gradient(90deg, rgba(139,44,44,0.10), transparent);
-    padding: 6px 10px !important;
-    border-left: 3px solid #8b2c2c;
-    border-bottom: none !important;
-    border-radius: 0 4px 4px 0;
-}
-
 .pub-theme {
     color: #8b2c2c;
     font-size: 1.05em;
