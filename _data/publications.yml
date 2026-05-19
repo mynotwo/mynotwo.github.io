@@ -53,16 +53,9 @@
   corresponding: true
   image: /images/papers/stem.png
 
-- title: "IHC Matters: Incorporating IHC analysis to H&E Whole Slide Image Analysis for Improved Cancer Grading via Two-stage Multimodal Bilinear Pooling Fusion"
+- title: "BAHOP: Similarity-based Basin Hopping for A fast hyper-parameter search in WSI classification"
   authors: "J. Wang, **Yu Mao**, Y. Cui, N. Guan, C.J. Xue"
-  venue: "Preprint 2024"
-  corresponding: true
-  arxiv: "https://arxiv.org/abs/2405.08197"
-  image: /images/papers/ihc-matters.png
-
-- title: "Pre-processing matters: A segment search method for WSI classification"
-  authors: "J. Wang, Y. Cui, **Yu Mao**, N. Guan, C.J. Xue"
-  venue: "Preprint 2024"
+  venue: "ICASSP 2026"
   corresponding: true
   arxiv: "https://arxiv.org/abs/2404.11161"
   image: /images/papers/pre-processing.png
