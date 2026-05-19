@@ -9,6 +9,7 @@
   title: "ECM: Enhancing Compressibility of Quantized Vision Encoder and LLM for Large Vision-Language Models"
   authors: "W. Wang, **Yu Mao**, D. Tang, N. Guan, C.J. Xue"
   venue: "ICASSP 2026"
+  corresponding: true
 
 - theme: "Compression · LLM Efficiency"
   title: "WISE: A Framework for Gigapixel Whole-Slide-Image Lossless Compression"
