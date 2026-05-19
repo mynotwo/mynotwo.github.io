@@ -1,0 +1,227 @@
+---
+layout: null
+permalink: /tools/figure-crop.html
+sitemap: false
+---
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <title>Figure Crop · 论文图裁剪工具</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      margin: 0; padding: 14px;
+      background: #f5f5f5; color: #222;
+    }
+    h1 { font-size: 16px; margin: 0 0 12px; }
+    .bar {
+      display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+      padding: 10px 14px; background: white; border: 1px solid #ddd;
+      border-radius: 6px; margin-bottom: 12px;
+      font-size: 13px;
+    }
+    .bar button, .bar input[type=number], .bar input[type=text] {
+      padding: 4px 10px; border: 1px solid #ccc; border-radius: 4px;
+      background: white; font-size: 13px; cursor: pointer;
+    }
+    .bar button:hover { background: #eef; }
+    .bar button:disabled { color: #aaa; cursor: not-allowed; }
+    .bar input[type=number] { width: 56px; cursor: text; }
+    .bar input[type=text] { width: 240px; cursor: text; }
+    .bar .sep { color: #aaa; }
+    #status { color: #666; font-size: 12px; }
+    .canvas-wrap {
+      position: relative; display: inline-block;
+      background: white; padding: 8px; border: 1px solid #ddd;
+      border-radius: 6px; max-width: 100%; overflow: auto;
+    }
+    canvas { display: block; cursor: crosshair; max-width: 100%; height: auto; }
+    #crop-rect {
+      position: absolute; pointer-events: none; display: none;
+      border: 2px solid #d2691e; background: rgba(210,105,30,0.12);
+      box-sizing: border-box;
+    }
+    .hint {
+      font-size: 12px; color: #888; margin-top: 8px;
+      padding: 8px 12px; background: #fffbe6; border-left: 3px solid #d2691e;
+      border-radius: 3px;
+    }
+    code { background: #eee; padding: 1px 5px; border-radius: 3px; font-size: 11px; }
+  </style>
+</head>
+<body>
+  <h1>📐 论文图裁剪工具</h1>
+  <div class="bar">
+    <label>① 选 PDF: <input type="file" id="pdf-file" accept="application/pdf"></label>
+  </div>
+  <div class="bar">
+    ② 翻页:
+    <button id="prev" disabled>← 上一页</button>
+    <input id="page-num" type="number" min="1" value="1" disabled>
+    <span class="sep">/</span>
+    <span id="total-pages">-</span>
+    <button id="next" disabled>下一页 →</button>
+    <span class="sep">|</span>
+    缩放:
+    <button id="zoom-out">−</button>
+    <span id="scale-display">1.5×</span>
+    <button id="zoom-in">+</button>
+  </div>
+  <div class="bar">
+    ③ 鼠标在图上<b>拖选</b>区域 → ④ 命名:
+    <input id="filename" type="text" placeholder="paper-slug.png" value="crop.png">
+    →
+    <button id="save" disabled>💾 下载 PNG</button>
+    <button id="reset" disabled>重置选区</button>
+    <span id="status"></span>
+  </div>
+
+  <div class="canvas-wrap" id="canvas-wrap">
+    <canvas id="canvas" width="600" height="400"></canvas>
+    <div id="crop-rect"></div>
+  </div>
+
+  <div class="hint">
+    PNG 下到下载文件夹后,丢进 <code>mynotwo.github.io/images/papers/</code>,然后在 <code>_data/publications.yml</code> 对应条目加 <code>image: /images/papers/&lt;文件名&gt;.png</code>。<br>
+    一切在浏览器本地,PDF 不上传。
+  </div>
+
+  <script type="module">
+    import * as pdfjsLib from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.7.76/build/pdf.min.mjs';
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.7.76/build/pdf.worker.min.mjs';
+
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const cropRect = document.getElementById('crop-rect');
+    const wrap = document.getElementById('canvas-wrap');
+    const $ = id => document.getElementById(id);
+
+    let pdfDoc = null, currentPage = 1, currentScale = 1.5;
+    let cropStart = null, cropEnd = null, dragging = false;
+
+    $('pdf-file').addEventListener('change', async e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      setStatus('加载中…');
+      const data = await file.arrayBuffer();
+      pdfDoc = await pdfjsLib.getDocument({data}).promise;
+      $('total-pages').textContent = pdfDoc.numPages;
+      $('page-num').max = pdfDoc.numPages;
+      currentPage = 1;
+      $('page-num').value = 1;
+      for (const id of ['prev','next','page-num','save','reset']) $(id).disabled = false;
+      // default filename from PDF file
+      const base = file.name.replace(/\.pdf$/i,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,40);
+      $('filename').value = base + '.png';
+      await renderPage();
+    });
+
+    async function renderPage() {
+      if (!pdfDoc) return;
+      setStatus(`渲染 page ${currentPage}…`);
+      const page = await pdfDoc.getPage(currentPage);
+      const viewport = page.getViewport({scale: currentScale});
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+      await page.render({canvasContext: ctx, viewport}).promise;
+      $('prev').disabled = currentPage <= 1;
+      $('next').disabled = currentPage >= pdfDoc.numPages;
+      resetCrop();
+      setStatus(`page ${currentPage} / ${pdfDoc.numPages}`);
+    }
+
+    function setStatus(s) { $('status').textContent = s; }
+
+    function resetCrop() {
+      cropStart = cropEnd = null;
+      cropRect.style.display = 'none';
+    }
+    $('reset').addEventListener('click', resetCrop);
+
+    $('prev').addEventListener('click', () => { if (currentPage > 1) { currentPage--; $('page-num').value = currentPage; renderPage(); }});
+    $('next').addEventListener('click', () => { if (currentPage < pdfDoc.numPages) { currentPage++; $('page-num').value = currentPage; renderPage(); }});
+    $('page-num').addEventListener('change', () => {
+      const p = parseInt($('page-num').value);
+      if (p >= 1 && p <= pdfDoc.numPages) { currentPage = p; renderPage(); }
+    });
+
+    $('zoom-in').addEventListener('click', () => { currentScale = Math.min(3, currentScale + 0.25); $('scale-display').textContent = currentScale + '×'; renderPage(); });
+    $('zoom-out').addEventListener('click', () => { currentScale = Math.max(0.75, currentScale - 0.25); $('scale-display').textContent = currentScale + '×'; renderPage(); });
+
+    function canvasCoords(e) {
+      const rect = canvas.getBoundingClientRect();
+      const sx = canvas.width / rect.width;
+      const sy = canvas.height / rect.height;
+      return {
+        x: Math.max(0, Math.min(canvas.width, (e.clientX - rect.left) * sx)),
+        y: Math.max(0, Math.min(canvas.height, (e.clientY - rect.top) * sy)),
+      };
+    }
+
+    canvas.addEventListener('mousedown', e => {
+      cropStart = canvasCoords(e);
+      cropEnd = cropStart;
+      dragging = true;
+      updateRect();
+    });
+    window.addEventListener('mousemove', e => {
+      if (!dragging) return;
+      cropEnd = canvasCoords(e);
+      updateRect();
+    });
+    window.addEventListener('mouseup', e => {
+      if (!dragging) return;
+      dragging = false;
+      cropEnd = canvasCoords(e);
+      updateRect();
+    });
+
+    function updateRect() {
+      if (!cropStart || !cropEnd) return;
+      const x1 = Math.min(cropStart.x, cropEnd.x);
+      const y1 = Math.min(cropStart.y, cropEnd.y);
+      const x2 = Math.max(cropStart.x, cropEnd.x);
+      const y2 = Math.max(cropStart.y, cropEnd.y);
+      const rect = canvas.getBoundingClientRect();
+      const wrapRect = wrap.getBoundingClientRect();
+      const sx = rect.width / canvas.width;
+      const sy = rect.height / canvas.height;
+      cropRect.style.left = (rect.left - wrapRect.left + x1 * sx) + 'px';
+      cropRect.style.top = (rect.top - wrapRect.top + y1 * sy) + 'px';
+      cropRect.style.width = ((x2 - x1) * sx) + 'px';
+      cropRect.style.height = ((y2 - y1) * sy) + 'px';
+      cropRect.style.display = 'block';
+    }
+
+    $('save').addEventListener('click', () => {
+      if (!cropStart || !cropEnd) { alert('先在图上拖选一个区域'); return; }
+      const x1 = Math.min(cropStart.x, cropEnd.x);
+      const y1 = Math.min(cropStart.y, cropEnd.y);
+      const w = Math.abs(cropEnd.x - cropStart.x);
+      const h = Math.abs(cropEnd.y - cropStart.y);
+      if (w < 10 || h < 10) { alert('选区太小'); return; }
+
+      // 缩放到 max 900 宽,跟项目风格一致
+      const MAX_W = 900;
+      const ratio = Math.min(1, MAX_W / w);
+      const outW = Math.round(w * ratio), outH = Math.round(h * ratio);
+      const out = document.createElement('canvas');
+      out.width = outW; out.height = outH;
+      out.getContext('2d').drawImage(canvas, x1, y1, w, h, 0, 0, outW, outH);
+
+      const name = $('filename').value.trim() || 'crop.png';
+      out.toBlob(blob => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = name.endsWith('.png') ? name : name + '.png';
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+        setStatus(`✓ 已下载 ${a.download} (${outW}×${outH})`);
+      }, 'image/png');
+    });
+  </script>
+</body>
+</html>
