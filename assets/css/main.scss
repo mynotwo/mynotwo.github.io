@@ -43,11 +43,11 @@
 .paper-box {
     display: flex;
     justify-content: left;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
     border-bottom: 1px #efefef solid;
-    padding: 1.2em 0;
+    padding: 0.9em 0;
     transition: background 0.15s ease;
 
     &:hover { background: rgba(0,0,0,0.018); }
@@ -58,24 +58,26 @@
         width: 100%;
         order: 2;
         img {
-            max-width: 400px;
-            box-shadow: 3px 3px 6px #888;
-            object-fit: cover;
-            border-radius: 4px;
+            max-width: 100%;
+            max-height: 110px;
+            width: auto;
+            object-fit: contain;
+            box-shadow: 1px 1px 4px rgba(0,0,0,0.18);
+            border-radius: 3px;
         }
         .paper-thumb-fallback {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 240px;
-            height: 140px;
+            width: 160px;
+            height: 95px;
             background: linear-gradient(135deg, #4a6cf7, #8b5cf6);
             color: white;
             font-weight: 600;
-            border-radius: 4px;
-            font-size: 1.05em;
-            letter-spacing: 0.6px;
-            box-shadow: 3px 3px 6px #888;
+            border-radius: 3px;
+            font-size: 0.95em;
+            letter-spacing: 0.5px;
+            box-shadow: 1px 1px 4px rgba(0,0,0,0.18);
         }
     }
 
@@ -137,15 +139,15 @@
     @include breakpoint($medium) {
         .paper-box-image{
             justify-content: left;
-            min-width: 200px;
-            max-width: 35%;
+            min-width: 150px;
+            max-width: 22%;
             order: 1;
         }
 
         .paper-box-text{
             justify-content: left;
-            padding-left: 1.6em;
-            max-width: 65%;
+            padding-left: 1.2em;
+            max-width: 78%;
             order: 2;
         }
 
