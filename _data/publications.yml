@@ -16,6 +16,7 @@
 - title: "PMR: Fast Application Response via Parallel Memory Reclaim on Mobile Devices"
   authors: "W. Li, L.-P. Chang, **Yu Mao**, L. Shi"
   venue: "USENIX ATC 2025"
+  image: /images/papers/pmr.png
 
 - title: "Easz: A Transformer-based Image Compression Framework for IoT"
   authors: "**Yu Mao**, J. Li, J. Wang, H. Xu, T.W. Kuo, N. Guan, C.J. Xue"
