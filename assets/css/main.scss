@@ -40,6 +40,17 @@
 @import "vendor/magnific-popup/magnific-popup";
 @import "print";
 
+.pub-theme {
+    color: #8b2c2c;
+    font-size: 1.05em;
+    margin: 1.4em 0 0.3em 0;
+    padding-bottom: 0.25em;
+    border-bottom: 1px solid rgba(210,105,30,0.35);
+    letter-spacing: 0.3px;
+}
+
+.pub-theme:before, .pub-theme:after { display: none !important; }
+
 .paper-box {
     display: flex;
     justify-content: left;
