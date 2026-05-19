@@ -1,4 +1,7 @@
 # 顺序 = 显示顺序(最新在最上)
+- date: "2026.05"
+  content: "Two papers accepted at **ICASSP 2026** — *BAHOP* (similarity-based basin hopping for hyper-parameter search) and *ECM* (compressibility of quantized vision encoder + LLM)."
+
 - date: "2026.04"
   content: "I joined ByteDance (San Jose) as a Research Scientist, focusing on AI infrastructure and system efficiency at scale."
 
@@ -10,12 +13,3 @@
 
 - date: "2024.05"
   content: "I successfully completed my thesis defense 🎉."
-
-- date: "2023.10"
-  content: "We won the second prize at the ICCAD TinyML Contest."
-
-- date: "2023.05"
-  content: "I was proud to be invited as a female student representative to give a talk at the CityU PhD forum."
-
-- date: "2023.02"
-  content: "Our paper *“Faster and Stronger Lossless Compression with Optimized Autoregressive Framework”* was accepted at DAC 2023."
