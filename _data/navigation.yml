@@ -1,4 +1,4 @@
-# main links links
+# main links
 main:
   - title: "About Me"
     url: "/#about-me"
@@ -12,11 +12,14 @@ main:
   - title: "Honors and Awards"
     url: "/#-honors-and-awards"
 
-  # - title: "Patents"
-  #   url: "/#-patents"
-
   - title: "Invited Talks"
     url: "/#-invited-talks"
 
-  - title: "Internships"
-    url: "/#-internships"
+  - title: "Services"
+    url: "/#services"
+
+  - title: "Teaching"
+    url: "/#-teaching"
+
+  - title: "Supervision"
+    url: "/#-supervision"

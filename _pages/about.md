@@ -1,7 +1,7 @@
 ---
 permalink: /
-title: ""
-excerpt: ""
+title: "Yu Mao"
+excerpt: "Research Scientist at ByteDance, AI infrastructure and neural compression."
 author_profile: true
 redirect_from: 
   - /about/
@@ -19,59 +19,63 @@ redirect_from:
 
 Hi there! I’m a Research Scientist at ByteDance (San Jose), focusing on AI infrastructure and system efficiency at scale. I received my Ph.D. in Computer Science from City University of Hong Kong. My work centers on designing next-generation data compression techniques (including neural approaches) and building high-performance systems for neural network acceleration and edge computing.
 
+**Research interests**
+- Neural and learned data compression
+- System efficiency at scale (memory, storage, edge)
+- Hardware-aware acceleration for ML workloads
+
+📄 [CV (PDF)](/files/Yu_Mao_CV.pdf){:target="_blank"}  &nbsp;·&nbsp;  [Google Scholar](https://scholar.google.com/citations?user=Iw3bTCAAAAAJ&hl=en){:target="_blank"}
+
 # 🔥 News
 - *2026.04*: &nbsp; I joined ByteDance (San Jose) as a Research Scientist, focusing on AI infrastructure and system efficiency at scale.
-- *2025.05*: &nbsp; Our paper “WISE: A Framework for Gigapixel Whole-Slide-Image Lossless Compression” was accepted at CVPR 2025 🎉  
-- *2025.05*: &nbsp; Our paper “PMR: Fast Application Response via Parallel Memory Reclaim on Mobile Devices” was accepted at USENIX ATC 2025  
-- *2025.05*: &nbsp; Our paper “Easz: A Transformer-based Image Compression Framework for IoT” was accepted at DAC 2025  
-- *2025.04*: &nbsp; I started my postdoctoral research at MBZUAI and a visiting researcher position at Imperial College London  
-- *2024.05*: &nbsp; I successfully completed my thesis defense 🎉. 
-- *2023.10*: &nbsp; We won the second prize at the ICCAD TinyML Contest. 
-- *2023.05*: &nbsp; I was invited as a female student representative to give a talk at CityU PhD forum. 
-- *2023.02*: &nbsp; Our paper “Faster and stronger Lossless Compression with Optimized Autoregressive framework” was accepted in DAC 2023.
+- *2025.05*: &nbsp; Three papers accepted — **WISE** at CVPR 2025 🎉, **PMR** at USENIX ATC 2025, and **Easz** at DAC 2025.
+- *2025.04*: &nbsp; I started my postdoctoral research at MBZUAI and a visiting researcher position at Imperial College London.
+- *2024.05*: &nbsp; I successfully completed my thesis defense 🎉.
+- *2023.10*: &nbsp; We won the second prize at the ICCAD TinyML Contest.
+- *2023.05*: &nbsp; I was invited as a female student representative to give a talk at the CityU PhD forum.
+- *2023.02*: &nbsp; Our paper *“Faster and Stronger Lossless Compression with Optimized Autoregressive Framework”* was accepted at DAC 2023.
 
-# 📝 Selected Preprints and Publications
-- WISE: A Framework for Gigapixel Whole-Slide-Image Lossless Compression, **Yu Mao**, J. Wang, N. Guan, C.J. Xue, CVPR 2025
+# 📝 Publications
+
+(★ = first author. Add [arXiv] / [PDF] / [Code] links as available.)
+
+- ★ WISE: A Framework for Gigapixel Whole-Slide-Image Lossless Compression, **Yu Mao**, J. Wang, N. Guan, C.J. Xue, CVPR 2025
 - PMR: Fast Application Response via Parallel Memory Reclaim on Mobile Devices, W. Li, L.-P. Chang, **Yu Mao**, L. Shi, USENIX ATC 2025
-- Easz: A Transformer-based Image Compression Framework for IoT, **Yu Mao**, J. Li, J. Wang, H. Xu, T.W. Kuo, N. Guan, C.J. Xue, DAC 2025
+- ★ Easz: A Transformer-based Image Compression Framework for IoT, **Yu Mao**, J. Li, J. Wang, H. Xu, T.W. Kuo, N. Guan, C.J. Xue, DAC 2025
 - DAWN: Accelerating Point Cloud Object Detection, D. Tang, **Yu Mao**, W. Wang, N. Guan, T.W. Kuo, C.J. Xue, DAC 2025
 - When Compression Meets Model Compression, W. Wang, **Yu Mao**, D. Tang, H. Du, N. Guan, C.J. Xue, EMNLP Findings 2024
-- STEM: Streaming-based FPGA Acceleration for Large-Scale Compactions in LSM KV, Dongdong Tang, Weilan Wang, **Yu Mao**, Jinghuan Yu, Tei-Wei Kuo, Chun Jason Xue, 40th IEEE International Conference on Data Engineering, 2024 *(Corresponding author)*
-- IHC Matters: Incorporating IHC analysis to H&E Whole Slide Image Analysis for Improved Cancer Grading via Two-stage Multimodal Bilinear Pooling Fusion, Jun Wang, **Yu Mao**, Yufei Cui, Nan Guan, Chun Jason Xue, arXiv preprint arXiv:2405.08197, 2024
-- Pre-processing matters: A segment search method for WSI classification, Jun Wang, Yufei Cui, **Yu Mao**, Nan Guan, Chun Jason Xue, arXiv preprint arXiv:2404.11161, 2024
-- On the compressibility of quantized large language models, **Yu Mao**, Weilan Wang, Hongchao Du, Nan Guan, Chun Jason Xue, arXiv preprint arXiv:2403.01384, 2024
-- Faster and Stronger Lossless Compression with Optimized Autoregressive Framework, **Yu Mao**, Jingzong Li, Yufei Cui, Chun Jason Xue, 2023 60th ACM/IEEE Design Automation Conference (DAC), 1-6, 2023
-- Moby: Empowering 2D Models for Efficient Point Cloud Analytics on the Edge, Jingzong Li, Yik Hong Cai, Libing Liu, **Yu Mao**, Chun Jason Xue, Hong Xu, Proceedings of the 31st ACM International Conference on Multimedia, 9012-9021, 2023
-- Variational Nested Dropout, Yufei Cui, **Yu Mao**, Ziquan Liu, Qiao Li, Antoni Bert Chan, Xue Liu, Tei-Wei Kuo, Chun Jason Xue, IEEE Transactions on Pattern Analysis and Machine Intelligence, 2023
-- Accelerating general-purpose lossless compression via simple and scalable parameterization, **Yu Mao**, Yufei Cui, Tei-Wei Kuo, Chun Jason Xue, Proceedings of the 30th ACM International Conference on Multimedia, 3205-3213, 2022
-- Trace: A fast transformer-based general-purpose lossless compressor, **Yu Mao**, Yufei Cui, Tei-Wei Kuo, Chun Jason Xue, Proceedings of the ACM Web Conference 2022, 1829-1838, 2022
-- Weight Rescaling: Effective and Robust Regularization for Deep Neural Networks with Batch Normalization, Ziquan Liu, Yufei Cui, Jia Wan, **Yu Mao**, Antoni Bert Chan, arXiv preprint arXiv:2102.03497, 2021
+- STEM: Streaming-based FPGA Acceleration for Large-Scale Compactions in LSM KV, D. Tang, W. Wang, **Yu Mao**, J. Yu, T.-W. Kuo, C.J. Xue, ICDE 2024 *(Corresponding author)*
+- IHC Matters: Incorporating IHC analysis to H&E Whole Slide Image Analysis for Improved Cancer Grading via Two-stage Multimodal Bilinear Pooling Fusion, J. Wang, **Yu Mao**, Y. Cui, N. Guan, C.J. Xue, 2024. [[arXiv]](https://arxiv.org/abs/2405.08197)
+- Pre-processing matters: A segment search method for WSI classification, J. Wang, Y. Cui, **Yu Mao**, N. Guan, C.J. Xue, 2024. [[arXiv]](https://arxiv.org/abs/2404.11161)
+- ★ On the Compressibility of Quantized Large Language Models, **Yu Mao**, W. Wang, H. Du, N. Guan, C.J. Xue, 2024. [[arXiv]](https://arxiv.org/abs/2403.01384)
+- ★ Faster and Stronger Lossless Compression with Optimized Autoregressive Framework, **Yu Mao**, J. Li, Y. Cui, C.J. Xue, DAC 2023
+- Moby: Empowering 2D Models for Efficient Point Cloud Analytics on the Edge, J. Li, Y.H. Cai, L. Liu, **Yu Mao**, C.J. Xue, H. Xu, ACM MM 2023
+- Variational Nested Dropout, Y. Cui, **Yu Mao**, Z. Liu, Q. Li, A.B. Chan, X. Liu, T.-W. Kuo, C.J. Xue, IEEE TPAMI 2023
+- ★ Accelerating General-purpose Lossless Compression via Simple and Scalable Parameterization, **Yu Mao**, Y. Cui, T.-W. Kuo, C.J. Xue, ACM MM 2022
+- ★ Trace: A Fast Transformer-based General-purpose Lossless Compressor, **Yu Mao**, Y. Cui, T.-W. Kuo, C.J. Xue, The Web Conference (WWW) 2022
+- Weight Rescaling: Effective and Robust Regularization for Deep Neural Networks with Batch Normalization, Z. Liu, Y. Cui, J. Wan, **Yu Mao**, A.B. Chan, 2021. [[arXiv]](https://arxiv.org/abs/2102.03497)
 
 # 🎖 Honors and Awards
 - *2024.12* NeurIPS Outstanding Reviewer
-- *2023.10* TinyML Contest ICCAD 2023 Second Place, San Francisco, USA.
-- *2023.9* Outstanding Academic Performance Award, City University of Hong Kong, 2023.
-- *2023.7* DAC Young Research Fellow, San Francisco, USA. 
-- *2022.10* EDAthon 2022 Second Place, Hong Kong, 2022.
+- *2023.10* TinyML Contest ICCAD 2023, Second Place, San Francisco, USA
+- *2023.09* Outstanding Academic Performance Award, City University of Hong Kong
+- *2023.07* DAC Young Research Fellow, San Francisco, USA
+- *2022.10* EDAthon 2022, Second Place, Hong Kong
 
 # 💬 Invited Talks
-- *2023.10*, Invited talk of Efficient Large Language Models at Institute of Microelectronics of the Chinese Academy of Sciences
+- *2023.10* — "Efficient Large Language Models", Institute of Microelectronics of the Chinese Academy of Sciences
 
 # Services
-- **ML Conference referee:** NeurIPS 24/25/26, MM 23/24, ICLR 25/26, ICML 25/26, CVPR 25/26, ICML 25, AAAI 26, ARR
-- **System Technical Program Committee:** ATC 25, GLSVLSI, RTCSA
-- **Journal referee:** TECS, TMLR, TKDE
-
-# 💻 Internships
-- *2018.05 - 2018.10*, Microsoft, Beijing, China.
-- *2017.10 - 2018.05*, Baidu, Beijing, China.
+- **ML conference referee:** NeurIPS 24/25/26, ACM MM 23/24, ICLR 25/26, ICML 25/26, CVPR 25/26, AAAI 26, ARR
+- **System TPC:** USENIX ATC 25, GLSVLSI, RTCSA
+- **Journal referee:** ACM TECS, TMLR, IEEE TKDE
 
 # 🎓 Teaching
-- CS3103 Operating Systems (TA) — 2020 Fall, 2021/22/23 Spring  
-- CS2115 Computer Organization (TA) — 2021/22/23 Fall  
+- CS3103 Operating Systems (TA) — 2020 Fall, 2021/22/23 Spring
+- CS2115 Computer Organization (TA) — 2021/22/23 Fall
 - CS1302 Introduction to Computer Programming (TA) — 2020 Spring
 
 # 👩‍🏫 Supervision
-- Jun Wang, Ph.D. student with Prof. Jason Xue (2024–present)  
-- Weilan Wang, Ph.D. student with Prof. Jason Xue (2024–present)  
+- Jun Wang, Ph.D. student with Prof. Jason Xue (2024–present)
+- Weilan Wang, Ph.D. student with Prof. Jason Xue (2024–present)
 - Dongdong Tang, Ph.D. student with Prof. Jason Xue (2024–2025)

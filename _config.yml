@@ -7,7 +7,7 @@
 
 # Site Settings
 title                    : "Yu Mao"
-description              : "Do small thing with great love!"
+description              : "Do small things with great love!"
 repository               : "mynotwo/mynotwo.github.io"
 google_scholar_stats_use_cdn : true
 
@@ -28,7 +28,7 @@ author:
   employer         :
   pubmed           : 
   googlescholar    : "https://scholar.google.com/citations?user=Iw3bTCAAAAAJ&hl=en"
-  email            : "yumao7-c@my.cityu.edu.hk"
+  email            : "mynotwo@126.com"
   researchgate     :  # e.g., "https://www.researchgate.net/profile/yourprofile"
   uri              :
   bitbucket        :
@@ -43,9 +43,9 @@ author:
   instagram        :
   impactstory      : # e.g., "https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
   lastfm           :
-  linkedin         : # e.g., "linkedin username"
-  dblp             : # e.g., "https://dblp.org/pid/xx/xxxx.html"
-  orcid            : # e.g., "https://orcid.org/xxxx"
+  linkedin         : # TODO: 填 LinkedIn username,例 "yu-mao"
+  dblp             : # TODO: 填 dblp URL,例 "https://dblp.org/pid/00/2540.html"
+  orcid            : # TODO: 填 ORCID URL,例 "https://orcid.org/0000-0000-0000-0000"
   pinterest        :
   soundcloud       :
   stackoverflow    : # http://stackoverflow.com/users/123456/username
