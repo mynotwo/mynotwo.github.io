@@ -152,7 +152,7 @@
 
 # ============================ ML · Theory ============================
 
-- theme: "ML · Theory"
+- theme: "Compression · LLM Efficiency"
   title: "Variational Nested Dropout"
   authors: "Y. Cui, **Yu Mao**, Z. Liu, Q. Li, A.B. Chan, X. Liu, T.-W. Kuo, C.J. Xue"
   venue: "IEEE TPAMI 2023"

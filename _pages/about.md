@@ -24,13 +24,17 @@ Hi there! I’m a Research Scientist at ByteDance (San Jose), focusing on AI inf
 - System efficiency at scale (memory, storage, edge)
 - Hardware-aware acceleration for ML workloads
 
+<span style="display:block; margin-top:8px; font-size:0.9em; color:#666;">
+  Google Scholar: Cited by <span id='total_cit' style='font-weight:bold;color:#224b8d;'>...</span>
+</span>
+
 # 🔥 News
 {% for item in site.data.news %}- *{{ item.date }}*: &nbsp; {{ item.content }}
 {% endfor %}
 
 # 📝 Publications
 
-{% assign themes = "Compression · LLM Efficiency|Systems · Edge AI|ML · Theory|Whole-Slide-Image · Medical Imaging" | split: "|" %}
+{% assign themes = "Compression · LLM Efficiency|Systems · Edge AI|Whole-Slide-Image · Medical Imaging" | split: "|" %}
 {% for theme in themes %}
 <h3 class="pub-theme">{{ theme }}</h3>
 {% for pub in site.data.publications %}{% if pub.theme == theme %}{% include publication-card.html pub=pub %}{% endif %}{% endfor %}
