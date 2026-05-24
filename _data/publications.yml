@@ -11,6 +11,7 @@
   venue: "ICASSP 2026"
   corresponding: true
   pdf: /assets/pdfs/ecm.pdf
+  image: /images/papers/ecm.png
 
 - theme: "Compression · LLM Efficiency"
   title: "WISE: A Framework for Gigapixel Whole-Slide-Image Lossless Compression"
