@@ -126,6 +126,13 @@ defaults:
     values:
       layout: default
       author_profile: true
+  # _posts (blog)
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      author_profile: false
 
 
 # Sass/SCSS
@@ -135,8 +142,15 @@ sass:
 
 
 # Outputting
-permalink: /:categories/:title/
+permalink: /blog/:year/:month/:title/
 timezone: Asia/Shanghai # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+
+# Giscus comments (GitHub Discussions backend)
+giscus:
+  repo: "mynotwo/mynotwo.github.io"
+  repo_id: "R_kgDOMC75Fw"
+  category: "Announcements"
+  category_id: "DIC_kwDOMC75F84C-umq"
 
 
 # Plugins

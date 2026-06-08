@@ -1,0 +1,18 @@
+{% comment %}
+  Usage: {% include post-card.html post=post %}
+  Renders a blog post card (reused on /blog/ list and homepage "Recent Posts").
+  Visual language mirrors publication-card.html (.paper-box).
+{% endcomment %}
+<div class="post-card">
+  <div class="post-card-meta">
+    <span class="post-date">{{ include.post.date | date: "%Y-%m-%d" }}</span>
+    {% if include.post.lang == "zh" %}<span class="post-lang post-lang--zh">中</span>{% else %}<span class="post-lang post-lang--en">EN</span>{% endif %}
+  </div>
+  <a class="post-card-title" href="{{ include.post.url | relative_url }}">{{ include.post.title }}</a>
+  {% if include.post.excerpt %}<div class="post-card-excerpt">{{ include.post.excerpt | strip_html | strip_newlines | truncate: 160 }}</div>{% endif %}
+  {% if include.post.tags %}
+  <div class="post-card-tags">
+    {% for tag in include.post.tags %}<span class="post-tag">#{{ tag }}</span>{% endfor %}
+  </div>
+  {% endif %}
+</div>

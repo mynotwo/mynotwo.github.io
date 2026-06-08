@@ -1,0 +1,45 @@
+---
+layout: default
+---
+
+<div class="blog-list">
+  <header class="blog-header">
+    <h1 class="blog-h1">{{ page.title }}</h1>
+    {% if page.subtitle %}<p class="blog-subtitle">{{ page.subtitle }}</p>{% endif %}
+    <a class="blog-rss" href="{{ '/feed.xml' | relative_url }}" title="RSS feed"><i class="fas fa-rss"></i> RSS</a>
+  </header>
+
+  {% if content != "" %}<div class="blog-intro page__content">{{ content }}</div>{% endif %}
+
+  <div class="blog-filters" id="blog-filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="zh">中文</button>
+    <button class="filter-btn" data-filter="en">EN</button>
+  </div>
+
+  <div class="post-list" id="post-list">
+    {% for post in site.posts %}
+    <div class="post-item" data-lang="{{ post.lang | default: 'en' }}">
+      {% include post-card.html post=post %}
+    </div>
+    {% endfor %}
+    {% if site.posts.size == 0 %}<p class="blog-empty">No posts yet. Stay tuned!</p>{% endif %}
+  </div>
+</div>
+
+<script>
+  (function () {
+    var btns = document.querySelectorAll('.filter-btn');
+    var items = document.querySelectorAll('.post-item');
+    btns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var f = btn.getAttribute('data-filter');
+        btns.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        items.forEach(function (item) {
+          item.style.display = (f === 'all' || item.getAttribute('data-lang') === f) ? '' : 'none';
+        });
+      });
+    });
+  })();
+</script>

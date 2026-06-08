@@ -197,3 +197,166 @@ h1:before, .anchor:before {
     background-color: #00369f;
     font-size: .8em;
 }
+
+/* ==========================================================================
+   BLOG  (list + homepage cards + single post + bilingual typography)
+   ========================================================================== */
+
+// --- shared post card (homepage "Recent Posts" + /blog/ list) ---
+.post-card {
+    border-bottom: 1px #efefef solid;
+    padding: 0.9em 0;
+    transition: background 0.15s ease;
+    &:hover { background: rgba(0,0,0,0.018); }
+
+    .post-card-meta {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 4px;
+    }
+    .post-date { font-size: 0.82em; color: #888; }
+    .post-lang {
+        display: inline-block;
+        font-size: 0.72em;
+        font-weight: 600;
+        padding: 1px 7px;
+        border-radius: 3px;
+        letter-spacing: 0.3px;
+    }
+    .post-lang--zh { background: #fef3c7; color: #92400e; }
+    .post-lang--en { background: #eef2ff; color: #4a5fd1; }
+
+    .post-card-title {
+        display: inline-block;
+        font-size: 1.05em;
+        font-weight: 600;
+        line-height: 1.35;
+        color: #224b8d;
+        text-decoration: none;
+        margin-bottom: 5px;
+        &:hover { text-decoration: underline; }
+    }
+    .post-card-excerpt {
+        font-size: 0.92em;
+        color: #444;
+        line-height: 1.55;
+        margin-bottom: 6px;
+    }
+    .post-card-tags .post-tag { margin-right: 6px; }
+}
+
+.post-tag {
+    display: inline-block;
+    font-size: 0.76em;
+    padding: 1px 8px;
+    border-radius: 3px;
+    background: #f2f4f8;
+    color: #555;
+}
+
+.more-link {
+    display: inline-block;
+    margin-top: 0.8em;
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #224b8d;
+    text-decoration: none;
+    &:hover { text-decoration: underline; }
+}
+
+// --- /blog/ list page ---
+.blog-list {
+    .blog-header {
+        display: flex;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 0.6em;
+        border-bottom: 1px solid rgba(210,105,30,0.35);
+        padding-bottom: 0.3em;
+        margin-bottom: 0.6em;
+    }
+    .blog-h1 { margin: 0; }
+    .blog-subtitle { margin: 0; font-size: 0.92em; color: #777; flex: 1 1 100%; }
+    .blog-rss {
+        font-size: 0.82em;
+        color: #d2691e;
+        text-decoration: none;
+        &:hover { text-decoration: underline; }
+    }
+    .blog-empty { color: #999; font-style: italic; padding: 1.5em 0; }
+}
+
+.blog-filters {
+    margin: 0.8em 0 0.4em;
+    .filter-btn {
+        font-size: 0.82em;
+        padding: 3px 12px;
+        margin-right: 6px;
+        border: 1px solid #ddd;
+        border-radius: 14px;
+        background: #fafafa;
+        color: #555;
+        cursor: pointer;
+        transition: all 0.15s ease;
+        &:hover { border-color: #888; }
+        &.active { background: #224b8d; color: #fff; border-color: #224b8d; }
+    }
+}
+
+// --- single post ---
+.blog-post {
+    .post-header {
+        border-bottom: 1px solid #efefef;
+        padding-bottom: 0.6em;
+        margin-bottom: 1em;
+    }
+    .post-title { margin-bottom: 0.2em; }
+    .post-meta {
+        font-size: 0.85em;
+        color: #888;
+        .post-meta-read:before { content: "·"; margin: 0 0.5em; }
+    }
+    .post-header-tags { margin-top: 0.5em; .post-tag { margin-right: 6px; } }
+
+    .post-nav {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 1em;
+        margin-top: 2.5em;
+        padding-top: 1em;
+        border-top: 1px solid #efefef;
+        font-size: 0.9em;
+        .post-nav-link { color: #224b8d; text-decoration: none; &:hover { text-decoration: underline; } }
+        .post-nav-next { margin-left: auto; text-align: right; }
+    }
+    .back-to-blog {
+        display: inline-block;
+        margin-top: 1.2em;
+        font-size: 0.88em;
+        color: #888;
+        text-decoration: none;
+        &:hover { color: #224b8d; }
+    }
+}
+
+// --- comments ---
+.post-comments {
+    margin-top: 2.5em;
+    padding-top: 1.2em;
+    border-top: 1px solid #efefef;
+    .comments-title { font-size: 1.1em; margin-bottom: 0.6em; }
+}
+
+// --- bilingual typography: Chinese posts get roomier line-height & CJK fonts ---
+[lang="zh"] {
+    .post-content,
+    &.post-content {
+        font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", -apple-system, sans-serif;
+        line-height: 1.9;
+        letter-spacing: 0.02em;
+        p { margin: 1.1em 0; }
+    }
+}

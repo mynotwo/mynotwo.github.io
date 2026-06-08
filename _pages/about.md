@@ -32,6 +32,12 @@ Hi there! I’m a Research Scientist at ByteDance (San Jose), focusing on AI inf
 {% for item in site.data.news %}- *{{ item.date }}*: &nbsp; {{ item.content }}
 {% endfor %}
 
+# 📔 Blog
+<div class="home-posts">
+{% for post in site.posts limit:3 %}{% include post-card.html post=post %}{% endfor %}
+</div>
+<a href="{{ '/blog/' | relative_url }}" class="more-link">View all posts →</a>
+
 # 📝 Publications
 
 {% assign themes = "Compression · LLM Efficiency|Systems · Edge AI|Whole-Slide-Image · Medical Imaging" | split: "|" %}
