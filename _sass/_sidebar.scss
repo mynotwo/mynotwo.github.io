@@ -92,13 +92,17 @@
   }
 
   img {
-    max-width: 175px;
+    width: 100%;
+    max-width: 220px;
     min-width: 75px;
-    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center 28%; // bias the square crop toward the face
+    border-radius: 6px;          // square frame (not a circle)
 
     @include breakpoint($large) {
-      padding: 5px;
-      border: 1px solid $border-color;
+      padding: 0;
+      border: 3px solid $border-color;
     }
   }
 }
