@@ -208,3 +208,80 @@
   });
 })();
 </script>
+
+<!-- 6. Scroll progress bar -->
+<div id="scroll-progress-bar"></div>
+<script>
+(function() {
+  var bar = document.getElementById('scroll-progress-bar');
+  window.addEventListener('scroll', function() {
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    bar.style.width = scrollPercent + '%';
+  });
+})();
+</script>
+
+<!-- 7. Citation count-up animation -->
+<script>
+(function() {
+  var citEl = document.getElementById('total_cit');
+  if (!citEl) return;
+
+  var animated = false;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting && !animated) {
+        animated = true;
+        var target = parseInt(citEl.textContent, 10);
+        if (isNaN(target) || target <= 0) return;
+        var start = 0;
+        var duration = 1500;
+        var startTime = null;
+
+        function step(timestamp) {
+          if (!startTime) startTime = timestamp;
+          var progress = Math.min((timestamp - startTime) / duration, 1);
+          // ease-out quad
+          var eased = 1 - (1 - progress) * (1 - progress);
+          citEl.textContent = Math.floor(eased * target);
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          } else {
+            citEl.textContent = target;
+          }
+        }
+        citEl.textContent = '0';
+        requestAnimationFrame(step);
+        observer.unobserve(citEl);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  // Wait a moment for scholar stats to load
+  setTimeout(function() {
+    observer.observe(citEl);
+  }, 1000);
+})();
+</script>
+
+<!-- 8. Back-to-top button -->
+<button id="back-to-top" aria-label="Back to top">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
+</button>
+<script>
+(function() {
+  var btn = document.getElementById('back-to-top');
+  window.addEventListener('scroll', function() {
+    if (window.pageYOffset > 300) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+</script>

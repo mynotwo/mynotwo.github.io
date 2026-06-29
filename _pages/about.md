@@ -20,17 +20,20 @@ redirect_from:
 Hi there! I’m a Research Scientist at ByteDance (San Jose), focusing on AI infrastructure and system efficiency at scale. I received my Ph.D. in Computer Science from City University of Hong Kong. My work centers on designing next-generation data compression techniques (including neural approaches) and building high-performance systems for neural network acceleration and edge computing.
 
 **Research interests**
-- Neural and learned data compression
-- System efficiency at scale (memory, storage, edge)
-- Hardware-aware acceleration for ML workloads
+
+<span class="interest-pill" style="background: linear-gradient(135deg, #667eea, #764ba2);">Neural & Learned Compression</span>
+<span class="interest-pill" style="background: linear-gradient(135deg, #f093fb, #ffd700);">System Efficiency at Scale</span>
+<span class="interest-pill" style="background: linear-gradient(135deg, #38bdf8, #667eea);">Hardware-Aware ML Acceleration</span>
 
 <span style="display:block; margin-top:8px; font-size:0.9em; color:#666;">
   Google Scholar: Cited by <span id='total_cit' style='font-weight:bold;color:#224b8d;'>...</span>
 </span>
 
 # 🔥 News
+<div class="news-timeline" markdown="1">
 {% for item in site.data.news %}- *{{ item.date }}*: &nbsp; {{ item.content }}
 {% endfor %}
+</div>
 
 # 📔 Blog
 <div class="home-posts">
@@ -47,8 +50,10 @@ Hi there! I’m a Research Scientist at ByteDance (San Jose), focusing on AI inf
 {% endfor %}
 
 # 🎖 Honors and Awards
+<div class="awards-showcase" markdown="1">
 {% for a in site.data.awards %}- *{{ a.date }}* {{ a.content }}
 {% endfor %}
+</div>
 
 # 🤝 Services
 - **ML conference referee:** NeurIPS 24/25/26, ACM MM 23/24, ICLR 25/26, ICML 25/26, CVPR 25/26, AAAI 26, ARR

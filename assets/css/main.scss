@@ -503,3 +503,174 @@ h1:before, .anchor:before {
   50% { transform: translateX(15%) skewX(-2deg); }
   100% { transform: translateX(-10%) skewX(1deg); }
 }
+
+/* --- 1. Section title gradient underline decoration --- */
+.page__content h1 {
+  display: inline-block;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #ffd700, #38bdf8);
+    background-size: 300% 100%;
+    border-radius: 2px;
+    animation: shimmer 4s ease-in-out infinite;
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  &.revealed::after {
+    width: 100%;
+  }
+}
+
+/* --- 2. Publication image hover glow + scale --- */
+.paper-box-image img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3), 0 0 30px rgba(118, 75, 162, 0.15);
+  }
+}
+
+/* --- 3. Research interests colorful tag pills --- */
+.interest-pill {
+  display: inline-block;
+  padding: 6px 16px;
+  margin: 4px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  font-weight: 600;
+  color: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* --- 4. News timeline with glowing dots --- */
+.news-timeline {
+  ul {
+    list-style: none;
+    border-left: 3px solid;
+    border-image: linear-gradient(to bottom, #667eea, #764ba2, #f093fb) 1;
+    padding-left: 24px;
+    margin-left: 4px;
+  }
+
+  li {
+    position: relative;
+    padding: 8px 0;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: -30px;
+      top: 14px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #667eea;
+      box-shadow: 0 0 8px rgba(102, 126, 234, 0.6), 0 0 16px rgba(102, 126, 234, 0.3);
+    }
+
+    em {
+      color: #764ba2;
+      font-weight: 600;
+    }
+  }
+}
+
+/* --- 5. Awards as badge cards with gold border --- */
+.awards-showcase {
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  li {
+    background: linear-gradient(135deg, #fffbeb, #fef3c7);
+    border: 2px solid #ffd700;
+    border-radius: 12px;
+    padding: 12px 18px;
+    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(255, 215, 0, 0.3);
+    }
+
+    &::before {
+      content: '🏅';
+      margin-right: 6px;
+    }
+
+    em {
+      color: #92400e;
+      font-weight: 700;
+    }
+  }
+}
+
+/* --- 6. Scroll progress bar --- */
+#scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #ffd700, #38bdf8, #a78bfa);
+  z-index: 99999;
+  transition: width 0.1s linear;
+  border-radius: 0 2px 2px 0;
+}
+
+/* --- 8. Back-to-top button --- */
+#back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.8);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 9998;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    fill: #fff;
+  }
+
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
+  }
+}
