@@ -50,10 +50,8 @@ Hi there! I’m a Research Scientist at ByteDance (San Jose), focusing on AI inf
 {% endfor %}
 
 # 🎖 Honors and Awards
-<div class="awards-showcase" markdown="1">
 {% for a in site.data.awards %}- *{{ a.date }}* {{ a.content }}
 {% endfor %}
-</div>
 
 # 🤝 Services
 - **ML conference referee:** NeurIPS 24/25/26, ACM MM 23/24, ICLR 25/26, ICML 25/26, CVPR 25/26, AAAI 26, ARR
