@@ -10,15 +10,5 @@
       {% if s.text %}{{ s.text | markdownify }}{% endif %}
     {% endfor %}
   {% endif %}
-  <div class="author__urls social-icons" style="text-align: left; font-size: 11px; color: #888; margin-top: 8px;">
-    <img class="sidebar-img" src="https://www.easycounter.com/counter.php?mynotwo" style="height:18px; vertical-align:middle; margin-right:6px; mix-blend-mode:multiply; border-radius:3px;">
-    visitors since Oct. 2024
-  </div>
-  <!-- 🌍 MapMyVisitors live widget (classic ClustrMaps-style markers) — more legible than the
-       low-contrast static map.png. Fills the sidebar width (w=a) and shows bold visitor markers. -->
-  <div id="visitor-map" style="text-align:center; margin-top:12px;">
-    <script type="text/javascript" id="mapmyvisitors"
-            src="//mapmyvisitors.com/map.js?d=e11brk8twbk7wpDfubplq2ex5gpeSELuGeFpmW9MRwM&cl=ffffff&w=a"></script>
-  </div>
   </div>
 {% endif %}
