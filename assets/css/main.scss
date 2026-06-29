@@ -383,19 +383,7 @@ h1:before, .anchor:before {
    MAXIMALIST EFFECTS
    ========================================================================== */
 
-/* --- Flowing mesh gradient background --- */
-body {
-  background: linear-gradient(-45deg, #f8f9fa, #ede9fe, #fce7f3, #e0f2fe) !important;
-  background-size: 400% 400% !important;
-  animation: gradientShift 20s ease infinite;
-}
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  25% { background-position: 100% 50%; }
-  50% { background-position: 100% 100%; }
-  75% { background-position: 0% 100%; }
-  100% { background-position: 0% 50%; }
-}
+/* --- Background: clean white --- */
 
 /* --- Paper-box glassmorphism + 3D tilt --- */
 .paper-box {
