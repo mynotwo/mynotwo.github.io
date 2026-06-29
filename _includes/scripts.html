@@ -11,11 +11,27 @@
   document.body.appendChild(canvas);
   var ctx = canvas.getContext('2d');
   var particles = [];
+  var mouseTrail = [];
   var colors = ['#667eea','#764ba2','#f093fb','#ffd700','#fff','#a78bfa','#38bdf8'];
 
   function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
   resize();
   window.addEventListener('resize', resize);
+
+  // --- Mouse sparkle trail ---
+  document.addEventListener('mousemove', function(e) {
+    for (var i = 0; i < 2 + Math.floor(Math.random() * 2); i++) {
+      mouseTrail.push({
+        x: e.clientX + (Math.random() - 0.5) * 20,
+        y: e.clientY + (Math.random() - 0.5) * 20,
+        size: Math.random() * 3 + 1,
+        opacity: 1,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        vx: (Math.random() - 0.5) * 2,
+        vy: (Math.random() - 0.5) * 2 - 1
+      });
+    }
+  });
 
   function Particle() {
     this.reset();
@@ -31,16 +47,19 @@
       this.maxOpacity = Math.random() * 0.3 + 0.7; // 0.7-1.0
       this.fadeSpeed = Math.random() * 0.003 + 0.001; // slow breathe
       this.glow = true;
+      this.layer = 'large';
     } else if (roll < 0.4) {
       this.size = Math.random() * 3 + 2.5; // 2.5-5.5px medium
       this.maxOpacity = Math.random() * 0.3 + 0.5; // 0.5-0.8
       this.fadeSpeed = Math.random() * 0.005 + 0.002;
       this.glow = false;
+      this.layer = 'medium';
     } else {
       this.size = Math.random() * 2 + 1; // 1-3px small
       this.maxOpacity = Math.random() * 0.3 + 0.3; // 0.3-0.6
       this.fadeSpeed = Math.random() * 0.008 + 0.003;
       this.glow = false;
+      this.layer = 'small';
     }
     this.opacity = 0;
     this.growing = true;
@@ -82,14 +101,110 @@
 
   for (var i = 0; i < 55; i++) particles.push(new Particle());
 
+  // --- Star constellation lines ---
+  function drawConstellations() {
+    var connectable = [];
+    for (var i = 0; i < particles.length; i++) {
+      if (particles[i].layer !== 'small' && particles[i].opacity > 0.2) {
+        connectable.push(particles[i]);
+      }
+    }
+    for (var i = 0; i < connectable.length; i++) {
+      for (var j = i + 1; j < connectable.length; j++) {
+        var dx = connectable[i].x - connectable[j].x;
+        var dy = connectable[i].y - connectable[j].y;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 120) {
+          var lineAlpha = (1 - dist / 120) * 0.15 * Math.min(connectable[i].opacity, connectable[j].opacity);
+          ctx.save();
+          ctx.globalAlpha = lineAlpha;
+          ctx.strokeStyle = '#a78bfa';
+          ctx.lineWidth = 0.5;
+          ctx.beginPath();
+          ctx.moveTo(connectable[i].x, connectable[i].y);
+          ctx.lineTo(connectable[j].x, connectable[j].y);
+          ctx.stroke();
+          ctx.restore();
+        }
+      }
+    }
+  }
+
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     for (var i = 0; i < particles.length; i++) {
       particles[i].update();
       particles[i].draw();
     }
+    // Draw constellation lines
+    drawConstellations();
+    // Draw & update mouse trail particles
+    for (var i = mouseTrail.length - 1; i >= 0; i--) {
+      var p = mouseTrail[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      p.opacity -= 0.03;
+      if (p.opacity <= 0) { mouseTrail.splice(i, 1); continue; }
+      ctx.save();
+      ctx.globalAlpha = p.opacity;
+      ctx.fillStyle = p.color;
+      ctx.shadowColor = p.color;
+      ctx.shadowBlur = p.size * 2;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
     requestAnimationFrame(animate);
   }
   animate();
+})();
+</script>
+
+<!-- 3D tilt effect for paper-box cards -->
+<script>
+(function() {
+  var boxes = document.querySelectorAll('.paper-box');
+  boxes.forEach(function(box) {
+    box.addEventListener('mousemove', function(e) {
+      var rect = box.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top;
+      var centerX = rect.width / 2;
+      var centerY = rect.height / 2;
+      var rotateY = ((x - centerX) / centerX) * 8; // max 8deg
+      var rotateX = ((centerY - y) / centerY) * 5; // max 5deg
+      box.style.setProperty('--rx', rotateX + 'deg');
+      box.style.setProperty('--ry', rotateY + 'deg');
+    });
+    box.addEventListener('mouseleave', function() {
+      box.style.setProperty('--rx', '0deg');
+      box.style.setProperty('--ry', '0deg');
+    });
+  });
+})();
+</script>
+
+<!-- Scroll-triggered fade-in animations -->
+<script>
+(function() {
+  // Add scroll-reveal class to paper-box elements and section headers
+  var targets = document.querySelectorAll('.paper-box, .page__content h2, .page__content h1, .pub-theme');
+  targets.forEach(function(el) {
+    el.classList.add('scroll-reveal');
+  });
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.scroll-reveal').forEach(function(el) {
+    observer.observe(el);
+  });
 })();
 </script>
