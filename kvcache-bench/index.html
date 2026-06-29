@@ -454,21 +454,21 @@ METHODS.forEach(m => {
 const GROUP_COLORS = { Raw: '#3b82f6', Preprocess: '#8b5cf6', Pipeline: '#f43f5e' };
 
 const METHOD_DISPLAY = {
-  'raw_zstd-1': 'Zstd (L1)',
-  'raw_zstd-9': 'Zstd (L9)',
-  'raw_zstd-19': 'Zstd (L19)',
+  'raw_zstd-1': 'Zstd',
+  'raw_zstd-9': 'Zstd-9',
+  'raw_zstd-19': 'Zstd-19',
   'raw_lz4': 'LZ4',
   'raw_snappy': 'Snappy',
   'raw_lzma': 'LZMA',
   'raw_brotli': 'Brotli',
   'raw_gzip': 'Gzip',
   'transpose+zstd-1': 'Transpose + Zstd',
-  'bytesplit+zstd-1': 'Byte Split + Zstd',
-  'pipeline_zstd-1': 'Pipeline + Zstd (L1)',
-  'pipeline_zstd-9': 'Pipeline + Zstd (L9)',
-  'pipeline_zstd-19': 'Pipeline + Zstd (L19)',
-  'pipeline_lz4': 'Pipeline + LZ4',
-  'pipeline_lzma': 'Pipeline + LZMA'
+  'bytesplit+zstd-1': 'ByteSplit + Zstd',
+  'pipeline_zstd-1': 'KVPress-Zstd',
+  'pipeline_zstd-9': 'KVPress-Zstd-9',
+  'pipeline_zstd-19': 'KVPress-Zstd-19',
+  'pipeline_lz4': 'KVPress-LZ4',
+  'pipeline_lzma': 'KVPress-LZMA'
 };
 
 const FORMATS = ['bf16','fp16','fp32','fp8_e4m3','fp8_e5m2','int8','int4','int2'];
