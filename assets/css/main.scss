@@ -362,16 +362,16 @@ h1:before, .anchor:before {
 }
 
 .tagline-fancy {
-  font-family: 'Caveat', cursive;
-  font-size: 1.4rem;
+  font-family: 'Caveat', cursive !important;
+  font-size: 1.4rem !important;
   font-weight: 700;
   transform: rotate(-1.2deg);
   display: inline-block;
-  background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #667eea);
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #667eea) !important;
+  background-size: 300% 100% !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
   animation: shimmer 4s ease-in-out infinite;
 }
 @keyframes shimmer {
