@@ -143,12 +143,6 @@
   pdf: /assets/pdfs/stem.pdf
   image: /images/papers/stem.png
 
-- theme: "Systems · Edge AI"
-  title: "Moby: Empowering 2D Models for Efficient Point Cloud Analytics on the Edge"
-  authors: "J. Li, Y.H. Cai, L. Liu, **Yu Mao**, C.J. Xue, H. Xu"
-  venue: "ACM MM 2023"
-  pdf: /assets/pdfs/moby.pdf
-  image: /images/papers/moby.png
 
 # ============================ ML · Theory ============================
 
