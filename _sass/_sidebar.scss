@@ -102,46 +102,48 @@
     object-position: center 28%;
     border-radius: 50%;
     position: relative;
-    z-index: 1;
+    z-index: 2;
 
     @include breakpoint($large) {
-      padding: 4px;
+      padding: 10px;
       border: none;
       background: #fff;
     }
   }
 
   @include breakpoint($large) {
+    margin-bottom: 40px;
+
     &::before {
       content: '';
       position: absolute;
-      top: -4px;
-      left: -4px;
-      right: -4px;
-      bottom: -4px;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
       border-radius: 50%;
-      background: conic-gradient(
+      background: repeating-conic-gradient(
         from 0deg,
-        #667eea, #764ba2, #f093fb, #ffd700, #38bdf8, #667eea
+        #667eea 0deg 15deg,
+        #f093fb 15deg 30deg,
+        #ffd700 30deg 45deg,
+        #38bdf8 45deg 60deg,
+        #764ba2 60deg 75deg,
+        #ff6b6b 75deg 90deg
       );
-      animation: spin-border 4s linear infinite;
+      animation: spin-border 8s linear infinite;
       z-index: 0;
     }
     &::after {
       content: '';
       position: absolute;
-      top: -4px;
-      left: -4px;
-      right: -4px;
-      bottom: -4px;
-      border-radius: 50%;
-      background: conic-gradient(
-        from 0deg,
-        #667eea, #764ba2, #f093fb, #ffd700, #38bdf8, #667eea
-      );
-      animation: spin-border 4s linear infinite;
-      filter: blur(8px);
-      opacity: 0.6;
+      bottom: -45px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 8px;
+      height: 45px;
+      border-radius: 0 0 4px 4px;
+      background: linear-gradient(180deg, #f093fb, #e8d5b7, #d4a574);
       z-index: -1;
     }
   }
