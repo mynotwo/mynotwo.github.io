@@ -217,6 +217,8 @@
 
 .author__bio {
   margin: 0;
+  color: #333;
+  font-weight: 500;
 
   @include breakpoint($large) {
     margin-top: 10px;
@@ -322,12 +324,14 @@
     padding-right: 5px;
     padding-top: 2px;
     padding-bottom: 2px;
-    color: inherit;
+    color: #222 !important;
     font-size: $type-size-5;
+    font-weight: 500;
     text-decoration: none;
 
     &:hover {
       text-decoration: underline;
+      color: #667eea !important;
     }
   }
 }
