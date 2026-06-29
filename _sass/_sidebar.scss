@@ -112,7 +112,7 @@
   }
 
   @include breakpoint($large) {
-    margin-bottom: 40px;
+    margin-bottom: 60px;
 
     &::before {
       content: '';
@@ -137,14 +137,14 @@
     &::after {
       content: '';
       position: absolute;
-      bottom: -45px;
+      bottom: -65px;
       left: 50%;
       transform: translateX(-50%);
-      width: 8px;
-      height: 45px;
-      border-radius: 0 0 4px 4px;
-      background: linear-gradient(180deg, #f093fb, #e8d5b7, #d4a574);
-      z-index: -1;
+      width: 12px;
+      height: 70px;
+      border-radius: 0 0 5px 5px;
+      background: linear-gradient(180deg, #f5a0ff, #f0c8a8, #d4a574, #c4956a);
+      z-index: 1;
     }
   }
 }
