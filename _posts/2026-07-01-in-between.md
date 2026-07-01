@@ -2,7 +2,7 @@
 title: "In Between"
 date: 2026-07-01
 lang: zh
-excerpt: "意义不住在零件里，住在零件之间的关系里。"
+excerpt: "What lasts when something is gone?"
 ---
 
 我问Claude，"意义"是什么。
