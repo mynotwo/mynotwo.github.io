@@ -255,18 +255,6 @@ h1:before, .anchor:before {
   color: #555;
 }
 
-.site-views {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.8em;
-  color: #666;
-}
-
-.site-views span + span::before {
-  content: "·";
-  margin-right: 0.8em;
-}
-
 .post-meta-views::before {
   content: "·";
   margin: 0 0.5em;

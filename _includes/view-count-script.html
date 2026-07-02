@@ -1,5 +1,5 @@
 {% assign view_provider = site.page_views.provider | default: "" %}
-{% if view_provider == "busuanzi" and page.analytics != false %}
+{% if view_provider == "busuanzi" and page.layout == "post" and page.analytics != false %}
 {% assign busuanzi_src = site.page_views.busuanzi_src | default: "https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" %}
 <script async src="{{ busuanzi_src }}"></script>
 {% endif %}

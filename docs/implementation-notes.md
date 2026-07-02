@@ -54,7 +54,7 @@ bundle _2.2.19_ exec jekyll serve --port 4123
 
 这次基于最新 `origin/main` 新建干净 worktree 后补丁：
 - `_config.yml` 增加 `page_views` 配置，provider 使用 Busuanzi。
-- `_includes/view-count.html` 输出首页总浏览/访客数和文章单页浏览数占位。
+- `_includes/view-count.html` 输出文章单页浏览数占位。
 - `_includes/view-count-script.html` 统一加载 Busuanzi 脚本。
 - `_includes/scripts.html` 引入浏览量脚本。
 - `_layouts/post.html` 在文章 meta 里显示单篇 views。
@@ -62,3 +62,7 @@ bundle _2.2.19_ exec jekyll serve --port 4123
 - `assets/css/main.scss` 增加轻量样式，保持现有博客视觉。
 
 取舍：Busuanzi 是前端异步计数，静态 HTML 只能验证脚本和占位存在；真实数字需要部署后浏览器成功加载第三方脚本才会填充。
+
+## 2026-07-02 去掉主页全站浏览量
+
+按用户要求移除首页 Google Scholar 下方的全站 `Views / Visitors` 展示，并让 Busuanzi 脚本只在博客文章页加载，只保留单篇 `views`。
