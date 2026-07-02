@@ -14,6 +14,11 @@ google_scholar_stats_use_cdn : true
 # google analytics
 google_analytics_id      :  "G-CVMVD1QDDP" # get google_analytics_id from https://analytics.google.com/analytics/
 
+# Visible page-view counters for the homepage and blog posts.
+page_views:
+  provider: busuanzi
+  busuanzi_src: "https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
+
 # SEO Related 
 google_site_verification : "Zmb453m2JQfmkhV6IRhBgSu2l7UpaNW9w-JPEXONxiw" # get google_site_verification from https://search.google.com/search-console/about
 bing_site_verification   :  # get bing_site_verification from https://www.bing.com/webmasters/about

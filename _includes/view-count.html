@@ -1,0 +1,8 @@
+{% assign view_provider = site.page_views.provider | default: "" %}
+{% if view_provider == "busuanzi" and page.analytics != false %}
+  {% if include.scope == "site" %}
+<span class="site-views" aria-label="Site traffic"><span id="busuanzi_container_site_pv" style="display:none;">Views <span id="busuanzi_value_site_pv">...</span></span><span id="busuanzi_container_site_uv" style="display:none;">Visitors <span id="busuanzi_value_site_uv">...</span></span></span>
+  {% else %}
+<span class="post-meta-views" id="busuanzi_container_page_pv" style="display:none;"><i class="fas fa-eye" aria-hidden="true"></i><span id="busuanzi_value_page_pv">...</span> views</span>
+  {% endif %}
+{% endif %}

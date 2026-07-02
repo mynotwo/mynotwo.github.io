@@ -14,6 +14,7 @@ layout: default
         {% assign words = content | strip_html | number_of_words %}
         <span class="post-meta-read">{{ words | divided_by: 200 | plus: 1 }} min read</span>
       {% endif %}
+      {% include view-count.html scope="page" %}
     </div>
     {% if page.tags %}
     <div class="post-header-tags">

@@ -47,3 +47,18 @@ Giscus 评论要生效，需安装 Giscus GitHub App 到本仓库：https://gith
 export GEM_HOME="$HOME/.gem" && export PATH="$HOME/.gem/bin:$PATH"
 bundle _2.2.19_ exec jekyll serve --port 4123
 ```
+
+## 2026-07-02 浏览量统计补丁
+
+线上 `https://mynotwo.github.io/blog/2026/07/in-between/` 没显示浏览量的原因是：当前本地工作区落后于 `origin/main`，本地之前验证的是旧的 `hello-blog` 文章，最新线上文章 `_posts/2026-07-01-in-between.md` 只在远端分支里。
+
+这次基于最新 `origin/main` 新建干净 worktree 后补丁：
+- `_config.yml` 增加 `page_views` 配置，provider 使用 Busuanzi。
+- `_includes/view-count.html` 输出首页总浏览/访客数和文章单页浏览数占位。
+- `_includes/view-count-script.html` 统一加载 Busuanzi 脚本。
+- `_includes/scripts.html` 引入浏览量脚本。
+- `_layouts/post.html` 在文章 meta 里显示单篇 views。
+- `_pages/about.md` 在 Google Scholar 下方显示全站 Views / Visitors。
+- `assets/css/main.scss` 增加轻量样式，保持现有博客视觉。
+
+取舍：Busuanzi 是前端异步计数，静态 HTML 只能验证脚本和占位存在；真实数字需要部署后浏览器成功加载第三方脚本才会填充。

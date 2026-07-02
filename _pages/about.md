@@ -27,6 +27,8 @@ Hi there! I’m a Research Scientist at ByteDance (San Jose), focusing on AI inf
 
 <span style="display:block; margin-top:8px; font-size:0.9em; color:#666;">
   Google Scholar: Cited by <span id='total_cit' style='font-weight:bold;color:#224b8d;'>...</span>
+  <br>
+  {% include view-count.html scope="site" %}
 </span>
 
 # 🔥 News
