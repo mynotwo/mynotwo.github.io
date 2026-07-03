@@ -66,3 +66,15 @@ bundle _2.2.19_ exec jekyll serve --port 4123
 ## 2026-07-02 去掉主页全站浏览量
 
 按用户要求移除首页 Google Scholar 下方的全站 `Views / Visitors` 展示，并让 Busuanzi 脚本只在博客文章页加载，只保留单篇 `views`。
+
+## 2026-07-02 主页背景音乐
+
+需求：主页加背景音乐（用户仅指定"加背景音乐"，音源和交互方式由实现方决定，用户未在线时按推荐默认执行）。
+
+- `assets/audio/bgm.mp3`：曲目 "Wallpaper" by Kevin MacLeod (incompetech.com)，CC BY 4.0，署名放在 include 的 HTML 注释和按钮 tooltip 里；4.1MB。
+- `_includes/music-player.html`：右下角悬浮圆形音符按钮，点击播放/暂停，播放时图标旋转（respect `prefers-reduced-motion`），音量 0.35，循环，`preload="none"` 不影响首屏。
+- `_layouts/default.html`：`page.permalink == "/"` 条件 include，只在主页出现，blog/文章页不加载。
+
+取舍：
+- 不做自动播放——Chrome/Safari 禁止带声 autoplay，做了也是静音或被拦，故直接上点击播放。
+- 本地验证坑：`python -m http.server` 伺服 mp3 时 Chrome media 管线卡死（readyState 0），换 `jekyll serve`（WEBrick，正常 Range 支持）后播放正常；GitHub Pages 支持 Range，线上无此问题。

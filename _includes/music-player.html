@@ -1,0 +1,77 @@
+<!-- Background music player. Track: "Wallpaper" by Kevin MacLeod (incompetech.com),
+     licensed under Creative Commons: By Attribution 4.0, https://creativecommons.org/licenses/by/4.0/ -->
+<audio id="bgm-audio" src="/assets/audio/bgm.mp3" loop preload="none"></audio>
+<button id="bgm-toggle" type="button" aria-label="Play background music"
+        title='Background music: "Wallpaper" by Kevin MacLeod (CC BY 4.0)'>
+  <svg id="bgm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M9 18V5l12-2v13"></path>
+    <circle cx="6" cy="18" r="3"></circle>
+    <circle cx="18" cy="16" r="3"></circle>
+  </svg>
+</button>
+<style>
+  #bgm-toggle {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 1000;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid #d8d8d8;
+    background: #fff;
+    color: #7a7a7a;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    transition: color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    padding: 0;
+  }
+  #bgm-toggle:hover {
+    color: #52adc8;
+    border-color: #52adc8;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+  }
+  #bgm-toggle.playing {
+    color: #52adc8;
+    border-color: #52adc8;
+  }
+  #bgm-toggle.playing #bgm-icon {
+    animation: bgm-spin 4s linear infinite;
+  }
+  @keyframes bgm-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #bgm-toggle.playing #bgm-icon { animation: none; }
+  }
+  @media (max-width: 600px) {
+    #bgm-toggle { right: 14px; bottom: 14px; }
+  }
+</style>
+<script>
+  (function () {
+    var audio = document.getElementById('bgm-audio');
+    var btn = document.getElementById('bgm-toggle');
+    audio.volume = 0.35;
+    btn.addEventListener('click', function () {
+      if (audio.paused) {
+        audio.play().catch(function () {});
+      } else {
+        audio.pause();
+      }
+    });
+    audio.addEventListener('play', function () {
+      btn.classList.add('playing');
+      btn.setAttribute('aria-label', 'Pause background music');
+    });
+    audio.addEventListener('pause', function () {
+      btn.classList.remove('playing');
+      btn.setAttribute('aria-label', 'Play background music');
+    });
+  })();
+</script>
