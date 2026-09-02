@@ -41,6 +41,10 @@
   justify-content: center;
   gap: 0.5em;
   margin: 1.2em 0 1.8em;
+  /* The theme floats .page__content and article.page. Inside that float chain a
+     width:auto flex container shrinks to its contents and hugs the right edge,
+     which makes justify-content:center do nothing. Fill the row explicitly. */
+  width: 100%;
 
   .filter-btn { margin-right: 0; }
 }
