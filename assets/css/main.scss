@@ -33,6 +33,7 @@
 @import "page";
 @import "archive";
 @import "sidebar";
+@import "photos";
 
 @import "vendor/font-awesome/fontawesome";
 @import "vendor/font-awesome/solid";
@@ -296,7 +297,8 @@ h1:before, .anchor:before {
     .blog-empty { color: #999; font-style: italic; padding: 1.5em 0; }
 }
 
-.blog-filters {
+.blog-filters,
+.photo-filters {
     margin: 0.8em 0 0.4em;
     .filter-btn {
         font-size: 0.82em;

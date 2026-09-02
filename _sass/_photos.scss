@@ -1,0 +1,229 @@
+/* ==========================================================================
+   Photos — /photos/
+   Masonry via CSS grid row spans + a small custom lightbox. No JS libraries.
+   ========================================================================== */
+
+.photo-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1em 3em;
+}
+
+.photo-header {
+  text-align: center;
+  margin: 1.2em 0 0.6em;
+}
+
+.photo-h1 {
+  margin: 0;
+  font-size: 2em;
+  font-weight: 700;
+}
+
+.photo-subtitle {
+  margin: 0.4em 0 0;
+  color: #666;
+  font-size: 0.92em;
+}
+
+.photo-intro {
+  max-width: 46em;
+  margin: 0 auto 1em;
+  text-align: center;
+  color: #555;
+}
+
+/* The .filter-btn pill itself is defined once in assets/css/main.scss, shared
+   with .blog-filters. Only the row layout differs here. */
+.photo-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5em;
+  margin: 1.2em 0 1.8em;
+
+  .filter-btn { margin-right: 0; }
+}
+
+/* --- the wall ------------------------------------------------------------ */
+
+/* Grid, not `columns`: multi-column balancing abandons a whole column when one
+   item is much taller than the rest (a 9:16 portrait next to 16:9 landscapes),
+   which leaves the wall visibly off-centre. Grid keeps the column count fixed;
+   the masonry effect comes from row spans measured in JS. */
+.photo-wall {
+  --photo-gap: 14px;
+  display: grid;
+  /* auto-FIT, not auto-fill: when a year filter leaves fewer photos than there
+     are column tracks, the empty tracks collapse and the wall stays centred
+     instead of hugging the left edge. The max keeps a lone photo from
+     stretching across the whole page. */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 300px));
+  justify-content: center;
+  column-gap: var(--photo-gap);
+  row-gap: var(--photo-gap);
+  align-items: start;
+}
+
+/* Applied by JS once spans can be measured. Without JS the wall stays a plain
+   aligned grid — denser than intended, but never broken. */
+.photo-wall.is-masonry {
+  grid-auto-rows: 4px;
+  row-gap: 0;
+  align-items: stretch;
+}
+
+.photo-item {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+
+  &[hidden] { display: none; }
+}
+
+/* Measured wrapper: the grid item itself is stretched by its row span, so the
+   height JS reads has to come from the content, not the cell. */
+.photo-item-inner {
+  display: block;
+}
+
+.photo-open {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+  line-height: 0;
+  border-radius: 8px;
+  overflow: hidden;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    background: #f0f0f0;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  &:hover img,
+  &:focus-visible img {
+    transform: scale(1.02);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  }
+
+  &:focus-visible {
+    outline: 2px solid #667eea;
+    outline-offset: 3px;
+  }
+}
+
+.photo-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.8em;
+  margin: 0.45em 0.15em 0;
+  font-size: 0.8em;
+  line-height: 1.35;
+  color: #555;
+}
+
+.photo-caption-date {
+  flex: none;
+  color: #999;
+  font-variant-numeric: tabular-nums;
+}
+
+.photo-empty {
+  text-align: center;
+  color: #888;
+  padding: 3em 0;
+}
+
+/* --- lightbox ------------------------------------------------------------ */
+
+body.photo-lb-open { overflow: hidden; }
+
+.photo-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  padding: 2.5em 1em;
+  background: rgba(16, 16, 20, 0.94);
+
+  &[hidden] { display: none; }
+}
+
+.photo-lb-stage {
+  margin: 0;
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7em;
+
+  img {
+    max-width: 100%;
+    max-height: calc(100vh - 8em);
+    width: auto;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.photo-lb-caption {
+  color: #ddd;
+  font-size: 0.85em;
+  text-align: center;
+}
+
+.photo-lb-close,
+.photo-lb-nav {
+  flex: none;
+  border: 0;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  cursor: pointer;
+  border-radius: 50%;
+  line-height: 1;
+  transition: background 0.2s ease;
+
+  &:hover { background: rgba(255, 255, 255, 0.24); }
+  &[hidden] { display: none; }
+}
+
+.photo-lb-nav {
+  width: 44px;
+  height: 44px;
+  font-size: 1.9em;
+}
+
+.photo-lb-close {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  width: 40px;
+  height: 40px;
+  font-size: 1.6em;
+}
+
+@media (max-width: 600px) {
+  .photo-wall {
+    --photo-gap: 10px;
+    /* On phones the track max is 1fr so columns fill the screen: with a fixed
+       max, the repeat() count is computed from that max and collapses to a
+       single narrow column. auto-fit still collapses empty tracks, so one
+       filtered photo goes full width instead of sitting half-left. */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+  .photo-wall.is-masonry { row-gap: 0; }
+  .photo-lb-nav { width: 38px; height: 38px; font-size: 1.5em; }
+}

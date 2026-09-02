@@ -1,3 +1,6 @@
 _site/
 push.sh
 .DS_Store
+
+# full-resolution photo originals (web copies live in images/photos/)
+photos_src/

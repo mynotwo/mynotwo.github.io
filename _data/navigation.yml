@@ -9,6 +9,9 @@ main:
   - title: "Blog"
     url: "/blog/"
 
+  - title: "Photos"
+    url: "/photos/"
+
   - title: "Publications"
     url: "/#-publications"
 
