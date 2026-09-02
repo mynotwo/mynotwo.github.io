@@ -41,9 +41,13 @@
   justify-content: center;
   gap: 0.5em;
   margin: 1.2em 0 1.8em;
-  /* The theme floats .page__content and article.page. Inside that float chain a
-     width:auto flex container shrinks to its contents and hugs the right edge,
-     which makes justify-content:center do nothing. Fill the row explicitly. */
+  /* Without this the row shrank to its buttons (253px) and sat against the
+     right edge of the content column, so justify-content:center had nothing to
+     centre within. A bare flex div appended to the same parent measured full
+     width, so the trigger is something about this element's position in the
+     theme's floated layout (.page__content floats left, article.page right)
+     rather than flex itself — the exact cause is unconfirmed. Setting the width
+     explicitly removes the dependency either way. */
   width: 100%;
 
   .filter-btn { margin-right: 0; }
