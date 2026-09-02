@@ -84,8 +84,15 @@ def process(src_dir):
         full.save(os.path.join(FULL_DIR, out_name), "JPEG",
                   quality=86, optimize=True, progressive=True)
 
-        thumb = clean.copy()
-        thumb.thumbnail((THUMB_WIDTH, THUMB_WIDTH * 4), Image.LANCZOS)
+        # Scale on width alone. Capping the height too would leave a very tall
+        # image (a photo-booth strip) with a "thumbnail" the same size as its
+        # full copy.
+        if clean.width > THUMB_WIDTH:
+            thumb_size = (THUMB_WIDTH,
+                          max(1, round(clean.height * THUMB_WIDTH / clean.width)))
+            thumb = clean.resize(thumb_size, Image.LANCZOS)
+        else:
+            thumb = clean.copy()
         thumb.save(os.path.join(THUMB_DIR, out_name), "JPEG",
                    quality=82, optimize=True, progressive=True)
 
