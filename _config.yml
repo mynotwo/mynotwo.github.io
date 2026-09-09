@@ -27,7 +27,7 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 # Site Author
 author:
   name             : "Yu Mao"
-  avatar           : "./images/selfie.jpg"
+  avatar           : "./images/selfie-tetons-b.jpg"
   bio              : "ByteDance"
   location         : "San Jose, California, USA"
   employer         :
