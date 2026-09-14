@@ -1,15 +1,18 @@
 name: Get Citation Data
 
+# Scholar answers 403 to GitHub's runner IPs, so the automatic triggers could
+# only ever fail. They are kept here, commented out, to switch back on if that
+# changes; until then run this by hand from the Actions tab.
 on:
- page_build:
  workflow_dispatch:
- schedule:
-  - cron:  '0 8 * * *'
+# page_build:
+# schedule:
+#  - cron:  '0 8 * * *'
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
     steps:
     - uses: actions/checkout@v2
     - name: Install Reqs
@@ -19,7 +22,9 @@ jobs:
       run: |
         cd ./google_scholar_crawler
         pip3 install -r requirements.txt
-        python3 main.py
+        # On a 403 scholarly backs off for 90s+ and retries until the job times
+        # out; cap it so a blocked run fails in two minutes with a real error.
+        timeout -s INT 120 python3 -u main.py
         cd ./results
         git init
         git config --local user.name "${GITHUB_ACTOR}"
