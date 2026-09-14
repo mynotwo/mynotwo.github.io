@@ -2,7 +2,7 @@
 title: "She Only Told the Beginning"
 date: 2026-09-14
 lang: zh
-excerpt: "她只讲了个开头，我好想往下听。"
+excerpt: "真美啊，美得我只能阿巴阿巴。"
 ---
 
 最近看了奶茶和何超琼的访谈，感觉奶茶完全接不住何超琼。奶茶人如其名，浅得像一汪水。
