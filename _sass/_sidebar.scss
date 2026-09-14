@@ -87,7 +87,10 @@
 
   @include breakpoint($large) {
     display: block;
-    width: auto;
+    // The <img> carries .author__avatar too (see _includes/author-profile.html),
+    // so widen the wrapper only; the `img` rule below pins the photo to 100% of it.
+    // 112% overflows right into the gutter between sidebar and content.
+    width: 112%;
     height: auto;
   }
 
@@ -95,12 +98,12 @@
 
   img {
     width: 100%;
-    max-width: 220px;
+    max-width: none;
     min-width: 75px;
     aspect-ratio: 1 / 1;
     object-fit: cover;
     object-position: center center;
-    border-radius: 50%;
+    border-radius: 12px;
     position: relative;
     z-index: 2;
 
@@ -108,11 +111,12 @@
       padding: 10px;
       border: none;
       background: #fff;
+      border-radius: 16px;
     }
   }
 
   @include breakpoint($large) {
-    margin-bottom: 60px;
+    margin-bottom: 22px;
 
     &::before {
       content: '';
@@ -121,9 +125,10 @@
       left: -10px;
       right: -10px;
       bottom: -10px;
-      border-radius: 50%;
+      // 16px inner radius + the 10px offset, so the corners stay concentric
+      border-radius: 26px;
       background: repeating-conic-gradient(
-        from 0deg,
+        from var(--spin-angle, 0deg),
         #667eea 0deg 15deg,
         #f093fb 15deg 30deg,
         #ffd700 30deg 45deg,
@@ -131,26 +136,23 @@
         #764ba2 60deg 75deg,
         #ff6b6b 75deg 90deg
       );
-      animation: spin-border 8s linear infinite;
+      animation: spin-hue 8s linear infinite;
       z-index: 0;
-    }
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -65px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 12px;
-      height: 70px;
-      border-radius: 0 0 5px 5px;
-      background: linear-gradient(180deg, #f5a0ff, #f0c8a8, #d4a574, #c4956a);
-      z-index: 1;
     }
   }
 }
 
-@keyframes spin-border {
-  to { transform: rotate(360deg); }
+// Spin the gradient's start angle instead of the element. Rotating a circle was
+// invisible, but rotating a rounded square would visibly wobble.
+// Without @property support the var falls back to 0deg: static gradient, no spin.
+@property --spin-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes spin-hue {
+  to { --spin-angle: 360deg; }
 }
 
 .author__content {
