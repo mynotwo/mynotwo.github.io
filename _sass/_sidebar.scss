@@ -103,7 +103,7 @@
     aspect-ratio: 1 / 1;
     object-fit: cover;
     object-position: center center;
-    border-radius: 12px;
+    border-radius: 50%;
     position: relative;
     z-index: 2;
 
@@ -111,7 +111,6 @@
       padding: 10px;
       border: none;
       background: #fff;
-      border-radius: 16px;
     }
   }
 
@@ -125,10 +124,9 @@
       left: -10px;
       right: -10px;
       bottom: -10px;
-      // 16px inner radius + the 10px offset, so the corners stay concentric
-      border-radius: 26px;
+      border-radius: 50%;
       background: repeating-conic-gradient(
-        from var(--spin-angle, 0deg),
+        from 0deg,
         #667eea 0deg 15deg,
         #f093fb 15deg 30deg,
         #ffd700 30deg 45deg,
@@ -136,23 +134,14 @@
         #764ba2 60deg 75deg,
         #ff6b6b 75deg 90deg
       );
-      animation: spin-hue 8s linear infinite;
+      animation: spin-border 8s linear infinite;
       z-index: 0;
     }
   }
 }
 
-// Spin the gradient's start angle instead of the element. Rotating a circle was
-// invisible, but rotating a rounded square would visibly wobble.
-// Without @property support the var falls back to 0deg: static gradient, no spin.
-@property --spin-angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
-}
-
-@keyframes spin-hue {
-  to { --spin-angle: 360deg; }
+@keyframes spin-border {
+  to { transform: rotate(360deg); }
 }
 
 .author__content {
