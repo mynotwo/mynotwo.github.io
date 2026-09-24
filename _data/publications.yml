@@ -115,6 +115,11 @@
 # ============================ Systems · Edge AI ============================
 
 - theme: "Systems · Edge AI"
+  title: "LLM Agent Capabilities Should Follow Task Intent and Context Source"
+  authors: "Yusheng Zheng, Wenhui Zhang, **Yu Mao**"
+  venue: "AgenticOS 2026 · Best Paper Award"
+
+- theme: "Systems · Edge AI"
   title: "Parallel-SA: Point Cloud Processing Acceleration via Parallel Set Abstraction"
   authors: "D. Tang, W. Wang, **Yu Mao**, W. Xie, N. Guan, T.-W. Kuo, C.J. Xue"
   venue: "DATE 2026"
