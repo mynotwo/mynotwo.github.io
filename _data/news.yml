@@ -1,4 +1,7 @@
 # 顺序 = 显示顺序(最新在最上)
+- date: "2026.10"
+  content: "Our paper, [Probe with Participation Trophies: Random-Reward RL as a Probe of LLM Capability](https://arxiv.org/abs/2610.01066), is now available on arXiv."
+
 - date: "2026.09"
   content: "Our paper, LLM Agent Capabilities Should Follow Task Intent and Context Source, received the Best Paper Award at AgenticOS 2026."
 

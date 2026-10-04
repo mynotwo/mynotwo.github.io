@@ -115,6 +115,15 @@
 # ============================ Systems · Edge AI ============================
 
 - theme: "Systems · Edge AI"
+  title: "Probe with Participation Trophies: Random-Reward RL as a Probe of LLM Capability"
+  authors: "**Yu Mao**, L. Yu, Z. Zhu, Y. Zheng, H. Li, F. Shi, Y. Yin, Z. Wang, J. Niu"
+  venue: "Preprint 2026"
+  first_author: true
+  arxiv: "https://arxiv.org/abs/2610.01066"
+  pdf: "https://arxiv.org/pdf/2610.01066"
+  code: "https://github.com/mynotwo/rl-random-prob"
+
+- theme: "Systems · Edge AI"
   title: "LLM Agent Capabilities Should Follow Task Intent and Context Source"
   authors: "Yusheng Zheng, Wenhui Zhang, **Yu Mao**"
   venue: "AgenticOS 2026 · Best Paper Award"
