@@ -13,6 +13,7 @@
   arxiv: "https://arxiv.org/abs/2610.01066"
   pdf: "https://arxiv.org/pdf/2610.01066"
   code: "https://github.com/mynotwo/rl-random-prob"
+  image: /images/papers/random-reward-rl.png
 
 # ============================ Compression · LLM Efficiency ============================
 
