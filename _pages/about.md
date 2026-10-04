@@ -55,6 +55,6 @@ Hi there! I’m a Research Scientist at ByteDance (San Jose), focusing on AI inf
 # 👩‍🏫 Supervision
 - Shashwat Jaiswal, summer intern (Ph.D. student at UIUC), 2026
 - Yusheng Zheng, summer intern (Ph.D. student at UCSC), 2026
-- Jun Wang, Ph.D. student with Prof. Jason Xue (2024–present)
-- Weilan Wang, Ph.D. student with Prof. Jason Xue (2024–2026)
+- Jun Wang, Ph.D. student with Prof. Jason Xue (2025–present)
+- Weilan Wang, Ph.D. student with Prof. Jason Xue (2024–2025)
 - Dongdong Tang, Ph.D. student with Prof. Jason Xue (2024–2025)
