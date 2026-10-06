@@ -757,22 +757,22 @@ body {
     </div>
     <div class="measured-result">
       <div class="measured-result-head">
-        <h3>The codec is fast enough, but compression did not make KV reads meaningfully faster</h3>
-        <p>On real KV cache reads, the compressed path took 95–101% of the uncompressed baseline time: about 5% faster at best and 1% slower at worst. Moving fewer bytes helped, but decode and reconstruction consumed almost all of that saving.</p>
+        <h3>About 40% less KV memory, with no meaningful read-latency penalty</h3>
+        <p>At 1.672× compression, the KV payload uses 59.8% of its original bytes—a 40.2% reduction. On real KV reads, the compressed path took 95–101% of baseline time: about 5% faster at best and 1% slower at worst.</p>
       </div>
       <div class="measured-grid" aria-label="Qwen2.5-14B systems measurements">
+        <div class="measured-stat"><strong>40.2%</strong><span>KV payload memory reduction</span></div>
         <div class="measured-stat"><strong>3.5 GB/s</strong><span>Zstd compression · 8 threads</span></div>
-        <div class="measured-stat"><strong>≈4 GB/s</strong><span>Full reconstruction · 16 threads · Python</span></div>
         <div class="measured-stat"><strong>−5% to +1%</strong><span>Real KV read latency vs uncompressed baseline</span></div>
       </div>
-      <p class="measured-scope">Qwen2.5-14B · BF16 · Zstd-1 ratio 1.672× at ≈5K tokens · full host pipeline plateaued near 1 GB/s</p>
+      <p class="measured-scope">Qwen2.5-14B · BF16 · Zstd-1 ratio 1.672× at ≈5K tokens · full reconstruction ≈4 GB/s at 16 threads · full host pipeline plateaued near 1 GB/s</p>
     </div>
     <div class="system-grid">
-      <article class="system-card"><h3>Memory footprint</h3><p>Fewer payload bytes can change the feasible context / concurrency envelope when KV capacity is the binding resource.</p></article>
+      <article class="system-card"><h3>Memory footprint</h3><p>The selected KV payload was 40.2% smaller. Allocator overhead and end-to-end GPU memory savings were not measured.</p></article>
       <article class="system-card"><h3>Offload traffic</h3><p>Host, remote, and storage tiers move encoded state instead of the full selected representation.</p></article>
       <article class="system-card"><h3>State migration</h3><p>Disaggregated prefill/decode and long-running agents make state movement a first-class systems path.</p></article>
     </div>
-    <p class="implication-boundary">Measured conclusion: compression throughput can scale to the generation rate, but the real KV read test showed essentially unchanged latency. End-to-end serving capacity and concurrency gains were not measured.</p>
+    <p class="implication-boundary">Measured conclusion: the selected KV payload is about 40% smaller, compression throughput can scale to the generation rate, and real KV read latency is essentially unchanged. End-to-end serving capacity and concurrency gains were not measured.</p>
   </section>
 
   <section class="story-section" id="benchmark" aria-labelledby="benchmark-heading">
