@@ -454,12 +454,14 @@ body {
 
 .core-proof { display: grid; grid-template-columns: minmax(230px, .7fr) minmax(0, 1.3fr); border-block: 1px solid var(--rule-dark); background: var(--surface); }
 .core-result { display: flex; flex-direction: column; justify-content: center; padding: 34px 30px; border-right: 1px solid var(--rule); }
-.core-number { font-size: clamp(36px, 4.2vw, 58px); line-height: .95; letter-spacing: -.06em; font-weight: 760; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.core-result, .core-logic { box-sizing: border-box; width: 100%; min-width: 0; }
+.core-number { font-size: clamp(36px, 3.5vw, 48px); line-height: .95; letter-spacing: -.06em; font-weight: 760; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .core-result-label { margin-top: 14px; color: var(--muted); font-size: 13px; }
 .core-result-label strong { color: var(--ink); }
 .core-logic { padding: 32px; }
 .policy-equation { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: baseline; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: clamp(17px, 2.4vw, 27px); font-weight: 680; letter-spacing: -.025em; }
 .policy-equation .operator { color: var(--accent); }
+.policy-term { white-space: nowrap; }
 .finding-quote { margin-top: 24px; padding-left: 18px; border-left: 3px solid var(--accent); color: var(--muted); font-size: 17px; line-height: 1.5; }
 .core-summary { margin-top: 18px; font-size: 14px; color: var(--muted); }
 .evidence-kicker { margin: 46px 0 4px; color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
@@ -500,7 +502,7 @@ body {
 .scope-tag.lossless { color: var(--green); background: var(--green-soft); border-color: #96b9aa; }
 
 .break-even { margin-bottom: 34px; padding: 30px; border: 1px solid var(--rule-dark); background: var(--surface); }
-.break-even-formula { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: clamp(22px, 4vw, 40px); font-weight: 720; letter-spacing: -.045em; white-space: nowrap; }
+.break-even-formula { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: clamp(22px, 4vw, 40px); font-weight: 720; letter-spacing: -.045em; }
 .break-even-formula var { font-family: inherit; font-style: italic; }
 .break-even-explanation { margin-top: 18px; max-width: 760px; font-size: 17px; }
 .break-even-defs { margin-top: 18px; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; line-height: 1.7; }
@@ -566,6 +568,7 @@ body {
   .metric { min-height: 102px; padding-top: 16px; padding-bottom: 14px; }
   .metric + .metric { padding-left: 14px; }
   .metric-value { font-size: 30px; }
+  .metric:nth-child(2) .metric-value { font-size: 26px; letter-spacing: -.055em; white-space: nowrap; }
   .metric-label { margin-top: 10px; }
   .story-section { padding: 52px 0; }
   .section-head, .learned { grid-template-columns: 1fr; gap: 10px; }
@@ -574,14 +577,31 @@ body {
   .triad, .system-grid, .deep-grid, .environment { grid-template-columns: 1fr; }
   .triad-item, .environment > div { min-height: 0; border-right: 0; border-bottom: 1px solid var(--rule); }
   .triad-item:last-child, .environment > div:last-child { border-bottom: 0; }
-  .model-lines { width: 100%; min-width: 0; grid-template-columns: 1.2fr repeat(3, 1fr); overflow-x: auto; }
-  .model-lines > div { min-width: 78px; padding: 10px 8px; }
+  .model-lines { width: 100%; min-width: 0; grid-template-columns: 1.35fr repeat(3, .9fr); overflow: visible; }
+  .model-lines > div { min-width: 0; padding: 10px 6px; }
+  .model-lines .strong { font-size: 11px; white-space: nowrap; }
   .bar-row { grid-template-columns: 104px minmax(0, 1fr) 52px; gap: 8px; }
-  .representation-table { min-width: 620px; }
-  .table-scroll, .chart-container { width: 100%; min-width: 0; overflow-x: auto; }
+  .table-scroll { width: 100%; min-width: 0; overflow: visible; }
+  .representation-table, .representation-table tbody, .representation-table tr, .representation-table td { display: block; width: 100%; }
+  .representation-table { min-width: 0; }
+  .representation-table thead { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+  .representation-table tr { padding: 13px 0; border-top: 1px solid var(--rule); }
+  .representation-table td { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 12px; padding: 4px 0; border: 0; }
+  .representation-table td::before { content: attr(data-label); color: var(--faint); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 10px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+  .chart-container { width: 100%; min-width: 0; overflow-x: auto; }
+  .disclosure summary { font-size: 18px; }
   .chart-scroll-hint { display: block; }
   .legend { gap: 10px; flex-wrap: wrap; }
   .legend-row { align-items: flex-start; }
+}
+
+@media (max-width: 340px) {
+  .metric-strip { grid-template-columns: 1fr; }
+  .metric, .metric + .metric { padding-left: 0; border-right: 0; }
+  .metric:nth-child(2) .metric-value { font-size: 30px; }
+  .metric:nth-child(3) { grid-column: auto; }
+  .core-number { font-size: 33px; }
+  .policy-equation { gap: 6px; font-size: 13px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -646,7 +666,8 @@ body {
       </div>
       <div class="core-logic">
         <div class="policy-equation" aria-label="Compression policy equals representation plus layout plus codec">
-          <span>Compression policy</span><span class="operator">=</span><span>representation</span><span class="operator">+</span><span>layout</span><span class="operator">+</span><span>codec</span>
+          <span class="policy-term">Compression policy <span class="operator">=</span></span>
+          <span class="policy-term">representation <span class="operator">+</span> layout <span class="operator">+</span> codec</span>
         </div>
         <blockquote class="finding-quote">Rearranging the same payload changes how much redundancy a generic codec can exploit.</blockquote>
         <p class="core-summary">Across the full method search, the median best structure-aware BF16 ratio is <strong>1.71×</strong>; the median pointwise lift over each workload's best raw codec is <strong>19.4%</strong>.</p>
@@ -690,11 +711,11 @@ body {
           <table class="representation-table">
             <thead><tr><th>Representation</th><th>Median best ratio</th><th>Correctness scope</th><th>Interpretation</th></tr></thead>
             <tbody>
-              <tr><td>BF16</td><td>1.71×</td><td><span class="scope-tag lossless">Representation-lossless</span></td><td>Primary result</td></tr>
-              <tr><td>FP32</td><td>3.43×</td><td><span class="scope-tag lossless">Representation-lossless</span></td><td>4-byte denominator; not directly comparable</td></tr>
-              <tr><td>FP16</td><td>1.75×</td><td><span class="scope-tag">Transformed payload</span></td><td>Conversion precedes codec</td></tr>
-              <tr><td>FP8 E4M3 / E5M2</td><td>1.56× / 1.95×</td><td><span class="scope-tag">Transformed payload</span></td><td>Different bit layouts expose different structure</td></tr>
-              <tr><td>INT8 / INT4 / INT2</td><td>1.27× / 1.92× / 5.00×</td><td><span class="scope-tag">Transformed payload</span></td><td>Quantization and metadata are separate system choices</td></tr>
+              <tr><td data-label="Representation">BF16</td><td data-label="Median best ratio">1.71×</td><td data-label="Correctness scope"><span class="scope-tag lossless">Representation-lossless</span></td><td data-label="Interpretation">Primary result</td></tr>
+              <tr><td data-label="Representation">FP32</td><td data-label="Median best ratio">3.43×</td><td data-label="Correctness scope"><span class="scope-tag lossless">Representation-lossless</span></td><td data-label="Interpretation">4-byte denominator; not directly comparable</td></tr>
+              <tr><td data-label="Representation">FP16</td><td data-label="Median best ratio">1.75×</td><td data-label="Correctness scope"><span class="scope-tag">Transformed payload</span></td><td data-label="Interpretation">Conversion precedes codec</td></tr>
+              <tr><td data-label="Representation">FP8 E4M3 / E5M2</td><td data-label="Median best ratio">1.56× / 1.95×</td><td data-label="Correctness scope"><span class="scope-tag">Transformed payload</span></td><td data-label="Interpretation">Different bit layouts expose different structure</td></tr>
+              <tr><td data-label="Representation">INT8 / INT4 / INT2</td><td data-label="Median best ratio">1.27× / 1.92× / 5.00×</td><td data-label="Correctness scope"><span class="scope-tag">Transformed payload</span></td><td data-label="Interpretation">Quantization and metadata are separate system choices</td></tr>
             </tbody>
           </table>
         </div>
@@ -712,7 +733,7 @@ body {
       </div>
     </div>
     <div class="break-even" aria-label="Break-even condition for KV cache compression">
-      <div class="break-even-formula"><var>T</var><sub>codec</sub> &lt; <span><var>S</var> / <var>B</var></span> <span>(1 − 1 / <var>R</var>)</span></div>
+      <div class="break-even-formula"><span><var>T</var><sub>codec</sub> &lt;</span><span><var>S</var> / <var>B</var></span><span>(1 − 1 / <var>R</var>)</span></div>
       <p class="break-even-explanation">The codec is worth paying for when encode/decode time on the relevant path is smaller than the transfer time eliminated by compression.</p>
       <p class="break-even-defs">S = uncompressed bytes · B = effective transfer bandwidth · R = compression ratio · T<sub>codec</sub> = codec time paid on that path</p>
     </div>
@@ -764,7 +785,7 @@ body {
       </div>
     </details>
     <details class="disclosure">
-      <summary>Technical Deep Dive · correctness, coding, and deployment boundaries</summary>
+      <summary>Technical Deep Dive</summary>
       <div class="disclosure-body deep-grid">
         <article class="deep-item"><h3>What does lossless mean here?</h3><p>After encoding, decompression must reconstruct the selected payload bytes exactly. BF16 and FP32 preserve their selected representation. FP16, FP8, and INT results include a prior conversion and are only lossless over that transformed payload.</p></article>
         <article class="deep-item"><h3>What is the coding unit?</h3><p>The source benchmark processes per-layer K and V payloads and aggregates them into the model / context / input points exposed here. Per-layer rows are not retained in this page dataset.</p></article>
