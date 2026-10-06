@@ -18,12 +18,13 @@
       <span class="paper-venue-chip">{{ include.pub.venue }}</span>
       {% if include.pub.corresponding %}<span class="paper-tag">Corresponding</span>{% endif %}
     </div>
-    {% if include.pub.arxiv or include.pub.pdf or include.pub.code or include.pub.benchmark or include.pub.scholar_id %}
+    {% if include.pub.arxiv or include.pub.pdf or include.pub.code or include.pub.benchmark or include.pub.case_study or include.pub.scholar_id %}
     <div class="paper-links">
       {% if include.pub.arxiv %}<a href="{{ include.pub.arxiv }}" target="_blank">arXiv</a>{% endif %}
       {% if include.pub.pdf %}<a href="{{ include.pub.pdf }}" target="_blank">PDF</a>{% endif %}
       {% if include.pub.code %}<a href="{{ include.pub.code }}" target="_blank">Code</a>{% endif %}
       {% if include.pub.benchmark %}<a href="{{ include.pub.benchmark | relative_url }}" target="_blank">KV Cache Benchmark</a>{% endif %}
+      {% if include.pub.case_study %}<a href="{{ include.pub.case_study | relative_url }}" target="_blank">Case Study</a>{% endif %}
       {% if include.pub.scholar_id %}<span class='show_paper_citations' data='{{ include.pub.scholar_id }}'></span>{% endif %}
     </div>
     {% endif %}

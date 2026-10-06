@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Agent reliability for compiling changing business documents into auditable, executable code.">
+  <title>Agent Reliability — From Business Documents to Auditable Code</title>
+  <link rel="icon" href="data:,">
+  <style>
+    :root{--ink:#132238;--muted:#5f6d7e;--line:#dce3e9;--soft:#f5f7f8;--paper:#fff;--blue:#175cd3;--blue-soft:#edf4ff;--amber:#b54708;--amber-soft:#fff4e5;--green:#067647;--green-soft:#ecfdf3;--red:#b42318;--red-soft:#fef3f2;--max:1120px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit}.wrap{width:min(var(--max),calc(100% - 48px));margin:auto}.topbar{height:64px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{font-weight:750;text-decoration:none;letter-spacing:-.02em}.back{color:var(--muted);font-size:14px;text-decoration:none}.back:hover{color:var(--ink)}
+    .hero{padding:92px 0 72px;border-bottom:1px solid var(--line)}.eyebrow,.section-no{color:var(--blue);font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.hero h1{max-width:870px;margin:16px 0 20px;font-size:clamp(42px,6.2vw,74px);line-height:1.02;letter-spacing:-.055em}.hero .lead{max-width:770px;margin:0;color:var(--muted);font-size:clamp(18px,2.1vw,23px);line-height:1.5}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:54px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}.metric{background:#fff;padding:24px}.metric strong{display:block;font-size:clamp(30px,4vw,46px);line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.04em}.metric span{display:block;margin-top:9px;color:var(--muted);font-size:13px}
+    section{padding:82px 0;border-bottom:1px solid var(--line)}.section-head{display:grid;grid-template-columns:150px 1fr;gap:34px;margin-bottom:42px}.section-head h2{margin:0;max-width:770px;font-size:clamp(31px,4vw,49px);line-height:1.08;letter-spacing:-.04em}.section-head p{grid-column:2;max-width:760px;margin:12px 0 0;color:var(--muted);font-size:18px}.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}.panel{border:1px solid var(--line);border-radius:14px;padding:26px;background:#fff}.panel h3{margin:0 0 8px;font-size:14px;letter-spacing:.01em}.panel p{margin:0;color:var(--muted)}.doc{background:var(--soft);border-left:4px solid var(--ink)}.doc .source{display:block;margin-bottom:22px;color:var(--muted);font:12px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace}.doc blockquote{margin:0;font:650 21px/1.55 Georgia,serif}.doc .translation{margin-top:18px;padding-top:18px;border-top:1px solid var(--line);font-size:14px}.wrong{background:var(--amber-soft);border-color:#fedf89}.right{background:var(--green-soft);border-color:#abefc6}.formula{margin:14px 0 8px;padding:13px 15px;background:rgba(255,255,255,.72);border-radius:9px;font:600 14px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;overflow-wrap:anywhere}.verdict{grid-column:1/-1;display:grid;grid-template-columns:170px 1fr;gap:26px;align-items:start;background:var(--ink);color:white}.verdict strong{font-size:37px;letter-spacing:-.04em;line-height:1}.verdict p{color:#d7e0ea;font-size:17px}.note{margin-top:16px;color:var(--muted);font-size:13px}
+    .machine{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.state{min-height:150px;padding:20px 18px;border:1px solid var(--line);border-radius:12px;background:white}.state .id{font:700 11px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--blue);text-transform:uppercase}.state h3{margin:12px 0 7px;font-size:17px}.state p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}.state.evidence{background:var(--amber-soft);border-color:#fedf89}.state.author{background:var(--green-soft);border-color:#abefc6}.transitions{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.transition{padding:12px 14px;border-radius:9px;background:var(--soft);color:var(--muted);font-size:12px}.transition b{color:var(--ink)}.loop{margin-top:12px;padding:16px 18px;border:1px dashed #84adff;border-radius:10px;background:var(--blue-soft);color:#1849a9;font-size:14px}.comparison{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:38px}.comparison h3{margin:0 0 18px;font-size:18px}.comparison ul{margin:0;padding:0;list-style:none}.comparison li{position:relative;margin:12px 0;padding-left:24px;color:var(--muted)}.comparison li:before{position:absolute;left:0;font-weight:800}.before li:before{content:"×";color:var(--red)}.after li:before{content:"✓";color:var(--green)}
+    .chain{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;counter-reset:step}.chain-card{min-height:190px;padding:22px;border:1px solid var(--line);border-radius:12px;counter-increment:step}.chain-card:before{content:"0" counter(step);display:block;margin-bottom:28px;color:var(--blue);font:800 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace}.chain-card h3{margin:0 0 8px;font-size:17px}.chain-card p{margin:0;color:var(--muted);font-size:14px}.checks{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}.check{padding:22px;border-radius:12px;background:var(--soft)}.check strong{display:block;margin-bottom:7px}.check span{color:var(--muted);font-size:14px}.boundary{margin-top:20px;padding:18px 20px;border-left:3px solid var(--amber);background:var(--amber-soft);color:#713b12;font-size:14px}
+    details{border-top:1px solid var(--line)}details:last-child{border-bottom:1px solid var(--line)}summary{cursor:pointer;padding:20px 2px;font-weight:700;list-style:none}summary::-webkit-details-marker{display:none}summary:after{content:"+";float:right;color:var(--muted)}details[open] summary:after{content:"−"}details p{max-width:810px;margin:-4px 0 22px;color:var(--muted)}.footer{padding:34px 0 56px;color:var(--muted);font-size:13px}.footer .wrap{display:flex;justify-content:space-between;gap:20px}.redacted{font-style:italic}
+    @media(max-width:800px){.wrap{width:min(100% - 32px,var(--max))}.hero{padding:68px 0 54px}.metrics,.case-grid,.comparison,.checks,.transitions{grid-template-columns:1fr}.section-head{grid-template-columns:1fr;gap:10px}.section-head p{grid-column:1}.machine{grid-template-columns:1fr}.state{min-height:0}.chain{grid-template-columns:1fr 1fr}.verdict{grid-template-columns:1fr}.topbar{height:56px}}
+    @media(max-width:480px){.hero h1{font-size:39px}.metric{padding:20px}.chain{grid-template-columns:1fr}.panel{padding:21px}section{padding:62px 0}.footer .wrap{display:block}.footer span{display:block;margin-top:8px}}
+  </style>
+</head>
+<body>
+  <header class="wrap topbar"><a class="brand" href="/">Yu Mao</a><a class="back" href="/">← Back to portfolio</a></header>
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="eyebrow">Agent Reliability · IPD case study</div>
+        <h1>From business documents to auditable code.</h1>
+        <p class="lead">I built a document-to-code workflow that keeps business authority, implementation, tests, and change impact connected—so a green test suite cannot silently legitimize the wrong rule.</p>
+        <div class="metrics" aria-label="Key case results">
+          <div class="metric"><strong>30 / 30</strong><span>sample rows matched the wrong inferred rule</span></div>
+          <div class="metric"><strong>14 / 15</strong><span>expected values changed after the authoritative rule arrived</span></div>
+          <div class="metric"><strong>5 states</strong><span>separate unknowns, inference, evidence, and authority</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="case">
+      <div class="wrap">
+        <div class="section-head"><div class="section-no">01 / The case</div><div><h2>A rule can fit every example and still be wrong.</h2><p>The useful artifact is not another generated pipeline. It is a system that remembers what the source actually said, what was inferred, and what must be invalidated when authority changes.</p></div></div>
+        <div class="case-grid">
+          <article class="panel doc"><span class="source">AUTHORITATIVE BUSINESS DOCUMENT · SANITIZED EXCERPT</span><blockquote lang="zh-CN">“PSM date = Max(Network Config End Date, Supply_Date) + 交付 SLA”</blockquote><p class="translation">The committed date starts when both infrastructure and supply are ready, then adds the region-specific delivery SLA.</p></article>
+          <article class="panel wrong"><h3>Before the document stated the formula</h3><p>Two example tables suggested a different rule:</p><div class="formula">max(Supply_Date + 14d,<br>OS Installation End Date)</div><p><strong>15/15 + 15/15 rows matched.</strong> It looked independently validated.</p></article>
+          <article class="panel right"><h3>After the authoritative revision</h3><p>The source named the real rule:</p><div class="formula">max(Network Config End Date,<br>Supply_Date) + SLA</div><p>On the retained 15-row case, <strong>14 expected dates changed</strong>. The old screenshots documented a parallel-work assumption, not the delivery SLA.</p></article>
+          <article class="panel"><h3>The executable regression case</h3><p>Fourteen rows exercise the infrastructure-ready branch; one row exercises the supply-ready branch. Reverting to the old inferred formula makes the case fail.</p><div class="formula">14 rows → 2026-10-21<br>1 row&nbsp;&nbsp;→ 2026-10-26</div></article>
+          <article class="panel verdict"><strong>Green ≠ correct</strong><p>Tests prove that code matches their expected values. They do not prove those expected values express the business rule—especially when code, tests, and expectations were generated from the same interpretation.</p></article>
+        </div>
+        <p class="note">Public case study: internal identifiers, source links, and business data are omitted. Counts and rule evolution are preserved from the project evidence.</p>
+      </div>
+    </section>
+
+    <section id="state-machine">
+      <div class="wrap">
+        <div class="section-head"><div class="section-no">02 / State machine</div><div><h2>Every interpretation carries an explicit authority state.</h2><p>The state machine prevents a plausible reading from quietly becoming “the rule.” State changes are driven by evidence or authority, not by whether code happens to exist.</p></div></div>
+        <div class="machine" aria-label="Business rule authority lifecycle">
+          <article class="state"><div class="id">State 01</div><h3>Unresolved</h3><p>The source is incomplete or conflicting. Affected output is blocked or marked provisional.</p></article>
+          <article class="state"><div class="id">State 02</div><h3>AI inferred</h3><p>A reading is possible, but no independent evidence or owner has authorized it.</p></article>
+          <article class="state evidence"><div class="id">State 03</div><h3>Evidence derived</h3><p>Examples support the rule. The exact rows and counterfactuals remain attached.</p></article>
+          <article class="state"><div class="id">State 04</div><h3>User answered</h3><p>A workflow owner accepts the interpretation, with provenance and scope recorded.</p></article>
+          <article class="state author"><div class="id">State 05</div><h3>Author answered</h3><p>The rule enters the source document and leaves the exception ledger.</p></article>
+        </div>
+        <div class="transitions" aria-label="Allowed authority transitions">
+          <div class="transition"><b>Unresolved → AI inferred</b><br>A reading is selected.</div>
+          <div class="transition"><b>Unresolved → Evidence derived</b><br>Samples distinguish a rule.</div>
+          <div class="transition"><b>Any open state → User answered</b><br>A workflow owner rules.</div>
+          <div class="transition"><b>Any open state → Author answered</b><br>The decision enters the source.</div>
+        </div>
+        <div class="loop"><strong>On any source-block hash change:</strong> dependent judgments become stale, impacted cases rerun, and only affected rules return for review.</div>
+        <div class="comparison">
+          <article class="panel before"><h3>Before the state machine</h3><ul><li>“Implemented” conflated existence with correctness.</li><li>Assumptions could disappear inside code and test fixtures.</li><li>A document edit required manual, whole-pipeline re-review.</li><li>Green tests could preserve a shared misunderstanding.</li></ul></article>
+          <article class="panel after"><h3>After the state machine</h3><ul><li>Every non-source rule exposes its authority and provenance.</li><li>Assumptions remain visible even when tests pass.</li><li>Block-level hashes identify the exact downstream blast radius.</li><li>Reviews focus on changed semantics, not unchanged code.</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="correctness">
+      <div class="wrap">
+        <div class="section-head"><div class="section-no">03 / Correctness</div><div><h2>Correctness is a proof chain, not one model call.</h2><p>The document compiler keeps the source, semantic decision, implementation, and runtime evidence independently challengeable.</p></div></div>
+        <div class="chain">
+          <article class="chain-card"><h3>Freeze the source</h3><p>Mirror the original document with revision IDs, normalized block hashes, and asset hashes. A missing or changed source fails closed.</p></article>
+          <article class="chain-card"><h3>Compile semantics</h3><p>Turn prose into explicit fields, keys, formulas, branches, and unresolved decisions. No silent default becomes a business rule.</p></article>
+          <article class="chain-card"><h3>Break shared failure</h3><p>Use owner-reviewed hand cases and a separately built reference model. Code and expected outputs cannot share one unchallenged interpretation.</p></article>
+          <article class="chain-card"><h3>Bind evidence</h3><p>Map each rule to DAG nodes, code symbols, cases, invariants, mutations, replay diffs, and row-level lineage.</p></article>
+        </div>
+        <div class="checks">
+          <article class="check"><strong>Conservation</strong><span>Matched + unmet = demand; allocated + surplus = supply, checked per business partition.</span></article>
+          <article class="check"><strong>Counterfactuals</strong><span>Inject plausible wrong implementations and require at least one case or invariant to fail.</span></article>
+          <article class="check"><strong>Controlled change</strong><span>Same inputs reproduce the same output; one rule edit explains exactly which outputs move.</span></article>
+        </div>
+        <div class="boundary"><strong>Boundary:</strong> this workflow can prove faithful implementation of an authorized rule. It cannot manufacture authority when the business document itself leaves a consequential choice undefined.</div>
+      </div>
+    </section>
+
+    <section id="deep-dive">
+      <div class="wrap">
+        <div class="section-head"><div class="section-no">04 / Technical deep dive</div><div><h2>What an interviewer can challenge.</h2></div></div>
+        <details><summary>Why not generate code directly from the document?</summary><p>Direct generation collapses extraction, interpretation, implementation, and validation into one correlated failure path. The compiler makes those boundaries explicit and retains unresolved semantics instead of guessing through them.</p></details>
+        <details><summary>What exactly triggers invalidation?</summary><p>Normalized source-block content, document revision identity, and referenced asset bytes. When a source hash moves, the system marks dependent judgments stale through the existing block → rule → operation → case graph.</p></details>
+        <details><summary>How is the state machine different from workflow status?</summary><p>It records epistemic authority: who or what supports a rule. “Code exists” and “tests pass” do not advance authority. Only new evidence, an owner decision, or a document-author revision can do that.</p></details>
+        <details><summary>What is the review unit?</summary><p>A rule card: original text, executable interpretation, a small hand-checkable case, business impact if wrong, implementation anchors, evidence strength, freshness, and the exact decision being signed.</p></details>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="wrap"><div>Yu Mao · AI infrastructure &amp; reliable agent systems</div><span>Case evidence current to the preserved project record.</span></div></footer>
+</body>
+</html>

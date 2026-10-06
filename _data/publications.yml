@@ -128,6 +128,12 @@
 # ============================ Systems · Edge AI ============================
 
 - theme: "Systems · Edge AI"
+  title: "Agent Reliability: From Business Documents to Auditable Code"
+  authors: "**Yu Mao**"
+  venue: "AI Systems Case Study · 2026"
+  case_study: /ipd/
+
+- theme: "Systems · Edge AI"
   title: "LLM Agent Capabilities Should Follow Task Intent and Context Source"
   authors: "Yusheng Zheng, Wenhui Zhang, **Yu Mao**"
   venue: "AgenticOS 2026 · Best Paper Award"
