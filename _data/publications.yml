@@ -131,12 +131,14 @@
   title: "Agent Reliability: From Business Documents to Auditable Code"
   authors: "**Yu Mao**"
   venue: "AI Systems Case Study · 2026"
-  case_study: /ipd/
+  case_study: /agent-reliability/
 
 - theme: "Systems · Edge AI"
   title: "LLM Agent Capabilities Should Follow Task Intent and Context Source"
   authors: "Yusheng Zheng, Wenhui Zhang, **Yu Mao**"
   venue: "AgenticOS 2026 · Best Paper Award"
+  arxiv: "https://arxiv.org/abs/2609.14631"
+  pdf: "https://arxiv.org/pdf/2609.14631"
 
 - theme: "Systems · Edge AI"
   title: "Parallel-SA: Point Cloud Processing Acceleration via Parallel Set Abstraction"
