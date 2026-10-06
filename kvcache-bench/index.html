@@ -757,13 +757,13 @@ body {
     </div>
     <div class="measured-result">
       <div class="measured-result-head">
-        <h3>The codec can keep up; measured KV reads stayed essentially flat</h3>
-        <p>Zstd-1 scaled to the target generation rate, while the full Python path was limited by preprocessing and host transfer rather than the codec itself.</p>
+        <h3>The codec is fast enough, but compression did not make KV reads meaningfully faster</h3>
+        <p>On real KV cache reads, the compressed path took 95–101% of the uncompressed baseline time: about 5% faster at best and 1% slower at worst. Moving fewer bytes helped, but decode and reconstruction consumed almost all of that saving.</p>
       </div>
       <div class="measured-grid" aria-label="Qwen2.5-14B systems measurements">
         <div class="measured-stat"><strong>3.5 GB/s</strong><span>Zstd compression · 8 threads</span></div>
         <div class="measured-stat"><strong>≈4 GB/s</strong><span>Full reconstruction · 16 threads · Python</span></div>
-        <div class="measured-stat"><strong>0.95–1.01×</strong><span>Measured compressed / baseline KV read latency</span></div>
+        <div class="measured-stat"><strong>−5% to +1%</strong><span>Real KV read latency vs uncompressed baseline</span></div>
       </div>
       <p class="measured-scope">Qwen2.5-14B · BF16 · Zstd-1 ratio 1.672× at ≈5K tokens · full host pipeline plateaued near 1 GB/s</p>
     </div>
@@ -826,6 +826,7 @@ body {
         <article class="deep-item"><h3>Does it support random access?</h3><p><span class="not-evaluated">Not evaluated in this benchmark.</span> The page does not measure block size, partial decode, or token-level access.</p></article>
         <article class="deep-item"><h3>Does the decoder become the bottleneck?</h3><p>Zstd-only decompression reached 15.2 GB/s at 16 threads. Full reconstruction reached about 4 GB/s in Python; a faster C path was estimated but not measured.</p></article>
         <article class="deep-item"><h3>CPU, GPU, or overlap with copies?</h3><p>The host pipeline plateaued near 1 GB/s because preprocessing and Python-to-CPU transfer dominated. GPU preprocessing was 1.73× faster than CPU. Copy/codec overlap was not evaluated.</p></article>
+        <article class="deep-item"><h3>Did compression make KV reads faster?</h3><p>No meaningful change. The compressed path measured 0.95–1.01× the uncompressed baseline latency—roughly 5% faster to 1% slower. The earlier 71 ms → 50 ms estimate was theoretical; the real KV cache test superseded it.</p></article>
         <article class="deep-item"><h3>Compression vs quantization?</h3><p>Quantization changes the representation and may change model outputs. The codec stage reconstructs the chosen payload exactly. They answer different correctness questions.</p></article>
         <article class="deep-item"><h3>Why not layer-adaptive coding?</h3><p>The hypothesis is plausible, but this page has no per-layer result rows. Layer dependence is therefore not claimed from this dataset.</p></article>
         <article class="deep-item"><h3>What else is not measured?</h3><p><span class="not-evaluated">Not evaluated in this benchmark:</span> production memory savings, concurrency gain, end-to-end serving throughput, and copy/codec overlap.</p></article>
