@@ -483,6 +483,9 @@ body {
 
 .evidence-panel { padding: 24px; border: 1px solid var(--rule); background: var(--surface); }
 .evidence-note { color: var(--muted); font-size: 13px; margin-bottom: 22px; }
+.context-result { display: flex; justify-content: space-between; align-items: baseline; gap: 18px; margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--rule); }
+.context-result span { color: var(--muted); font-size: 12px; }
+.context-result strong { color: var(--accent); font-size: 22px; white-space: nowrap; }
 .bar-row { display: grid; grid-template-columns: 150px minmax(0, 1fr) 64px; align-items: center; gap: 14px; margin: 13px 0; font-size: 13px; }
 .bar-track { height: 14px; background: #e4e0d8; }
 .bar-fill { height: 100%; background: var(--blue); }
@@ -506,6 +509,16 @@ body {
 .break-even-formula var { font-family: inherit; font-style: italic; }
 .break-even-explanation { margin-top: 18px; max-width: 760px; font-size: 17px; }
 .break-even-defs { margin-top: 18px; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; line-height: 1.7; }
+.measured-result { margin-bottom: 34px; border-block: 1px solid var(--rule-dark); }
+.measured-result-head { padding: 22px 0; }
+.measured-result-head h3 { font-size: 24px; }
+.measured-result-head p { max-width: 820px; margin-top: 8px; color: var(--muted); }
+.measured-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--rule); }
+.measured-stat { padding: 22px; border-right: 1px solid var(--rule); background: var(--surface); }
+.measured-stat:last-child { border-right: 0; }
+.measured-stat strong { display: block; font-size: 30px; letter-spacing: -.04em; }
+.measured-stat span { display: block; margin-top: 6px; color: var(--muted); font-size: 12px; }
+.measured-scope { padding: 14px 0; color: var(--faint); font-size: 11px; }
 .system-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 .system-card { padding: 26px 0; border-top: 2px solid var(--ink); }
 .system-card h3 { font-size: 18px; }
@@ -575,6 +588,10 @@ body {
   .core-result, .core-logic, .break-even { padding: 22px 18px; }
   .break-even-formula { font-size: clamp(19px, 6vw, 28px); }
   .triad, .system-grid, .deep-grid, .environment { grid-template-columns: 1fr; }
+  .context-result { align-items: flex-start; flex-direction: column; gap: 6px; }
+  .measured-grid { grid-template-columns: 1fr; }
+  .measured-stat { border-right: 0; border-bottom: 1px solid var(--rule); }
+  .measured-stat:last-child { border-bottom: 0; }
   .triad-item, .environment > div { min-height: 0; border-right: 0; border-bottom: 1px solid var(--rule); }
   .triad-item:last-child, .environment > div:last-child { border-bottom: 0; }
   .model-lines { width: 100%; min-width: 0; grid-template-columns: 1.35fr repeat(3, .9fr); overflow: visible; }
@@ -647,7 +664,7 @@ body {
       <span><strong>5 inputs</strong> · 50 BF16 workload points</span>
       <span><strong>Batch / hardware</strong> · not recorded</span>
     </div>
-    <p class="benchmark-boundary"><strong>Ratio-only microbenchmark:</strong> codec throughput, latency, and end-to-end serving impact were not measured.</p>
+    <p class="benchmark-boundary"><strong>Evidence scope:</strong> the 7B/8B matrix above measures ratio; a separate Qwen2.5-14B BF16 run adds codec throughput and KV read-path measurements below.</p>
   </header>
 
   <section class="story-section" id="core-finding" aria-labelledby="core-title">
@@ -699,6 +716,7 @@ body {
           <div class="bar-row"><span>Qwen2.5 · 8K</span><div class="bar-track"><div class="bar-fill accent" style="width:93%"></div></div><span class="bar-value">1.86×</span></div>
           <div class="bar-row"><span>Qwen3 · 512</span><div class="bar-track"><div class="bar-fill" style="width:76%"></div></div><span class="bar-value">1.52×</span></div>
           <div class="bar-row"><span>Qwen3 · 8K</span><div class="bar-track"><div class="bar-fill accent" style="width:89%"></div></div><span class="bar-value">1.78×</span></div>
+          <div class="context-result"><span>Qwen2.5-14B · BF16 · final Zstd-1 pipeline</span><strong>2K 1.55× → 32K 1.68×</strong></div>
         </div>
       </article>
 
@@ -737,12 +755,24 @@ body {
       <p class="break-even-explanation">The codec is worth paying for when encode/decode time on the relevant path is smaller than the transfer time eliminated by compression.</p>
       <p class="break-even-defs">S = uncompressed bytes · B = effective transfer bandwidth · R = compression ratio · T<sub>codec</sub> = codec time paid on that path</p>
     </div>
+    <div class="measured-result">
+      <div class="measured-result-head">
+        <h3>The codec can keep up; measured KV reads stayed essentially flat</h3>
+        <p>Zstd-1 scaled to the target generation rate, while the full Python path was limited by preprocessing and host transfer rather than the codec itself.</p>
+      </div>
+      <div class="measured-grid" aria-label="Qwen2.5-14B systems measurements">
+        <div class="measured-stat"><strong>3.5 GB/s</strong><span>Zstd compression · 8 threads</span></div>
+        <div class="measured-stat"><strong>≈4 GB/s</strong><span>Full reconstruction · 16 threads · Python</span></div>
+        <div class="measured-stat"><strong>0.95–1.01×</strong><span>Measured compressed / baseline KV read latency</span></div>
+      </div>
+      <p class="measured-scope">Qwen2.5-14B · BF16 · Zstd-1 ratio 1.672× at ≈5K tokens · full host pipeline plateaued near 1 GB/s</p>
+    </div>
     <div class="system-grid">
       <article class="system-card"><h3>Memory footprint</h3><p>Fewer payload bytes can change the feasible context / concurrency envelope when KV capacity is the binding resource.</p></article>
       <article class="system-card"><h3>Offload traffic</h3><p>Host, remote, and storage tiers move encoded state instead of the full selected representation.</p></article>
       <article class="system-card"><h3>State migration</h3><p>Disaggregated prefill/decode and long-running agents make state movement a first-class systems path.</p></article>
     </div>
-    <p class="implication-boundary">This is a break-even model, not a measured latency result. The benchmark reports ratio only; codec throughput, overlap, and end-to-end serving gains were not measured.</p>
+    <p class="implication-boundary">Measured conclusion: compression throughput can scale to the generation rate, but the real KV read test showed essentially unchanged latency. End-to-end serving capacity and concurrency gains were not measured.</p>
   </section>
 
   <section class="story-section" id="benchmark" aria-labelledby="benchmark-heading">
@@ -794,11 +824,11 @@ body {
         <article class="deep-item"><h3>Why not just LZ / zstd / gzip?</h3><p>They are all included as raw baselines. On BF16, the best raw codec reaches a 1.42× median; exposing layout and byte structure first raises the median best result to 1.71×.</p></article>
         <article class="deep-item"><h3>What metadata is required?</h3><p>Tensor framing is outside the reported payload ratio. Quantized INT representations also require scale and packing metadata; those bytes are not included in this page dataset.</p></article>
         <article class="deep-item"><h3>Does it support random access?</h3><p><span class="not-evaluated">Not evaluated in this benchmark.</span> The page does not measure block size, partial decode, or token-level access.</p></article>
-        <article class="deep-item"><h3>Does the decoder become the bottleneck?</h3><p><span class="not-evaluated">Not evaluated in this benchmark.</span> Encode/decode throughput and latency are not part of the embedded matrix.</p></article>
-        <article class="deep-item"><h3>CPU, GPU, or overlap with copies?</h3><p><span class="not-evaluated">Not evaluated in this benchmark.</span> Implementation target, PCIe/NVLink comparison, and copy/codec overlap need a separate systems experiment.</p></article>
+        <article class="deep-item"><h3>Does the decoder become the bottleneck?</h3><p>Zstd-only decompression reached 15.2 GB/s at 16 threads. Full reconstruction reached about 4 GB/s in Python; a faster C path was estimated but not measured.</p></article>
+        <article class="deep-item"><h3>CPU, GPU, or overlap with copies?</h3><p>The host pipeline plateaued near 1 GB/s because preprocessing and Python-to-CPU transfer dominated. GPU preprocessing was 1.73× faster than CPU. Copy/codec overlap was not evaluated.</p></article>
         <article class="deep-item"><h3>Compression vs quantization?</h3><p>Quantization changes the representation and may change model outputs. The codec stage reconstructs the chosen payload exactly. They answer different correctness questions.</p></article>
         <article class="deep-item"><h3>Why not layer-adaptive coding?</h3><p>The hypothesis is plausible, but this page has no per-layer result rows. Layer dependence is therefore not claimed from this dataset.</p></article>
-        <article class="deep-item"><h3>What else is not measured?</h3><p><span class="not-evaluated">Not evaluated in this benchmark:</span> static weights vs runtime KV, entropy histograms, production memory savings, serving latency, concurrency gain, and end-to-end throughput.</p></article>
+        <article class="deep-item"><h3>What else is not measured?</h3><p><span class="not-evaluated">Not evaluated in this benchmark:</span> production memory savings, concurrency gain, end-to-end serving throughput, and copy/codec overlap.</p></article>
       </div>
     </details>
   </section>
