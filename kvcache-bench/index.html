@@ -432,7 +432,7 @@ body {
   max-width: 900px; margin-top: 30px; padding: 13px 16px; border-left: 3px solid var(--accent);
   background: var(--accent-soft); color: #4d2b20; font-size: 13px;
 }
-.metric-strip { display: grid; grid-template-columns: repeat(4, 1fr); border-block: 1px solid var(--rule-dark); margin-top: 54px; }
+.metric-strip { display: grid; grid-template-columns: repeat(3, 1fr); border-block: 1px solid var(--rule-dark); margin-top: 54px; }
 .metric { min-width: 0; min-height: 142px; padding: 24px 20px 20px 0; border-right: 1px solid var(--rule); }
 .metric + .metric { padding-left: 20px; }
 .metric:last-child { border-right: 0; }
@@ -452,17 +452,19 @@ body {
 .section-title { max-width: 790px; font-size: clamp(30px, 4vw, 48px); line-height: 1.08; letter-spacing: -.035em; }
 .section-copy { max-width: 720px; margin-top: 16px; color: var(--muted); font-size: 17px; }
 
-.causal-chain { display: grid; grid-template-columns: repeat(5, 1fr); border: 1px solid var(--rule-dark); background: var(--surface); }
-.cause { position: relative; min-height: 144px; padding: 22px 28px 20px 18px; border-right: 1px solid var(--rule); }
-.cause:last-child { border-right: 0; }
-.cause:not(:last-child)::after { content: "→"; position: absolute; right: 8px; top: 22px; color: var(--accent); font-weight: 700; }
-.cause b { display: block; font-size: 15px; }
-.cause span { display: block; margin-top: 8px; color: var(--muted); font-size: 13px; }
-.state-equation { margin-top: 24px; display: grid; grid-template-columns: 1.35fr repeat(4, 1fr); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-.state-cell { padding: 18px; border-right: 1px solid var(--rule); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; }
-.state-cell:last-child { border: 0; }
-.state-cell.lead { font-weight: 700; padding-left: 0; }
-.state-cell.active { color: var(--accent); background: var(--accent-soft); font-weight: 700; }
+.core-proof { display: grid; grid-template-columns: minmax(230px, .7fr) minmax(0, 1.3fr); border-block: 1px solid var(--rule-dark); background: var(--surface); }
+.core-result { display: flex; flex-direction: column; justify-content: center; padding: 34px 30px; border-right: 1px solid var(--rule); }
+.core-number { font-size: clamp(36px, 4.2vw, 58px); line-height: .95; letter-spacing: -.06em; font-weight: 760; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.core-result-label { margin-top: 14px; color: var(--muted); font-size: 13px; }
+.core-result-label strong { color: var(--ink); }
+.core-logic { padding: 32px; }
+.policy-equation { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: baseline; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: clamp(17px, 2.4vw, 27px); font-weight: 680; letter-spacing: -.025em; }
+.policy-equation .operator { color: var(--accent); }
+.finding-quote { margin-top: 24px; padding-left: 18px; border-left: 3px solid var(--accent); color: var(--muted); font-size: 17px; line-height: 1.5; }
+.core-summary { margin-top: 18px; font-size: 14px; color: var(--muted); }
+.evidence-kicker { margin: 46px 0 4px; color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.kv-note { padding: 16px 0 0; border-top: 1px solid var(--rule); color: var(--muted); font-size: 13px; }
+.kv-note strong { color: var(--ink); }
 
 .insight-stack { display: grid; gap: 26px; }
 .insight { display: grid; grid-template-columns: minmax(260px, .8fr) minmax(0, 1.35fr); border-top: 1px solid var(--rule-dark); padding-top: 26px; gap: 42px; }
@@ -497,7 +499,12 @@ body {
 .scope-tag { display: inline-block; padding: 2px 7px; border: 1px solid var(--rule-dark); font-size: 10px; font-weight: 700; text-transform: uppercase; }
 .scope-tag.lossless { color: var(--green); background: var(--green-soft); border-color: #96b9aa; }
 
-.system-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.break-even { margin-bottom: 34px; padding: 30px; border: 1px solid var(--rule-dark); background: var(--surface); }
+.break-even-formula { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: clamp(22px, 4vw, 40px); font-weight: 720; letter-spacing: -.045em; white-space: nowrap; }
+.break-even-formula var { font-family: inherit; font-style: italic; }
+.break-even-explanation { margin-top: 18px; max-width: 760px; font-size: 17px; }
+.break-even-defs { margin-top: 18px; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; line-height: 1.7; }
+.system-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 .system-card { padding: 26px 0; border-top: 2px solid var(--ink); }
 .system-card h3 { font-size: 18px; }
 .system-card p { color: var(--muted); margin-top: 10px; font-size: 14px; }
@@ -539,13 +546,9 @@ body {
   .metric-strip { grid-template-columns: repeat(2, 1fr); }
   .metric:nth-child(2) { border-right: 0; }
   .metric:nth-child(-n+2) { border-bottom: 1px solid var(--rule); }
-  .causal-chain { grid-template-columns: 1fr; }
-  .cause { min-height: 0; border-right: 0; border-bottom: 1px solid var(--rule); }
-  .cause:not(:last-child)::after { content: "↓"; top: auto; bottom: -12px; right: 20px; z-index: 1; background: var(--surface); padding: 0 4px; }
-  .cause:last-child { border-bottom: 0; }
-  .state-equation { grid-template-columns: 1fr 1fr; }
-  .state-cell { border-bottom: 1px solid var(--rule); }
-  .state-cell.lead { grid-column: 1 / -1; }
+  .metric:nth-child(3) { grid-column: 1 / -1; border-right: 0; }
+  .core-proof { grid-template-columns: 1fr; }
+  .core-result { border-right: 0; border-bottom: 1px solid var(--rule); }
   .insight { grid-template-columns: 1fr; gap: 20px; }
 }
 
@@ -566,6 +569,8 @@ body {
   .metric-label { margin-top: 10px; }
   .story-section { padding: 52px 0; }
   .section-head, .learned { grid-template-columns: 1fr; gap: 10px; }
+  .core-result, .core-logic, .break-even { padding: 22px 18px; }
+  .break-even-formula { font-size: clamp(19px, 6vw, 28px); }
   .triad, .system-grid, .deep-grid, .environment { grid-template-columns: 1fr; }
   .triad-item, .environment > div { min-height: 0; border-right: 0; border-bottom: 1px solid var(--rule); }
   .triad-item:last-child, .environment > div:last-child { border-bottom: 0; }
@@ -577,10 +582,6 @@ body {
   .chart-scroll-hint { display: block; }
   .legend { gap: 10px; flex-wrap: wrap; }
   .legend-row { align-items: flex-start; }
-}
-
-@media (max-width: 340px) {
-  .metric:nth-child(4) .metric-value { font-size: 23px; letter-spacing: -.055em; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -619,11 +620,6 @@ body {
         <div class="metric-label">Median payload reduction</div>
         <div class="metric-note">Derived from the 1.71× ratio</div>
       </div>
-      <div class="metric">
-        <div class="metric-value">1.29→1.51×</div>
-        <div class="metric-label">Matched-codec lift</div>
-        <div class="metric-note">Raw → ByteSplit · same Zstd-1</div>
-      </div>
     </div>
     <div class="benchmark-scope" aria-label="Benchmark scope">
       <span><strong>2 models</strong> · Qwen2.5-7B / Qwen3-8B</span>
@@ -634,55 +630,34 @@ body {
     <p class="benchmark-boundary"><strong>Ratio-only microbenchmark:</strong> codec throughput, latency, and end-to-end serving impact were not measured.</p>
   </header>
 
-  <section class="story-section" id="problem" aria-labelledby="problem-title">
+  <section class="story-section" id="core-finding" aria-labelledby="core-title">
     <div class="section-head">
-      <p class="section-index">01 / Problem</p>
+      <p class="section-index">01 / Core Finding</p>
       <div>
-        <h2 class="section-title" id="problem-title">State movement becomes a serving constraint before it becomes an algorithm problem.</h2>
-        <p class="section-copy">KV grows with sequence length and active requests. The system pays for those bytes wherever state lives—and each movement competes with useful inference work.</p>
-      </div>
-    </div>
-    <div class="causal-chain" aria-label="KV cache serving cost chain">
-      <div class="cause"><b>Longer context + larger batch</b><span>More persistent KV state</span></div>
-      <div class="cause"><b>GPU memory pressure</b><span>Less room for concurrent requests</span></div>
-      <div class="cause"><b>Offload and migration</b><span>More bytes cross memory tiers</span></div>
-      <div class="cause"><b>State bandwidth</b><span>Traffic enters the latency path</span></div>
-      <div class="cause"><b>Serving capacity</b><span>Context and concurrency trade off</span></div>
-    </div>
-    <div class="state-equation" aria-label="State management design dimensions">
-      <div class="state-cell lead">state management =</div>
-      <div class="state-cell">placement</div>
-      <div class="state-cell">movement</div>
-      <div class="state-cell">recompute</div>
-      <div class="state-cell active">representation</div>
-    </div>
-  </section>
-
-  <section class="story-section" id="insights" aria-labelledby="insights-title">
-    <div class="section-head">
-      <p class="section-index">02 / Insight</p>
-      <div>
-        <h2 class="section-title" id="insights-title">What the benchmark taught us</h2>
-        <p class="section-copy">The method starts with the data: identify redundancy, choose a layout that exposes it, then select a codec. The codec is the last decision—not the first.</p>
+        <h2 class="section-title" id="core-title">KV cache is structured state, not opaque bytes</h2>
+        <p class="section-copy">The strongest evidence is a matched-codec ablation: the same BF16 KV payload and the same Zstd-1 codec compress differently after layout-aware preprocessing.</p>
       </div>
     </div>
 
+    <div class="core-proof">
+      <div class="core-result">
+        <div class="core-number">1.29× → 1.51×</div>
+        <p class="core-result-label"><strong>Raw Zstd-1 → ByteSplit + Zstd-1</strong><br>Median across 50 BF16 KV workload points</p>
+      </div>
+      <div class="core-logic">
+        <div class="policy-equation" aria-label="Compression policy equals representation plus layout plus codec">
+          <span>Compression policy</span><span class="operator">=</span><span>representation</span><span class="operator">+</span><span>layout</span><span class="operator">+</span><span>codec</span>
+        </div>
+        <blockquote class="finding-quote">Rearranging the same payload changes how much redundancy a generic codec can exploit.</blockquote>
+        <p class="core-summary">Across the full method search, the median best structure-aware BF16 ratio is <strong>1.71×</strong>; the median pointwise lift over each workload's best raw codec is <strong>19.4%</strong>.</p>
+      </div>
+    </div>
+
+    <p class="evidence-kicker">Evidence</p>
     <div class="insight-stack">
-      <article class="insight">
-        <div>
-          <h3>Layout exposes structure before the codec sees it</h3>
-          <p class="insight-summary">The gain is not explained by switching to a stronger generic compressor. Rearranging the same BF16 payload changes what the codec can exploit.</p>
-        </div>
-        <div class="triad" aria-label="Observation coding decision result">
-          <div class="triad-item"><span class="triad-label">Observation</span><p>Adjacent bytes mix fields with different statistical behavior; row-major storage hides channel-level regularity.</p></div>
-          <div class="triad-item"><span class="triad-label">Coding decision</span><p>Use channel-first reordering and byte split before lossless coding, rather than treating KV as one flat byte stream.</p></div>
-          <div class="triad-item result"><span class="triad-label">Matched result</span><span class="result-number">1.29× → 1.51×</span><p>Median BF16 KV ratio with the same Zstd-1 codec: raw bytes versus ByteSplit. Across workload points, the median lift from each point's best raw codec to its best structure-aware pipeline is +19.4% (aggregate medians: 1.42× → 1.71×).</p></div>
-        </div>
-      </article>
-
       <article class="insight" id="evidence">
         <div>
-          <h3>The same coding policy behaves differently across models</h3>
+          <h3>Model matters</h3>
           <p class="insight-summary">At the same dtype, contexts, inputs, and method family, Qwen2.5-7B and Qwen3-8B produce different ratios. Compression policy should be model-aware, not globally fixed.</p>
         </div>
         <div class="model-lines" aria-label="Median BF16 KVPress-LZMA ratio by model and context">
@@ -694,7 +669,7 @@ body {
 
       <article class="insight">
         <div>
-          <h3>Longer context exposes more reusable structure</h3>
+          <h3>Context matters</h3>
           <p class="insight-summary">For the same BF16 pipeline, median ratio increases with context in both measured models. The trend is evidence from this matrix, not an end-to-end latency claim.</p>
         </div>
         <div class="evidence-panel">
@@ -708,19 +683,7 @@ body {
 
       <article class="insight">
         <div>
-          <h3>K and V are similar in BF16—but not identical</h3>
-          <p class="insight-summary">The measured median gap is modest, so this dataset does not justify two separate production policies. It does show why K and V should remain observable rather than being assumed identical.</p>
-        </div>
-        <div class="evidence-panel">
-          <p class="evidence-note">Median best structure-aware ratio across all 50 BF16 workload points</p>
-          <div class="bar-row"><span>Key</span><div class="bar-track"><div class="bar-fill" style="width:84%"></div></div><span class="bar-value">1.68×</span></div>
-          <div class="bar-row"><span>Value</span><div class="bar-track"><div class="bar-fill accent" style="width:87%"></div></div><span class="bar-value">1.74×</span></div>
-        </div>
-      </article>
-
-      <article class="insight">
-        <div>
-          <h3>Representation and compression are coupled decisions</h3>
+          <h3>Representation matters</h3>
           <p class="insight-summary">Ratios vary sharply by dtype, but their denominators are format-specific. The right conclusion is that representation changes entropy structure—not that the largest ratio is automatically the best serving choice.</p>
         </div>
         <div class="table-scroll">
@@ -736,32 +699,37 @@ body {
           </table>
         </div>
       </article>
+      <p class="kv-note"><strong>K/V note.</strong> The measured BF16 medians are close (K 1.68×, V 1.74×). This dataset does not justify separate production policies, but K and V should remain observable.</p>
     </div>
   </section>
 
   <section class="story-section" id="implications" aria-labelledby="implications-title">
     <div class="section-head">
-      <p class="section-index">03 / Systems</p>
+      <p class="section-index">02 / Systems Implication</p>
       <div>
-        <h2 class="section-title" id="implications-title">What this changes in an inference system</h2>
-        <p class="section-copy">Compression adds a representation choice to the usual placement, eviction, movement, and recompute decisions.</p>
+        <h2 class="section-title" id="implications-title">When is compression actually useful?</h2>
+        <p class="section-copy">Compression is useful only when codec work costs less than the transfer time saved by moving fewer bytes.</p>
       </div>
+    </div>
+    <div class="break-even" aria-label="Break-even condition for KV cache compression">
+      <div class="break-even-formula"><var>T</var><sub>codec</sub> &lt; <span><var>S</var> / <var>B</var></span> <span>(1 − 1 / <var>R</var>)</span></div>
+      <p class="break-even-explanation">The codec is worth paying for when encode/decode time on the relevant path is smaller than the transfer time eliminated by compression.</p>
+      <p class="break-even-defs">S = uncompressed bytes · B = effective transfer bandwidth · R = compression ratio · T<sub>codec</sub> = codec time paid on that path</p>
     </div>
     <div class="system-grid">
       <article class="system-card"><h3>Memory footprint</h3><p>Fewer payload bytes can change the feasible context / concurrency envelope when KV capacity is the binding resource.</p></article>
       <article class="system-card"><h3>Offload traffic</h3><p>Host, remote, and storage tiers move encoded state instead of the full selected representation.</p></article>
       <article class="system-card"><h3>State migration</h3><p>Disaggregated prefill/decode and long-running agents make state movement a first-class systems path.</p></article>
-      <article class="system-card"><h3>Policy design</h3><p>A model-aware policy can choose representation, layout, and codec from observed KV statistics instead of one global preset.</p></article>
     </div>
-    <p class="implication-boundary">These are system implications, not measured end-to-end gains in this benchmark.</p>
+    <p class="implication-boundary">This is a break-even model, not a measured latency result. The benchmark reports ratio only; codec throughput, overlap, and end-to-end serving gains were not measured.</p>
   </section>
 
-  <section class="story-section" id="explorer" aria-labelledby="explorer-heading">
+  <section class="story-section" id="benchmark" aria-labelledby="benchmark-heading">
     <div class="section-head">
-      <p class="section-index">04 / Evidence</p>
+      <p class="section-index">03 / Benchmark + Boundaries</p>
       <div>
-        <h2 class="section-title" id="explorer-heading">Inspect the full measurement matrix</h2>
-        <p class="section-copy">The main story stays on BF16. The original 2-model, 5-context, 5-input, 8-format, 15-method matrix remains available here.</p>
+        <h2 class="section-title" id="benchmark-heading">Inspect the measurement matrix and its limits</h2>
+        <p class="section-copy">The main story stays on BF16. The full matrix and the technical boundaries behind the claims remain available here.</p>
       </div>
     </div>
     <details class="disclosure">
@@ -795,15 +763,8 @@ body {
         </div>
       </div>
     </details>
-  </section>
-
-  <section class="story-section" id="deep-dive" aria-labelledby="deep-title">
-    <div class="section-head">
-      <p class="section-index">05 / Details</p>
-      <div><h2 class="section-title" id="deep-title">Technical Deep Dive</h2><p class="section-copy">The questions I would expect in an inference-systems interview.</p></div>
-    </div>
     <details class="disclosure">
-      <summary>Correctness, coding, and deployment boundaries</summary>
+      <summary>Technical Deep Dive · correctness, coding, and deployment boundaries</summary>
       <div class="disclosure-body deep-grid">
         <article class="deep-item"><h3>What does lossless mean here?</h3><p>After encoding, decompression must reconstruct the selected payload bytes exactly. BF16 and FP32 preserve their selected representation. FP16, FP8, and INT results include a prior conversion and are only lossless over that transformed payload.</p></article>
         <article class="deep-item"><h3>What is the coding unit?</h3><p>The source benchmark processes per-layer K and V payloads and aggregates them into the model / context / input points exposed here. Per-layer rows are not retained in this page dataset.</p></article>
@@ -1296,7 +1257,7 @@ function updateInsights() {
 
 update();
 
-document.querySelector('#explorer details').addEventListener('toggle', event => {
+document.querySelector('#benchmark details').addEventListener('toggle', event => {
   if (event.target.open) update();
 });
 
