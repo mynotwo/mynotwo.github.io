@@ -1,5 +1,5 @@
 # Schema:
-#   title / authors / venue / first_author / corresponding / arxiv / pdf / code / scholar_id / image
+#   title / authors / venue / first_author / corresponding / arxiv / pdf / code / benchmark / scholar_id / image
 #   theme: 主题分组 — 一个 paper 一个 theme,与 _pages/about.md 里的 themes 列表对应
 #   组内顺序 = 显示顺序,通常按年逆序
 
@@ -66,6 +66,7 @@
   arxiv: "https://arxiv.org/abs/2403.01384"
   scholar_id: "Iw3bTCAAAAAJ:Tyk-4Ss8FVUC"
   pdf: /assets/pdfs/quantized-llm.pdf
+  benchmark: /kvcache-bench/
   image: /images/papers/quantized-llm.png
 
 - theme: "Compression · LLM Efficiency"
