@@ -7,7 +7,7 @@
 
 # Site Settings
 title                    : "Yu Mao"
-description              : "Do small things with great love!"
+description              : "AI infrastructure, inference systems, and model reliability."
 repository               : "mynotwo/mynotwo.github.io"
 google_scholar_stats_use_cdn : true
 
@@ -28,7 +28,7 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 author:
   name             : "Yu Mao"
   avatar           : "./images/selfie-tetons-center.jpg"
-  bio              : "ByteDance"
+  bio              : "Research Scientist at ByteDance"
   location         : "San Jose, California, USA"
   employer         :
   pubmed           : 

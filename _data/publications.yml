@@ -3,9 +3,9 @@
 #   theme: 主题分组 — 一个 paper 一个 theme,与 _pages/about.md 里的 themes 列表对应
 #   组内顺序 = 显示顺序,通常按年逆序
 
-# ============================ LLM Capability · Reinforcement Learning ============================
+# ============================ LLM Capability & Agents ============================
 
-- theme: "LLM Capability · Reinforcement Learning"
+- theme: "LLM Capability & Agents"
   title: "Probe with Participation Trophies: Random-Reward RL as a Probe of LLM Capability"
   authors: "**Yu Mao**, L. Yu, Z. Zhu, Y. Zheng, H. Li, F. Shi, Y. Yin, Z. Wang, J. Niu"
   venue: "Preprint 2026"
@@ -15,9 +15,9 @@
   code: "https://github.com/mynotwo/rl-random-prob"
   image: /images/papers/random-reward-rl.png
 
-# ============================ Compression · LLM Efficiency ============================
+# ============================ Compression & Representation ============================
 
-- theme: "Compression · LLM Efficiency"
+- theme: "Compression & Representation"
   title: "ECM: Enhancing Compressibility of Quantized Vision Encoder and LLM for Large Vision-Language Models"
   authors: "W. Wang, **Yu Mao**, D. Tang, N. Guan, C.J. Xue"
   venue: "ICASSP 2026"
@@ -25,7 +25,7 @@
   pdf: /assets/pdfs/ecm.pdf
   image: /images/papers/ecm.png
 
-- theme: "Compression · LLM Efficiency"
+- theme: "Compression & Representation"
   title: "WISE: A Framework for Gigapixel Whole-Slide-Image Lossless Compression"
   authors: "**Yu Mao**, J. Wang, N. Guan, C.J. Xue"
   venue: "CVPR 2025"
@@ -33,7 +33,7 @@
   pdf: /assets/pdfs/wise.pdf
   image: /images/papers/wise.png
 
-- theme: "Compression · LLM Efficiency"
+- theme: "Compression & Representation"
   title: "Easz: A Transformer-based Image Compression Framework for IoT"
   authors: "**Yu Mao**, J. Li, J. Wang, H. Xu, T.W. Kuo, N. Guan, C.J. Xue"
   venue: "DAC 2025"
@@ -41,7 +41,7 @@
   pdf: /assets/pdfs/easz.pdf
   image: /images/papers/easz.png
 
-- theme: "Compression · LLM Efficiency"
+- theme: "Compression & Representation"
   title: "Lossless Compression of Large Language Model-Generated Text via Next-Token Prediction"
   authors: "**Yu Mao**, H. Pirk, C.J. Xue"
   venue: "Preprint 2025"
@@ -50,7 +50,7 @@
   pdf: /assets/pdfs/llm-text-compression.pdf
   image: /images/papers/llm-text-compression.png
 
-- theme: "Compression · LLM Efficiency"
+- theme: "Compression & Representation"
   title: "When Compression Meets Model Compression"
   authors: "W. Wang, **Yu Mao**, D. Tang, H. Du, N. Guan, C.J. Xue"
   venue: "EMNLP Findings 2024"
@@ -58,7 +58,7 @@
   pdf: /assets/pdfs/compression-meets.pdf
   image: /images/papers/compression-meets.png
 
-- theme: "Compression · LLM Efficiency"
+- theme: "Compression & Representation"
   title: "On the Compressibility of Quantized Large Language Models"
   authors: "**Yu Mao**, W. Wang, H. Du, N. Guan, C.J. Xue"
   venue: "Preprint 2024"
@@ -69,7 +69,7 @@
   benchmark: /kvcache-bench/
   image: /images/papers/quantized-llm.png
 
-- theme: "Compression · LLM Efficiency"
+- theme: "Compression & Representation"
   title: "Faster and Stronger Lossless Compression with Optimized Autoregressive Framework"
   authors: "**Yu Mao**, J. Li, Y. Cui, C.J. Xue"
   venue: "DAC 2023"
@@ -78,7 +78,7 @@
   pdf: /assets/pdfs/faster-stronger.pdf
   image: /images/papers/faster-stronger.png
 
-- theme: "Compression · LLM Efficiency"
+- theme: "Compression & Representation"
   title: "Accelerating General-purpose Lossless Compression via Simple and Scalable Parameterization"
   authors: "**Yu Mao**, Y. Cui, T.-W. Kuo, C.J. Xue"
   venue: "ACM MM 2022"
@@ -87,7 +87,7 @@
   pdf: /assets/pdfs/accelerating-lossless.pdf
   image: /images/papers/accelerating-lossless.png
 
-- theme: "Compression · LLM Efficiency"
+- theme: "Compression & Representation"
   title: "Trace: A Fast Transformer-based General-purpose Lossless Compressor"
   authors: "**Yu Mao**, Y. Cui, T.-W. Kuo, C.J. Xue"
   venue: "The Web Conference (WWW) 2022"
@@ -96,9 +96,9 @@
   pdf: /assets/pdfs/trace.pdf
   image: /images/papers/trace.png
 
-# ============================ Whole-Slide-Image · Medical Imaging ============================
+# ============================ Applied ML ============================
 
-- theme: "Whole-Slide-Image · Medical Imaging"
+- theme: "Applied ML"
   title: "BAHOP: Similarity-based Basin Hopping for A fast hyper-parameter search in WSI classification"
   authors: "J. Wang, **Yu Mao**, Y. Cui, N. Guan, C.J. Xue"
   venue: "ICASSP 2026"
@@ -107,7 +107,7 @@
   pdf: /assets/pdfs/pre-processing.pdf
   image: /images/papers/pre-processing.png
 
-- theme: "Whole-Slide-Image · Medical Imaging"
+- theme: "Applied ML"
   title: "SHAP-CAT: An Interpretable Multi-Modal Framework Enhancing WSI Classification via Virtual Staining and Shapley-Value-Based Multimodal Fusion"
   authors: "J. Wang, **Yu Mao**, N. Guan, C.J. Xue"
   venue: "Preprint 2024"
@@ -116,7 +116,7 @@
   pdf: /assets/pdfs/shap-cat.pdf
   image: /images/papers/shap-cat.png
 
-- theme: "Whole-Slide-Image · Medical Imaging"
+- theme: "Applied ML"
   title: "Advances in Multiple Instance Learning for Whole Slide Image Analysis: Techniques, Challenges, and Future Directions"
   authors: "J. Wang, **Yu Mao**, N. Guan, C.J. Xue"
   venue: "Preprint 2024"
@@ -125,35 +125,35 @@
   pdf: /assets/pdfs/mil-wsi-survey.pdf
   image: /images/papers/mil-wsi-survey.png
 
-# ============================ Systems · Edge AI ============================
+# ============================ LLM Capability & Agents / AI Systems & Inference ============================
 
-- theme: "Systems · Edge AI"
+- theme: "LLM Capability & Agents"
   title: "Agent Reliability: From Business Documents to Auditable Code"
   authors: "**Yu Mao**"
   venue: "AI Systems Case Study · 2026"
   case_study: /agent-reliability/
 
-- theme: "Systems · Edge AI"
+- theme: "LLM Capability & Agents"
   title: "LLM Agent Capabilities Should Follow Task Intent and Context Source"
   authors: "Yusheng Zheng, Wenhui Zhang, **Yu Mao**"
   venue: "AgenticOS 2026 · Best Paper Award"
   arxiv: "https://arxiv.org/abs/2609.14631"
   pdf: "https://arxiv.org/pdf/2609.14631"
 
-- theme: "Systems · Edge AI"
+- theme: "AI Systems & Inference"
   title: "Parallel-SA: Point Cloud Processing Acceleration via Parallel Set Abstraction"
   authors: "D. Tang, W. Wang, **Yu Mao**, W. Xie, N. Guan, T.-W. Kuo, C.J. Xue"
   venue: "DATE 2026"
   corresponding: true
 
-- theme: "Systems · Edge AI"
+- theme: "AI Systems & Inference"
   title: "PMR: Fast Application Response via Parallel Memory Reclaim on Mobile Devices"
   authors: "W. Li, L.-P. Chang, **Yu Mao**, L. Shi"
   venue: "USENIX ATC 2025"
   pdf: /assets/pdfs/pmr.pdf
   image: /images/papers/pmr.png
 
-- theme: "Systems · Edge AI"
+- theme: "AI Systems & Inference"
   title: "DAWN: Accelerating Point Cloud Object Detection"
   authors: "D. Tang, **Yu Mao**, W. Wang, N. Guan, T.W. Kuo, C.J. Xue"
   venue: "DAC 2025"
@@ -161,7 +161,7 @@
   pdf: /assets/pdfs/dawn.pdf
   image: /images/papers/dawn.png
 
-- theme: "Systems · Edge AI"
+- theme: "AI Systems & Inference"
   title: "STEM: Streaming-based FPGA Acceleration for Large-Scale Compactions in LSM KV"
   authors: "D. Tang, W. Wang, **Yu Mao**, J. Yu, T.-W. Kuo, C.J. Xue"
   venue: "ICDE 2024"
@@ -170,9 +170,9 @@
   image: /images/papers/stem.png
 
 
-# ============================ ML · Theory ============================
+# ============================ Applied ML ============================
 
-- theme: "Compression · LLM Efficiency"
+- theme: "Applied ML"
   title: "Variational Nested Dropout"
   authors: "Y. Cui, **Yu Mao**, Z. Liu, Q. Li, A.B. Chan, X. Liu, T.-W. Kuo, C.J. Xue"
   venue: "IEEE TPAMI 2023"
