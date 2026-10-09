@@ -53,7 +53,7 @@ A model can demonstrate the right capability when prompted directly and still fa
 
 # 📝 Publications
 
-{% assign themes = "AI Systems & Inference|LLM Capability & Agents|Compression & Representation|Applied ML" | split: "|" %}
+{% assign themes = "LLM Capability & Agents|Compression & Representation|AI Systems & Inference" | split: "|" %}
 {% for theme in themes %}
 <h3 class="pub-theme">{{ theme }}</h3>
 {% for pub in site.data.publications %}{% if pub.theme == theme %}{% include publication-card.html pub=pub %}{% endif %}{% endfor %}
