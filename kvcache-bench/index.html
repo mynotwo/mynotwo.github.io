@@ -643,28 +643,28 @@ body {
 
     <div class="metric-strip" aria-label="BF16 benchmark summary">
       <div class="metric">
-        <div class="metric-value">1.71×</div>
+        <div class="metric-value">1.52×</div>
         <div class="metric-label">Median best ratio</div>
-        <div class="metric-note">BF16 KV · 50 workload points</div>
+        <div class="metric-note">BF16 KV · real text · 18 samples</div>
       </div>
       <div class="metric">
-        <div class="metric-value">1.52–1.93×</div>
+        <div class="metric-value">1.51–1.53×</div>
         <div class="metric-label">Measured range</div>
-        <div class="metric-note">Across model, context, and input</div>
+        <div class="metric-note">Across English, Chinese, code · 2K and 8K</div>
       </div>
       <div class="metric">
-        <div class="metric-value">41.6%</div>
+        <div class="metric-value">34.4%</div>
         <div class="metric-label">Median payload reduction</div>
-        <div class="metric-note">Derived from the 1.71× ratio</div>
+        <div class="metric-note">Derived from the 1.52× ratio</div>
       </div>
     </div>
     <div class="benchmark-scope" aria-label="Benchmark scope">
-      <span><strong>2 models</strong> · Qwen2.5-7B / Qwen3-8B</span>
-      <span><strong>Context</strong> · 512–8K</span>
-      <span><strong>5 inputs</strong> · 50 BF16 workload points</span>
-      <span><strong>Batch / hardware</strong> · not recorded</span>
+      <span><strong>Model</strong> · Qwen2.5-7B</span>
+      <span><strong>Context</strong> · 2K / 8K</span>
+      <span><strong>Inputs</strong> · ShareGPT, Chinese Wikipedia, CPython source; no document reused</span>
+      <span><strong>Check</strong> · every blob decoded byte for byte</span>
     </div>
-    <p class="benchmark-boundary"><strong>Evidence scope:</strong> the 7B/8B matrix above measures ratio; a separate Qwen2.5-14B BF16 run adds codec throughput and KV read-path measurements below.</p>
+    <p class="benchmark-boundary"><strong>Evidence scope:</strong> the 2-model, 50-point matrix further down repeats one paragraph to fill the context, which overstates ratios (1.71× there vs 1.52× on real text); a separate Qwen2.5-14B BF16 run adds codec throughput and KV read-path measurements below.</p>
   </header>
 
   <section class="story-section" id="core-finding" aria-labelledby="core-title">
@@ -678,8 +678,8 @@ body {
 
     <div class="core-proof">
       <div class="core-result">
-        <div class="core-number">1.29× → 1.51×</div>
-        <p class="core-result-label"><strong>Raw Zstd-1 → ByteSplit + Zstd-1</strong><br>Median across 50 BF16 KV workload points</p>
+        <div class="core-number">1.29× → 1.48×</div>
+        <p class="core-result-label"><strong>Raw Zstd-1 → ByteSplit + Zstd-1</strong><br>Median across 18 real-text BF16 KV samples</p>
       </div>
       <div class="core-logic">
         <div class="policy-equation" aria-label="Compression policy equals representation plus layout plus codec">
@@ -687,7 +687,7 @@ body {
           <span class="policy-term">representation <span class="operator">+</span> layout <span class="operator">+</span> codec</span>
         </div>
         <blockquote class="finding-quote">Rearranging the same payload changes how much redundancy a generic codec can exploit.</blockquote>
-        <p class="core-summary">Across the full method search, the median best structure-aware BF16 ratio is <strong>1.71×</strong>; the median pointwise lift over each workload's best raw codec is <strong>19.4%</strong>.</p>
+        <p class="core-summary">On real text the best structure-aware BF16 ratio is <strong>1.52×</strong>, <strong>18%</strong> above raw Zstd-1. Floating-point compressors on the same tensors do worse: XOR with the previous token + Zstd-1 1.46×, zfp reversible 1.02×, fpzip 0.56×.</p>
       </div>
     </div>
 
@@ -707,11 +707,11 @@ body {
 
       <article class="insight">
         <div>
-          <h3>Context matters</h3>
-          <p class="insight-summary">For the same BF16 pipeline, median ratio increases with context in both measured models. The trend is evidence from this matrix, not an end-to-end latency claim.</p>
+          <h3>Context barely matters on real text</h3>
+          <p class="insight-summary">With repeated-paragraph inputs the ratio climbs with context, as the bars show. On real text, 8K compresses only 0.4% better than 2K: the climb came from the repetition.</p>
         </div>
         <div class="evidence-panel">
-          <p class="evidence-note">Median KVPress-LZMA ratio across five input types</p>
+          <p class="evidence-note">Repeated-paragraph inputs · median KVPress-LZMA ratio across five input types</p>
           <div class="bar-row"><span>Qwen2.5 · 512</span><div class="bar-track"><div class="bar-fill" style="width:78%"></div></div><span class="bar-value">1.56×</span></div>
           <div class="bar-row"><span>Qwen2.5 · 8K</span><div class="bar-track"><div class="bar-fill accent" style="width:93%"></div></div><span class="bar-value">1.86×</span></div>
           <div class="bar-row"><span>Qwen3 · 512</span><div class="bar-track"><div class="bar-fill" style="width:76%"></div></div><span class="bar-value">1.52×</span></div>
@@ -723,7 +723,7 @@ body {
       <article class="insight">
         <div>
           <h3>Representation matters</h3>
-          <p class="insight-summary">Ratios vary sharply by dtype, but their denominators are format-specific. The right conclusion is that representation changes entropy structure—not that the largest ratio is automatically the best serving choice.</p>
+          <p class="insight-summary">Repeated-paragraph matrix. Ratios vary sharply by dtype, but their denominators are format-specific. The right conclusion is that representation changes entropy structure—not that the largest ratio is automatically the best serving choice.</p>
         </div>
         <div class="table-scroll">
           <table class="representation-table">
@@ -809,11 +809,11 @@ body {
       </table>
     </div>
     <div class="system-grid">
-      <article class="system-card"><h3>Codec placement decides</h3><p>CPU zstd (ratio 1.22) made every restore slower: 32 ms vs 6.7 ms at 8K. nvCOMP ANS on the GPU, in 64 MB frames pipelined with the copy, cut 15–25% instead.</p></article>
+      <article class="system-card"><h3>Codec placement decides</h3><p>CPU zstd (ratio 1.22) made every restore slower: 32 ms vs 6.7 ms at 8K. nvCOMP ANS on the GPU, in 64 MB frames pipelined with the copy, cut 15–25% instead. Byte split on the GPU lifts ANS from 1.22× to 1.43×, but decode falls from 47 to 19 GB/s, below PCIe, so the connector keeps ANS on raw bytes.</p></article>
       <article class="system-card"><h3>Where the time went</h3><p>At 128K: per-layer <code>index_copy_</code> write-back 23 → 4.3 ms; NUMA-local host memory lifted the slowest GPU from 23 to 47 GB/s; GPU checksum in fixed 128 MB slices.</p></article>
       <article class="system-card"><h3>Fails safe</h3><p>A missing, corrupted or mismatched record, or a GPU out-of-memory, falls back to recompute. Saves never block the engine: when 4 are in flight, a new one is dropped.</p></article>
     </div>
-    <p class="implication-boundary">Measured scope: one machine, in-memory backend, synthetic prompts. Below 10 ms only at 8K (6.2 ms); longer contexts are bounded by PCIe. Distributed storage and capacity gains from compression were not measured.</p>
+    <p class="implication-boundary">Measured scope: one machine, in-memory backend, synthetic prompts. A multi-turn video test (TikTok clips and 34–114 min videos, 7.6K–177K tokens) restored faster than recompute in 15 of 16 sessions, 2.2–4.7× by length on turns 2–3. Below 10 ms only at 8K (6.2 ms); longer contexts are bounded by PCIe. Distributed storage and capacity gains from compression were not measured.</p>
   </section>
 
   <section class="story-section" id="benchmark" aria-labelledby="benchmark-heading">
@@ -862,7 +862,7 @@ body {
         <article class="deep-item"><h3>What is the coding unit?</h3><p>The source benchmark processes per-layer K and V payloads and aggregates them into the model / context / input points exposed here. Per-layer rows are not retained in this page dataset.</p></article>
         <article class="deep-item"><h3>Why byte split?</h3><p>It separates the two byte positions of multi-byte values so a generic codec sees more homogeneous streams. In BF16, ByteSplit + Zstd has a 1.51× median ratio versus 1.29× for raw Zstd-1.</p></article>
         <article class="deep-item"><h3>Why channel-first layout?</h3><p>It places values from the same feature channel closer together before coding, exposing regularity that row-major token layout can hide.</p></article>
-        <article class="deep-item"><h3>Why not just LZ / zstd / gzip?</h3><p>They are all included as raw baselines. On BF16, the best raw codec reaches a 1.42× median; exposing layout and byte structure first raises the median best result to 1.71×.</p></article>
+        <article class="deep-item"><h3>Why not just LZ / zstd / gzip?</h3><p>They are all included as raw baselines. On real-text BF16 KV, raw Zstd-1 reaches 1.29×; exposing layout and byte structure first raises the median best result to 1.52×. In the repeated-input matrix the same step goes from 1.42× to 1.71×.</p></article>
         <article class="deep-item"><h3>What metadata is required?</h3><p>Tensor framing is outside the reported payload ratio. Quantized INT representations also require scale and packing metadata; those bytes are not included in this page dataset.</p></article>
         <article class="deep-item"><h3>Does it support random access?</h3><p><span class="not-evaluated">Not evaluated in this benchmark.</span> The page does not measure block size, partial decode, or token-level access.</p></article>
         <article class="deep-item"><h3>Does the decoder become the bottleneck?</h3><p>Zstd-only decompression reached 15.2 GB/s at 16 threads. Full reconstruction reached about 4 GB/s in Python; a faster C path was estimated but not measured.</p></article>
