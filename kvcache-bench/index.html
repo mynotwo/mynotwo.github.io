@@ -775,9 +775,50 @@ body {
     <p class="implication-boundary">Measured conclusion: the selected KV payload is about 40% smaller, compression throughput can scale to the generation rate, and real KV read latency is essentially unchanged. End-to-end serving capacity and concurrency gains were not measured.</p>
   </section>
 
+  <section class="story-section" id="serving" aria-labelledby="serving-title">
+    <div class="section-head">
+      <p class="section-index">03 / In a Serving System</p>
+      <div>
+        <h2 class="section-title" id="serving-title">Restoring a 256K-token context in 64 ms</h2>
+        <p class="section-copy">I built a KV cache offloading connector for AIBrix and unmodified vLLM, for hybrid models that mix linear-attention (Mamba-style) and full-attention layers. In multi-turn sessions, a context evicted from GPU memory is restored from host memory instead of being prefilled again.</p>
+      </div>
+    </div>
+    <div class="measured-result">
+      <div class="measured-result-head">
+        <h3>Time to first token at 256K: 0.44 s restored vs 11–15 s recomputed</h3>
+        <p>Restore time grows linearly with the prompt: about 0.25 ms per 1K tokens with GPU ANS compression, 0.33 ms without. Above 32K it is bound by host-to-device PCIe bandwidth, so compression shortens the restore only when it decodes on the GPU.</p>
+      </div>
+      <div class="measured-grid" aria-label="Qwen3.8-Flash-Next serving measurements">
+        <div class="measured-stat"><strong>25–33×</strong><span>Faster time to first token than recompute at 256K</span></div>
+        <div class="measured-stat"><strong>−24%</strong><span>Restore window with GPU ANS (ratio 1.34) vs raw, at 256K</span></div>
+        <div class="measured-stat"><strong>1.4×</strong><span>Raw restore vs the PCIe copy lower bound, above 128K</span></div>
+      </div>
+      <p class="measured-scope">Qwen3.8-Flash-Next · TP8 · 8×H800 · vLLM 0.30 · AIBrix in-memory backend · 6 prompts per length · restore window = first record read to last block written, over all 8 GPUs</p>
+    </div>
+    <div class="table-scroll" style="margin-bottom: 34px">
+      <table class="representation-table">
+        <thead><tr><th>Prompt</th><th>Recompute</th><th>Restore (TTFT)</th><th>Restore window · raw</th><th>Restore window · GPU ANS</th></tr></thead>
+        <tbody>
+              <tr><td data-label="Prompt">8K</td><td data-label="Recompute">0.21 s</td><td data-label="Restore (TTFT)">0.15 s</td><td data-label="Restore window · raw">6.3 ms</td><td data-label="Restore window · GPU ANS">6.2 ms</td></tr>
+              <tr><td data-label="Prompt">32K</td><td data-label="Recompute">0.91 s</td><td data-label="Restore (TTFT)">0.19 s</td><td data-label="Restore window · raw">13.8 ms</td><td data-label="Restore window · GPU ANS">12.0 ms</td></tr>
+              <tr><td data-label="Prompt">64K</td><td data-label="Recompute">1.9 s</td><td data-label="Restore (TTFT)">0.24 s</td><td data-label="Restore window · raw">23.5 ms</td><td data-label="Restore window · GPU ANS">18.9 ms</td></tr>
+              <tr><td data-label="Prompt">128K</td><td data-label="Recompute">5.0–6.0 s</td><td data-label="Restore (TTFT)">0.29 s</td><td data-label="Restore window · raw">43.8 ms</td><td data-label="Restore window · GPU ANS">34.5 ms</td></tr>
+              <tr><td data-label="Prompt">192K</td><td data-label="Recompute">8.6–10.9 s</td><td data-label="Restore (TTFT)">0.36 s</td><td data-label="Restore window · raw">63.9 ms</td><td data-label="Restore window · GPU ANS">49.4 ms</td></tr>
+              <tr><td data-label="Prompt">256K</td><td data-label="Recompute">11–15 s</td><td data-label="Restore (TTFT)">0.44 s</td><td data-label="Restore window · raw">83.9 ms</td><td data-label="Restore window · GPU ANS">64.4 ms</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="system-grid">
+      <article class="system-card"><h3>Codec placement decides</h3><p>CPU zstd (ratio 1.22) made every restore slower: 32 ms vs 6.7 ms at 8K. nvCOMP ANS on the GPU, in 64 MB frames pipelined with the copy, cut 15–25% instead.</p></article>
+      <article class="system-card"><h3>Where the time went</h3><p>At 128K: per-layer <code>index_copy_</code> write-back 23 → 4.3 ms; NUMA-local host memory lifted the slowest GPU from 23 to 47 GB/s; GPU checksum in fixed 128 MB slices.</p></article>
+      <article class="system-card"><h3>Fails safe</h3><p>A missing, corrupted or mismatched record, or a GPU out-of-memory, falls back to recompute. Saves never block the engine: when 4 are in flight, a new one is dropped.</p></article>
+    </div>
+    <p class="implication-boundary">Measured scope: one machine, in-memory backend, synthetic prompts. Below 10 ms only at 8K (6.2 ms); longer contexts are bounded by PCIe. Distributed storage and capacity gains from compression were not measured.</p>
+  </section>
+
   <section class="story-section" id="benchmark" aria-labelledby="benchmark-heading">
     <div class="section-head">
-      <p class="section-index">03 / Benchmark + Boundaries</p>
+      <p class="section-index">04 / Benchmark + Boundaries</p>
       <div>
         <h2 class="section-title" id="benchmark-heading">Inspect the measurement matrix and its limits</h2>
         <p class="section-copy">The main story stays on BF16. The full matrix and the technical boundaries behind the claims remain available here.</p>
