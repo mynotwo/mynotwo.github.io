@@ -143,6 +143,7 @@
   venue: "AgenticOS 2026 · Best Paper Award"
   arxiv: "https://arxiv.org/abs/2609.14631"
   pdf: "https://arxiv.org/pdf/2609.14631"
+  image: /images/papers/intentcap.png
 
 - theme: "AI Systems & Inference"
   title: "Parallel-SA: Point Cloud Processing Acceleration via Parallel Set Abstraction"
