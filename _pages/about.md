@@ -28,7 +28,7 @@ My current work studies production inference, especially capacity and KV/cache b
 <span class="interest-pill" style="background: linear-gradient(135deg, #38bdf8, #667eea);">LLM Capability &amp; Agent Reliability</span>
 
 <span style="display:block; margin-top:8px; font-size:0.9em; color:#666;">
-  Google Scholar: Cited by <span id='total_cit' style='font-weight:bold;color:#224b8d;'>...</span><span id='citation_updated'></span>
+  Google Scholar: Cited by <span id='total_cit' style='font-weight:bold;color:#224b8d;'>...</span>
 </span>
 
 # 🔬 Current Work

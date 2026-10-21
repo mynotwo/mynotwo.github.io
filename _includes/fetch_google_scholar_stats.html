@@ -6,8 +6,6 @@
     function render(data) {
         var total = document.getElementById('total_cit');
         if (total && data.citedby != null) total.innerHTML = data.citedby;
-        var updated = document.getElementById('citation_updated');
-        if (updated && data.updated) updated.textContent = ' · Updated ' + data.updated.slice(0, 10);
         var pubs = data.publications || {};
         document.querySelectorAll('.show_paper_citations').forEach(function(el) {
             var id = el.getAttribute('data');
