@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 900" role="img" aria-labelledby="title desc">
+<title id="title">Hybrid prefix storage and acceptance boundaries</title>
+<desc id="desc">Aligned recurrent state and its attention span chain form per-rank logical records. Variable-sized envelopes enter backend storage. All required ranks and parts must report before advertising a prefix. Restore validates identity and bytes. Model-output acceptance remains a separate unresolved gate. The CPU example exercises envelopes and storage only.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#64748b"/></marker></defs>
+<rect width="520" height="900" rx="20" fill="#f8fafc"/>
+<g font-family="system-ui, sans-serif" font-size="18" text-anchor="middle" fill="#172554">
+<g fill="#e0e7ff" stroke="#a5b4fc"><rect x="20" y="22" width="230" height="80" rx="12"/><rect x="270" y="22" width="230" height="80" rx="12"/></g>
+<text x="135" y="54">Aligned recurrent</text><text x="135" y="80">state</text>
+<text x="385" y="54">Required attention</text><text x="385" y="80">span chain</text>
+<g stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)"><path d="M135 102V126H260V151"/><path d="M385 102V126H260"/><path d="M260 225V265"/><path d="M260 335V375"/><path d="M260 445V505"/><path d="M260 575V615"/><path d="M260 685V725"/><path d="M260 795V835"/></g>
+<g fill="white" stroke="#cbd5e1"><rect x="50" y="155" width="420" height="70" rx="12"/><rect x="50" y="505" width="420" height="70" rx="12"/><rect x="50" y="615" width="420" height="70" rx="12"/><rect x="50" y="725" width="420" height="70" rx="12"/></g>
+<text x="260" y="197">Per-rank logical prefix</text>
+<rect x="34" y="247" width="452" height="217" rx="16" fill="#ecfdf5" stroke="#10b981" stroke-dasharray="6 4"/>
+<g fill="white" stroke="#6ee7b7"><rect x="50" y="265" width="420" height="70" rx="12"/><rect x="50" y="375" width="420" height="70" rx="12"/></g>
+<path d="M260 335V375" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="260" y="306">Variable-sized record envelopes</text>
+<text x="260" y="416">Backend storage + reader leases</text>
+<text x="260" y="489" font-size="15" fill="#047857">CPU example: synthetic bytes in this region</text>
+<text x="260" y="536">All required ranks and parts</text><text x="260" y="560">reported</text>
+<text x="260" y="657">Eligible external prefix</text>
+<text x="260" y="755">Restore + identity/byte validation</text><text x="260" y="780">+ destination writes</text>
+<rect x="50" y="835" width="420" height="50" rx="12" fill="#fff7ed" stroke="#fdba74"/>
+<text x="260" y="866" fill="#9a3412">Model-output gate: unresolved</text>
+</g></svg>
