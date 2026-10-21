@@ -2,13 +2,10 @@ name: Get Citation Data
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '17 8 * * *'
-  push:
-    branches: [main]
-    paths:
-      - .github/workflows/google_scholar_crawler.yaml
-      - google_scholar_crawler/**
+
+# Scholar currently returns 403 to both Ubuntu and macOS hosted runners.
+# Daily collection runs through the owner's local Codex automation instead.
+# Keep this manual entry point for checking hosted-runner access in the future.
 
 permissions:
   contents: write
@@ -19,7 +16,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on: macos-15
+    runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4

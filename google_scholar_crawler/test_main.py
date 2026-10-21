@@ -1,4 +1,5 @@
 import copy
+import base64
 import json
 import tempfile
 import unittest
@@ -7,6 +8,7 @@ from unittest.mock import patch
 from urllib.error import HTTPError
 
 from main import collect, parse_profile
+from publish import refresh
 
 
 PROFILE = '''<div id="gsc_prf_in">Yu Mao</div><table id="gsc_rsb_st"><tr>
@@ -81,6 +83,33 @@ class ScholarTests(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     collect('Iw3bTCAAAAAJ', path, folder)
             self.assertEqual(path.read_bytes(), before)
+
+    def test_publication_stops_before_any_write_when_collection_fails(self):
+        responses = [{'object': {'sha': 'old'}}, {'tree': {'sha': 'tree'}},
+                     {'content': base64.b64encode(json.dumps(PREVIOUS).encode()).decode()}]
+        with patch('publish.api', side_effect=responses) as api, \
+                patch('publish.collect', side_effect=TimeoutError), self.assertRaises(TimeoutError):
+            refresh()
+        self.assertEqual(api.call_count, 3)
+
+    def test_publishes_two_files_atomically_without_force(self):
+        data = json.dumps({'citedby': 295}).encode()
+        responses = [{'object': {'sha': 'old'}}, {'tree': {'sha': 'tree'}},
+                     {'content': base64.b64encode(json.dumps(PREVIOUS).encode()).decode()},
+                     {'sha': 'newtree'}, {'sha': 'newcommit'}, {},
+                     {'content': base64.b64encode(data).decode()}]
+
+        def collected(scholar_id, previous, folder):
+            (folder / 'gs_data.json').write_bytes(data)
+            (folder / 'gs_data_shieldsio.json').write_text('{"message":"295"}')
+
+        with patch('publish.api', side_effect=responses) as api, \
+                patch('publish.collect', side_effect=collected):
+            self.assertEqual(refresh(), 'newcommit')
+        calls = api.call_args_list
+        self.assertEqual(len(calls[3].args[2]['tree']), 2)
+        self.assertEqual(calls[4].args[2]['parents'], ['old'])
+        self.assertEqual(calls[5].args[2], {'sha': 'newcommit', 'force': False})
 
 
 if __name__ == '__main__':
