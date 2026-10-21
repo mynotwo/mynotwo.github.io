@@ -1,36 +1,51 @@
 name: Get Citation Data
 
-# Scholar answers 403 to GitHub's runner IPs, so the automatic triggers could
-# only ever fail. They are kept here, commented out, to switch back on if that
-# changes; until then run this by hand from the Actions tab.
 on:
- workflow_dispatch:
-# page_build:
-# schedule:
-#  - cron:  '0 8 * * *'
+  workflow_dispatch:
+  schedule:
+    - cron: '17 8 * * *'
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/google_scholar_crawler.yaml
+      - google_scholar_crawler/**
+
+permissions:
+  contents: write
+
+concurrency:
+  group: google-scholar-stats
+  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-    - uses: actions/checkout@v2
-    - name: Install Reqs
-      run: |
-        sudo apt-get install python3-setuptools
-    - name: Run
-      run: |
-        cd ./google_scholar_crawler
-        pip3 install -r requirements.txt
-        # On a 403 scholarly backs off for 90s+ and retries until the job times
-        # out; cap it so a blocked run fails in two minutes with a real error.
-        timeout -s INT 120 python3 -u main.py
-        cd ./results
-        git init
-        git config --local user.name "${GITHUB_ACTOR}"
-        export remote_repo="https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git"
-        git add *.json
-        git commit -m "Updated Citation Data"
-        git push "${remote_repo}" HEAD:google-scholar-stats --force
-      env: 
-        GOOGLE_SCHOLAR_ID: ${{ secrets.GOOGLE_SCHOLAR_ID }}
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test citation parsing and failure handling
+        run: python -m unittest discover -s google_scholar_crawler -p test_main.py
+      - name: Checkout current statistics
+        uses: actions/checkout@v4
+        with:
+          ref: google-scholar-stats
+          path: _citation_stats
+      - name: Collect and validate public Scholar data
+        env:
+          GOOGLE_SCHOLAR_ID: Iw3bTCAAAAAJ
+        run: >-
+          python google_scholar_crawler/main.py
+          --previous _citation_stats/gs_data.json
+          --output _citation_stats
+      - name: Publish verified statistics
+        working-directory: _citation_stats
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add gs_data.json gs_data_shieldsio.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Update verified Scholar citation data'
+          git push origin HEAD:google-scholar-stats
