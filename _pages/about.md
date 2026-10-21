@@ -33,19 +33,23 @@ My current work studies production inference, especially capacity and KV/cache b
 
 # 🔬 Current Work
 
-### Production Inference Capacity
-
-Offline throughput is not production capacity. I study how workload shape, cache behavior, hardware, and latency constraints determine sustainable serving capacity in real deployments.
-
-### KV Cache & Inference State Compression
-
-KV cache is structured state, not a homogeneous byte stream. I study how representation and layout affect its compressibility, and when memory or transfer savings justify codec cost on a serving path. [Project]({{ '/kvcache-bench/' | relative_url }})
-
-**AIBrix Hybrid KV Cache.** An experimental integration for hybrid-model prefix-cache offloading and compression profiling, built on AIBrix. Whole-model output equivalence remains under investigation. [Code](https://github.com/mynotwo/aibrix-hybrid-kvcache) · [Source preview](https://github.com/mynotwo/aibrix-hybrid-kvcache/releases/tag/hybrid-v0.1.1-experimental) · [Upstream RFC](https://github.com/vllm-project/aibrix/issues/3220) · [MEMORY backend PR (draft)](https://github.com/vllm-project/aibrix/pull/3221)
-
-### Agent Reliability & LLM Capability
-
-A model can demonstrate the right capability when prompted directly and still fail to invoke it during natural execution. I study this gap through controlled capability probes and agent evaluations. [Project]({{ '/agent-reliability/' | relative_url }})
+<div class="current-work-list">
+<article class="current-work-item" aria-labelledby="work-kv">
+<h3 id="work-kv">KV Cache &amp; Inference State Compression</h3>
+<p>KV cache is structured state, not a homogeneous byte stream. I study how representation and layout affect its compressibility, and when memory or transfer savings justify codec cost on a serving path.</p>
+<p><strong>AIBrix Hybrid KV Cache:</strong> an experimental integration for hybrid-model prefix-cache offloading and compression profiling. Whole-model output equivalence remains under investigation.</p>
+<div class="current-work-links"><a href="{{ '/kvcache-bench/' | relative_url }}">Benchmark</a><a href="https://github.com/mynotwo/aibrix-hybrid-kvcache">Code</a><a href="https://github.com/mynotwo/aibrix-hybrid-kvcache/releases/tag/hybrid-v0.1.1-experimental">Source preview</a><a href="https://github.com/vllm-project/aibrix/issues/3220">RFC</a><a href="https://github.com/vllm-project/aibrix/pull/3221">MEMORY backend PR (draft)</a></div>
+</article>
+<article class="current-work-item" aria-labelledby="work-agent">
+<h3 id="work-agent">Agent Reliability &amp; LLM Capability</h3>
+<p>A model can demonstrate the right capability when prompted directly and still fail to invoke it during natural execution. I study this gap through controlled capability probes and agent evaluations.</p>
+<div class="current-work-links"><a href="{{ '/agent-reliability/' | relative_url }}">Project</a></div>
+</article>
+<article class="current-work-item" aria-labelledby="work-capacity">
+<h3 id="work-capacity">Production Inference Capacity</h3>
+<p>Offline throughput is not production capacity. I study how workload shape, cache behavior, hardware, and latency constraints determine sustainable serving capacity in real deployments.</p>
+</article>
+</div>
 
 # 🔥 News
 <div class="news-timeline" markdown="1">
