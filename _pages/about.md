@@ -47,18 +47,18 @@ My current work studies production inference, especially capacity and KV/cache b
 <div class="current-work-list">
 <article class="current-work-item" aria-labelledby="work-kv">
 <h3 id="work-kv">KV Cache &amp; Inference State Compression</h3>
-<p>KV cache is structured state, not a homogeneous byte stream. I study how representation and layout affect its compressibility, and when memory or transfer savings justify codec cost on a serving path.</p>
-<p><strong>AIBrix Hybrid KV Cache:</strong> an experimental integration for hybrid-model prefix-cache offloading and compression profiling. Whole-model output equivalence remains under investigation.</p>
+<p>Inference leaves behind state worth keeping. I study how to represent, compress, and move that state efficiently, with KV cache as a central focus. The goal is to turn structure in the data into practical savings in memory and transfer time.</p>
+<p><strong>AIBrix Hybrid KV Cache</strong> brings these ideas into an experimental offloading workflow for hybrid models, with tools for compression profiling. Whole-model output equivalence remains an open question.</p>
 <div class="current-work-links"><a href="{{ '/kvcache-bench/' | relative_url }}">Benchmark</a><a href="https://github.com/mynotwo/aibrix-hybrid-kvcache">Code</a><a href="https://github.com/mynotwo/aibrix-hybrid-kvcache/releases/tag/hybrid-v0.1.1-experimental">Source preview</a><a href="https://github.com/vllm-project/aibrix/issues/3220">RFC</a><a href="https://github.com/vllm-project/aibrix/pull/3221">MEMORY backend PR (draft)</a></div>
 </article>
 <article class="current-work-item" aria-labelledby="work-agent">
 <h3 id="work-agent">Agent Reliability &amp; LLM Capability</h3>
-<p>A model can demonstrate the right capability when prompted directly and still fail to invoke it during natural execution. I study this gap through controlled capability probes and agent evaluations.</p>
+<p>I’m interested in the distance between what a model can do and what an agent actually does. Through controlled probes and agent evaluations, I study how capabilities surface during a task, where they go unused, and what helps an agent carry its understanding through to action.</p>
 <div class="current-work-links"><a href="{{ '/agent-reliability/' | relative_url }}">Project</a></div>
 </article>
 <article class="current-work-item" aria-labelledby="work-capacity">
 <h3 id="work-capacity">Production Inference Capacity</h3>
-<p>Offline throughput is not production capacity. I study how workload shape, cache behavior, hardware, and latency constraints determine sustainable serving capacity in real deployments.</p>
+<p>The demands of a serving system give performance numbers their meaning. I study how workloads, cache behavior, hardware, and latency requirements come together to shape inference capacity, and how to make that capacity hold up under the pressures of real deployments.</p>
 </article>
 </div>
 
