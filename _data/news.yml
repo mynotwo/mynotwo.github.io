@@ -1,5 +1,8 @@
 # 顺序 = 显示顺序(最新在最上)
 - date: "2026.10"
+  content: "Released an experimental [AIBrix Hybrid KV Cache](https://github.com/mynotwo/aibrix-hybrid-kvcache) source preview, with an upstream [RFC](https://github.com/vllm-project/aibrix/issues/3220) and [MEMORY backend PR (draft)](https://github.com/vllm-project/aibrix/pull/3221)."
+
+- date: "2026.10"
   content: "Our paper, [Probe with Participation Trophies: Random-Reward RL as a Probe of LLM Capability](https://arxiv.org/abs/2610.01066), is now available on arXiv."
 
 - date: "2026.09"
