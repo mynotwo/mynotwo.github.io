@@ -75,13 +75,14 @@ My current work studies production inference, especially capacity and KV/cache b
 {% endfor %}
 </details>
 
-# 📝 Publications
+<span id="-publications"></span>
 
-{% assign themes = "LLM Capability & Agents|Compression & Representation|AI Systems & Inference" | split: "|" %}
-{% for theme in themes %}
-<h3 class="pub-theme">{{ theme }}</h3>
-{% for pub in site.data.publications %}{% if pub.theme == theme %}{% include publication-card.html pub=pub %}{% endif %}{% endfor %}
-{% endfor %}
+# 📝 Selected Publications
+
+{% assign selected = site.data.publications | where_exp: "pub", "pub.selected_order" | sort: "selected_order" %}
+{% for pub in selected %}{% include publication-card.html pub=pub %}{% endfor %}
+
+[View all publications →]({{ '/publications/' | relative_url }})
 
 # 🎖 Honors and Awards
 {% for a in site.data.awards %}- *{{ a.date }}* {{ a.content }}

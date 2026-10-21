@@ -7,6 +7,7 @@
 
 - theme: "LLM Capability & Agents"
   title: "Probe with Participation Trophies: Random-Reward RL as a Probe of LLM Capability"
+  selected_order: 1
   authors: "**Yu Mao**, L. Yu, Z. Zhu, Y. Zheng, H. Li, F. Shi, Y. Yin, Z. Wang, J. Niu"
   venue: "Preprint 2026"
   first_author: true
@@ -60,6 +61,7 @@
 
 - theme: "Compression & Representation"
   title: "On the Compressibility of Quantized Large Language Models"
+  selected_order: 3
   authors: "**Yu Mao**, W. Wang, H. Du, N. Guan, C.J. Xue"
   venue: "Preprint 2024"
   first_author: true
@@ -89,6 +91,7 @@
 
 - theme: "Compression & Representation"
   title: "Trace: A Fast Transformer-based General-purpose Lossless Compressor"
+  selected_order: 4
   authors: "**Yu Mao**, Y. Cui, T.-W. Kuo, C.J. Xue"
   venue: "The Web Conference (WWW) 2022"
   first_author: true
@@ -135,6 +138,7 @@
 
 - theme: "LLM Capability & Agents"
   title: "LLM Agent Capabilities Should Follow Task Intent and Context Source"
+  selected_order: 2
   authors: "Yusheng Zheng, Wenhui Zhang, **Yu Mao**"
   venue: "AgenticOS 2026 · Best Paper Award"
   arxiv: "https://arxiv.org/abs/2609.14631"
@@ -148,6 +152,7 @@
 
 - theme: "AI Systems & Inference"
   title: "PMR: Fast Application Response via Parallel Memory Reclaim on Mobile Devices"
+  selected_order: 5
   authors: "W. Li, L.-P. Chang, **Yu Mao**, L. Shi"
   venue: "USENIX ATC 2025"
   pdf: /assets/pdfs/pmr.pdf
