@@ -694,23 +694,3 @@ body {
     box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
   }
 }
-
-/* Current Work: keep project descriptions and resource links together. */
-.current-work-list {
-  .current-work-item {
-    padding: 1.1em 0;
-    border-bottom: 1px solid #dfe3e8;
-    &:first-child { padding-top: 0.4em; }
-    &:last-child { border-bottom: 0; }
-    h3 { margin: 0 0 0.5em; font-size: 1.08em; color: #224b8d; }
-    p { margin: 0 0 0.65em; }
-  }
-  .current-work-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4em 1.1em;
-    font-size: 0.85em;
-    a { text-underline-offset: 3px; }
-    a:focus-visible { outline: 2px solid #224b8d; outline-offset: 3px; }
-  }
-}

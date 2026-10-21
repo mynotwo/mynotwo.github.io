@@ -33,6 +33,17 @@ My current work studies production inference, especially capacity and KV/cache b
 
 # 🔬 Current Work
 
+<style>
+.current-work-list .current-work-item { padding: 1.1em 0; border-bottom: 1px solid #dfe3e8; }
+.current-work-list .current-work-item:first-child { padding-top: 0.4em; }
+.current-work-list .current-work-item:last-child { border-bottom: 0; }
+.current-work-list .current-work-item h3 { margin: 0 0 0.5em; font-size: 1.08em; color: #224b8d; }
+.current-work-list .current-work-item p { margin: 0 0 0.65em; }
+.current-work-list .current-work-links { display: flex; flex-wrap: wrap; gap: 0.4em 1.1em; font-size: 0.85em; }
+.current-work-list .current-work-links a { text-underline-offset: 3px; }
+.current-work-list .current-work-links a:focus-visible { outline: 2px solid #224b8d; outline-offset: 3px; }
+</style>
+
 <div class="current-work-list">
 <article class="current-work-item" aria-labelledby="work-kv">
 <h3 id="work-kv">KV Cache &amp; Inference State Compression</h3>
