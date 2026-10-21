@@ -15,7 +15,7 @@
 <path d="M260 335V375" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
 <text x="260" y="306">Variable-sized record envelopes</text>
 <text x="260" y="416">Backend storage + reader leases</text>
-<text x="260" y="489" font-size="15" fill="#047857">CPU example: synthetic bytes in this region</text>
+<text x="260" y="260" font-size="12" fill="#047857">CPU example: synthetic envelopes + storage</text>
 <text x="260" y="536">All required ranks and parts</text><text x="260" y="560">reported</text>
 <text x="260" y="657">Eligible external prefix</text>
 <text x="260" y="755">Restore + identity/byte validation</text><text x="260" y="780">+ destination writes</text>
