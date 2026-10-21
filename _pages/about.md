@@ -47,18 +47,19 @@ My current work studies production inference, especially capacity and KV/cache b
 <div class="current-work-list">
 <article class="current-work-item" aria-labelledby="work-kv">
 <h3 id="work-kv">KV Cache &amp; Inference State Compression</h3>
-<p>Inference leaves behind state worth keeping. I study how to represent, compress, and move that state efficiently, with KV cache as a central focus. The goal is to turn structure in the data into practical savings in memory and transfer time.</p>
+<p>Inference leaves behind state worth keeping, and KV cache is the largest part of it. This work looks at how that state is represented, compressed, and moved, so that structure in the data becomes real savings in memory and transfer time.</p>
 <p><strong>AIBrix Hybrid KV Cache</strong> brings these ideas into an experimental offloading workflow for hybrid models, with tools for compression profiling. Whole-model output equivalence remains an open question.</p>
 <div class="current-work-links"><a href="{{ '/kvcache-bench/' | relative_url }}">Benchmark</a><a href="https://github.com/mynotwo/aibrix-hybrid-kvcache">Code</a><a href="https://github.com/mynotwo/aibrix-hybrid-kvcache/releases/tag/hybrid-v0.1.1-experimental">Source preview</a><a href="https://github.com/vllm-project/aibrix/issues/3220">RFC</a><a href="https://github.com/vllm-project/aibrix/pull/3221">MEMORY backend PR (draft)</a></div>
 </article>
 <article class="current-work-item" aria-labelledby="work-agent">
 <h3 id="work-agent">Agent Reliability &amp; LLM Capability</h3>
-<p>I’m interested in the distance between what a model can do and what an agent actually does. Through controlled probes and agent evaluations, I study how capabilities surface during a task, where they go unused, and what helps an agent carry its understanding through to action.</p>
-<div class="current-work-links"><a href="{{ '/agent-reliability/' | relative_url }}">Project</a></div>
+<p>What a model can do and what an agent actually does are often far apart. Controlled probes and agent evaluations show how capabilities surface during a task, where they go unused, and what helps an agent carry its understanding through to action.</p>
+<p><strong>AgentSight</strong> is an eBPF-based profiler for AI agents. It traces processes, files, network traffic, and LLM calls at the system level and links each action back to the prompt and tool decision behind it, with no SDK or code changes in the agent.</p>
+<div class="current-work-links"><a href="{{ '/agent-reliability/' | relative_url }}">Project</a><a href="https://github.com/eunomia-bpf/agentsight">AgentSight code</a><a href="https://arxiv.org/abs/2508.02736">AgentSight paper</a></div>
 </article>
 <article class="current-work-item" aria-labelledby="work-capacity">
 <h3 id="work-capacity">Production Inference Capacity</h3>
-<p>The demands of a serving system give performance numbers their meaning. I study how workloads, cache behavior, hardware, and latency requirements come together to shape inference capacity, and how to make that capacity hold up under the pressures of real deployments.</p>
+<p>Performance numbers only mean something inside the serving system that produces them. This work examines how workloads, cache behavior, hardware, and latency requirements together set inference capacity, and how to keep that capacity stable under real deployment pressure.</p>
 </article>
 </div>
 
