@@ -58,7 +58,6 @@ My current work studies production inference, especially capacity and KV/cache b
 </article>
 <article class="current-work-item" aria-labelledby="work-capacity">
 <h3 id="work-capacity">Production Capacity &amp; Profiling</h3>
-<p>Performance numbers only mean something inside the serving system that produces them. This work examines how workloads, cache behavior, hardware, and latency requirements together set inference capacity, and how to keep that capacity stable under real deployment pressure.</p>
 <p><strong>eBPF memory profiling for RL training</strong> tracks where host and GPU memory goes in large-scale RL training jobs, where rollout, reward, and policy-update workers run side by side and memory growth or leaks are hard to trace to their source. A sampling profiler merges kernel syscall tracing, a userspace allocation shim, and GPU allocation tracking on one address space, so each allocation is counted once and tied to the Python or native code behind it, with overhead low enough for real training runs.</p>
 </article>
 </div>
