@@ -21,7 +21,7 @@ bash run_server.sh  # http://127.0.0.1:4000
 | 头像 / favicon | `images/` |
 | 样式 | `_sass/` |
 
-Google Scholar 引用数由 `.github/workflows/` 里的 action 每天自动拉一次,写到 `google-scholar-stats` 分支。
+Google Scholar 引用数由本机 Codex 的“每日更新 Scholar 引用数”任务每天洛杉矶时间 01:17 采集，调用 `google_scholar_crawler/publish.py` 校验并原子写入 `google-scholar-stats` 分支；需要本机和 Codex 保持运行。GitHub 托管 Ubuntu/macOS runner 当前均收到 Scholar 403，因此 `.github/workflows/google_scholar_crawler.yaml` 保留手动检查入口，不承担每日采集。采集失败保留上次成功数据，主页显示数据日期。
 
 ## Acknowledgments
 
