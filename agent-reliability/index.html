@@ -1,120 +1,107 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Agent reliability for compiling changing business documents into auditable, executable code.">
-  <title>Agent Reliability — From Business Documents to Auditable Code</title>
-  <link rel="icon" href="data:,">
-  <style>
-    :root{--ink:#132238;--muted:#5f6d7e;--line:#dce3e9;--soft:#f5f7f8;--paper:#fff;--blue:#175cd3;--blue-soft:#edf4ff;--amber:#b54708;--amber-soft:#fff4e5;--green:#067647;--green-soft:#ecfdf3;--red:#b42318;--red-soft:#fef3f2;--max:1120px}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit}.wrap{width:min(var(--max),calc(100% - 48px));margin:auto}.topbar{height:64px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{font-weight:750;text-decoration:none;letter-spacing:-.02em}.back{color:var(--muted);font-size:14px;text-decoration:none}.back:hover{color:var(--ink)}
-    .hero{padding:92px 0 72px;border-bottom:1px solid var(--line)}.eyebrow,.section-no{color:var(--blue);font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.hero h1{max-width:870px;margin:16px 0 20px;font-size:clamp(42px,6.2vw,74px);line-height:1.02;letter-spacing:-.055em}.hero .lead{max-width:770px;margin:0;color:var(--muted);font-size:clamp(18px,2.1vw,23px);line-height:1.5}.outline-link{display:inline-flex;align-items:center;gap:7px;margin-top:22px;color:var(--blue);font-size:14px;font-weight:750;text-decoration:none}.outline-link:hover{text-decoration:underline;text-underline-offset:4px}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:44px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}.metric{background:#fff;padding:24px}.metric strong{display:block;font-size:clamp(30px,4vw,46px);line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.04em}.metric span{display:block;margin-top:9px;color:var(--muted);font-size:13px}
-    section{padding:82px 0;border-bottom:1px solid var(--line)}.section-head{display:grid;grid-template-columns:150px 1fr;gap:34px;margin-bottom:42px}.section-head h2{margin:0;max-width:770px;font-size:clamp(31px,4vw,49px);line-height:1.08;letter-spacing:-.04em}.section-head p{grid-column:2;max-width:760px;margin:12px 0 0;color:var(--muted);font-size:18px}.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}.panel{border:1px solid var(--line);border-radius:14px;padding:26px;background:#fff}.panel h3{margin:0 0 8px;font-size:14px;letter-spacing:.01em}.panel p{margin:0;color:var(--muted)}.doc{background:var(--soft);border-left:4px solid var(--ink)}.doc .source{display:block;margin-bottom:22px;color:var(--muted);font:12px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace}.doc blockquote{margin:0;font:650 21px/1.55 Georgia,serif}.doc .translation{margin-top:18px;padding-top:18px;border-top:1px solid var(--line);font-size:14px}.wrong{background:var(--amber-soft);border-color:#fedf89}.right{background:var(--green-soft);border-color:#abefc6}.formula{margin:14px 0 8px;padding:13px 15px;background:rgba(255,255,255,.72);border-radius:9px;font:600 14px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;overflow-wrap:anywhere}.verdict{grid-column:1/-1;display:grid;grid-template-columns:170px 1fr;gap:26px;align-items:start;background:var(--ink);color:white}.verdict strong{font-size:37px;letter-spacing:-.04em;line-height:1}.verdict p{color:#d7e0ea;font-size:17px}.note{margin-top:16px;color:var(--muted);font-size:13px}
-    .machine{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.state{min-height:150px;padding:20px 18px;border:1px solid var(--line);border-radius:12px;background:white}.state .id{font:700 11px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--blue);text-transform:uppercase}.state h3{margin:12px 0 7px;font-size:17px}.state p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}.state.evidence{background:var(--amber-soft);border-color:#fedf89}.state.author{background:var(--green-soft);border-color:#abefc6}.transitions{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.transition{padding:12px 14px;border-radius:9px;background:var(--soft);color:var(--muted);font-size:12px}.transition b{color:var(--ink)}.loop{margin-top:12px;padding:16px 18px;border:1px dashed #84adff;border-radius:10px;background:var(--blue-soft);color:#1849a9;font-size:14px}.comparison{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:38px}.comparison h3{margin:0 0 18px;font-size:18px}.comparison ul{margin:0;padding:0;list-style:none}.comparison li{position:relative;margin:12px 0;padding-left:24px;color:var(--muted)}.comparison li:before{position:absolute;left:0;font-weight:800}.before li:before{content:"×";color:var(--red)}.after li:before{content:"✓";color:var(--green)}
-    .state-note{margin:-12px 0 24px;padding:20px 22px;border-left:3px solid var(--blue);background:var(--blue-soft)}.state-note strong{display:block;margin-bottom:9px}.state-note ul{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}.state-note li{padding:6px 9px;border-radius:6px;background:#fff;color:#1849a9;font-size:13px}.logic-machine{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:stretch;margin-bottom:44px}.logic-state{padding:26px;border:1px solid var(--line);border-radius:12px}.logic-state.before{background:var(--amber-soft);border-color:#fedf89}.logic-state.after{background:var(--green-soft);border-color:#abefc6}.logic-state .id{font:800 11px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase}.logic-state.before .id{color:var(--amber)}.logic-state.after .id{color:var(--green)}.logic-state h3{margin:12px 0 8px;font-size:21px}.logic-state p{margin:0;color:var(--muted);font-size:15px}.state-flow{margin-top:18px;padding:13px 15px;border-radius:9px;background:rgba(255,255,255,.75);font:700 13px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace}.logic-arrow{align-self:center;color:var(--blue);font-size:28px;text-align:center}.logic-arrow span{display:block;margin-bottom:5px;font:800 10px/1.3 ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase}.evidence-head{margin:0 0 18px;padding-top:38px;border-top:1px solid var(--line)}.evidence-head h3{margin:0 0 6px;font-size:22px}.evidence-head p{margin:0;color:var(--muted)}
-    .chain{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;counter-reset:step}.chain-card{min-height:190px;padding:22px;border:1px solid var(--line);border-radius:12px;counter-increment:step}.chain-card:before{content:"0" counter(step);display:block;margin-bottom:28px;color:var(--blue);font:800 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace}.chain-card h3{margin:0 0 8px;font-size:17px}.chain-card p{margin:0;color:var(--muted);font-size:14px}.checks{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}.check{padding:22px;border-radius:12px;background:var(--soft)}.check strong{display:block;margin-bottom:7px}.check span{color:var(--muted);font-size:14px}.boundary{margin-top:20px;padding:18px 20px;border-left:3px solid var(--amber);background:var(--amber-soft);color:#713b12;font-size:14px}.paper{display:grid;grid-template-columns:150px 1fr;gap:28px;padding:30px;border:1px solid var(--line);border-radius:14px}.award{align-self:start;padding:16px;border-radius:10px;background:var(--blue-soft);color:#1849a9;font-size:13px;font-weight:800;text-align:center}.paper h3{margin:0 0 8px;font-size:25px;line-height:1.25;letter-spacing:-.025em}.paper .authors{margin:0 0 15px;color:var(--muted);font-size:14px}.paper .summary{max-width:760px;margin:0;color:var(--muted)}.paper-links{display:flex;gap:10px;margin-top:20px}.paper-links a{padding:8px 13px;border:1px solid var(--line);border-radius:8px;color:var(--ink);font-size:13px;font-weight:750;text-decoration:none}.paper-links a:hover{border-color:var(--blue);color:var(--blue)}
-    details{border-top:1px solid var(--line)}details:last-child{border-bottom:1px solid var(--line)}summary{cursor:pointer;padding:20px 2px;font-weight:700;list-style:none}summary::-webkit-details-marker{display:none}summary:after{content:"+";float:right;color:var(--muted)}details[open] summary:after{content:"−"}details p{max-width:810px;margin:-4px 0 22px;color:var(--muted)}.footer{padding:34px 0 56px;color:var(--muted);font-size:13px}.footer .wrap{display:flex;justify-content:space-between;gap:20px}.redacted{font-style:italic}
-    @media(max-width:800px){.wrap{width:min(100% - 32px,var(--max))}.hero{padding:68px 0 54px}.metrics,.case-grid,.comparison,.checks,.transitions,.paper,.logic-machine{grid-template-columns:1fr}.section-head{grid-template-columns:1fr;gap:10px}.section-head p{grid-column:1}.machine{grid-template-columns:1fr}.state{min-height:0}.logic-arrow{font-size:0}.logic-arrow:after{content:"↓";font-size:18px}.logic-arrow span{margin:0;font-size:10px}.chain{grid-template-columns:1fr 1fr}.verdict{grid-template-columns:1fr}.award{text-align:left}.topbar{height:56px}}
-    @media(max-width:480px){.hero h1{font-size:39px}.metric{padding:20px}.chain{grid-template-columns:1fr}.panel{padding:21px}section{padding:62px 0}.footer .wrap{display:block}.footer span{display:block;margin-top:8px}}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A document-to-code case study in agent reliability: explicit task models, source authority, and tests that challenge the interpretation behind the code.">
+<title>Agent Reliability — Yu Mao</title>
+<link rel="icon" href="data:,">
+<style>
+:root{--ink:#202326;--muted:#5b636b;--blue:#224b8d;--line:#dfe3e8;--soft:#f5f7fa;--white:#fff;--max:960px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:76px}body{margin:0;background:var(--white);color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:var(--blue);text-underline-offset:4px}a:hover{text-decoration-thickness:2px}button,select{font:inherit}button{cursor:pointer}a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible{outline:3px solid var(--blue);outline-offset:4px}.wrap{width:min(var(--max),calc(100% - 48px));margin:auto}.skip{position:fixed;left:12px;top:-80px;background:var(--white);padding:8px;z-index:5}.skip:focus{top:8px}.top{border-bottom:1px solid var(--line);background:var(--white)}.nav{min-height:60px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{font-weight:650;color:var(--ink);text-decoration:none}.navlinks{display:flex;gap:24px;flex-wrap:wrap}.navlinks a{font-size:13px;text-decoration:none;color:var(--muted)}.navlinks a:hover{color:var(--blue)}
+.hero{padding:64px 0 40px}.eyebrow,.section-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:650}.eyebrow{margin:0 0 16px;color:var(--blue)}h1{font-size:clamp(34px,5vw,52px);line-height:1.12;font-weight:580;letter-spacing:-.035em;max-width:800px;margin:0 0 24px}h2{font-size:clamp(25px,3vw,32px);font-weight:580;line-height:1.25;letter-spacing:-.025em;margin:8px 0 16px}h3{font-size:17px;line-height:1.4;margin:0 0 8px;font-weight:650}p{margin:0 0 16px}.lede{max-width:760px;font-size:19px;line-height:1.65}.sublede{max-width:740px;color:var(--muted)}.links{display:flex;gap:24px;flex-wrap:wrap;margin:24px 0 0;font-size:14px}.scope{border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:24px;padding:20px 0;font-size:13px}.scope dt{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}.scope dd{margin:0}
+section{padding:48px 0;border-bottom:1px solid var(--line)}.intro{max-width:740px;color:var(--muted)}.case{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);margin:24px 0}.case article{padding:24px}.case article+article{border-left:1px solid var(--line);background:var(--soft)}.tag{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:12px}.formula{font:14px/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;margin:16px 0;overflow-wrap:anywhere}.case p{font-size:14px;margin-bottom:0}.note{font-size:13px;color:var(--muted)}.record{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:8px 0 16px}.record strong{display:block;font-size:24px;font-weight:580;letter-spacing:-.02em;color:var(--blue)}.record p{font-size:14px;margin:0}.callout{border-left:3px solid var(--blue);padding:4px 0 4px 20px;margin:24px 0 0;max-width:800px}.callout p{margin:0}
+.demo{margin-top:32px;padding:24px;background:var(--soft);border:1px solid var(--line)}.demohead{display:flex;justify-content:space-between;gap:24px;align-items:start}.demohead p{font-size:13px;color:var(--muted);max-width:600px}.choose{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 24px}.choose button{padding:8px 12px;border:1px solid #b9c2cd;background:var(--white);color:var(--ink);border-radius:3px;font-size:13px}.choose button[aria-pressed="true"]{background:var(--blue);color:var(--white);border-color:var(--blue)}.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}.inputs{margin:0;font-size:14px}.inputs div{display:flex;justify-content:space-between;gap:16px;padding:6px 0;border-bottom:1px solid var(--line)}.inputs dt{color:var(--muted)}.inputs dd{margin:0;font-variant-numeric:tabular-nums}.outputs{display:grid;grid-template-columns:1fr 1fr;gap:16px}.outputs small{display:block;font-size:12px;color:var(--muted)}.outputs output{display:block;font-size:24px;font-weight:600;color:var(--blue);line-height:1.4;margin:8px 0}.outputs code{font-size:11px;color:var(--muted)}#explanation{font-size:14px;margin:20px 0 0;min-height:3.3em}.noscript{font-size:14px;color:var(--muted)}
+.layer-heading{margin-top:32px}.model{margin:24px 0;border-top:1px solid var(--line)}.model-row{display:grid;grid-template-columns:150px 1fr 1.2fr;gap:20px;border-bottom:1px solid var(--line);padding:16px 0;font-size:14px}.model-row .term{font-weight:650}.model-row .meaning{color:var(--muted)}.model-row code{font:12px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}.workflow{list-style:none;padding:0;margin:24px 0 0;counter-reset:steps}.workflow li{counter-increment:steps;display:grid;grid-template-columns:40px 200px 1fr;gap:16px;padding:20px 0;border-top:1px solid var(--line)}.workflow li::before{content:"0" counter(steps);font:13px/1.8 ui-monospace,monospace;color:var(--blue)}.workflow h3{font-size:16px}.workflow p{margin:0;color:var(--muted);font-size:14px}.research{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:24px}.research article{border-top:2px solid var(--ink);padding-top:20px}.research h3{font-size:20px;font-weight:580;letter-spacing:-.015em}.research p{font-size:14px}.research .status{color:var(--blue);font-size:11px;font-weight:650;letter-spacing:.08em;text-transform:uppercase}.authors{color:var(--muted);font-size:12px!important}.research .links{margin-top:16px}.details{margin-top:24px}details{border-top:1px solid var(--line)}details:last-child{border-bottom:1px solid var(--line)}summary{cursor:pointer;padding:16px 0;font-size:15px;font-weight:600}details p{color:var(--muted);font-size:14px;max-width:780px}footer{padding:24px 0 40px;font-size:12px;color:var(--muted)}.foot{display:flex;justify-content:space-between;gap:24px}
+@media(max-width:767px){.wrap{width:calc(100% - 32px)}.hero{padding-top:40px}.nav{gap:16px;align-items:flex-start;padding:16px 0}.navlinks{gap:12px}.scope{grid-template-columns:1fr;gap:12px}.scope div{display:grid;grid-template-columns:100px 1fr;gap:12px}.scope dt{margin:0}.case,.research,.demo-grid{grid-template-columns:1fr}.case article+article{border-left:0;border-top:1px solid var(--line)}.research{gap:32px}.record{gap:16px}.model-row{grid-template-columns:110px 1fr;gap:8px 16px}.model-row code{grid-column:2}.workflow li{grid-template-columns:28px 1fr;gap:8px 12px}.workflow p{grid-column:2}.demo{padding:20px}.foot{display:block}.foot span{display:block;margin-top:8px}section{padding:36px 0}}
+@media(max-width:400px){.nav{display:block}.navlinks{margin-top:12px}.record{grid-template-columns:1fr}.outputs{gap:8px}.model-row{grid-template-columns:1fr}.model-row code{grid-column:1}.links{gap:16px}.lede{font-size:18px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
 </head>
 <body>
-  <header class="wrap topbar"><a class="brand" href="/">Yu Mao</a><a class="back" href="/">← Back to portfolio</a></header>
-  <main>
-    <section class="hero">
-      <div class="wrap">
-        <div class="eyebrow">Agent Reliability · Systems case study</div>
-        <h1>From business documents to auditable code.</h1>
-        <p class="lead">Agents naturally optimize for textual closure; people care whether the task’s real-world actions actually close the loop. I built a document-to-code workflow that keeps business authority, implementation, tests, and change impact connected—so a green test suite cannot silently legitimize the wrong rule.</p>
-        <a class="outline-link" href="/assets/pdfs/task-world-model-outline.pdf" target="_blank" rel="noopener">Read the Task World Model outline <span aria-hidden="true">↗</span></a>
-        <div class="metrics" aria-label="Key case results">
-          <div class="metric"><strong>30 / 30</strong><span>sample rows agreed with the wrong inferred rule</span></div>
-          <div class="metric"><strong>14 / 15</strong><span>expected values changed after the authoritative rule arrived</span></div>
-          <div class="metric"><strong>5 evidence states</strong><span>keep inference separate from authority</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="case">
-      <div class="wrap">
-        <div class="section-head"><div class="section-no">01 / The case</div><div><h2>A rule can fit every example and still be wrong.</h2><p>The useful artifact is not another generated pipeline. It is a system that remembers what the source actually said, what was inferred, and what must be invalidated when authority changes.</p></div></div>
-        <div class="case-grid">
-          <article class="panel doc"><span class="source">AUTHORITATIVE BUSINESS DOCUMENT · SANITIZED EXCERPT</span><blockquote>“Target date = Max(Dependency A ready, Dependency B ready) + Service window”</blockquote><p class="translation">The milestone clock starts only after both prerequisites are ready, then applies the governing service window.</p></article>
-          <article class="panel wrong"><h3>Before the document stated the formula</h3><p>Two example tables suggested a different rule:</p><div class="formula">max(Dependency B ready + 14d,<br>Downstream start date)</div><p><strong>15/15 + 15/15 rows passed.</strong> It looked independently validated.</p></article>
-          <article class="panel right"><h3>After the authoritative revision</h3><p>The source named the real rule:</p><div class="formula">max(Dependency A ready,<br>Dependency B ready) + service window</div><p>On the retained 15-row case, <strong>14 expected dates changed</strong>. The old screenshots encoded a parallel-work assumption, not the governing policy.</p></article>
-          <article class="panel"><h3>The executable regression case</h3><p>Fourteen rows exercise the Dependency A branch; one row exercises the Dependency B branch. Reverting to the old inferred formula makes the case fail.</p><div class="formula">14 rows → Dependency A branch<br>1 row&nbsp;&nbsp;→ Dependency B branch</div></article>
-          <article class="panel verdict"><strong>Green ≠ correct</strong><p>Tests prove that code matches their expected values. They do not prove those expected values express the business rule—especially when code, tests, and expectations were generated from the same interpretation.</p></article>
-        </div>
-        <p class="note">Public case study: internal identifiers, source links, and business data are omitted. Counts and rule evolution are preserved from the project evidence.</p>
-      </div>
-    </section>
-
-    <section id="state-machine">
-      <div class="wrap">
-        <div class="section-head"><div class="section-no">02 / State machine</div><div><h2>A state machine exposes the assumptions hidden inside a formula.</h2><p>It does not discover the rule. It makes missing evidence visible.</p></div></div>
-        <div class="state-note"><strong>Rewriting the formula as behavior forces three questions:</strong><ul><li>What state are we in?</li><li>What event moves us forward?</li><li>What evidence supports the guard?</li></ul></div>
-        <div class="logic-machine" aria-label="Behavior before and after adding the state machine">
-          <article class="logic-state before"><div class="id">Before · wrong</div><h3>Dependency B ready → advance</h3><p>The generated logic treated one prerequisite as sufficient and advanced too early.</p><div class="state-flow">Dependency B ready → In progress</div></article>
-          <div class="logic-arrow" aria-hidden="true"><span>Add state machine</span>→</div>
-          <article class="logic-state after"><div class="id">After · correct</div><h3>Wait until both prerequisites are ready</h3><p>The workflow advances only after Dependency A and Dependency B are both ready.</p><div class="state-flow">Waiting → Eligible → In progress<br>guard: dependency_a_ready &amp;&amp; dependency_b_ready</div></article>
-        </div>
-        <div class="evidence-head"><h3>Evidence status is a separate layer.</h3><p>Once the logic is explicit, each interpretation still needs a recorded source of authority.</p></div>
-        <div class="machine" aria-label="Business rule authority lifecycle">
-          <article class="state"><div class="id">State 01</div><h3>Unresolved</h3><p>The source is incomplete or conflicting. Affected output is blocked or marked provisional.</p></article>
-          <article class="state"><div class="id">State 02</div><h3>AI inferred</h3><p>A reading is possible, but no independent evidence or owner has authorized it.</p></article>
-          <article class="state evidence"><div class="id">State 03</div><h3>Evidence derived</h3><p>Examples support the rule. The exact rows and counterfactuals remain attached.</p></article>
-          <article class="state"><div class="id">State 04</div><h3>User answered</h3><p>A workflow owner accepts the interpretation, with provenance and scope recorded.</p></article>
-          <article class="state author"><div class="id">State 05</div><h3>Author answered</h3><p>The rule enters the source document and leaves the exception ledger.</p></article>
-        </div>
-        <div class="transitions" aria-label="Allowed authority transitions">
-          <div class="transition"><b>Unresolved → AI inferred</b><br>A reading is selected.</div>
-          <div class="transition"><b>Unresolved → Evidence derived</b><br>Samples distinguish a rule.</div>
-          <div class="transition"><b>Any open state → User answered</b><br>A workflow owner rules.</div>
-          <div class="transition"><b>Any open state → Author answered</b><br>The decision enters the source.</div>
-        </div>
-        <div class="loop"><strong>On any source-block hash change:</strong> dependent judgments become stale, impacted cases rerun, and only affected rules return for review.</div>
-      </div>
-    </section>
-
-    <section id="correctness">
-      <div class="wrap">
-        <div class="section-head"><div class="section-no">03 / Correctness</div><div><h2>Correctness is a proof chain, not one model call.</h2><p>The document compiler keeps the source, semantic decision, implementation, and runtime evidence independently challengeable.</p></div></div>
-        <div class="chain">
-          <article class="chain-card"><h3>Freeze the source</h3><p>Mirror the original document with revision IDs, normalized block hashes, and asset hashes. A missing or changed source fails closed.</p></article>
-          <article class="chain-card"><h3>Compile semantics</h3><p>Turn prose into explicit fields, keys, formulas, branches, and unresolved decisions. No silent default becomes a business rule.</p></article>
-          <article class="chain-card"><h3>Break shared failure</h3><p>Use owner-reviewed hand cases and a separately built reference model. Code and expected outputs cannot share one unchallenged interpretation.</p></article>
-          <article class="chain-card"><h3>Bind evidence</h3><p>Map each rule to DAG nodes, code symbols, cases, invariants, mutations, replay diffs, and row-level lineage.</p></article>
-        </div>
-        <div class="checks">
-          <article class="check"><strong>Reconciliation</strong><span>Input and output totals reconcile within each rule scope.</span></article>
-          <article class="check"><strong>Counterfactuals</strong><span>Inject plausible wrong implementations and require at least one case or invariant to fail.</span></article>
-          <article class="check"><strong>Controlled change</strong><span>Same inputs reproduce the same output; one rule edit explains exactly which outputs move.</span></article>
-        </div>
-        <div class="boundary"><strong>Boundary:</strong> this workflow can prove faithful implementation of an authorized rule. It cannot manufacture authority when the business document itself leaves a consequential choice undefined.</div>
-      </div>
-    </section>
-
-    <section id="best-paper">
-      <div class="wrap">
-        <div class="section-head"><div class="section-no">04 / Best Paper</div><div><h2>Intent should define what an agent is allowed to do.</h2><p>The companion research asks who may determine each field of an agent action when user requests, documents, tools, and runtime evidence carry different authority.</p></div></div>
-        <article class="paper">
-          <div class="award">AgenticOS 2026<br>Best Paper Award</div>
-          <div><h3>LLM Agent Capabilities Should Follow Task Intent and Context Source</h3><p class="authors">Yusheng Zheng · Wenhui Zhang · Yu Mao</p><p class="summary">IntentCap composes task-scoped capabilities from multiple context sources using field-level ownership and monotonic narrowing, then validates short-lived leases with a deterministic checker before side effects commit.</p><div class="paper-links"><a href="https://arxiv.org/abs/2609.14631" target="_blank" rel="noopener">arXiv ↗</a><a href="https://arxiv.org/pdf/2609.14631" target="_blank" rel="noopener">PDF ↗</a></div></div>
-        </article>
-      </div>
-    </section>
-
-    <section id="deep-dive">
-      <div class="wrap">
-        <div class="section-head"><div class="section-no">05 / Technical deep dive</div><div><h2>What an interviewer can challenge.</h2></div></div>
-        <details><summary>Why not generate code directly from the document?</summary><p>Direct generation collapses extraction, interpretation, implementation, and validation into one correlated failure path. The compiler makes those boundaries explicit and retains unresolved semantics instead of guessing through them.</p></details>
-        <details><summary>What exactly triggers invalidation?</summary><p>Normalized source-block content, document revision identity, and referenced asset bytes. When a source hash moves, the system marks dependent judgments stale through the existing block → rule → operation → case graph.</p></details>
-        <details><summary>How is the state machine different from evidence status?</summary><p>The state machine organizes business behavior: states, events, guards, transitions, and actions. Evidence status answers a different question—who or what supports each extracted rule. “Code exists” and “tests pass” do not advance that authority.</p></details>
-        <details><summary>What is the review unit?</summary><p>A rule card: original text, executable interpretation, a small hand-checkable case, business impact if wrong, implementation anchors, evidence strength, freshness, and the exact decision being signed.</p></details>
-      </div>
-    </section>
-  </main>
-  <footer class="footer"><div class="wrap"><div>Yu Mao · AI infrastructure &amp; reliable agent systems</div><span>Case evidence current to the preserved project record.</span></div></footer>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><nav class="wrap nav" aria-label="Main navigation"><a class="brand" href="/">Yu Mao</a><div class="navlinks"><a href="#case">Case study</a><a href="#approach">Approach</a><a href="#research">Research</a></div></nav></header>
+<main id="main" class="wrap">
+<div class="hero">
+<p class="eyebrow">Agent reliability · Documents, decisions &amp; code</p>
+<h1>Make the task model explicit.<br>Then let the agent act.</h1>
+<p class="lede">I built a document-to-code workflow that connects business rules to their sources, implementation, and regression cases.</p>
+<p class="sublede">The central problem: an agent can implement the wrong interpretation perfectly. This project makes that interpretation inspectable—and keeps a passing test from being mistaken for an authorized rule.</p>
+<div class="links"><a href="#case">Explore the case ↓</a><a href="/assets/pdfs/task-world-model-outline.pdf">Task World Model outline ↗</a></div>
+</div>
+<dl class="scope"><div><dt>Engineering</dt><dd>Document-to-code workflow</dd></div><div><dt>Case evidence</dt><dd>A sanitized rule revision</dd></div><div><dt>Related research</dt><dd>IntentCap · Task World Model</dd></div></dl>
+<section id="case" aria-labelledby="case-title">
+<p class="section-label">01 / The failure worth solving</p>
+<h2 id="case-title">Passing examples did not identify the rule.</h2>
+<p class="intro">Two example tables fit an inferred scheduling formula. A later document revision specified a different dependency: both prerequisites must be ready before the service window starts.</p>
+<div class="case">
+<article><span class="tag">Inferred from examples</span><h3>One prerequisite, plus a downstream date</h3><div class="formula">max(B ready + 14 days,<br>downstream start)</div><p>The examples supported this reading, but did not establish it as the governing rule.</p></article>
+<article><span class="tag">Specified in the revised source</span><h3>Both prerequisites, then the service window</h3><div class="formula">max(A ready, B ready)<br>+ service window</div><p>The revised formula explicitly includes A. The implementation and expected outputs have to follow that change.</p></article>
+</div>
+<div class="record"><p><strong>30 matching rows</strong>Two 15-row tables agreed with the inferred formula.</p><p><strong>14 of 15 dates changed</strong>Applying the revised rule changed expectations in the retained regression case.</p></div>
+<p class="note">These are counts from one preserved project case, not an agent success rate or a benchmark of general reliability. Internal documents, identifiers, and row-level business data are not public.</p>
+<div class="demo">
+<div class="demohead"><div><h3>Try a case that separates the interpretations</h3><p>Illustrative day offsets, not project data. The service window is fixed at 14 days here; no calendar or working-day policy is implied.</p></div></div>
+<div class="choose" role="group" aria-label="Illustrative scheduling cases"><button type="button" data-case="a" aria-pressed="true">A is ready later</button><button type="button" data-case="b" aria-pressed="false">B is ready later</button><button type="button" data-case="missing" aria-pressed="false">A is unknown</button></div>
+<div class="demo-grid"><dl class="inputs"><div><dt>A ready</dt><dd id="a-value">Day 20</dd></div><div><dt>B ready</dt><dd id="b-value">Day 5</dd></div><div><dt>Downstream start</dt><dd id="downstream-value">Day 19</dd></div><div><dt>Service window</dt><dd>14 days</dd></div></dl><div class="outputs" aria-live="polite" aria-atomic="true"><div><small>Inferred formula</small><output id="inferred">Day 19</output><code>max(B + 14, downstream)</code></div><div><small>Revised source rule</small><output id="specified">Day 34</output><code>max(A, B) + 14</code></div></div></div>
+<p id="explanation">The inferred formula omits A and returns Day 19—before A is ready. The revised rule waits until Day 20, then adds 14 days.</p>
+<noscript><p class="noscript">The first example is shown above. Enable JavaScript to switch cases.</p></noscript>
+</div>
+<div class="callout"><p><strong>The lesson:</strong> code and tests can share the same mistaken interpretation. A useful regression case must challenge the rule, not just reproduce its current outputs.</p></div>
+</section>
+<section id="approach" aria-labelledby="approach-title">
+<p class="section-label">02 / The engineering approach</p>
+<h2 id="approach-title">Keep the rule, its authority, and its consequences connected.</h2>
+<p class="intro">The workflow separates what the source says from what the agent infers. That distinction stays attached as the rule becomes code and as the source changes.</p>
+<ol class="workflow">
+<li><h3>Preserve the source</h3><p>Retain document revisions, normalized source-block hashes, and referenced asset hashes so a decision can be traced back to the evidence it used.</p></li>
+<li><h3>Expose the interpretation</h3><p>Write down the fields, dependency relations, formulas, branches, and open questions before treating the document as an executable specification.</p></li>
+<li><h3>Challenge the rule</h3><p>Use hand-checkable cases and an independently built reference model. Inject plausible wrong formulas and check that a case or invariant rejects them.</p></li>
+<li><h3>Trace a revision</h3><p>Connect source blocks to rules, operations, code, and cases. When the source changes, mark dependent judgments stale and rerun the affected checks.</p></li>
+</ol>
+<h3 class="layer-heading">Two layers that should remain separate</h3>
+<div class="model" aria-label="Task behavior and evidence authority">
+<div class="model-row"><span class="term">Task behavior</span><span class="meaning">When may the workflow advance?</span><code>Waiting → Eligible → In progress<br>guard: A ready AND B ready</code></div>
+<div class="model-row"><span class="term">Rule authority</span><span class="meaning">What supports that guard?</span><code>Source · revision · interpretation<br>evidence status · unresolved decision</code></div>
+</div>
+<p class="note">An explicit state machine helps expose a missing prerequisite. It cannot decide which business rule is authoritative.</p>
+<div class="details">
+<details><summary>How are inferred and authorized rules distinguished?</summary><p>The case workflow records unresolved, AI-inferred, evidence-derived, user-answered, and author-answered interpretations. These labels describe different sources of support; they are not a confidence score or an automatic promotion ladder. An example matching a rule does not give that example authority to define policy.</p></details>
+<details><summary>What changes when a source revision arrives?</summary><p>Source-block content, revision identity, and asset bytes determine freshness. A change makes dependent judgments stale through the source → rule → operation → case links. The review unit is the affected rule and its downstream outputs, rather than the entire document.</p></details>
+<details><summary>What does verification establish—and what does it leave open?</summary><p>Regression cases, reconciliation, mutation checks, and replay diffs can test whether code follows an interpretation. They cannot authorize a consequential choice that the source leaves undefined. That decision remains open until an appropriate owner or source resolves it.</p></details>
+</div>
+</section>
+<section id="research" aria-labelledby="research-title">
+<p class="section-label">03 / Related research</p>
+<h2 id="research-title">What world is the agent acting in?<br>Who may authorize the action?</h2>
+<p class="intro">These are separate questions. The Task World Model outline addresses reconstruction of the task; IntentCap addresses authority over actions.</p>
+<div class="research">
+<article><p class="status">Research outline</p><h3>Evidence-grounded Task World Models</h3><p>Represent the entities, states, relations, transitions, constraints, and unknowns an agent needs for a task. Attach provenance and evidence status to each element instead of silently completing gaps.</p><p>The proposed evaluation compares direct text-to-action with an explicit model under missing, contradictory, and stale evidence. The outline describes the research design; it does not report measured improvements.</p><div class="links"><a href="/assets/pdfs/task-world-model-outline.pdf">Read the outline ↗</a></div></article>
+<article><p class="status">Paper · AgenticOS 2026 · Best Paper Award</p><h3>LLM Agent Capabilities Should Follow Task Intent and Context Source</h3><p class="authors">Yusheng Zheng · Wenhui Zhang · Yu Mao</p><p>IntentCap composes task-scoped capabilities from user intent, workflow instructions, tool schemas, and the runtime environment. Field-level ownership and a deterministic checker keep those sources from widening the user’s authority before an action commits.</p><div class="links"><a href="https://arxiv.org/abs/2609.14631">Read the paper ↗</a><a href="https://arxiv.org/pdf/2609.14631">PDF ↗</a></div></article>
+</div>
+</section>
+</main>
+<footer><div class="wrap foot"><a href="/">← Back to portfolio</a><span>Yu Mao · AI infrastructure &amp; reliable agent systems</span></div></footer>
+<script>
+(() => {
+  const cases = {
+    a: { a: 20, b: 5, downstream: 19, text: 'The inferred formula omits A and returns Day 19—before A is ready. The revised rule waits until Day 20, then adds 14 days.' },
+    b: { a: 5, b: 20, downstream: 34, text: 'Both formulas return Day 34. Agreement on this input does not establish that the formulas encode the same dependency rule.' },
+    missing: { a: null, b: 5, downstream: 19, text: 'The inferred formula still returns Day 19. The revised rule cannot determine a date while A is unknown; the missing input must remain visible.' }
+  };
+  const buttons = document.querySelectorAll('[data-case]');
+  const day = value => value === null ? 'Unknown' : `Day ${value}`;
+  for (const button of buttons) button.addEventListener('click', () => {
+    const item = cases[button.dataset.case];
+    for (const choice of buttons) choice.setAttribute('aria-pressed', String(choice === button));
+    document.getElementById('a-value').textContent = day(item.a);
+    document.getElementById('b-value').textContent = day(item.b);
+    document.getElementById('downstream-value').textContent = day(item.downstream);
+    document.getElementById('inferred').textContent = day(Math.max(item.b + 14, item.downstream));
+    document.getElementById('specified').textContent = day(item.a === null ? null : Math.max(item.a, item.b) + 14);
+    document.getElementById('explanation').textContent = item.text;
+  });
+})();
+</script>
 </body>
 </html>
