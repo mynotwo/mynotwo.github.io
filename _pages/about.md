@@ -54,12 +54,12 @@ My current work studies production inference, especially capacity and KV/cache b
 <article class="current-work-item" aria-labelledby="work-agent">
 <h3 id="work-agent">Agent Reliability &amp; LLM Capability</h3>
 <p>What a model can do and what an agent actually does are often far apart. Controlled probes and agent evaluations show how capabilities surface during a task, where they go unused, and what helps an agent carry its understanding through to action.</p>
-<p><strong>AgentSight</strong> is an eBPF-based profiler for AI agents. It traces processes, files, network traffic, and LLM calls at the system level and links each action back to the prompt and tool decision behind it, with no SDK or code changes in the agent.</p>
-<div class="current-work-links"><a href="{{ '/agent-reliability/' | relative_url }}">Project</a><a href="https://github.com/eunomia-bpf/agentsight">AgentSight code</a><a href="https://arxiv.org/abs/2508.02736">AgentSight paper</a></div>
+<div class="current-work-links"><a href="{{ '/agent-reliability/' | relative_url }}">Project</a></div>
 </article>
 <article class="current-work-item" aria-labelledby="work-capacity">
 <h3 id="work-capacity">Production Inference Capacity</h3>
 <p>Performance numbers only mean something inside the serving system that produces them. This work examines how workloads, cache behavior, hardware, and latency requirements together set inference capacity, and how to keep that capacity stable under real deployment pressure.</p>
+<p><strong>eBPF memory profiling</strong> makes this visible on real GPU jobs. A sampling profiler combines three layers: kernel syscall tracing for mmap and brk, a userspace allocation shim that attributes memory to Python and native call stacks, and tracking of GPU allocations and kernels. All three are projected onto one unified virtual address space, so memory pools, mapped regions, and CUDA allocations are counted once and tied to the code that acquired them. Sampling keeps the overhead low enough to run on production jobs, and acquire/release views with differential flame graphs show where memory is held and what changed between runs.</p>
 </article>
 </div>
 
