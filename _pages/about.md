@@ -89,8 +89,8 @@ My current work studies production inference, especially capacity and KV/cache b
 {% endfor %}
 
 # 🤝 Services
-- **Conference reviewing:** NeurIPS 2024–2026; ICLR 2025–2026; ICML 2025–2026; CVPR 2024–2026; ICCV 2025; BMVC 2026; ACM MM 2023–2024; ARR
-- **Program committees:** AAAI 2026; DAC 2026; GLSVLSI 2025–2026; RTCSA 2025; USENIX ATC 2025
+- **Conference reviewing:** NeurIPS 2024–2026; ICLR 2025–2026; ICML 2025; CVPR 2024–2026; ICCV 2025; BMVC 2026; ACM MM 2023–2024; ARR
+- **Program committees:** AAAI 2026; DAC 2026; GLSVLSI 2025–2026; RTCSA 2025
 - **External review committee:** USENIX ATC 2024
 - **Artifact evaluation committees:** EuroSys 2025; DSN 2024
 - **Journal reviewing:** ACM TECS; TMLR; IEEE TKDE
