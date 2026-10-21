@@ -1,15 +1,12 @@
 # 顺序 = 显示顺序(最新在最上)
 - date: "2026.10"
-  content: "Released an experimental [AIBrix Hybrid KV Cache](https://github.com/mynotwo/aibrix-hybrid-kvcache) source preview, with an upstream [RFC](https://github.com/vllm-project/aibrix/issues/3220) and [MEMORY backend PR (draft)](https://github.com/vllm-project/aibrix/pull/3221)."
+  content: "Released an experimental source preview of [AIBrix Hybrid KV Cache](https://github.com/mynotwo/aibrix-hybrid-kvcache)."
 
 - date: "2026.10"
   content: "Our paper, [Probe with Participation Trophies: Random-Reward RL as a Probe of LLM Capability](https://arxiv.org/abs/2610.01066), is now available on arXiv."
 
 - date: "2026.09"
   content: "Our paper, LLM Agent Capabilities Should Follow Task Intent and Context Source, received the Best Paper Award at AgenticOS 2026."
-
-- date: "2026.04"
-  content: "Joined ByteDance San Jose as Research Scientist."
 
 - date: "2026.01"
   content: "BAHOP and ECM accepted at ICASSP 2026."

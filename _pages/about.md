@@ -17,7 +17,7 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-I’m a Research Scientist at ByteDance in San Jose, where I work on AI infrastructure and inference. I received my Ph.D. in Computer Science from City University of Hong Kong, where I worked on compression and computer systems.
+Hi, I’m Yu Mao. Feel free to call me Audrey! I’m a Research Scientist at ByteDance in San Jose, working on AI infrastructure and inference. I received my Ph.D. in Computer Science from City University of Hong Kong, where I worked on compression and computer systems.
 
 My current work studies production inference, especially capacity and KV/cache behavior, and how reliably LLM capabilities are invoked in agent settings. Compression remains a long-term part of my work, with a recent focus on how inference state is represented and moved through serving systems.
 
@@ -49,9 +49,16 @@ A model can demonstrate the right capability when prompted directly and still fa
 
 # 🔥 News
 <div class="news-timeline" markdown="1">
-{% for item in site.data.news %}- *{{ item.date }}*: &nbsp; {{ item.content }}
+{% for item in site.data.news limit:4 %}- *{{ item.date }}*: &nbsp; {{ item.content }}
 {% endfor %}
 </div>
+
+<details markdown="1">
+<summary>Earlier news</summary>
+
+{% for item in site.data.news offset:4 %}- *{{ item.date }}*: &nbsp; {{ item.content }}
+{% endfor %}
+</details>
 
 # 📝 Publications
 
