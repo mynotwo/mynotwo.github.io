@@ -137,10 +137,16 @@
   case_study: /agent-reliability/
 
 - theme: "LLM Capability & Agents"
-  title: "LLM Agent Capabilities Should Follow Task Intent and Context Source"
+  title: "AgentPProf: Semantic Profiler for AI Agents"
   selected_order: 2
+  authors: "Yusheng Zheng, Chaokun Chang, **Yu Mao**, Tianyuan Wu, Yuxi Huang, Tao Ma, Wenan Mao, Shuyi Cheng, Andi Quinn, Wei Wang"
+  venue: "AgenticOS @ SOSP 2026 · Best Paper Award"
+  pdf: "https://os-for-agent.github.io/papers/AgenticOS_SOSP_2026_paper_27.pdf"
+
+- theme: "LLM Capability & Agents"
+  title: "LLM Agent Capabilities Should Follow Task Intent and Context Source"
   authors: "Yusheng Zheng, Wenhui Zhang, **Yu Mao**"
-  venue: "AgenticOS 2026 · Best Paper Award"
+  venue: "AgenticOS @ SOSP 2026"
   arxiv: "https://arxiv.org/abs/2609.14631"
   pdf: "https://arxiv.org/pdf/2609.14631"
   image: /images/papers/intentcap.png

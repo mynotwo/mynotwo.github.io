@@ -6,7 +6,7 @@
   content: "Our paper, [Probe with Participation Trophies: Random-Reward RL as a Probe of LLM Capability](https://arxiv.org/abs/2610.01066), is now available on arXiv."
 
 - date: "2026.09"
-  content: "Our paper, LLM Agent Capabilities Should Follow Task Intent and Context Source, received the Best Paper Award at AgenticOS 2026."
+  content: "Our paper, [AgentPProf: Semantic Profiler for AI Agents](https://os-for-agent.github.io/papers/AgenticOS_SOSP_2026_paper_27.pdf), received the Best Paper Award at AgenticOS @ SOSP 2026."
 
 - date: "2026.01"
   content: "BAHOP and ECM accepted at ICASSP 2026."
