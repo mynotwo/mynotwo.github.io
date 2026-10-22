@@ -142,6 +142,7 @@
   authors: "Yusheng Zheng, Chaokun Chang, **Yu Mao**, Tianyuan Wu, Yuxi Huang, Tao Ma, Wenan Mao, Shuyi Cheng, Andi Quinn, Wei Wang"
   venue: "AgenticOS @ SOSP 2026 · Best Paper Award"
   pdf: "https://os-for-agent.github.io/papers/AgenticOS_SOSP_2026_paper_27.pdf"
+  image: /images/papers/agentpprof.png
 
 - theme: "LLM Capability & Agents"
   title: "LLM Agent Capabilities Should Follow Task Intent and Context Source"
