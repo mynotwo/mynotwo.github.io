@@ -35,7 +35,9 @@ My current work connects LLM capability research with the systems needed to run 
 
 <style>
 .current-work-list { margin: 22px 0 36px; max-width: 850px; }
-.current-work-list .current-work-item { padding: 22px 0; border-bottom: 1px solid #e1e5eb; }
+.current-work-list .current-work-item { display: grid; grid-template-columns: 240px minmax(0, 1fr); column-gap: 24px; align-items: start; padding: 22px 0; border-bottom: 1px solid #e1e5eb; }
+.current-work-list .current-work-figure { display: block; width: 100%; height: auto; margin: 0; }
+.current-work-list .current-work-copy { min-width: 0; }
 .current-work-list .current-work-item:first-child { padding-top: 0; }
 .current-work-list .current-work-item:last-child { padding-bottom: 0; border-bottom: 0; }
 .current-work-list .current-work-item h3 { margin: 0 0 8px; font-size: 1.08em; line-height: 1.4; letter-spacing: -.015em; color: #243955; }
@@ -45,7 +47,8 @@ My current work connects LLM capability research with the systems needed to run 
 .current-work-list .current-work-links a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .current-work-list .current-work-links a:focus-visible { outline: 2px solid #295d8a; outline-offset: 3px; }
 @media (max-width: 760px) {
-  .current-work-list .current-work-item { padding: 20px 0; }
+  .current-work-list .current-work-item { grid-template-columns: minmax(0, 1fr); row-gap: 16px; padding: 20px 0; }
+  .current-work-list .current-work-figure { max-width: 320px; }
   .current-work-list .current-work-links { column-gap: 20px; }
   .current-work-list .current-work-links a { padding: 8px 0; }
 }
@@ -53,28 +56,45 @@ My current work connects LLM capability research with the systems needed to run 
 
 <div class="current-work-list">
 <article class="current-work-item" aria-labelledby="work-kv">
+<img class="current-work-figure" src="{{ '/images/current-work-kv.svg' | relative_url }}" width="440" height="300" loading="lazy" alt="State and KV records are encoded, stored and checked on restore.">
+<div class="current-work-copy">
 <h3 id="work-kv">AIBrix Hybrid KV Cache</h3>
 <p>Built and open-sourced hybrid KV offloading with bounded storage, now used by TikTok Infra, with an upstream AIBrix PR. CPU byte-store round trips are verified; whole-model output equivalence remains open.</p>
-<div class="current-work-links"><a href="https://github.com/mynotwo/aibrix-hybrid-kvcache">Code</a><a href="https://github.com/vllm-project/aibrix/pull/3221">Upstream PR #3221</a><a href="{{ '/blog/hybrid-kv-cache-storage-contract/' | relative_url }}">Technical article</a><a href="{{ '/kvcache-bench/' | relative_url }}">Benchmark</a></div>
+<div class="current-work-links"><a href="https://github.com/mynotwo/aibrix-hybrid-kvcache">Code</a><a href="https://github.com/vllm-project/aibrix/pull/3221">Upstream PR #3221</a><a href="{{ '/blog/hybrid-kv-cache-storage-contract/' | relative_url }}">Blog</a><a href="{{ '/kvcache-bench/' | relative_url }}">Benchmark</a></div>
+</div>
 </article>
 <article class="current-work-item" aria-labelledby="work-rl">
+<img class="current-work-figure" src="{{ '/images/current-work-rl.svg' | relative_url }}" width="440" height="300" loading="lazy" alt="One checkpoint, three training interventions, held-out evaluation.">
+<div class="current-work-copy">
 <h3 id="work-rl">RL as a Probe of LLM Capability</h3>
 <p>My first-author paper uses random-reward RL to probe what further training can unlock beyond current accuracy. I am turning these controlled interventions into a capability evaluation framework.</p>
-<div class="current-work-links"><a href="https://arxiv.org/abs/2610.01066">Paper</a><a href="https://github.com/mynotwo/rl-random-prob">Code</a></div>
+<div class="current-work-links"><a href="{{ '/blog/rl-capability-probing/' | relative_url }}">Blog</a><a href="https://arxiv.org/abs/2610.01066">Paper</a><a href="https://github.com/mynotwo/rl-random-prob">Code</a></div>
+</div>
 </article>
 <article class="current-work-item" aria-labelledby="work-bitexact">
+<img class="current-work-figure" src="{{ '/images/current-work-bitexact.svg' | relative_url }}" width="440" height="300" loading="lazy" alt="The same constants and input produce matching bits across tested hardware.">
+<div class="current-work-copy">
 <h3 id="work-bitexact">Bitwise-Reproducible LLM Inference Across Hardware</h3>
-<p>Built integer-exact and batch-invariant LLM engines with vLLM integration. The integer engine reproduced 95K tokens bitwise across tested H800, H100, and x86 CPU configurations, supporting reproducible inference and lossless compression.</p>
-<div class="current-work-links"><a href="https://github.com/mynotwo/bitexact-llm">Project repository</a></div>
+<p>Built integer LLM inference with matching logits and tokens across tested GPU and CPU configurations. An int8 vLLM plugin preserves reproducibility under tested batching and cache changes.</p>
+<div class="current-work-links"><a href="{{ '/blog/bitexact-inference/' | relative_url }}">Blog</a><a href="https://github.com/mynotwo/bitexact-llm">Project repository</a></div>
+</div>
 </article>
 <article class="current-work-item" aria-labelledby="work-capacity">
+<img class="current-work-figure" src="{{ '/images/current-work-omni.svg' | relative_url }}" width="440" height="300" loading="lazy" alt="CPU time, memory and GPU activity are attributed to Python and native stacks.">
+<div class="current-work-copy">
 <h3 id="work-capacity">Omni Profiler: Continuous Profiling for RL Training</h3>
 <p>Co-developed a continuous profiler that traces CPU/GPU memory and compute back to Python and native code. Now used by Seed RL to investigate training bottlenecks and memory growth.</p>
+
+<div class="current-work-links"><a href="{{ '/blog/omni-profiler/' | relative_url }}">Blog</a></div>
+</div>
 </article>
 <article class="current-work-item" aria-labelledby="work-agent">
+<img class="current-work-figure" src="{{ '/images/current-work-agent.svg' | relative_url }}" width="440" height="300" loading="lazy" alt="A claimed execution order is compared with the observed trace.">
+<div class="current-work-copy">
 <h3 id="work-agent">Agent Reliability &amp; Semantic Profiling</h3>
 <p>I test whether agents actually execute the actions they claim. I also coauthored AgentPProf for semantic resource profiling, winner of the AgenticOS @ SOSP 2026 Best Paper Award.</p>
-<div class="current-work-links"><a href="{{ '/agent-reliability/' | relative_url }}">Reliability project</a><a href="https://os-for-agent.github.io/papers/AgenticOS_SOSP_2026_paper_27.pdf">AgentPProf paper</a><a href="https://github.com/eunomia-bpf/agentsight">AgentPProf code</a></div>
+<div class="current-work-links"><a href="{{ '/blog/agent-execution-evidence/' | relative_url }}">Blog</a><a href="{{ '/agent-reliability/' | relative_url }}">Reliability project</a><a href="https://os-for-agent.github.io/papers/AgenticOS_SOSP_2026_paper_27.pdf">AgentPProf paper</a><a href="https://github.com/eunomia-bpf/agentsight">AgentPProf code</a></div>
+</div>
 </article>
 </div>
 
