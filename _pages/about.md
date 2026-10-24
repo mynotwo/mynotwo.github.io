@@ -34,22 +34,20 @@ My current work connects LLM capability research with the systems needed to run 
 # 🔬 Current Work
 
 <style>
-.current-work-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin: 24px 0 36px; }
-.current-work-list .current-work-item { min-width: 0; padding: 24px; display: flex; flex-direction: column; background: rgba(255,255,255,.93); border: 1px solid #e0e6ef; border-top: 3px solid #788fc0; border-radius: 14px; box-shadow: 0 4px 16px rgba(35,55,90,.04); }
-.current-work-list .current-work-item:first-child { grid-column: 1 / -1; border-top-color: #367d83; }
-.current-work-list .current-work-item:nth-child(2) { border-top-color: #8371b1; }
-.current-work-list .current-work-item:nth-child(4) { border-top-color: #367d83; }
-.current-work-list .current-work-item h3 { margin: 0 0 14px; font-size: 1.12em; line-height: 1.4; letter-spacing: -.015em; color: #243955; }
-.current-work-list .current-work-item p { margin: 0 0 14px; font-size: .92em; line-height: 1.75; color: #465369; }
-.current-work-list .current-work-item p:last-child { margin-bottom: 0; }
-.current-work-list .current-work-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 6px; font-size: .8em; }
-.current-work-list .current-work-links a { display: inline-flex; align-items: center; min-height: 34px; padding: 5px 11px; border: 1px solid #dce4ef; border-radius: 7px; background: #f5f8fc; color: #294f7c; font-weight: 600; line-height: 1.4; text-decoration: none; box-shadow: none; }
-.current-work-list .current-work-links a:hover { background: #eaf0f8; border-color: #b8c9de; text-decoration: none; }
-.current-work-list .current-work-links a:focus-visible { outline: 2px solid #294f7c; outline-offset: 3px; }
+.current-work-list { margin: 22px 0 36px; max-width: 850px; }
+.current-work-list .current-work-item { padding: 22px 0; border-bottom: 1px solid #e1e5eb; }
+.current-work-list .current-work-item:first-child { padding-top: 0; }
+.current-work-list .current-work-item:last-child { padding-bottom: 0; border-bottom: 0; }
+.current-work-list .current-work-item h3 { margin: 0 0 8px; font-size: 1.08em; line-height: 1.4; letter-spacing: -.015em; color: #243955; }
+.current-work-list .current-work-item p { margin: 0; font-size: .92em; line-height: 1.65; color: #465369; }
+.current-work-list .current-work-links { display: flex; flex-wrap: wrap; column-gap: 18px; row-gap: 4px; margin-top: 8px; font-size: .82em; }
+.current-work-list .current-work-links a { display: inline-block; padding: 3px 0; color: #295d8a; font-weight: 500; line-height: 1.5; text-decoration: none; box-shadow: none; }
+.current-work-list .current-work-links a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.current-work-list .current-work-links a:focus-visible { outline: 2px solid #295d8a; outline-offset: 3px; }
 @media (max-width: 760px) {
-  .current-work-list { grid-template-columns: minmax(0, 1fr); gap: 14px; }
-  .current-work-list .current-work-item { padding: 20px; }
-  .current-work-list .current-work-links a { min-height: 40px; }
+  .current-work-list .current-work-item { padding: 20px 0; }
+  .current-work-list .current-work-links { column-gap: 20px; }
+  .current-work-list .current-work-links a { padding: 8px 0; }
 }
 </style>
 
