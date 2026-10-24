@@ -56,29 +56,26 @@ My current work connects LLM capability research with the systems needed to run 
 <div class="current-work-list">
 <article class="current-work-item" aria-labelledby="work-kv">
 <h3 id="work-kv">AIBrix Hybrid KV Cache</h3>
-<p>I built and open-sourced an experimental extension for hybrid-state offloading and variable-sized KV records, including bounded MEMORY storage, reader leases, and eviction constraints. The MEMORY backend was submitted upstream to AIBrix under the vLLM project. TikTok Infra has begun using the work.</p>
-<p>A fixed-version CPU example verifies byte-store round trips and compression accounting. Whole-model output equivalence remains an open question.</p>
+<p>Built and open-sourced hybrid KV offloading with bounded storage, now used by TikTok Infra, with an upstream AIBrix PR. CPU byte-store round trips are verified; whole-model output equivalence remains open.</p>
 <div class="current-work-links"><a href="https://github.com/mynotwo/aibrix-hybrid-kvcache">Code</a><a href="https://github.com/vllm-project/aibrix/pull/3221">Upstream PR #3221</a><a href="{{ '/blog/hybrid-kv-cache-storage-contract/' | relative_url }}">Technical article</a><a href="{{ '/kvcache-bench/' | relative_url }}">Benchmark</a></div>
 </article>
 <article class="current-work-item" aria-labelledby="work-rl">
 <h3 id="work-rl">RL as a Probe of LLM Capability</h3>
-<p>My first-author paper uses random-reward RL and controlled training comparisons to study capability reachability: what further training can attain from a checkpoint under specified constraints, beyond its current accuracy. I am building an RL-based capability evaluation framework around these interventions.</p>
+<p>My first-author paper uses random-reward RL to probe what further training can unlock beyond current accuracy. I am turning these controlled interventions into a capability evaluation framework.</p>
 <div class="current-work-links"><a href="https://arxiv.org/abs/2610.01066">Paper</a><a href="https://github.com/mynotwo/rl-random-prob">Code</a></div>
 </article>
 <article class="current-work-item" aria-labelledby="work-bitexact">
 <h3 id="work-bitexact">Bitwise-Reproducible LLM Inference Across Hardware</h3>
-<p>My personal project combines integer-exact Llama-3.2-1B inference, a batch-invariant Triton Llama-3.1-8B engine, and vLLM integration. The integer engine produced bitwise-identical outputs over 95K tokens across tested H800, H100, and x86 CPU configurations.</p>
-<p>I also use deterministic inference for lossless compression, including agent trajectories, with GPU neural prediction and rANS coding.</p>
+<p>Built integer-exact and batch-invariant LLM engines with vLLM integration. The integer engine reproduced 95K tokens bitwise across tested H800, H100, and x86 CPU configurations, supporting reproducible inference and lossless compression.</p>
 <div class="current-work-links"><a href="https://github.com/mynotwo/bitexact-llm">Project repository</a></div>
 </article>
 <article class="current-work-item" aria-labelledby="work-capacity">
 <h3 id="work-capacity">Omni Profiler: Continuous Profiling for RL Training</h3>
-<p>I co-developed Omni Profiler, now in use by Seed RL, to investigate memory growth and performance bottlenecks in training workloads. It combines eBPF tracing, userspace allocation tracking, and GPU instrumentation to attribute CPU/GPU memory, CPU time, and GPU kernels to Python and native code.</p>
-<p>Sampling, automatic process discovery, continuous collection, and interactive reports support analysis across distributed training workers.</p>
+<p>Co-developed a continuous profiler that traces CPU/GPU memory and compute back to Python and native code. Now used by Seed RL to investigate training bottlenecks and memory growth.</p>
 </article>
 <article class="current-work-item" aria-labelledby="work-agent">
 <h3 id="work-agent">Agent Reliability &amp; Semantic Profiling</h3>
-<p>I study the gap between an agent's reported actions and observable execution through controlled probes, counterexamples, and repeated trials. I also coauthored AgentPProf, which aggregates agent trajectories into semantic profiles for resource attribution and received the AgenticOS @ SOSP 2026 Best Paper Award.</p>
+<p>I test whether agents actually execute the actions they claim. I also coauthored AgentPProf for semantic resource profiling, winner of the AgenticOS @ SOSP 2026 Best Paper Award.</p>
 <div class="current-work-links"><a href="{{ '/agent-reliability/' | relative_url }}">Reliability project</a><a href="https://os-for-agent.github.io/papers/AgenticOS_SOSP_2026_paper_27.pdf">AgentPProf paper</a><a href="https://github.com/eunomia-bpf/agentsight">AgentPProf code</a></div>
 </article>
 </div>
