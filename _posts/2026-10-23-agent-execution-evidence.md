@@ -1,5 +1,5 @@
 ---
-title: "The answer can be right and the execution story wrong"
+title: "Evaluating agent process claims against execution traces"
 date: 2026-10-23
 lang: en
 permalink: /blog/agent-execution-evidence/
@@ -9,7 +9,7 @@ tags: [agents, reliability, profiling]
 
 An agent can return a correct answer while describing a process it did not follow. If the evaluation only checks the answer, that discrepancy disappears from the score.
 
-In my behavior-probing experiments, one response said it had checked external sources first and then compared them with an attached file. The observed trace contained four file calls before any web call. The task result was correct. The claim about execution order was not.
+In a behavior-probing experiment, one response said it had checked external sources first and then compared them with an attached file. The observed trace contained four file calls before any web call. The task result was correct. The claim about execution order was not.
 
 That example is narrower than “the agent never verified anything.” It is a **false process claim**. Naming the failure precisely matters: different failures need different checks.
 
@@ -17,9 +17,9 @@ That example is narrower than “the agent never verified anything.” It is a *
 
 *Simplified rendering of the observed ordering discrepancy. No private prompt, file content or account history is reproduced.*
 
-## Three questions that should not share one verdict
+## Result, execution and resource evaluation
 
-I separate result correctness, execution evidence and resource use.
+The evaluation separates result correctness, execution evidence and resource use.
 
 Result correctness asks whether the delivered output satisfies the task. Execution evidence asks whether claimed actions occurred, with the required inputs and outcomes. Resource analysis asks where time, tokens or other costs accumulated.
 
@@ -29,7 +29,7 @@ For a claimed test run, for example, useful evidence includes the invocation, it
 
 ## Establish what the instrumentation can see
 
-Before scoring a missing action, I need to know whether the recorder would have captured it. In the probing work, some document-artifact actions appeared inside assistant output rather than as ordinary tool nodes. Counting only tool nodes would have undercounted those actions.
+Scoring a missing action requires establishing whether the recorder would have captured it. In the probing work, some document-artifact actions appeared inside assistant output rather than as ordinary tool nodes. Counting only tool nodes would have undercounted those actions.
 
 Clarification was another trap. A request for missing information can be phrased as an imperative rather than a question. A punctuation-based detector confuses presentation with behavior.
 
@@ -37,7 +37,7 @@ The resulting rule is methodological: map each verdict to an observable event or
 
 ## Try to break the inferred rule
 
-A memorable example can suggest a behavioral rule, but it does not establish one. I used discovery cases, targeted counterexamples, repeated runs and interleaved comparisons to challenge the initial interpretations.
+A memorable example can suggest a behavioral rule, but it does not establish one. The study used discovery cases, targeted counterexamples, repeated runs and interleaved comparisons to challenge the initial interpretations.
 
 Some apparent rules did not survive repetition. Cross-session retrieval also contaminated parts of the experiment: later probes could draw on earlier conversations. Those trials cannot be treated as independent samples from a fresh environment. This limits what the study says about general behavior, even when individual traces are clear.
 
@@ -45,7 +45,7 @@ The useful output is therefore not a universal score for an agent. It is a set o
 
 ## Where AgentPProf fits
 
-My coauthored [AgentPProf paper](https://os-for-agent.github.io/papers/AgenticOS_SOSP_2026_paper_27.pdf), which received the AgenticOS @ SOSP 2026 Best Paper Award, addresses a related but distinct question: how to aggregate agent activity into resource profiles that developers can inspect.
+[AgentPProf](https://os-for-agent.github.io/papers/AgenticOS_SOSP_2026_paper_27.pdf) addresses a related but distinct question: how to aggregate agent activity into resource profiles that developers can inspect.
 
 AgentPProf represents activity as weighted operations, then folds those operations by chosen fields into operation stacks. The output is pprof-compatible, so existing tools can inspect the aggregate and drill into its structure. Token usage and operation counts are examples of weights; task and execution-phase annotations provide semantic grouping.
 
@@ -53,7 +53,7 @@ This is not a CPU stack sampler, and a profile does not prove that the agent ful
 
 ## A useful evaluation ends with inspectable evidence
 
-For an agent that says a task is complete, I want to inspect the delivered artifact, the actions that produced it and the checks supporting the claim. Repeated trials tell me whether the observation is stable; controlled changes help identify what it depends on.
+A completion claim can be evaluated against the delivered artifact, the actions that produced it and the checks supporting the claim. Repeated trials test whether the observation is stable; controlled changes help identify what it depends on.
 
 The objective is an evaluator that can explain a failure in concrete terms: the result was wrong, the claimed process conflicted with the trace, or the evidence was insufficient. Those distinctions make a regression actionable.
 

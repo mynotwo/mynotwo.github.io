@@ -1,5 +1,5 @@
 ---
-title: "Where did the training time and memory go?"
+title: "Continuous resource attribution for RL training"
 date: 2026-10-23
 lang: en
 permalink: /blog/omni-profiler/
@@ -7,9 +7,9 @@ excerpt: "The problem behind Omni Profiler: connecting CPU/GPU resource use to t
 tags: [profiling, RL, infrastructure]
 ---
 
-A training job can look busy without making useful progress. GPU utilization tells us that something ran; a rising memory curve tells us that something accumulated. Neither identifies the code responsible or explains whether it lies on the path delaying the next training step.
+A training job can look busy without making useful progress. GPU utilization tells us that something ran; a rising memory curve tells us that something accumulated. Neither measurement alone identifies the responsible code or establishes whether it delays the next training step.
 
-I co-developed **Omni Profiler**, a continuous profiler that connects CPU/GPU memory and compute to Python and native code. It is used by Seed RL to investigate training workloads. The central design question is how to turn resource observations into an attribution that an engineer can act on.
+**Omni Profiler** is a continuous profiler that connects CPU/GPU memory and compute to Python and native code. It is used by Seed RL to investigate training workloads. The central design question is how to turn resource observations into an attribution that an engineer can act on.
 
 <img src="/images/current-work-omni.svg" alt="CPU time, memory and GPU kernel observations connect to Python and native stacks and a hotspot." width="560" height="382" style="display:block;width:100%;max-width:560px;height:auto;margin:1.5em auto;">
 
@@ -29,7 +29,7 @@ A profiler can show several resources in the same interface without making them 
 
 For example, live memory depends on allocation and release lifetimes. Adding every allocation observed over a run measures traffic, not the amount retained at its end. Similarly, a long GPU kernel is not automatically the reason the request or training step took longer. It may overlap other work.
 
-These distinctions shape how I read a profile. I first ask what gives each sample its weight and what interval it covers. Only then do I interpret a wide stack as a candidate for investigation. A graph with the wrong denominator can look convincing while sending an engineer toward the wrong optimization.
+Interpreting a profile requires identifying the weight assigned to each sample and the interval it covers. A wide stack indicates a large contribution to that specific measure. Using the wrong denominator can lead to optimizing a resource that does not constrain the workload.
 
 ## Continuous collection changes the trade-off
 
@@ -37,7 +37,7 @@ A detailed trace of every event is attractive until collection changes the workl
 
 The goal is evidence that remains useful across a long-running workload. Collection overhead, missed observations and stack attribution all affect that evidence. A missing stack should not be interpreted as zero resource use, and an unobserved event should not silently become a confirmed absence.
 
-This is why I treat the profiler as part of the system under investigation. Before trusting an attribution, compare it with an independent resource measurement and a controlled workload whose behavior is understood. Agreement on a synthetic case validates that case; it does not establish accuracy for every real job.
+The profiler also requires validation. Attribution can be checked against an independent resource measurement and a controlled workload whose behavior is understood. Agreement on a synthetic case validates that case; it does not establish accuracy for every real job.
 
 ## A hotspot is a hypothesis about the bottleneck
 
@@ -47,10 +47,10 @@ The practical loop is: identify a suspicious resource cost, inspect its code and
 
 That distinction is particularly useful in RL infrastructure, where several kinds of work interact and a local measurement may not represent the entire iteration.
 
-## The connection to my research work
+## Profiling in controlled training experiments
 
-My capability experiments ask how models respond to controlled training interventions. Profiling asks whether the infrastructure is running those interventions as intended and where their cost comes from. Both require a measurement whose meaning survives inspection.
+Capability experiments measure how models respond to controlled training interventions. Profiling asks whether the infrastructure is running those interventions as intended and where their cost comes from. Both require a measurement whose meaning survives inspection.
 
-Omni's role in that loop is resource attribution: connect observed cost to the responsible execution context, then use that evidence to guide and validate an engineering change. My separate work on [agent execution evidence](/blog/agent-execution-evidence/) applies a related discipline at the task and tool-call level; it does not replace CPU/GPU profiling.
+Omni's role in that loop is resource attribution: connect observed cost to the responsible execution context, then use that evidence to guide and validate an engineering change. [Agent execution analysis](/blog/agent-execution-evidence/) applies a related measurement discipline at the task and tool-call level; it does not replace CPU/GPU profiling.
 
-The project description on my [homepage](/#-current-work) summarizes my contribution and its use by Seed RL. The examples in this article are explanatory scenarios, not production incident reports.
+The examples in this article are explanatory scenarios, not production incident reports.

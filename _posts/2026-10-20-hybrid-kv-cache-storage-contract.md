@@ -1,5 +1,5 @@
 ---
-title: "Hybrid KV cache needs a storage contract before a speedup claim"
+title: "Storage contracts for hybrid KV cache offloading"
 date: 2026-10-20
 lang: en
 permalink: /blog/hybrid-kv-cache-storage-contract/
@@ -11,8 +11,8 @@ recurrent state at a valid boundary, and the attention history that boundary
 depends on. Moving one buffer successfully is useful evidence. It is not yet
 evidence that a model resumed correctly.
 
-I built [AIBrix Hybrid KV Cache](https://github.com/mynotwo/aibrix-hybrid-kvcache)
-to investigate that gap. It is an independent experimental extension of
+[AIBrix Hybrid KV Cache](https://github.com/mynotwo/aibrix-hybrid-kvcache)
+investigates that gap through an independent experimental extension of
 [AIBrix](https://github.com/vllm-project/aibrix). The useful starting point is
 small: store variable-sized records, preserve readers during eviction, and
 account for the bytes actually stored. A CPU example makes those contracts
@@ -168,5 +168,5 @@ memory accounting clear enough? A reproduction report should include the
 source revision, platform/dependency versions, exact command, nonzero exit or
 observed invariant failure, and public synthetic artifacts where possible.
 
-The project is ready for that bounded evaluation. Broader model compatibility
+The CPU example supports evaluation of the byte-storage contract. Broader model compatibility
 and serving-performance claims require additional evidence.

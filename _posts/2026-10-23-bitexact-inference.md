@@ -1,5 +1,5 @@
 ---
-title: "Making LLM inference agree, bit for bit, across hardware"
+title: "Cross-hardware bitwise reproducibility in LLM inference"
 date: 2026-10-23
 lang: en
 permalink: /blog/bitexact-inference/
@@ -9,7 +9,7 @@ tags: [inference, reproducibility, compression]
 
 A fixed seed does not fix every source of variation in an LLM. The same request can enter a different batch, use a different reduction kernel or run on another device. Small numerical differences can change a token choice and then the rest of the continuation.
 
-I built [BitExact LLM](https://github.com/mynotwo/bitexact-llm) to control that part of the experiment. It implements Llama-3.2-1B inference with integer arithmetic, including the nonlinear functions and sampling rules. The target is matching logits and sampled tokens under explicitly tested execution changes.
+[BitExact LLM](https://github.com/mynotwo/bitexact-llm) controls this source of execution variability. It implements Llama-3.2-1B inference with integer arithmetic, including the nonlinear functions and sampling rules. The target is matching logits and sampled tokens under explicitly tested execution changes.
 
 <img src="/images/current-work-bitexact.svg" alt="H800, H100 and CPU produce identical bit patterns given the same constants, input and seed." width="560" height="382" style="display:block;width:100%;max-width:560px;height:auto;margin:1.5em auto;">
 
@@ -23,7 +23,7 @@ Integer sums are order-independent when intermediate values stay within their al
 
 This moves the hard part into the contract: the scales, rounding, tables and intermediate bounds must all be specified. Integer arithmetic alone is not sufficient if an intermediate overflows or a hidden floating-point operation changes a decision.
 
-## Three paths with different promises
+## Three execution paths
 
 The [current implementation](https://github.com/mynotwo/bitexact-llm/tree/a030ba7421aa61b6469a79efe85a61002512c476) separates three paths:
 
@@ -49,7 +49,7 @@ The unavoidable work includes extra limb products, wider intermediate representa
 
 The current README also identifies incomplete overflow checks: some outputs are checked only after residual addition, and final logits are not checked. No check fired in the reported runs, but that observation is not a proof of safety for every input or model shape.
 
-## Why I care about the same bits
+## Applications in evaluation and compression
 
 For behavior research, reproducible inference removes one source of variation when comparing interventions. For neural lossless compression, matching probability computations matters because the decoder must reconstruct the encoder's decisions. These applications share a need for execution that can be compared precisely.
 
