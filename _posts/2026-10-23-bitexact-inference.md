@@ -11,7 +11,7 @@ A fixed seed does not fix every source of variation in an LLM. The same request 
 
 I built [BitExact LLM](https://github.com/mynotwo/bitexact-llm) to control that part of the experiment. It implements Llama-3.2-1B inference with integer arithmetic, including the nonlinear functions and sampling rules. The target is matching logits and sampled tokens under explicitly tested execution changes.
 
-![H800, H100 and CPU produce identical bit patterns given the same constants, input and seed.](/images/current-work-bitexact.svg)
+<img src="/images/current-work-bitexact.svg" alt="H800, H100 and CPU produce identical bit patterns given the same constants, input and seed." width="560" height="382" style="display:block;width:100%;max-width:560px;height:auto;margin:1.5em auto;">
 
 *Conceptual illustration of bit identity. The displayed bit string is a symbol, not an experimental output.*
 

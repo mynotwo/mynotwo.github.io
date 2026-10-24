@@ -11,7 +11,7 @@ Two models can answer the same fraction of questions correctly and still respond
 
 In our paper, [Probe with Participation Trophies](https://arxiv.org/abs/2610.01066), I study training itself as a probe. We call the object of measurement **reachability**: what a model can attain from its current state under specified training procedures, information and budgets. It is a property of a model *under an intervention*, rather than a single score attached to the model forever.
 
-![A checkpoint branches into correctness-reward RL, random-reward RL and masked SFT before held-out evaluation.](/images/current-work-rl.svg)
+<img src="/images/current-work-rl.svg" alt="A checkpoint branches into correctness-reward RL, random-reward RL and masked SFT before held-out evaluation." width="560" height="382" style="display:block;width:100%;max-width:560px;height:auto;margin:1.5em auto;">
 
 *Method schematic. The branches represent different interventions, not measured improvements of equal size.*
 

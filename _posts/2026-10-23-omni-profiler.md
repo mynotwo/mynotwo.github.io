@@ -11,7 +11,7 @@ A training job can look busy without making useful progress. GPU utilization tel
 
 I co-developed **Omni Profiler**, a continuous profiler that connects CPU/GPU memory and compute to Python and native code. It is used by Seed RL to investigate training workloads. The central design question is how to turn resource observations into an attribution that an engineer can act on.
 
-![CPU time, memory and GPU kernel observations connect to Python and native stacks and a hotspot.](/images/current-work-omni.svg)
+<img src="/images/current-work-omni.svg" alt="CPU time, memory and GPU kernel observations connect to Python and native stacks and a hotspot." width="560" height="382" style="display:block;width:100%;max-width:560px;height:auto;margin:1.5em auto;">
 
 *Conceptual resource attribution. The boxes do not encode measured time, bytes or overhead.*
 

@@ -13,7 +13,7 @@ In my behavior-probing experiments, one response said it had checked external so
 
 That example is narrower than “the agent never verified anything.” It is a **false process claim**. Naming the failure precisely matters: different failures need different checks.
 
-![The claimed sequence is web then file; the observed sequence is file calls then web.](/images/current-work-agent.svg)
+<img src="/images/current-work-agent.svg" alt="The claimed sequence is web then file; the observed sequence is file calls then web." width="560" height="382" style="display:block;width:100%;max-width:560px;height:auto;margin:1.5em auto;">
 
 *Simplified rendering of the observed ordering discrepancy. No private prompt, file content or account history is reproduced.*
 
