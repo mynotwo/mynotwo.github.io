@@ -4,6 +4,7 @@
 {% include fetch_google_scholar_stats.html %}
 {% include view-count-script.html %}
 
+{% unless page.permalink == "/" %}
 <script>
 (function() {
   var canvas = document.createElement('canvas');
@@ -296,6 +297,7 @@
   animate();
 })();
 </script>
+{% endunless %}
 
 <!-- 3D tilt effect for paper-box cards -->
 <script>

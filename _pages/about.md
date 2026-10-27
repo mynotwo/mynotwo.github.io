@@ -17,15 +17,15 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-Hi, I’m Yu Mao. Feel free to call me Audrey! I’m a Research Scientist at ByteDance in San Jose, working on AI infrastructure and inference. I received my Ph.D. in Computer Science from City University of Hong Kong, where I worked on compression and computer systems.
+Hi, I’m Yu Mao (Audrey), a Research Scientist at ByteDance in San Jose. I study what further training can unlock in LLMs and build systems for measurable, reproducible, and efficient training and inference.
 
-My current work connects LLM capability research with the systems needed to run and understand training and inference. I study reinforcement learning as a probe of capability reachability, build profiling tools for RL workloads, and develop reproducible inference and KV-cache storage systems. Compression remains a long-term thread across this work.
+My work spans RL capability probing, profiling, reproducible inference, and KV-cache storage, with compression as a long-term focus. I received my Ph.D. in Computer Science from City University of Hong Kong, working on compression and computer systems.
 
 **Research interests**
 
-<span class="interest-pill" style="background: linear-gradient(135deg, #667eea, #764ba2);">Inference Systems</span>
-<span class="interest-pill" style="background: linear-gradient(135deg, #f093fb, #ffd700);">Compression &amp; Representation</span>
-<span class="interest-pill" style="background: linear-gradient(135deg, #38bdf8, #667eea);">LLM Capability &amp; Agent Reliability</span>
+<span class="interest-pill">Inference Systems</span>
+<span class="interest-pill">Compression &amp; Representation</span>
+<span class="interest-pill">LLM Capability &amp; Agent Reliability</span>
 
 <span style="display:block; margin-top:8px; font-size:0.9em; color:#666;">
   Google Scholar: Cited by <span id='total_cit' style='font-weight:bold;color:#224b8d;'>...</span>
@@ -34,6 +34,15 @@ My current work connects LLM capability research with the systems needed to run 
 # 🔬 Current Work
 
 <style>
+body.homepage { background-image: none !important; }
+body.homepage .interest-pill { background: #edf2f7; color: #334155; }
+@media (max-width: 600px) {
+  body.homepage .profile_box { display: grid; grid-template-columns: 75px minmax(0, 1fr); gap: 12px; align-items: center; }
+  body.homepage .author__content { min-width: 0; padding-left: 0; }
+  body.homepage .author__urls-wrapper { grid-column: 1 / -1; margin-left: 0; }
+  body.homepage .author__urls_sm { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; }
+  body.homepage .author__urls_sm a { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; min-height: 44px; }
+}
 .current-work-list { margin: 22px 0 36px; max-width: 850px; }
 .current-work-list .current-work-item { display: grid; grid-template-columns: 240px minmax(0, 1fr); column-gap: 24px; align-items: start; padding: 22px 0; border-bottom: 1px solid #e1e5eb; }
 .current-work-list .current-work-figure { display: block; width: 100%; height: auto; margin: 0; }
