@@ -27,10 +27,6 @@ My work spans RL capability probing, profiling, reproducible inference, and KV-c
 <span class="interest-pill">Compression &amp; Representation</span>
 <span class="interest-pill">LLM Capability &amp; Agent Reliability</span>
 
-<span style="display:block; margin-top:8px; font-size:0.9em; color:#666;">
-  Google Scholar: Cited by <span id='total_cit' style='font-weight:bold;color:#224b8d;'>...</span>
-</span>
-
 # 🔬 Current Work
 
 <style>
