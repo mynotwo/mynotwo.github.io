@@ -72,7 +72,7 @@ body.homepage .interest-pill { background: #edf2f7; color: #334155; }
 <article class="current-work-item" aria-labelledby="work-rl">
 <figure>
 <img class="current-work-figure" src="{{ '/images/current-work-rl-v2.svg' | relative_url }}?v=research" width="440" height="300" loading="lazy" alt="Reported best terminal GSM accuracy at three selected OLMo-2-7B checkpoints; GT reward has 4 seeds and random reward has 8.">
-<figcaption>GSM accuracy at three selected OLMo-2-7B checkpoints. Bars show the best terminal result across seeds, not the mean: correctness reward uses 4 seeds; random reward uses 8. Different seed counts limit direct comparison of maxima.</figcaption>
+<figcaption><strong>Random-reward RL probes model capabilities by measuring how models respond to further training.</strong><br>Best terminal GSM accuracy across seeds (correctness reward: 4; random reward: 8).</figcaption>
 </figure>
 <div class="current-work-copy">
 <h3 id="work-rl">RL as a Probe of LLM Capability</h3>
