@@ -49,6 +49,11 @@ then evicts the selected batch. If admission cannot succeed, the existing
 records remain intact. A duplicate key with identical bytes is idempotent;
 different bytes under that key are rejected.
 
+<figure>
+<img src="/images/current-work-kv-v2.svg" alt="With a 12-byte capacity and one 4-byte entry leased, a 9-byte write is rejected without mutation; an 8-byte write evicts the other two entries." width="440" height="300" loading="lazy" style="display:block;width:100%;max-width:560px;height:auto;">
+<figcaption>MEMORY backend regression example: admission preserves active readers, and a rejected write leaves existing entries intact. Bar lengths represent stored payload bytes, not throughput or model accuracy.</figcaption>
+</figure>
+
 A lease also protects against deletion and close. Typed/shaped memoryviews
 count their byte length rather than their first dimension. Contiguous read-only
 views can be borrowed under an explicit backing-buffer ownership contract;

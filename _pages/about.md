@@ -17,9 +17,11 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-Hi, I’m Yu Mao (Audrey), a Research Scientist at ByteDance in San Jose. I study what further training can unlock in LLMs and build systems for measurable, reproducible, and efficient training and inference.
+I study how LLM capabilities emerge through training and build systems that make training and inference measurable, reproducible, and efficient.
 
-My work spans RL capability probing, profiling, reproducible inference, and KV-cache storage, with compression as a long-term focus. I received my Ph.D. in Computer Science from City University of Hong Kong, working on compression and computer systems.
+I’m Yu Mao (Audrey), a Research Scientist at ByteDance in San Jose. My recent work uses random-reward RL to probe model capabilities, connects training resource use to code with Omni Profiler, and builds bounded storage for hybrid KV caches.
+
+I received my Ph.D. in Computer Science from City University of Hong Kong, working on compression and computer systems.
 
 **Research interests**
 
@@ -40,9 +42,14 @@ body.homepage .interest-pill { background: #edf2f7; color: #334155; }
   body.homepage .author__urls_sm a { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; min-height: 44px; }
 }
 .current-work-list { margin: 22px 0 36px; max-width: 850px; }
-.current-work-list .current-work-item { display: grid; grid-template-columns: 240px minmax(0, 1fr); column-gap: 24px; align-items: start; padding: 22px 0; border-bottom: 1px solid #e1e5eb; }
+.current-work-list .current-work-item { display: grid; grid-template-columns: 300px minmax(0, 1fr); column-gap: 24px; align-items: start; padding: 22px 0; border-bottom: 1px solid #e1e5eb; }
 .current-work-list .current-work-figure { display: block; width: 100%; height: auto; margin: 0; }
 .current-work-list .current-work-copy { min-width: 0; }
+.current-work-list figure { margin: 0; }
+.current-work-list figcaption { margin-top: 12px; font-size: 14px; font-family: inherit; line-height: 1.6; color: #465369; }
+.current-work-list .current-work-copy p + p { margin-top: 8px; }
+.current-work-list .current-work-more { margin: 32px 0 0; font-size: 1.05em; }
+.current-work-list .current-work-item--related { grid-template-columns: 160px minmax(0, 1fr); }
 .current-work-list .current-work-item:first-child { padding-top: 0; }
 .current-work-list .current-work-item:last-child { padding-bottom: 0; border-bottom: 0; }
 .current-work-list .current-work-item h3 { margin: 0 0 8px; font-size: 1.08em; line-height: 1.4; letter-spacing: -.015em; color: #243955; }
@@ -52,31 +59,55 @@ body.homepage .interest-pill { background: #edf2f7; color: #334155; }
 .current-work-list .current-work-links a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .current-work-list .current-work-links a:focus-visible { outline: 2px solid #295d8a; outline-offset: 3px; }
 @media (max-width: 760px) {
-  .current-work-list .current-work-item { grid-template-columns: minmax(0, 1fr); row-gap: 16px; padding: 20px 0; }
-  .current-work-list .current-work-figure { max-width: 320px; }
+  .current-work-list .current-work-item, .current-work-list .current-work-item--related { grid-template-columns: minmax(0, 1fr); row-gap: 16px; padding: 20px 0; }
+  .current-work-list .current-work-copy { grid-row: 1; }
+  .current-work-list figure, .current-work-list .current-work-figure { max-width: 320px; }
+  .current-work-list .current-work-item--related .current-work-figure { max-width: 160px; }
   .current-work-list .current-work-links { column-gap: 20px; }
   .current-work-list .current-work-links a { padding: 8px 0; }
 }
 </style>
 
 <div class="current-work-list">
-<article class="current-work-item" aria-labelledby="work-kv">
-<img class="current-work-figure" src="{{ '/images/current-work-kv-v2.svg' | relative_url }}?v=research" width="440" height="300" loading="lazy" alt="Regression case: a leased 4-byte entry survives capacity admission; a 9-byte write is rejected and an 8-byte write fits.">
-<div class="current-work-copy">
-<h3 id="work-kv">AIBrix Hybrid KV Cache</h3>
-<p>Built and open-sourced hybrid KV offloading with bounded storage, now used by TikTok Infra, with an upstream AIBrix PR. CPU byte-store round trips are verified; whole-model output equivalence remains open.</p>
-<div class="current-work-links"><a href="https://github.com/mynotwo/aibrix-hybrid-kvcache">Code</a><a href="https://github.com/vllm-project/aibrix/pull/3221">Upstream PR #3221</a><a href="{{ '/blog/hybrid-kv-cache-storage-contract/' | relative_url }}">Blog</a><a href="{{ '/kvcache-bench/' | relative_url }}">Benchmark</a></div>
-</div>
-</article>
 <article class="current-work-item" aria-labelledby="work-rl">
+<figure>
 <img class="current-work-figure" src="{{ '/images/current-work-rl-v2.svg' | relative_url }}?v=research" width="440" height="300" loading="lazy" alt="Reported best terminal GSM accuracy at three selected OLMo-2-7B checkpoints; GT reward has 4 seeds and random reward has 8.">
+<figcaption>GSM accuracy at three selected OLMo-2-7B checkpoints. Bars show the best terminal result across seeds, not the mean: correctness reward uses 4 seeds; random reward uses 8. Different seed counts limit direct comparison of maxima.</figcaption>
+</figure>
 <div class="current-work-copy">
 <h3 id="work-rl">RL as a Probe of LLM Capability</h3>
-<p>My first-author paper uses random-reward RL to probe what further training can unlock beyond current accuracy. I am turning these controlled interventions into a capability evaluation framework.</p>
+<p>Current accuracy does not tell us how a model will respond to further training. My first-author paper uses random-reward RL to probe that response without correctness information in the reward.</p>
+<p>Controlled comparisons show that the learner’s starting state changes what the same training signal can unlock. The paper and code are available; a reusable capability evaluation framework is in development.</p>
 <div class="current-work-links"><a href="{{ '/blog/rl-capability-probing/' | relative_url }}">Blog</a><a href="https://arxiv.org/abs/2610.01066">Paper</a><a href="https://github.com/mynotwo/rl-random-prob">Code</a></div>
 </div>
 </article>
-<article class="current-work-item" aria-labelledby="work-bitexact">
+<article class="current-work-item" aria-labelledby="work-capacity">
+<figure>
+<img class="current-work-figure" src="{{ '/images/current-work-omni-v2.svg' | relative_url }}?v=research" width="440" height="300" loading="lazy" alt="Technical schematic separating CPU time, GPU duration and live-memory weights and attribution; no measured profile values.">
+<figcaption>Resource-attribution schematic. CPU time, GPU duration and live memory are distinct measurements; this is not a measured performance result.</figcaption>
+</figure>
+<div class="current-work-copy">
+<h3 id="work-capacity">Omni Profiler: Continuous Profiling for RL Training</h3>
+<p>High utilization or growing memory alone does not identify the responsible code. I co-developed Omni Profiler to connect CPU/GPU memory and compute to Python and native stacks.</p>
+<p>Seed RL uses the profiler to investigate training bottlenecks and memory growth, connecting resource measurements to code that engineers can inspect.</p>
+
+<div class="current-work-links"><a href="{{ '/blog/omni-profiler/' | relative_url }}">Blog</a></div>
+</div>
+</article>
+<article class="current-work-item" aria-labelledby="work-kv">
+<figure>
+<img class="current-work-figure" src="{{ '/images/current-work-kv.svg' | relative_url }}" width="440" height="300" loading="lazy" alt="Hybrid state and KV spans are encoded, stored, then decoded and checked byte for byte.">
+<figcaption>Storage mechanism: encode hybrid state and KV spans, then restore and check the bytes. This does not establish whole-model output equivalence.</figcaption>
+</figure>
+<div class="current-work-copy">
+<h3 id="work-kv">AIBrix Hybrid KV Cache</h3>
+<p>Hybrid-model prefixes need recurrent state and attention history to survive offloading together. I built and open-sourced hybrid KV offloading with bounded storage and reader-safe eviction, now used by TikTok Infra.</p>
+<p>The upstream AIBrix PR contributes the byte-store contract. CPU byte-store round trips are verified; whole-model output equivalence remains open.</p>
+<div class="current-work-links"><a href="https://github.com/mynotwo/aibrix-hybrid-kvcache">Code</a><a href="https://github.com/vllm-project/aibrix/pull/3221">Upstream PR #3221</a><a href="{{ '/blog/hybrid-kv-cache-storage-contract/' | relative_url }}">Blog</a><a href="{{ '/kvcache-bench/' | relative_url }}">Benchmark</a></div>
+</div>
+</article>
+<h2 class="current-work-more">More research</h2>
+<article class="current-work-item current-work-item--related" aria-labelledby="work-bitexact">
 <img class="current-work-figure" src="{{ '/images/current-work-bitexact-v2.svg' | relative_url }}?v=research" width="440" height="300" loading="lazy" alt="Historical exact-mode report: zero logits and token differences against H800 over 3,696 generated positions on selected devices.">
 <div class="current-work-copy">
 <h3 id="work-bitexact">Bitwise-Reproducible LLM Inference Across Hardware</h3>
@@ -84,16 +115,7 @@ body.homepage .interest-pill { background: #edf2f7; color: #334155; }
 <div class="current-work-links"><a href="{{ '/blog/bitexact-inference/' | relative_url }}">Blog</a><a href="https://github.com/mynotwo/bitexact-llm">Project repository</a></div>
 </div>
 </article>
-<article class="current-work-item" aria-labelledby="work-capacity">
-<img class="current-work-figure" src="{{ '/images/current-work-omni-v2.svg' | relative_url }}?v=research" width="440" height="300" loading="lazy" alt="Technical schematic separating CPU time, GPU duration and live-memory weights and attribution; no measured profile values.">
-<div class="current-work-copy">
-<h3 id="work-capacity">Omni Profiler: Continuous Profiling for RL Training</h3>
-<p>Co-developed a continuous profiler that traces CPU/GPU memory and compute back to Python and native code. Now used by Seed RL to investigate training bottlenecks and memory growth.</p>
-
-<div class="current-work-links"><a href="{{ '/blog/omni-profiler/' | relative_url }}">Blog</a></div>
-</div>
-</article>
-<article class="current-work-item" aria-labelledby="work-agent">
+<article class="current-work-item current-work-item--related" aria-labelledby="work-agent">
 <img class="current-work-figure" src="{{ '/images/current-work-agent-v2.svg' | relative_url }}?v=research" width="440" height="300" loading="lazy" alt="Observed case: four file calls preceded the first web call despite a web-before-file claim; call order is not elapsed time.">
 <div class="current-work-copy">
 <h3 id="work-agent">Agent Reliability &amp; Semantic Profiling</h3>

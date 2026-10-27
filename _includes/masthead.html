@@ -1,16 +1,59 @@
+<style>
+.research-nav{display:flex;align-items:center;gap:2rem;min-height:44px;font-size:1rem}
+.research-nav__primary{display:flex;gap:2rem}
+.research-nav a,.research-nav summary{display:block;padding:12px 0;white-space:nowrap}
+.research-nav a:focus-visible,.research-nav summary:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.research-nav__more{position:relative;margin-left:auto;color:#f0f0f0}
+.research-nav summary{cursor:pointer;font-weight:600;list-style:none}
+.research-nav summary::-webkit-details-marker{display:none}
+.research-nav summary::after{content:" ▾"}
+.research-nav__more[open] summary::after{content:" ▴"}
+.research-nav__more ul{position:absolute;top:100%;right:0;min-width:220px;padding:8px;background:#20202b;border:1px solid rgba(255,255,255,0.2);border-radius:4px;box-shadow:0 4px 20px rgba(0,0,0,0.3)}
+.research-nav__more a{padding:12px}
+.research-nav__more a:hover{background:rgba(255,255,255,0.08);transform:none}
+@media (max-width: 600px){.research-nav{gap:12px;font-size:14px}
+.research-nav__primary{gap:12px}
+.research-nav a,.research-nav summary{letter-spacing:0}
+}
+#about-me,#-current-work,#-news,#-honors-and-awards,#-services,#-supervision{scroll-margin-top:112px}
+</style>
 <div class="masthead">
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
-      <nav id="site-nav" class="greedy-nav">
-        <button><div class="navicon"></div></button>
-        <ul class="visible-links">
-          <li class="masthead__menu-item masthead__menu-item--lg masthead__menu-home-item"><a href="#about-me">Homepage</a></li>
+      <nav id="site-nav" class="research-nav" aria-label="Main navigation">
+        <ul class="research-nav__primary">
           {% for link in site.data.navigation.main %}
-            <li class="masthead__menu-item"><a href="{{ domain }}{{ link.url }}">{{ link.title }}</a></li>
+            <li><a href="{{ link.url | relative_url }}" target="_self">{{ link.title }}</a></li>
           {% endfor %}
         </ul>
-        <ul class="hidden-links hidden"></ul>
+        <details class="research-nav__more">
+          <summary>More</summary>
+          <ul>
+            {% for link in site.data.navigation.more %}
+              <li><a href="{{ link.url | relative_url }}" target="_self">{{ link.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </details>
       </nav>
     </div>
   </div>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  $(function() {
+    var nav = document.querySelector('.research-nav');
+    var menu = nav.querySelector('details');
+    // Allow for the sticky header and the existing 30px heading reveal.
+    $(nav).find('a').smoothScroll({ offset: -112 });
+    nav.addEventListener('click', function(event) {
+      if (event.target.closest('a')) menu.open = false;
+    });
+    nav.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape' && menu.open) {
+        menu.open = false;
+        menu.querySelector('summary').focus();
+      }
+    });
+  });
+});
+</script>
