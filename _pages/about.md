@@ -56,7 +56,7 @@ My current work connects LLM capability research with the systems needed to run 
 
 <div class="current-work-list">
 <article class="current-work-item" aria-labelledby="work-kv">
-<img class="current-work-figure" src="{{ '/images/current-work-kv.svg' | relative_url }}" width="440" height="300" loading="lazy" alt="State and KV records are encoded, stored and checked on restore.">
+<img class="current-work-figure" src="{{ '/images/current-work-kv-v2.svg' | relative_url }}" width="440" height="300" loading="lazy" alt="Layered memory records interwoven with colored state ribbons; conceptual illustration.">
 <div class="current-work-copy">
 <h3 id="work-kv">AIBrix Hybrid KV Cache</h3>
 <p>Built and open-sourced hybrid KV offloading with bounded storage, now used by TikTok Infra, with an upstream AIBrix PR. CPU byte-store round trips are verified; whole-model output equivalence remains open.</p>
@@ -64,7 +64,7 @@ My current work connects LLM capability research with the systems needed to run 
 </div>
 </article>
 <article class="current-work-item" aria-labelledby="work-rl">
-<img class="current-work-figure" src="{{ '/images/current-work-rl.svg' | relative_url }}" width="440" height="300" loading="lazy" alt="One checkpoint, three training interventions, held-out evaluation.">
+<img class="current-work-figure" src="{{ '/images/current-work-rl-v2.svg' | relative_url }}" width="440" height="300" loading="lazy" alt="Three illustrative exploration paths across a capability landscape.">
 <div class="current-work-copy">
 <h3 id="work-rl">RL as a Probe of LLM Capability</h3>
 <p>My first-author paper uses random-reward RL to probe what further training can unlock beyond current accuracy. I am turning these controlled interventions into a capability evaluation framework.</p>
@@ -72,7 +72,7 @@ My current work connects LLM capability research with the systems needed to run 
 </div>
 </article>
 <article class="current-work-item" aria-labelledby="work-bitexact">
-<img class="current-work-figure" src="{{ '/images/current-work-bitexact.svg' | relative_url }}" width="440" height="300" loading="lazy" alt="The same constants and input produce matching bits across tested hardware.">
+<img class="current-work-figure" src="{{ '/images/current-work-bitexact-v2.svg' | relative_url }}" width="440" height="300" loading="lazy" alt="Different processor outlines containing the same bit pattern; conceptual illustration.">
 <div class="current-work-copy">
 <h3 id="work-bitexact">Bitwise-Reproducible LLM Inference Across Hardware</h3>
 <p>Built integer LLM inference with matching logits and tokens across tested GPU and CPU configurations. An int8 vLLM plugin preserves reproducibility under tested batching and cache changes.</p>
@@ -80,7 +80,7 @@ My current work connects LLM capability research with the systems needed to run 
 </div>
 </article>
 <article class="current-work-item" aria-labelledby="work-capacity">
-<img class="current-work-figure" src="{{ '/images/current-work-omni.svg' | relative_url }}" width="440" height="300" loading="lazy" alt="CPU time, memory and GPU activity are attributed to Python and native stacks.">
+<img class="current-work-figure" src="{{ '/images/current-work-omni-v2.svg' | relative_url }}" width="440" height="300" loading="lazy" alt="A magnifying lens over a layered resource mosaic; illustrative profile.">
 <div class="current-work-copy">
 <h3 id="work-capacity">Omni Profiler: Continuous Profiling for RL Training</h3>
 <p>Co-developed a continuous profiler that traces CPU/GPU memory and compute back to Python and native code. Now used by Seed RL to investigate training bottlenecks and memory growth.</p>
@@ -89,7 +89,7 @@ My current work connects LLM capability research with the systems needed to run 
 </div>
 </article>
 <article class="current-work-item" aria-labelledby="work-agent">
-<img class="current-work-figure" src="{{ '/images/current-work-agent.svg' | relative_url }}" width="440" height="300" loading="lazy" alt="A claimed execution order is compared with the observed trace.">
+<img class="current-work-figure" src="{{ '/images/current-work-agent-v2.svg' | relative_url }}" width="440" height="300" loading="lazy" alt="An inspection lens revealing an execution fingerprint over a written claim.">
 <div class="current-work-copy">
 <h3 id="work-agent">Agent Reliability &amp; Semantic Profiling</h3>
 <p>I test whether agents actually execute the actions they claim. I also coauthored AgentPProf for semantic resource profiling, winner of the AgenticOS @ SOSP 2026 Best Paper Award.</p>
