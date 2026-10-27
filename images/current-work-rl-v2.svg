@@ -1,9 +1,212 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 300" role="img" aria-labelledby="title desc">
-<title id="title">Exploring the space of capability</title>
-<desc id="desc">Conceptual cover: three colored trajectories explore a contour landscape from a shared starting point. These are illustrative paths, not measured training curves.</desc>
-<defs><pattern id="grain" width="8" height="8" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".55" fill="#243955" opacity=".055"/></pattern><clipPath id="frame"><rect width="440" height="300" rx="14"/></clipPath></defs>
-<g clip-path="url(#frame)">
-<rect width="440" height="300" fill="#f6f2e9"/>
-<rect width="440" height="300" fill="url(#grain)"/>
-<circle cx="369" cy="35" r="133" fill="#eee5d6" stroke="none" stroke-width="1"/><ellipse cx="245" cy="148" rx="157" ry="102" transform="rotate(-25 245 148)" fill="none" stroke="#c3bcb0" stroke-width="1" opacity=".55"/><ellipse cx="245" cy="148" rx="140" ry="92" transform="rotate(-25 245 148)" fill="none" stroke="#c3bcb0" stroke-width="1" opacity=".55"/><ellipse cx="245" cy="148" rx="123" ry="82" transform="rotate(-25 245 148)" fill="none" stroke="#c3bcb0" stroke-width="1" opacity=".55"/><ellipse cx="245" cy="148" rx="106" ry="72" transform="rotate(-25 245 148)" fill="none" stroke="#c3bcb0" stroke-width="1" opacity=".55"/><ellipse cx="245" cy="148" rx="89" ry="62" transform="rotate(-25 245 148)" fill="none" stroke="#c3bcb0" stroke-width="1" opacity=".55"/><ellipse cx="245" cy="148" rx="72" ry="52" transform="rotate(-25 245 148)" fill="none" stroke="#c3bcb0" stroke-width="1" opacity=".55"/><ellipse cx="245" cy="148" rx="55" ry="42" transform="rotate(-25 245 148)" fill="none" stroke="#c3bcb0" stroke-width="1" opacity=".55"/><path d="M58 236C99 238 122 143 173 146S246 207 300 99S356 50 390 58" stroke="#328c8c" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M58 236C113 232 124 220 162 185S235 100 278 127S351 196 390 151" stroke="#dc8d73" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M58 236C92 188 122 160 152 114S212 85 231 59" stroke="#638bb8" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="173" cy="146" r="5" fill="#f6f2e9" stroke="#328c8c" stroke-width="2"/><circle cx="300" cy="99" r="5" fill="#f6f2e9" stroke="#328c8c" stroke-width="2"/><circle cx="162" cy="185" r="5" fill="#f6f2e9" stroke="#dc8d73" stroke-width="2"/><circle cx="278" cy="127" r="5" fill="#f6f2e9" stroke="#dc8d73" stroke-width="2"/><circle cx="152" cy="114" r="5" fill="#f6f2e9" stroke="#638bb8" stroke-width="2"/><circle cx="231" cy="59" r="5" fill="#f6f2e9" stroke="#638bb8" stroke-width="2"/><circle cx="390" cy="58" r="5" fill="#f6f2e9" stroke="#328c8c" stroke-width="2"/><circle cx="390" cy="151" r="5" fill="#f6f2e9" stroke="#dc8d73" stroke-width="2"/><circle cx="58" cy="236" r="12" fill="#243955" stroke="none" stroke-width="1"/><circle cx="58" cy="236" r="4" fill="#f6f2e9" stroke="none" stroke-width="1"/>
-</g></svg>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg role="img" aria-labelledby="rl-title rl-desc" xmlns:xlink="http://www.w3.org/1999/xlink" width="316.8pt" height="216pt" viewBox="0 0 316.8 216" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <title id="rl-title">Best reported terminal accuracy at three selected OLMo-2-7B checkpoints</title><desc id="rl-desc">GSM results from the published checkpoint summary: GT reward, four seeds, maxima 2, 90.5 and 100 percent; random reward, eight seeds, maxima 2, 13 and 77.5 percent. Selected checkpoints P1 34B, P1 3896B and P2 plus 5B. Maxima are not means; seed counts differ. Bars start at zero.</desc><metadata id="research-source">https://arxiv.org/html/2610.01066v1</metadata><metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib; reported result CSV</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 216
+L 316.8 216
+L 316.8 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 44.352 159.84
+L 307.296 159.84
+L 307.296 58.32
+L 44.352 58.32
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1"/>
+     <g id="text_1">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', sans-serif; fill: #60717d" transform="translate(84.807261 173.438437)">P1</text>
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', sans-serif; fill: #60717d" transform="translate(81.210386 184.63625)">34B</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2"/>
+     <g id="text_2">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', sans-serif; fill: #60717d" transform="translate(169.627906 173.438437)">P1</text>
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', sans-serif; fill: #60717d" transform="translate(158.079469 184.63625)">3,896B</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3"/>
+     <g id="text_3">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', sans-serif; fill: #60717d" transform="translate(254.448551 173.438437)">P2</text>
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', sans-serif; fill: #60717d" transform="translate(249.843083 184.63625)">+5B</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_4">
+      <path d="M 44.352 159.84
+L 307.296 159.84
+" clip-path="url(#p2fe164b457)" style="fill: none; stroke: #dce3e7; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_5">
+      <defs>
+       <path id="md52785b623" d="M 0 0
+L -3 0
+" style="stroke: #60717d; stroke-width: 0.6"/>
+      </defs>
+      <g>
+       <use xlink:href="#md52785b623" x="44.352" y="159.84" style="fill: #60717d; stroke: #60717d; stroke-width: 0.6"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', sans-serif; text-anchor: end; fill: #60717d" x="37.852" y="163.639219" transform="rotate(-0 37.852 163.639219)">0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_6">
+      <path d="M 44.352 113.694545
+L 307.296 113.694545
+" clip-path="url(#p2fe164b457)" style="fill: none; stroke: #dce3e7; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#md52785b623" x="44.352" y="113.694545" style="fill: #60717d; stroke: #60717d; stroke-width: 0.6"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', sans-serif; text-anchor: end; fill: #60717d" x="37.852" y="117.493764" transform="rotate(-0 37.852 117.493764)">50</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_8">
+      <path d="M 44.352 67.549091
+L 307.296 67.549091
+" clip-path="url(#p2fe164b457)" style="fill: none; stroke: #dce3e7; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#md52785b623" x="44.352" y="67.549091" style="fill: #60717d; stroke: #60717d; stroke-width: 0.6"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', sans-serif; text-anchor: end; fill: #60717d" x="37.852" y="71.34831" transform="rotate(-0 37.852 71.34831)">100</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 64.284852 159.84
+L 88.882839 159.84
+L 88.882839 157.994182
+L 64.284852 157.994182
+z
+" clip-path="url(#p2fe164b457)" style="fill: #167d8d"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 149.105497 159.84
+L 173.703484 159.84
+L 173.703484 76.316727
+L 149.105497 76.316727
+z
+" clip-path="url(#p2fe164b457)" style="fill: #167d8d"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 233.926142 159.84
+L 258.524129 159.84
+L 258.524129 67.549091
+L 233.926142 67.549091
+z
+" clip-path="url(#p2fe164b457)" style="fill: #167d8d"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 93.123871 159.84
+L 117.721858 159.84
+L 117.721858 157.994182
+L 93.123871 157.994182
+z
+" clip-path="url(#p2fe164b457)" style="fill: #b97132"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 177.944516 159.84
+L 202.542503 159.84
+L 202.542503 147.842182
+L 177.944516 147.842182
+z
+" clip-path="url(#p2fe164b457)" style="fill: #b97132"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 262.765161 159.84
+L 287.363148 159.84
+L 287.363148 88.314545
+L 262.765161 88.314545
+z
+" clip-path="url(#p2fe164b457)" style="fill: #b97132"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 44.352 159.84
+L 44.352 58.32
+" style="fill: none; stroke: #60717d; stroke-width: 0.6; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 44.352 159.84
+L 307.296 159.84
+" style="fill: none; stroke: #60717d; stroke-width: 0.6; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+  </g>
+  <g id="text_7">
+   <text style="font-weight: 600; font-size: 13px; font-family: 'DejaVu Sans', sans-serif; text-anchor: start; fill: #263644" x="14.256" y="16.2" transform="rotate(-0 14.256 16.2)">Checkpoint-dependent reachability</text>
+  </g>
+  <g id="text_8">
+   <text style="font-size: 9.5px; font-family: 'DejaVu Sans', sans-serif; text-anchor: start; fill: #60717d" x="14.256" y="33.48" transform="rotate(-0 14.256 33.48)">Best terminal accuracy (%) · GSM · OLMo-2-7B</text>
+  </g>
+  <g id="text_9">
+   <text style="font-size: 8.5px; font-family: 'DejaVu Sans', sans-serif; text-anchor: start; fill: #60717d" x="14.256" y="209.52" transform="rotate(-0 14.256 209.52)">Selected checkpoints · best seed, not mean</text>
+  </g>
+  <g id="legend_1">
+   <g id="patch_11">
+    <path d="M 16.02 197.388281
+L 25.02 197.388281
+L 25.02 191.088281
+L 16.02 191.088281
+z
+" style="fill: #167d8d"/>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', sans-serif; text-anchor: start; fill: #263644" x="32.22" y="197.388281" transform="rotate(-0 32.22 197.388281)">GT reward (4 seeds)</text>
+   </g>
+   <g id="patch_12">
+    <path d="M 132.027187 197.388281
+L 141.027187 197.388281
+L 141.027187 191.088281
+L 132.027187 191.088281
+z
+" style="fill: #b97132"/>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', sans-serif; text-anchor: start; fill: #263644" x="148.227187" y="197.388281" transform="rotate(-0 148.227187 197.388281)">Random (8 seeds)</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p2fe164b457">
+   <rect x="44.352" y="58.32" width="262.944" height="101.52"/>
+  </clipPath>
+ </defs>
+</svg>
