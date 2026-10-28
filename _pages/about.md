@@ -6,7 +6,7 @@ author_profile: true
 sidebar:
   - title: "Everyday tools"
     text: |
-      If Typeless feels too expensive, give [Hushword](https://github.com/mynotwo/hushword) a try. Speak in the app you’re using, then get back to writing. It combines local Whisper with Apple Speech and offers an optional Agent rewrite after dictation.
+      If Typeless feels too expensive, try [Hushword](https://github.com/mynotwo/hushword): dictate in any app, then get back to writing. It combines local Whisper with Apple Speech, with optional Agent rewrites.
 
       <a class="hushword-sidebar-cta" href="https://github.com/mynotwo/hushword#build-and-install-from-source">Build and try it on an Apple Silicon Mac →</a>
 
@@ -67,7 +67,7 @@ body.homepage .interest-pill { background: #edf2f7; color: #334155; }
 .current-work-list .current-work-links a { display: inline-block; padding: 3px 0; color: #295d8a; font-weight: 500; line-height: 1.5; text-decoration: none; box-shadow: none; }
 .current-work-list .current-work-links a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .current-work-list a:focus-visible { outline: 2px solid #295d8a; outline-offset: 3px; }
-body.homepage .hushword-sidebar-cta { display: block; margin: 10px 0; padding: 9px 11px; border-radius: 6px; background: #224b8d; color: #fff; font-weight: 600; line-height: 1.45; text-align: center; text-decoration: none; box-shadow: none; }
+body.homepage .hushword-sidebar-cta { display: flex; min-height: 44px; align-items: center; justify-content: center; margin: 10px 0; padding: 9px 11px; border-radius: 6px; background: #224b8d; color: #fff; font-weight: 600; line-height: 1.45; text-align: center; text-decoration: none; box-shadow: none; }
 body.homepage .hushword-sidebar-cta:hover { background: #183b73; color: #fff; }
 body.homepage .sidebar a:focus-visible { outline: 2px solid #295d8a; outline-offset: 3px; }
 @media (max-width: 600px) {
