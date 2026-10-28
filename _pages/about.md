@@ -4,13 +4,13 @@ title: "Yu Mao"
 excerpt: "Research Scientist at ByteDance working on AI infrastructure, inference systems, compression, and LLM reliability."
 author_profile: true
 sidebar:
-  - title: "Everyday tools"
+  - title: "Everyday tools 🎙️"
     text: |
-      If Typeless feels too expensive, try [Hushword](https://github.com/mynotwo/hushword): dictate in any app, then get back to writing. It combines local Whisper with Apple Speech, with optional Agent rewrites.
+      Typeless feels a little pricey? 😅 Give [Hushword](https://github.com/mynotwo/hushword) a try! 🎙️ Speak right in the app you’re using, then get back to writing. Hushword pairs local Whisper with Apple Speech; want a quick polish? Its optional Agent can rewrite your transcript.
 
-      <a class="hushword-sidebar-cta" href="https://github.com/mynotwo/hushword#build-and-install-from-source">Build and try it on an Apple Silicon Mac →</a>
+      <a class="hushword-sidebar-cta" href="https://github.com/mynotwo/hushword#build-and-install-from-source">Build &amp; try it on Apple Silicon →</a>
 
-      <a href="https://github.com/mynotwo/hushword#processing-and-privacy">Where audio and text are processed</a>
+      🔒 <a href="https://github.com/mynotwo/hushword#processing-and-privacy">Where audio and text are processed</a>
 redirect_from: 
   - /about/
   - /about.html
@@ -70,6 +70,9 @@ body.homepage .interest-pill { background: #edf2f7; color: #334155; }
 body.homepage .hushword-sidebar-cta { display: flex; min-height: 44px; align-items: center; justify-content: center; margin: 10px 0; padding: 9px 11px; border-radius: 6px; background: #224b8d; color: #fff; font-weight: 600; line-height: 1.45; text-align: center; text-decoration: none; box-shadow: none; }
 body.homepage .hushword-sidebar-cta:hover { background: #183b73; color: #fff; }
 body.homepage .sidebar a:focus-visible { outline: 2px solid #295d8a; outline-offset: 3px; }
+@media (min-width: 925px) {
+  body.homepage .sidebar.sticky { max-height: calc(100vh - 7em); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+}
 @media (max-width: 600px) {
   .current-work-list .current-work-item { grid-template-columns: minmax(0, 1fr); gap: 16px; padding: 24px 0; }
   .current-work-list .current-work-copy { grid-row: 1; }
