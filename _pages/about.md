@@ -6,9 +6,7 @@ author_profile: true
 sidebar:
   - title: "Everyday tools"
     text: |
-      Tired of Typeless? Try [Hushword](https://github.com/mynotwo/hushword) 🎙️ — free transcription software.
-
-      [Build &amp; try on Apple Silicon →](https://github.com/mynotwo/hushword#build-and-install-from-source) · [Audio &amp; text privacy →](https://github.com/mynotwo/hushword#processing-and-privacy)
+      Tired of Typeless? Try [Hushword](https://github.com/mynotwo/hushword) 🎙️ — free transcription software. [Build →](https://github.com/mynotwo/hushword#build-and-install-from-source) · [Privacy →](https://github.com/mynotwo/hushword#processing-and-privacy)
 redirect_from: 
   - /about/
   - /about.html
