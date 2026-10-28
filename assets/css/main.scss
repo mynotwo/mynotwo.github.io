@@ -276,6 +276,8 @@ h1:before, .anchor:before {
 }
 
 // --- /blog/ list page ---
+body.blog-page { background-image: none !important; }
+
 .blog-list {
     .blog-header {
         display: flex;

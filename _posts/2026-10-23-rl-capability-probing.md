@@ -3,25 +3,36 @@ title: "Random-reward RL for capability probing"
 date: 2026-10-23
 lang: en
 permalink: /blog/rl-capability-probing/
-excerpt: "Why equal accuracy can hide very different responses to training, and what random rewards let us measure."
+excerpt: "Training response can reveal capability that a checkpoint's current accuracy does not show."
 tags: [RL, capability, evaluation]
 ---
 
-Two models can answer the same fraction of questions correctly and still respond very differently to further training. That makes current accuracy an incomplete answer to a practical question: which checkpoint is worth post-training, and what kind of supervision will help it?
+Current accuracy tells us what a checkpoint can do now. It does not tell us what that checkpoint can reach with more training. This distinction matters when choosing a checkpoint to post-train—and when asking whether an evaluation method exposed an ability or taught the model the answer.
 
-[Probe with Participation Trophies](https://arxiv.org/abs/2610.01066) studies training itself as a probe. The object of measurement is **reachability**: what a model can attain from its current state under specified training procedures, information and budgets. It is a property of a model *under an intervention*, rather than a single score attached to the model forever.
+[Probe with Participation Trophies](https://arxiv.org/abs/2610.01066) uses reinforcement learning (RL) as a probe of **capability reachability**: what a model can attain from its current state under specified training procedures, information and budgets. The key idea is to measure the model's response to training, not treat its frozen score as the full measure of its capability.
 
-<img src="/images/current-work-rl.svg" alt="A checkpoint branches into correctness-reward RL, random-reward RL and masked SFT before held-out evaluation." width="560" height="382" style="display:block;width:100%;max-width:560px;height:auto;margin:1.5em auto;">
+For example, two OLMo checkpoints both start at **3.5%** accuracy on synthetic arithmetic. Under the same correctness-rewarded RL, their best runs reach **8.5%** and **55%**. The best-run figures are maxima across runs, not average outcomes.
 
-*Method schematic. The branches represent different interventions, not measured improvements of equal size.*
+<figure>
+  <img src="/images/papers/random-reward-rl.png" alt="Three OLMo-2 capability reachability regimes: early pretraining checkpoints barely improve, later pretraining checkpoints respond to correctness rewards, and some mid-training checkpoints also reach high accuracy with random rewards." width="1340" height="590" style="display:block;width:100%;height:auto;margin:1.5em auto;">
+  <figcaption>Training response separates three observed reachability regimes. Lines show individual seeds; bars show the best endpoint, not the mean (4 correctness-reward seeds, 8 random-reward seeds). These regimes describe the studied OLMo-2 checkpoints, not a universal training trajectory.</figcaption>
+</figure>
 
-## Why remove correctness from the reward?
+## Why use random rewards to probe capability?
 
 A supervised probe has a familiar ambiguity: if it succeeds, did it expose something the model already represented, or learn the task from the labels supplied to the probe? Training with correctness rewards introduces a related ambiguity. The reward tells the learner which responses to reinforce.
 
 Random rewards remove that information from the reward channel. The model still receives prompts, produces responses and undergoes optimization; those are substantial sources of structure. What disappears is the reward's ability to identify correct answers. This makes random-reward RL useful for a narrower question: **how does this starting model respond to training when the reward does not tell it what is right?**
 
 Random-reward RL serves here as an evaluation instrument. A high-scoring random-reward run does not establish that random rewards are a generally good training recipe, or prove that a complete solution was already present in the original model.
+
+## How the probe compares interventions
+
+The study compares correctness-reward RL, random-reward RL and number-masked supervised fine-tuning (SFT), then evaluates held-out behavior. The branches are different interventions; the schematic describes the experiment and does not imply equal-sized gains.
+
+<img src="/images/current-work-rl.svg" alt="A checkpoint branches into correctness-reward RL, random-reward RL and masked SFT before held-out evaluation." width="560" height="382" loading="lazy" style="display:block;width:100%;max-width:560px;height:auto;margin:1.5em auto;">
+
+*Intervention schematic. Each branch asks what the same starting checkpoint can reach under a different training signal.*
 
 ## Hold the training signal fixed, change the learner
 
