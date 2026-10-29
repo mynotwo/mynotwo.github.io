@@ -6,19 +6,14 @@ author_profile: true
 sidebar:
   - title:
     text: |
-      <section class="hushword-card" aria-labelledby="hushword-card-title">
-        <p class="hushword-card__eyebrow">MY LITTLE TOOL ✦</p>
-        <div class="hushword-card__header">
-          <span class="hushword-card__icon" aria-hidden="true"><i class="fas fa-microphone"></i></span>
-          <div>
-            <h3 class="hushword-card__title" id="hushword-card-title">Hushword</h3>
-            <p class="hushword-card__subtitle">Free speech-to-text tool</p>
-          </div>
+      <section class="hushword-tool" aria-labelledby="hushword-tool-title">
+        <p class="hushword-tool__eyebrow">MY LITTLE TOOL ✦</p>
+        <div class="hushword-tool__header">
+          <span class="hushword-tool__icon" aria-hidden="true"><i class="fas fa-microphone"></i></span>
+          <h3 class="hushword-tool__title" id="hushword-tool-title"><a href="https://github.com/mynotwo/hushword">Hushword <span aria-hidden="true">↗</span></a></h3>
         </div>
-        <p class="hushword-card__description">A free, lightweight speech-to-text tool for everyday use.</p>
-        <nav class="hushword-card__links" aria-label="Hushword links">
-          <a href="https://github.com/mynotwo/hushword">Explore <span aria-hidden="true">↗</span></a>
-          <span aria-hidden="true">·</span>
+        <p class="hushword-tool__description">A free, lightweight speech-to-text tool for everyday use.</p>
+        <nav class="hushword-tool__links" aria-label="Hushword links">
           <a href="https://github.com/mynotwo/hushword#build-and-install-from-source">Build <span aria-hidden="true">↗</span></a>
           <span aria-hidden="true">·</span>
           <a href="https://github.com/mynotwo/hushword#processing-and-privacy">Privacy <span aria-hidden="true">↗</span></a>
@@ -57,19 +52,18 @@ I received my Ph.D. in Computer Science from City University of Hong Kong, worki
 <style>
 body.homepage { background-image: none !important; }
 body.homepage .interest-pill { background: #edf2f7; color: #334155; }
-.hushword-card { box-sizing: border-box; width: 100%; margin: 1.5rem 0 0; padding: 1.0625rem; border: 1px solid #EAE7F5; border-radius: 14px; background: #F8F7FF; color: #252538; transition: transform 200ms ease, border-color 200ms ease; }
-.hushword-card:hover { border-color: #CFC8EC; transform: translateY(-2px); }
-.hushword-card__eyebrow { margin: 0 0 .875rem !important; color: #7465D5; font-size: .625rem !important; font-weight: 700; letter-spacing: .0625rem; line-height: 1.2 !important; }
-.hushword-card__header { display: flex; align-items: center; gap: .75rem; min-width: 0; }
-.hushword-card__icon { display: inline-flex; flex: 0 0 2.25rem; align-items: center; justify-content: center; width: 2.25rem; height: 2.25rem; border-radius: 50%; background: #EEEBFF; color: #7465D5; font-size: .9375rem; }
-.hushword-card__title { margin: 0 !important; color: #252538; font-family: inherit !important; font-size: 1rem !important; font-weight: 700; line-height: 1.2; }
-.hushword-card__subtitle { margin: .125rem 0 0 !important; color: #737386; font-size: .75rem !important; line-height: 1.35 !important; }
-.hushword-card__description { margin: .875rem 0 !important; color: #737386; font-size: .8125rem !important; line-height: 1.5 !important; }
-.hushword-card__links { display: flex; flex-wrap: wrap; gap: .25rem; color: #737386; font-size: .75rem; line-height: 1.5; }
-.hushword-card__links a { color: #7465D5; font-weight: 600; text-decoration: none; }
-.hushword-card__links a:hover { text-decoration: underline; text-underline-offset: .1875rem; }
-.hushword-card__links a:focus-visible { outline: 2px solid #7465D5; outline-offset: .1875rem; border-radius: 2px; }
-@media (prefers-reduced-motion: reduce) { .hushword-card { transition: none; } .hushword-card:hover { transform: none; } }
+.hushword-tool { box-sizing: border-box; width: 100%; margin: 1.5rem 0 0; padding-top: 1.5rem; border-top: 1px solid #EAE7F5; color: #252538; }
+.hushword-tool__eyebrow { margin: 0 0 1rem !important; color: #60606A; font-size: .6875rem !important; font-weight: 600; letter-spacing: .0625rem; line-height: 1.2 !important; }
+.hushword-tool__header { display: flex; align-items: center; gap: .625rem; min-width: 0; }
+.hushword-tool__icon { color: #7465D5; font-size: 1.125rem; line-height: 1; }
+.hushword-tool__title { margin: 0 !important; font-family: inherit !important; font-size: 1.25rem !important; font-weight: 700; line-height: 1.15; }
+.hushword-tool__title a { color: #252538; text-decoration: none; }
+.hushword-tool__title a:hover { text-decoration: underline; text-underline-offset: .1875rem; }
+.hushword-tool__description { margin: 1rem 0 !important; color: #60606A; font-size: .9375rem !important; line-height: 1.45 !important; }
+.hushword-tool__links { display: flex; flex-wrap: wrap; gap: .25rem .5rem; color: #60606A; font-size: .875rem; line-height: 1.5; }
+.hushword-tool__links a { color: #60606A; text-decoration: none; }
+.hushword-tool__links a:hover { text-decoration: underline; text-underline-offset: .1875rem; }
+.hushword-tool a:focus-visible { outline: 2px solid #7465D5; outline-offset: .1875rem; border-radius: 2px; }
 @media (max-width: 600px) {
   body.homepage .profile_box { display: grid; grid-template-columns: 75px minmax(0, 1fr); gap: 12px; align-items: center; }
   body.homepage .author__content { min-width: 0; padding-left: 0; }
@@ -98,7 +92,7 @@ body.homepage .interest-pill { background: #edf2f7; color: #334155; }
   .current-work-list .current-work-copy { grid-row: 1; }
   .current-work-list .current-work-visual { width: 200px; max-width: 100%; }
   .current-work-list .current-work-links a { padding: 8px 0; }
-  .hushword-card { margin-top: 1rem; padding: 1rem; }
+  .hushword-tool { margin-top: 1rem; padding-top: 1rem; }
 }
 </style>
 
