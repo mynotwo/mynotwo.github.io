@@ -33,13 +33,7 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-Hi, I’m Yu Mao. Feel free to call me Audrey! I’m a Research Scientist at ByteDance in San Jose, where I work on AI infrastructure and inference.
-
-I’m interested in what training brings out in LLMs, and in making the systems behind training and inference easier to measure and reproduce.
-
-Lately, that has meant using random-reward RL to probe model capabilities, tracing RL training resource use back to code with Omni Profiler, and building bounded storage for hybrid KV caches.
-
-I received my Ph.D. in Computer Science from City University of Hong Kong, working on compression and computer systems.
+Hi, I'm Yu Mao. Feel free to call me Audrey! I'm a Research Scientist at ByteDance, working on AI infrastructure and LLMs. My research interests lie at the intersection of **machine learning and computer systems**, with a focus on model capabilities, efficient training, and inference. I received my Ph.D. in Computer Science from City University of Hong Kong, where I worked on compression and computer systems.
 
 **Research interests**
 
