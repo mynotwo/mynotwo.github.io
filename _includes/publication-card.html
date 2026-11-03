@@ -12,7 +12,8 @@
     {% endif %}
   </div>
   <div class="paper-box-text">
-    <div class="paper-title">{{ include.pub.title }}</div>
+    {% assign paper_url = include.pub.arxiv | default: include.pub.pdf %}
+    <div class="paper-title">{% if paper_url %}<a href="{{ paper_url | escape }}">{{ include.pub.title | escape }}</a>{% else %}{{ include.pub.title | escape }}{% endif %}</div>
     <div class="paper-authors">{{ include.pub.authors | markdownify | remove: '<p>' | remove: '</p>' }}</div>
     <div class="paper-venue">
       <span class="paper-venue-chip">{{ include.pub.venue }}</span>

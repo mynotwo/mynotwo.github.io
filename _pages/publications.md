@@ -2,6 +2,7 @@
 layout: default
 permalink: /publications/
 title: "Publications"
+excerpt: "Publications by Yu Mao on compression, LLM capability, and computer systems, with paper and code links."
 author_profile: true
 ---
 

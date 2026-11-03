@@ -78,6 +78,7 @@
   first_author: true
   scholar_id: "Iw3bTCAAAAAJ:IjCSPb-OGe4C"
   pdf: /assets/pdfs/faster-stronger.pdf
+  code: "https://github.com/mynotwo/Faster-and-Stronger-Lossless-Compression-with-Optimized-Autoregressive-Framework"
   image: /images/papers/faster-stronger.png
 
 - theme: "Compression & Representation"
@@ -97,6 +98,7 @@
   first_author: true
   scholar_id: "Iw3bTCAAAAAJ:u-x6o8ySG0sC"
   pdf: /assets/pdfs/trace.pdf
+  code: "https://github.com/mynotwo/A-Fast-Transformer-based-General-Purpose-LosslessCompressor"
   image: /images/papers/trace.png
 
 # ============================ Applied ML ============================
@@ -142,6 +144,7 @@
   authors: "Yusheng Zheng, Chaokun Chang, **Yu Mao**, Tianyuan Wu, Yuxi Huang, Tao Ma, Wenan Mao, Shuyi Cheng, Andi Quinn, Wei Wang"
   venue: "AgenticOS @ SOSP 2026 · Best Paper Award"
   pdf: "https://os-for-agent.github.io/papers/AgenticOS_SOSP_2026_paper_27.pdf"
+  code: "https://github.com/eunomia-bpf/agentsight"
   image: /images/papers/agentpprof.png
 
 - theme: "LLM Capability & Agents"

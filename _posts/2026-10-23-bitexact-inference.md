@@ -7,6 +7,8 @@ excerpt: "Integer arithmetic makes reproducibility an execution contract, with e
 tags: [inference, reproducibility, compression]
 ---
 
+**Version note · updated November 3, 2026.** The model and device results discussed here refer to the [historical implementation at `a030ba7`](https://github.com/mynotwo/bitexact-llm/tree/a030ba7421aa61b6469a79efe85a61002512c476). The [source reviewed for this update, `971a3e1`](https://github.com/mynotwo/bitexact-llm/tree/971a3e15bdba7481178a927b3f2cfeda90287f3f), adds arithmetic guards and CPU reproduction checks. Those checks do not revalidate historical whole-model or CUDA results for the changed source.
+
 A fixed seed does not fix every source of variation in an LLM. The same request can enter a different batch, use a different reduction kernel or run on another device. Small numerical differences can change a token choice and then the rest of the continuation.
 
 [BitExact LLM](https://github.com/mynotwo/bitexact-llm) controls this source of execution variability. It implements Llama-3.2-1B inference with integer arithmetic, including the nonlinear functions and sampling rules. The target is matching logits and sampled tokens under explicitly tested execution changes.
@@ -25,7 +27,7 @@ This moves the hard part into the contract: the scales, rounding, tables and int
 
 ## Three execution paths
 
-The [current implementation](https://github.com/mynotwo/bitexact-llm/tree/a030ba7421aa61b6469a79efe85a61002512c476) separates three paths:
+The [historical implementation](https://github.com/mynotwo/bitexact-llm/tree/a030ba7421aa61b6469a79efe85a61002512c476) separates three paths:
 
 - **Exact mode** retains the original bf16 weights in linear layers and evaluates their products with quantized fixed-point activations. The input embedding is rounded once to the residual stream's fixed-point grid. “Exact” describes the specified arithmetic, not equality with a real-valued or fp32 model.
 - **Int8 mode** uses quantized weights and a cheaper integer path. The vLLM plugin uses this mode.
@@ -35,9 +37,9 @@ Keeping these separate prevents an accuracy result from one path being paired wi
 
 ## What the checks actually compare
 
-The repository's exact-mode identity checks hash the entire int64 logit row and compare sampled tokens at each generated position. They cover changes in batching, KV-cache use and selected kernel implementations on H800, H100, x86 CPU and Apple M4 Pro CPU. The same constants file identifies the model under test.
+The historical exact-mode identity checks hash the entire int64 logit row and compare sampled tokens at each generated position. They cover changes in batching, KV-cache use and selected kernel implementations on H800, H100, x86 CPU and Apple M4 Pro CPU. The same constants file identifies the model under test.
 
-The vLLM tests ask a different question: does the int8 path remain stable when a scheduler changes execution? The recorded cases include mixed requests, chunked prefill, shared prefixes and preemption. The published tests use the offline engine API with `enforce_eager=True`; the plugin can capture its own decode graphs. They do not establish compatibility with every vLLM configuration or the serving API.
+The vLLM tests ask a different question: does the int8 path remain stable when a scheduler changes execution? The recorded cases include mixed requests, chunked prefill, shared prefixes and preemption. The tests described at that revision use the offline engine API with `enforce_eager=True`; the plugin can capture its own decode graphs. They do not establish compatibility with every vLLM configuration or the serving API.
 
 A distinction in the [reported evidence](https://github.com/mynotwo/bitexact-llm/blob/a030ba7421aa61b6469a79efe85a61002512c476/README.md#verified-results-exact-mode) is especially important: the large teacher-forced accuracy evaluation and the cross-device identity tests are different experiments. A count of positions in one is not evidence of identity in the other.
 
@@ -47,7 +49,7 @@ This is not a general throughput win. Against stock vLLM with CUDA graphs, the i
 
 The unavoidable work includes extra limb products, wider intermediate representations, nonlinear integer operations and deterministic sampling. The implementation must preserve these semantics while reducing their cost. Faster kernels are useful only if they retain the equality being tested.
 
-The current README also identifies incomplete overflow checks: some outputs are checked only after residual addition, and final logits are not checked. No check fired in the reported runs, but that observation is not a proof of safety for every input or model shape.
+At the historical revision, some outputs were checked only after residual addition, and final logits were not checked. The [updated README](https://github.com/mynotwo/bitexact-llm/blob/971a3e15bdba7481178a927b3f2cfeda90287f3f/README.md) records checks before exact-mode residual addition and for final logits, plus linear-epilogue shift guards. These changes improve detection within the stated arithmetic contracts; they do not prove every operation overflow-free. The new CPU checks do not establish whole-model or CUDA identity for the changed source.
 
 ## Applications in evaluation and compression
 

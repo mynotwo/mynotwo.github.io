@@ -3,22 +3,6 @@ permalink: /
 title: "Yu Mao"
 excerpt: "Research Scientist at ByteDance working on AI infrastructure, inference systems, compression, and LLM reliability."
 author_profile: true
-sidebar:
-  - title:
-    text: |
-      <section class="hushword-tool" aria-labelledby="hushword-tool-title">
-        <p class="hushword-tool__eyebrow">MY LITTLE TOOL ✦</p>
-        <div class="hushword-tool__header">
-          <span class="hushword-tool__icon" aria-hidden="true"><i class="fas fa-microphone"></i></span>
-          <h3 class="hushword-tool__title" id="hushword-tool-title"><a href="https://github.com/mynotwo/hushword">Hushword <span aria-hidden="true">↗</span></a></h3>
-        </div>
-        <p class="hushword-tool__description">A free, lightweight speech-to-text tool for everyday use.</p>
-        <nav class="hushword-tool__links" aria-label="Hushword links">
-          <a href="https://github.com/mynotwo/hushword#build-and-install-from-source">Build <span aria-hidden="true">↗</span></a>
-          <span aria-hidden="true">·</span>
-          <a href="https://github.com/mynotwo/hushword#processing-and-privacy">Privacy <span aria-hidden="true">↗</span></a>
-        </nav>
-      </section>
 redirect_from: 
   - /about/
   - /about.html
@@ -46,6 +30,7 @@ Hi, I'm Yu Mao. Feel free to call me Audrey! I'm a Research Scientist at ByteDan
 <style>
 body.homepage { background-image: none !important; }
 body.homepage .interest-pill { background: #edf2f7; color: #334155; }
+.hushword-tool--mobile { display: none; }
 .hushword-tool { box-sizing: border-box; width: 100%; margin: 1.5rem 0 0; padding-top: 1.5rem; border-top: 1px solid #EAE7F5; color: #252538; }
 .hushword-tool__eyebrow { margin: 0 0 1rem !important; color: #60606A; font-size: .6875rem !important; font-weight: 600; letter-spacing: .0625rem; line-height: 1.2 !important; }
 .hushword-tool__header { display: flex; align-items: center; gap: .625rem; min-width: 0; }
@@ -66,7 +51,7 @@ body.homepage .interest-pill { background: #edf2f7; color: #334155; }
   body.homepage .author__urls_sm a { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; min-height: 44px; }
 }
 .current-work-list { margin: 24px 0 36px; max-width: 850px; }
-.current-work-list .current-work-item { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 24px; align-items: center; padding: 24px 0; }
+.current-work-list .current-work-item { display: grid; grid-template-columns: minmax(280px, 340px) minmax(0, 1fr); gap: 24px; align-items: center; padding: 24px 0; }
 .current-work-list .current-work-visual { display: block; box-shadow: none; }
 .current-work-list .current-work-figure { display: block; width: 100%; height: auto; margin: 0; }
 .current-work-list .current-work-copy { min-width: 0; }
@@ -81,11 +66,13 @@ body.homepage .interest-pill { background: #edf2f7; color: #334155; }
 .current-work-list .current-work-links a { display: inline-block; padding: 3px 0; color: #295d8a; font-weight: 500; line-height: 1.5; text-decoration: none; box-shadow: none; }
 .current-work-list .current-work-links a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .current-work-list a:focus-visible { outline: 2px solid #295d8a; outline-offset: 3px; }
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .current-work-list .current-work-item { grid-template-columns: minmax(0, 1fr); gap: 16px; padding: 24px 0; }
   .current-work-list .current-work-copy { grid-row: 1; }
-  .current-work-list .current-work-visual { width: 200px; max-width: 100%; }
+  .current-work-list .current-work-visual { width: 440px; max-width: 100%; }
   .current-work-list .current-work-links a { padding: 8px 0; }
+  .hushword-tool--sidebar { display: none; }
+  .hushword-tool--mobile { display: block; margin: 1.5rem 0; }
   .hushword-tool { margin-top: 1rem; padding-top: 1rem; }
 }
 </style>
@@ -122,9 +109,9 @@ body.homepage .interest-pill { background: #edf2f7; color: #334155; }
 </a>
 <div class="current-work-copy">
 <h3 id="work-kv">AIBrix Hybrid KV Cache</h3>
-<div class="current-work-links"><a href="https://github.com/mynotwo/aibrix-hybrid-kvcache">Code</a><a href="https://github.com/vllm-project/aibrix/pull/3221">Upstream PR #3221</a><a href="{{ '/blog/hybrid-kv-cache-storage-contract/' | relative_url }}">Blog</a><a href="{{ '/kvcache-bench/' | relative_url }}">Benchmark</a></div>
+<div class="current-work-links"><a href="https://github.com/mynotwo/aibrix-hybrid-kvcache">Code</a><a href="https://github.com/vllm-project/aibrix/pull/3221">Open draft PR #3221</a><a href="{{ '/blog/hybrid-kv-cache-storage-contract/' | relative_url }}">Blog</a><a href="{{ '/kvcache-bench/' | relative_url }}">Benchmark</a></div>
 <p>Hybrid-model prefixes need recurrent state and attention history to survive offloading together. I built and open-sourced hybrid KV offloading with bounded storage and reader-safe eviction, now used by TikTok Infra.</p>
-<p>The upstream AIBrix PR contributes the byte-store contract. CPU byte-store round trips are verified; whole-model output equivalence remains open.</p>
+<p>The open draft AIBrix PR proposes the byte-store contract and has not been merged. It excludes the hybrid serving connector and codecs. The public CPU quickstart verifies byte-store round trips; whole-model output equivalence remains open.</p>
 <p class="current-work-caption" id="work-kv-caption">Storage mechanism: encode hybrid state and KV spans, then restore and check the bytes. This does not establish whole-model output equivalence.</p>
 </div>
 </article>
@@ -136,7 +123,7 @@ body.homepage .interest-pill { background: #edf2f7; color: #334155; }
 <div class="current-work-copy">
 <h3 id="work-bitexact">Bitwise-Reproducible LLM Inference Across Hardware</h3>
 <div class="current-work-links"><a href="{{ '/blog/bitexact-inference/' | relative_url }}">Blog</a><a href="https://github.com/mynotwo/bitexact-llm">Project repository</a></div>
-<p>Built integer LLM inference with matching logits and tokens across tested GPU and CPU configurations. An int8 vLLM plugin preserves reproducibility under tested batching and cache changes.</p>
+<p>Historical runs recorded matching logits and tokens across selected GPU and CPU configurations, including int8 vLLM batching and cache experiments. The current source adds arithmetic guards and CPU checks; these do not revalidate the historical whole-model or CUDA results.</p>
 </div>
 </article>
 <article class="current-work-item current-work-item--related" aria-labelledby="work-agent">
@@ -150,6 +137,8 @@ body.homepage .interest-pill { background: #edf2f7; color: #334155; }
 </div>
 </article>
 </div>
+
+{% include hushword-tool.html placement="mobile" %}
 
 # 🔥 News
 <div class="news-timeline" markdown="1">
