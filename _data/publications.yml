@@ -52,7 +52,7 @@
   image: /images/papers/llm-text-compression.png
 
 - theme: "Compression & Representation"
-  title: "When Compression Meets Model Compression"
+  title: "When Compression Meets Model Compression: Memory-Efficient Double Compression for Large Language Models"
   authors: "W. Wang, **Yu Mao**, D. Tang, H. Du, N. Guan, C.J. Xue"
   venue: "EMNLP Findings 2024"
   corresponding: true
