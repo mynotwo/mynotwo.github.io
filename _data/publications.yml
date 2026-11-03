@@ -185,6 +185,14 @@
   pdf: /assets/pdfs/stem.pdf
   image: /images/papers/stem.png
 
+- theme: "AI Systems & Inference"
+  title: "Moby: Empowering 2D Models for Efficient Point Cloud Analytics on the Edge"
+  authors: "J. Li, Y.H. Cai, L. Liu, **Yu Mao**, C.J. Xue, H. Xu"
+  venue: "ACM MM 2023"
+  arxiv: "https://arxiv.org/abs/2302.09221"
+  pdf: /assets/pdfs/moby.pdf
+  image: /images/papers/moby.png
+
 
 # ============================ Applied ML ============================
 

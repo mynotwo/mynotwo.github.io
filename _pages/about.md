@@ -116,6 +116,13 @@ body.homepage .interest-pill { background: #edf2f7; color: #334155; }
 </div>
 </article>
 <h2 class="current-work-more">More research</h2>
+<article class="current-work-item current-work-item--related" aria-labelledby="work-kvbytepack">
+<div class="current-work-copy" style="grid-column: 1 / -1;">
+<h3 id="work-kvbytepack">KVBytePack: Byte-Exact KV-State Compression</h3>
+<div class="current-work-links"><a href="https://github.com/mynotwo/kvbytepack">Code</a><a href="https://github.com/mynotwo/kvbytepack/blob/main/docs/cpu-decode.md">CPU cost and memory measurements</a></div>
+<p>A reproducible artifact for measuring when smaller KV records pay for their codec cost, using public records and complete-record CPU and memory measurements. This is a separate artifact from the hybrid serving integration and the earlier KV cache benchmark.</p>
+</div>
+</article>
 <article class="current-work-item current-work-item--related" aria-labelledby="work-bitexact">
 <a class="current-work-visual" href="{{ '/images/current-work-bitexact-v2.svg' | relative_url }}?v=research" target="_blank" rel="noopener" aria-label="View larger figure">
 <img class="current-work-figure" src="{{ '/images/current-work-bitexact-v2.svg' | relative_url }}?v=research" width="440" height="300" loading="lazy" alt="Historical exact-mode report: zero logits and token differences against H800 over 3,696 generated positions on selected devices.">
