@@ -31,7 +31,6 @@
   {% assign seo_author_twitter = seo_author_twitter | replace: "@", "" %}
 {% endif %}
 
-<meta property="og:locale" content="en">
 <meta property="og:site_name" content="{{ site.title }}">
 <meta property="og:title" content="{{ seo_title | escape_once }}">
 <meta property="og:type" content="{% if page.layout == 'post' %}article{% elsif page.url == '/' %}profile{% else %}website{% endif %}">

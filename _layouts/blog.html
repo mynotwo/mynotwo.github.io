@@ -12,9 +12,9 @@ layout: default
   {% if content != "" %}<div class="blog-intro page__content">{{ content }}</div>{% endif %}
 
   <div class="blog-filters" id="blog-filters">
-    <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="zh">中文</button>
-    <button class="filter-btn" data-filter="en">EN</button>
+    <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+    <button class="filter-btn" data-filter="zh" aria-pressed="false">中文</button>
+    <button class="filter-btn" data-filter="en" aria-pressed="false">EN</button>
   </div>
 
   <div class="post-list" id="post-list">
@@ -34,8 +34,10 @@ layout: default
     btns.forEach(function (btn) {
       btn.addEventListener('click', function () {
         var f = btn.getAttribute('data-filter');
-        btns.forEach(function (b) { b.classList.remove('active'); });
-        btn.classList.add('active');
+        btns.forEach(function (b) {
+          b.classList.toggle('active', b === btn);
+          b.setAttribute('aria-pressed', String(b === btn));
+        });
         items.forEach(function (item) {
           item.style.display = (f === 'all' || item.getAttribute('data-lang') === f) ? '' : 'none';
         });

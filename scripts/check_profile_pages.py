@@ -2,6 +2,9 @@
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
+import json
+import mimetypes
+import statistics
 import sys
 
 
@@ -53,6 +56,7 @@ def check(root):
         "index.html": ("Yu Mao — Research Scientist", "profile"),
         "publications/index.html": ("Publications — Yu Mao", "website"),
         "blog/index.html": ("Blog — Yu Mao", "website"),
+        "photos/index.html": ("Photos — Yu Mao", "website"),
         "blog/bitexact-inference/index.html": (
             "Cross-hardware bitwise reproducibility in LLM inference — Yu Mao", "article"
         ),
@@ -105,6 +109,69 @@ def check(root):
     assert "Version note" in article and "971a3e1" in article and "a030ba7" in article
     assert "The current README also identifies incomplete overflow checks" not in article
     print("PASS project scope, version boundaries, unique IDs and preserved personal content")
+
+    # Resolve links from every rendered page, including fragments and metadata assets.
+    all_docs = {p: Document(p.read_text()).root for p in root.rglob("*.html")}
+    for path, doc in all_docs.items():
+        ids = [n.attrs["id"] for n in doc.find() if "id" in n.attrs]
+        assert len(ids) == len(set(ids)), (path, "duplicate IDs")
+        for node in doc.find():
+            refs = [node.attrs.get(key, "") for key in ("href", "src", "data-full")]
+            if node.tag == "meta" and node.attrs.get("name", node.attrs.get("property")) in {
+                "msapplication-TileImage", "msapplication-config", "og:image", "twitter:image"
+            }:
+                refs.append(node.attrs.get("content", ""))
+            for ref in filter(None, refs):
+                url = urlsplit(ref)
+                if url.netloc and url.netloc != "mynotwo.github.io":
+                    continue
+                if url.scheme and url.scheme not in {"http", "https"}:
+                    continue
+                target = (root / unquote(url.path).lstrip("/")) if url.path.startswith("/") else path.parent / unquote(url.path)
+                if not url.path:
+                    target = path
+                if target.is_dir():
+                    target /= "index.html"
+                assert target.is_file(), (path, ref, "missing target")
+                if url.fragment and target in all_docs:
+                    target_ids = {n.attrs.get("id") for n in all_docs[target].find()}
+                    assert unquote(url.fragment) in target_ids, (path, ref, "missing anchor")
+        html = next(doc.find("html"))
+        for article in doc.find("article"):
+            if "lang" in article.attrs:
+                assert html.attrs["lang"] == article.attrs["lang"], (path, "document language")
+    print("PASS all", len(all_docs), "HTML pages: local targets, anchors, IDs and article language")
+
+    manifest = json.loads((root / "images/site.webmanifest").read_text())
+    assert manifest["name"] == manifest["short_name"] == "Yu Mao"
+    for icon in manifest["icons"]:
+        path = root / icon["src"].lstrip("/")
+        assert path.is_file(), icon
+        assert mimetypes.guess_type(path)[0] == icon["type"], icon
+    for page in ("photos/index.html", "blog/index.html"):
+        buttons = list(docs[page].find("button", "filter-btn"))
+        assert sum(b.attrs.get("aria-pressed") == "true" for b in buttons) == 1
+        assert all(b.attrs.get("aria-pressed") in {"true", "false"} for b in buttons)
+    dialog = next(docs["photos/index.html"].find(cls="photo-lightbox"))
+    assert dialog.attrs["aria-label"] and dialog.attrs["aria-describedby"]
+    print("PASS manifest, filter selection states and named photo dialog")
+
+    reliability = all_docs[root / "agent-reliability/index.html"]
+    intentcap = next(n for n in reliability.find("article") if "IntentCap" in n.text())
+    assert "Best Paper Award" not in intentcap.text()
+    bench = all_docs[root / "kvcache-bench/index.html"]
+    template = json.loads(next(n for n in bench.find("script") if n.attrs.get("type") == "__bundler/template").text())
+    matrix = json.loads((root / "kvcache-bench/kv-matrix.json").read_text())
+    values = [row["bf16"]["KV"] for row in matrix["data"].values()]
+    methods = matrix["methods"]
+    median = lambda name: statistics.median(row[methods.index(name)] for row in values)
+    assert f"{len(values)}-point repeated-input BF16 matrix" in template
+    assert f"{median('bytesplit+zstd-1'):.2f}× median ratio versus {median('raw_zstd-1'):.2f}×" in template
+    best = lambda prefix: statistics.median(max(row[i] for i, m in enumerate(methods) if m.startswith(prefix)) for row in values)
+    assert f"{best('raw_'):.2f}× for raw codecs and {best('pipeline_'):.2f}× for structure-aware methods" in template
+    assert "All averages the five input types; selecting one shows that input." in template
+    assert "Median compression ratio per method and context length." not in template
+    print("PASS project award label and benchmark explanations against source matrix")
 
 
 if __name__ == "__main__":
