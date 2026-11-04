@@ -91,14 +91,25 @@ def check(root):
         assert list(next(card.find(cls="paper-title")).find("a")), prefix
     mm = next(c for c in pubs if c.text().strip().startswith("Accelerating General-purpose"))
     assert not any(a.text() == "Code" for a in mm.find("a"))
-    # A publication without a paper URL must keep a readable, non-empty title.
-    fallback = next(c for c in pubs if "Parallel-SA:" in c.text())
-    assert not list(next(fallback.find(cls="paper-title")).find("a"))
-    print("PASS publication links and missing-URL fallback")
+    publication_dois = {
+        "Hitcher:": "https://doi.org/10.1145/3770854.3780212",
+        "Parallel-SA:": "https://doi.org/10.23919/DATE69613.2026.11539197",
+    }
+    for prefix, expected in publication_dois.items():
+        matches = [c for c in pubs if next(c.find(cls="paper-title")).text().startswith(prefix)]
+        assert len(matches) == 1, (prefix, "missing or duplicate publication")
+        card = matches[0]
+        assert next(next(card.find(cls="paper-title")).find("a")).attrs["href"] == expected
+        links = {a.text(): a.attrs["href"] for a in card.find("a")}
+        assert links["DOI"] == expected, prefix
+        assert "PDF" not in links, (prefix, "DOI must not be labeled as PDF")
+    assert all(next(c.find(cls="paper-title")).text().strip() for c in pubs)
+    print("PASS publication links, unique new entries and accurate DOI labels")
 
     home = docs["index.html"]
     ids = [n.attrs["id"] for n in home.find() if "id" in n.attrs]
     assert len(ids) == len(set(ids)), "Duplicate homepage IDs"
+    assert ids.index("-current-work") < ids.index("-news") < ids.index("-selected-publications")
     assert len(list(home.find(cls="hushword-tool--sidebar"))) == 1
     assert len(list(home.find(cls="hushword-tool--mobile"))) == 1
     assert "Open draft PR #3221" in home.text()
@@ -112,7 +123,13 @@ def check(root):
 
     # Resolve links from every rendered page, including fragments and metadata assets.
     all_docs = {p: Document(p.read_text()).root for p in root.rglob("*.html")}
+    social_labels = {"Email", "LinkedIn", "DBLP", "GitHub", "Google Scholar", "ORCID"}
     for path, doc in all_docs.items():
+        for social in doc.find(cls="author__urls_sm"):
+            links = list(social.find("a"))
+            assert len(links) == len(social_labels), (path, "mobile social links")
+            assert {a.attrs.get("aria-label") for a in links} == social_labels, (path, "mobile link names")
+            assert all(i.attrs.get("aria-hidden") == "true" for a in links for i in a.find("i")), path
         ids = [n.attrs["id"] for n in doc.find() if "id" in n.attrs]
         assert len(ids) == len(set(ids)), (path, "duplicate IDs")
         for node in doc.find():
@@ -140,7 +157,7 @@ def check(root):
         for article in doc.find("article"):
             if "lang" in article.attrs:
                 assert html.attrs["lang"] == article.attrs["lang"], (path, "document language")
-    print("PASS all", len(all_docs), "HTML pages: local targets, anchors, IDs and article language")
+    print("PASS all", len(all_docs), "HTML pages: local targets, anchors, IDs, mobile link names and article language")
 
     manifest = json.loads((root / "images/site.webmanifest").read_text())
     assert manifest["name"] == manifest["short_name"] == "Yu Mao"

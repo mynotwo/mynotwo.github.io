@@ -1,5 +1,5 @@
 # Schema:
-#   title / authors / venue / first_author / corresponding / arxiv / pdf / code / benchmark / scholar_id / image
+#   title / authors / venue / first_author / corresponding / arxiv / pdf / doi / code / benchmark / scholar_id / image
 #   theme: 主题分组 — 一个 paper 一个 theme,与 _pages/about.md 里的 themes 列表对应
 #   组内顺序 = 显示顺序,通常按年逆序
 
@@ -156,10 +156,17 @@
   image: /images/papers/intentcap.png
 
 - theme: "AI Systems & Inference"
+  title: "Hitcher: Efficient GPU-based Vector Search via Cluster-Centric Kernel and Hitch-Ride Ordering"
+  authors: "Q. Zhou, C. Li, G. Jiang, C. Ma, X. Yan, **Yu Mao**, M.-C. Yang, J. Cheng"
+  venue: "KDD 2026"
+  doi: "https://doi.org/10.1145/3770854.3780212"
+
+- theme: "AI Systems & Inference"
   title: "Parallel-SA: Point Cloud Processing Acceleration via Parallel Set Abstraction"
   authors: "D. Tang, W. Wang, **Yu Mao**, W. Xie, N. Guan, T.-W. Kuo, C.J. Xue"
   venue: "DATE 2026"
   corresponding: true
+  doi: "https://doi.org/10.23919/DATE69613.2026.11539197"
 
 - theme: "AI Systems & Inference"
   title: "PMR: Fast Application Response via Parallel Memory Reclaim on Mobile Devices"
