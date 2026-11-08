@@ -130,7 +130,7 @@ body.homepage .interest-pill { background: #edf2f7; color: #334155; }
 <div class="current-work-copy">
 <h3 id="work-bitexact">Bitwise-Reproducible LLM Inference Across Hardware</h3>
 <div class="current-work-links"><a href="{{ '/blog/bitexact-inference/' | relative_url }}">Blog</a><a href="https://github.com/mynotwo/bitexact-llm">Project repository</a></div>
-<p>Historical runs recorded matching logits and tokens across selected GPU and CPU configurations, including int8 vLLM batching and cache experiments. The current source adds arithmetic guards and CPU checks; these do not revalidate the historical whole-model or CUDA results.</p>
+<p>The current repository records vLLM plugin runs on one H800, including a 14-run suite with no token-sequence or logits-hash differences from the standalone integer reference. The evidence is scoped to the recorded models, versions, hardware, and configurations; CPU checks and device reports do not certify every device.</p>
 </div>
 </article>
 <article class="current-work-item current-work-item--related" aria-labelledby="work-agent">
