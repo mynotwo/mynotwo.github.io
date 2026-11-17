@@ -4,6 +4,23 @@
 {% include fetch_google_scholar_stats.html %}
 {% include view-count-script.html %}
 
+<!-- Copy buttons: `data-copy-text` copies that text; `data-copy-code` copies the
+     <code> inside the same <details> (BibTeX on publication cards). -->
+<script>
+document.addEventListener('click', function(event) {
+  var button = event.target.closest('[data-copy-text], [data-copy-code]');
+  if (!button || !navigator.clipboard) return;
+  var text = button.hasAttribute('data-copy-text')
+    ? button.getAttribute('data-copy-text')
+    : button.closest('details').querySelector('code').textContent;
+  navigator.clipboard.writeText(text).then(function() {
+    var label = button.textContent;
+    button.textContent = button.getAttribute('data-copied') || 'Copied';
+    setTimeout(function() { button.textContent = label; }, 1500);
+  });
+});
+</script>
+
 <script>
 (function() {
   var canvas = document.createElement('canvas');

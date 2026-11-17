@@ -1,5 +1,5 @@
 # Schema:
-#   title / authors / venue / first_author / corresponding / arxiv / pdf / doi / code / benchmark / scholar_id / image
+#   title / authors / venue / first_author / corresponding / arxiv / pdf / doi / code / benchmark / scholar_id / image / bibtex
 #   theme: 主题分组 — 一个 paper 一个 theme,与 _pages/about.md 里的 themes 列表对应
 #   组内顺序 = 显示顺序,通常按年逆序
 
@@ -12,9 +12,17 @@
   venue: "Preprint 2026"
   first_author: true
   arxiv: "https://arxiv.org/abs/2610.01066"
+  scholar_id: "Iw3bTCAAAAAJ:2KloaMYe4IUC"
   pdf: "https://arxiv.org/pdf/2610.01066"
   code: "https://github.com/mynotwo/rl-random-prob"
   image: /images/papers/random-reward-rl.png
+  bibtex: |
+    @article{mao2026probe,
+      title   = {Probe with Participation Trophies: Random-Reward {RL} as a Probe of {LLM} Capability},
+      author  = {Mao, Yu and Yu, Lei and Zhu, Zining and Zheng, Yusheng and Li, Haohang and Shi, Freda and Yin, Yutong and Wang, Zhaoran and Niu, Jingcheng},
+      journal = {arXiv preprint arXiv:2610.01066},
+      year    = {2026}
+    }
 
 # ============================ Compression & Representation ============================
 
@@ -23,24 +31,59 @@
   authors: "W. Wang, **Yu Mao**, D. Tang, N. Guan, C.J. Xue"
   venue: "ICASSP 2026"
   corresponding: true
+  scholar_id: "Iw3bTCAAAAAJ:_Re3VWB3Y0AC"
   pdf: /assets/pdfs/ecm.pdf
   image: /images/papers/ecm.png
+  bibtex: |
+    @inproceedings{wang2026ecm,
+      title = {{ECM}: Enhancing Compressibility of Quantized Vision Encoder and {LLM} for Large Vision-Language Models},
+      author = {Wang, Weilan and Mao, Yu and Tang, Dongdong and Guan, Nan and Xue, Chun Jason},
+      booktitle = {ICASSP 2026 - 2026 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
+      year = {2026},
+      pages = {19732--19736},
+      publisher = {IEEE},
+      doi = {10.1109/icassp55912.2026.11460785}
+    }
 
 - theme: "Compression & Representation"
   title: "WISE: A Framework for Gigapixel Whole-Slide-Image Lossless Compression"
   authors: "**Yu Mao**, J. Wang, N. Guan, C.J. Xue"
   venue: "CVPR 2025"
   first_author: true
+  arxiv: "https://arxiv.org/abs/2503.18074"
+  scholar_id: "Iw3bTCAAAAAJ:0EnyYjriUFMC"
   pdf: /assets/pdfs/wise.pdf
   image: /images/papers/wise.png
+  bibtex: |
+    @inproceedings{mao2025wise,
+      title = {{WISE}: A Framework for Gigapixel Whole-Slide-Image Lossless Compression},
+      author = {Mao, Yu and Wang, Jun and Guan, Nan and Xue, Chun Jason},
+      booktitle = {2025 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+      year = {2025},
+      pages = {29342--29351},
+      publisher = {IEEE},
+      doi = {10.1109/cvpr52734.2025.02732}
+    }
 
 - theme: "Compression & Representation"
-  title: "Easz: A Transformer-based Image Compression Framework for IoT"
+  title: "Easz: An Agile Transformer-based Image Compression Framework for Resource-constrained IoTs"
   authors: "**Yu Mao**, J. Li, J. Wang, H. Xu, T.W. Kuo, N. Guan, C.J. Xue"
   venue: "DAC 2025"
   first_author: true
+  arxiv: "https://arxiv.org/abs/2505.01742"
+  scholar_id: "Iw3bTCAAAAAJ:5nxA0vEk-isC"
   pdf: /assets/pdfs/easz.pdf
   image: /images/papers/easz.png
+  bibtex: |
+    @inproceedings{mao2025easz,
+      title = {{Easz}: An Agile Transformer-based Image Compression Framework for Resource-constrained {IoTs}},
+      author = {Mao, Yu and Li, Jingzong and Wang, Jun and Xu, Hong and Kuo, Tei-Wei and Guan, Nan and Xue, Chun Jason},
+      booktitle = {2025 62nd ACM/IEEE Design Automation Conference (DAC)},
+      year = {2025},
+      pages = {1--7},
+      publisher = {IEEE},
+      doi = {10.1109/dac63849.2025.11132645}
+    }
 
 - theme: "Compression & Representation"
   title: "Lossless Compression of Large Language Model-Generated Text via Next-Token Prediction"
@@ -48,16 +91,36 @@
   venue: "Preprint 2025"
   first_author: true
   arxiv: "https://arxiv.org/abs/2505.06297"
+  scholar_id: "Iw3bTCAAAAAJ:8k81kl-MbHgC"
   pdf: /assets/pdfs/llm-text-compression.pdf
   image: /images/papers/llm-text-compression.png
+  bibtex: |
+    @article{mao2025lossless,
+      title = {Lossless Compression of Large Language Model-Generated Text via Next-Token Prediction},
+      author = {Mao, Yu and Pirk, Holger and Xue, Chun Jason},
+      journal = {arXiv preprint arXiv:2505.06297},
+      year = {2025}
+    }
 
 - theme: "Compression & Representation"
   title: "When Compression Meets Model Compression: Memory-Efficient Double Compression for Large Language Models"
   authors: "W. Wang, **Yu Mao**, D. Tang, H. Du, N. Guan, C.J. Xue"
   venue: "EMNLP Findings 2024"
   corresponding: true
+  arxiv: "https://arxiv.org/abs/2502.15443"
+  scholar_id: "Iw3bTCAAAAAJ:roLk4NBRz8UC"
   pdf: /assets/pdfs/compression-meets.pdf
   image: /images/papers/compression-meets.png
+  bibtex: |
+    @inproceedings{wang2024compression,
+      title = {When Compression Meets Model Compression: Memory-Efficient Double Compression for Large Language Models},
+      author = {Wang, Weilan and Mao, Yu and Tang, Dongdong and Du, Hongchao and Guan, Nan and Xue, Chun Jason},
+      booktitle = {Findings of the Association for Computational Linguistics: EMNLP 2024},
+      year = {2024},
+      pages = {16973--16983},
+      publisher = {Association for Computational Linguistics},
+      doi = {10.18653/v1/2024.findings-emnlp.988}
+    }
 
 - theme: "Compression & Representation"
   title: "On the Compressibility of Quantized Large Language Models"
@@ -70,6 +133,13 @@
   pdf: /assets/pdfs/quantized-llm.pdf
   benchmark: /kvcache-bench/
   image: /images/papers/quantized-llm.png
+  bibtex: |
+    @article{mao2024compressibility,
+      title = {On the Compressibility of Quantized Large Language Models},
+      author = {Mao, Yu and Wang, Weilan and Du, Hongchao and Guan, Nan and Xue, Chun Jason},
+      journal = {arXiv preprint arXiv:2403.01384},
+      year = {2024}
+    }
 
 - theme: "Compression & Representation"
   title: "Faster and Stronger Lossless Compression with Optimized Autoregressive Framework"
@@ -80,6 +150,16 @@
   pdf: /assets/pdfs/faster-stronger.pdf
   code: "https://github.com/mynotwo/Faster-and-Stronger-Lossless-Compression-with-Optimized-Autoregressive-Framework"
   image: /images/papers/faster-stronger.png
+  bibtex: |
+    @inproceedings{mao2023faster,
+      title = {Faster and Stronger Lossless Compression with Optimized Autoregressive Framework},
+      author = {Mao, Yu and Li, Jingzong and Cui, Yufei and Xue, Jason Chun},
+      booktitle = {2023 60th ACM/IEEE Design Automation Conference (DAC)},
+      year = {2023},
+      pages = {1--6},
+      publisher = {IEEE},
+      doi = {10.1109/dac56929.2023.10247866}
+    }
 
 - theme: "Compression & Representation"
   title: "Accelerating General-purpose Lossless Compression via Simple and Scalable Parameterization"
@@ -89,6 +169,16 @@
   scholar_id: "Iw3bTCAAAAAJ:d1gkVwhDpl0C"
   pdf: /assets/pdfs/accelerating-lossless.pdf
   image: /images/papers/accelerating-lossless.png
+  bibtex: |
+    @inproceedings{mao2022accelerating,
+      title = {Accelerating General-purpose Lossless Compression via Simple and Scalable Parameterization},
+      author = {Mao, Yu and Cui, Yufei and Kuo, Tei-Wei and Xue, Chun Jason},
+      booktitle = {Proceedings of the 30th ACM International Conference on Multimedia},
+      year = {2022},
+      pages = {3205--3213},
+      publisher = {ACM},
+      doi = {10.1145/3503161.3548413}
+    }
 
 - theme: "Compression & Representation"
   title: "Trace: A Fast Transformer-based General-purpose Lossless Compressor"
@@ -96,10 +186,21 @@
   authors: "**Yu Mao**, Y. Cui, T.-W. Kuo, C.J. Xue"
   venue: "The Web Conference (WWW) 2022"
   first_author: true
+  arxiv: "https://arxiv.org/abs/2203.16114"
   scholar_id: "Iw3bTCAAAAAJ:u-x6o8ySG0sC"
   pdf: /assets/pdfs/trace.pdf
   code: "https://github.com/mynotwo/A-Fast-Transformer-based-General-Purpose-LosslessCompressor"
   image: /images/papers/trace.png
+  bibtex: |
+    @inproceedings{mao2022trace,
+      title = {{TRACE}: A Fast Transformer-based General-Purpose Lossless Compressor},
+      author = {Mao, Yu and Cui, Yufei and Kuo, Tei-Wei and Xue, Chun Jason},
+      booktitle = {Proceedings of the ACM Web Conference 2022},
+      year = {2022},
+      pages = {1829--1838},
+      publisher = {ACM},
+      doi = {10.1145/3485447.3511987}
+    }
 
 # ============================ Applied ML ============================
 
@@ -109,8 +210,19 @@
   venue: "ICASSP 2026"
   corresponding: true
   arxiv: "https://arxiv.org/abs/2404.11161"
+  scholar_id: "Iw3bTCAAAAAJ:UebtZRa9Y70C"
   pdf: /assets/pdfs/pre-processing.pdf
   image: /images/papers/pre-processing.png
+  bibtex: |
+    @inproceedings{wang2026bahop,
+      title = {{BAHOP}: Similarity-Based Basin Hopping for A Fast Hyper-Parameter Search in {WSI} Classification},
+      author = {Wang, Jun and Mao, Yu and Cui, Yufei and Guan, Nan and Xue, Chun Jason},
+      booktitle = {ICASSP 2026 - 2026 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
+      year = {2026},
+      pages = {8252--8256},
+      publisher = {IEEE},
+      doi = {10.1109/icassp55912.2026.11464884}
+    }
 
 - theme: "Applied ML"
   title: "SHAP-CAT: An Interpretable Multi-Modal Framework Enhancing WSI Classification via Virtual Staining and Shapley-Value-Based Multimodal Fusion"
@@ -118,17 +230,33 @@
   venue: "Preprint 2024"
   corresponding: true
   arxiv: "https://arxiv.org/abs/2410.01408"
+  scholar_id: "Iw3bTCAAAAAJ:_FxGoFyzp5QC"
   pdf: /assets/pdfs/shap-cat.pdf
   image: /images/papers/shap-cat.png
+  bibtex: |
+    @article{wang2024shap,
+      title = {{SHAP-CAT}: A interpretable multi-modal framework enhancing {WSI} classification via virtual staining and shapley-value-based multimodal fusion},
+      author = {Wang, Jun and Mao, Yu and Guan, Nan and Xue, Chun Jason},
+      journal = {arXiv preprint arXiv:2410.01408},
+      year = {2024}
+    }
 
 - theme: "Applied ML"
   title: "Advances in Multiple Instance Learning for Whole Slide Image Analysis: Techniques, Challenges, and Future Directions"
   authors: "J. Wang, **Yu Mao**, N. Guan, C.J. Xue"
   venue: "Preprint 2024"
   corresponding: true
+  arxiv: "https://arxiv.org/abs/2408.09476"
   scholar_id: "Iw3bTCAAAAAJ:WF5omc3nYNoC"
   pdf: /assets/pdfs/mil-wsi-survey.pdf
   image: /images/papers/mil-wsi-survey.png
+  bibtex: |
+    @article{wang2024advances,
+      title = {Advances in Multiple Instance Learning for Whole Slide Image Analysis: Techniques, Challenges, and Future Directions},
+      author = {Wang, Jun and Mao, Yu and Guan, Nan and Xue, Chun Jason},
+      journal = {arXiv preprint arXiv:2408.09476},
+      year = {2024}
+    }
 
 # ============================ LLM Capability & Agents / AI Systems & Inference ============================
 
@@ -143,62 +271,148 @@
   selected_order: 2
   authors: "Yusheng Zheng, Chaokun Chang, **Yu Mao**, Tianyuan Wu, Yuxi Huang, Tao Ma, Wenan Mao, Shuyi Cheng, Andi Quinn, Wei Wang"
   venue: "AgenticOS @ SOSP 2026 · Best Paper Award"
+  arxiv: "https://arxiv.org/abs/2609.20301"
+  scholar_id: "Iw3bTCAAAAAJ:35r97b3x0nAC"
   pdf: "https://os-for-agent.github.io/papers/AgenticOS_SOSP_2026_paper_27.pdf"
   code: "https://github.com/eunomia-bpf/agentsight"
   image: /images/papers/agentpprof.png
+  bibtex: |
+    @inproceedings{zheng2026agentpprof,
+      title = {{AgentPProf}: Semantic Profiler for {AI} Agents},
+      author = {Zheng, Yusheng and Chang, Chaokun and Mao, Yu and Wu, Tianyuan and Huang, Yuxi and Ma, Tao and Mao, Wenan and Cheng, Shuyi and Quinn, Andi and Wang, Wei},
+      booktitle = {2nd Workshop on Operating Systems Design for AI Agents (AgenticOS 2026), co-located with SOSP 2026},
+      year = {2026},
+      eprint = {2609.20301},
+      archivePrefix = {arXiv}
+    }
 
 - theme: "LLM Capability & Agents"
   title: "LLM Agent Capabilities Should Follow Task Intent and Context Source"
   authors: "Yusheng Zheng, Wenhui Zhang, **Yu Mao**"
   venue: "AgenticOS @ SOSP 2026"
   arxiv: "https://arxiv.org/abs/2609.14631"
+  scholar_id: "Iw3bTCAAAAAJ:evX43VCCuoAC"
   pdf: "https://arxiv.org/pdf/2609.14631"
   image: /images/papers/intentcap.png
+  bibtex: |
+    @inproceedings{zheng2026llm,
+      title = {{LLM} Agent Capabilities Should Follow Task Intent and Context Source},
+      author = {Zheng, Yusheng and Zhang, Wenhui and Mao, Yu},
+      booktitle = {2nd Workshop on Operating Systems Design for AI Agents (AgenticOS 2026), co-located with SOSP 2026},
+      year = {2026},
+      eprint = {2609.14631},
+      archivePrefix = {arXiv}
+    }
 
 - theme: "AI Systems & Inference"
   title: "Hitcher: Efficient GPU-based Vector Search via Cluster-Centric Kernel and Hitch-Ride Ordering"
   authors: "Q. Zhou, C. Li, G. Jiang, C. Ma, X. Yan, **Yu Mao**, M.-C. Yang, J. Cheng"
   venue: "KDD 2026"
+  scholar_id: "Iw3bTCAAAAAJ:ZfRJV9d4-WMC"
   doi: "https://doi.org/10.1145/3770854.3780212"
+  bibtex: |
+    @inproceedings{zhou2026hitcher,
+      title = {{Hitcher}: Efficient {GPU}-based Vector Search via Cluster-Centric Kernel and Hitch-Ride Ordering},
+      author = {Zhou, Qihui and Li, Changji and Jiang, Guanxian and Ma, Chenhao and Yan, Xiao and Mao, Yu and Yang, Ming-Chang and Cheng, James},
+      booktitle = {Proceedings of the 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining V.1},
+      year = {2026},
+      pages = {2066--2075},
+      publisher = {ACM},
+      doi = {10.1145/3770854.3780212}
+    }
 
 - theme: "AI Systems & Inference"
   title: "Parallel-SA: Point Cloud Processing Acceleration via Parallel Set Abstraction"
   authors: "D. Tang, W. Wang, **Yu Mao**, W. Xie, N. Guan, T.-W. Kuo, C.J. Xue"
   venue: "DATE 2026"
   corresponding: true
+  scholar_id: "Iw3bTCAAAAAJ:tzM49s52ZIMC"
   doi: "https://doi.org/10.23919/DATE69613.2026.11539197"
+  bibtex: |
+    @inproceedings{tang2026parallel,
+      title = {{Parallel-SA}: Point Cloud Processing Acceleration via Parallel Set Abstraction},
+      author = {Tang, Dongdong and Wang, Weilan and Mao, Yu and Xie, Wenjing and Guan, Nan and Kuo, Tei-Wei and Xue, Chun Jason},
+      booktitle = {2026 Design, Automation \& Test in Europe Conference (DATE)},
+      year = {2026},
+      pages = {1--7},
+      publisher = {IEEE},
+      doi = {10.23919/date69613.2026.11539197}
+    }
 
 - theme: "AI Systems & Inference"
   title: "PMR: Fast Application Response via Parallel Memory Reclaim on Mobile Devices"
   selected_order: 5
   authors: "W. Li, L.-P. Chang, **Yu Mao**, L. Shi"
   venue: "USENIX ATC 2025"
+  scholar_id: "Iw3bTCAAAAAJ:3fE2CSJIrl8C"
   pdf: /assets/pdfs/pmr.pdf
   image: /images/papers/pmr.png
+  bibtex: |
+    @inproceedings{li2025pmr,
+      title = {{PMR}: Fast Application Response via Parallel Memory Reclaim on Mobile Devices},
+      author = {Li, Wentong and Chang, Li-Pin and Mao, Yu and Shi, Liang},
+      booktitle = {2025 USENIX Annual Technical Conference (USENIX ATC 25)},
+      year = {2025},
+      pages = {1569--1584},
+      publisher = {USENIX Association}
+    }
 
 - theme: "AI Systems & Inference"
-  title: "DAWN: Accelerating Point Cloud Object Detection"
+  title: "DAWN: Accelerating Point Cloud Object Detection via Object-Aware Partitioning and 3D Similarity-Based Filtering"
   authors: "D. Tang, **Yu Mao**, W. Wang, N. Guan, T.W. Kuo, C.J. Xue"
   venue: "DAC 2025"
   corresponding: true
+  scholar_id: "Iw3bTCAAAAAJ:Zph67rFs4hoC"
   pdf: /assets/pdfs/dawn.pdf
   image: /images/papers/dawn.png
+  bibtex: |
+    @inproceedings{tang2025dawn,
+      title = {{DAWN}: Accelerating Point Cloud Object Detection via Object-Aware Partitioning and {3D} Similarity-Based Filtering},
+      author = {Tang, Dongdong and Mao, Yu and Wang, Weilan and Guan, Nan and Kuo, Tei-Wei and Xue, Chun Jason},
+      booktitle = {2025 62nd ACM/IEEE Design Automation Conference (DAC)},
+      year = {2025},
+      pages = {1--7},
+      publisher = {IEEE},
+      doi = {10.1109/dac63849.2025.11132746}
+    }
 
 - theme: "AI Systems & Inference"
   title: "STEM: Streaming-based FPGA Acceleration for Large-Scale Compactions in LSM KV"
   authors: "D. Tang, W. Wang, **Yu Mao**, J. Yu, T.-W. Kuo, C.J. Xue"
   venue: "ICDE 2024"
   corresponding: true
+  scholar_id: "Iw3bTCAAAAAJ:eQOLeE2rZwMC"
   pdf: /assets/pdfs/stem.pdf
   image: /images/papers/stem.png
+  bibtex: |
+    @inproceedings{tang2024stem,
+      title = {{STEM}: Streaming-Based {FPGA} Acceleration for Large-Scale Compactions in {LSM} {KV}},
+      author = {Tang, Dongdong and Wang, Weilan and Mao, Yu and Yu, Jinghuan and Kuo, Tei-Wei and Xue, Chun Jason},
+      booktitle = {2024 IEEE 40th International Conference on Data Engineering (ICDE)},
+      year = {2024},
+      pages = {3893--3905},
+      publisher = {IEEE},
+      doi = {10.1109/icde60146.2024.00298}
+    }
 
 - theme: "AI Systems & Inference"
   title: "Moby: Empowering 2D Models for Efficient Point Cloud Analytics on the Edge"
   authors: "J. Li, Y.H. Cai, L. Liu, **Yu Mao**, C.J. Xue, H. Xu"
   venue: "ACM MM 2023"
   arxiv: "https://arxiv.org/abs/2302.09221"
+  scholar_id: "Iw3bTCAAAAAJ:Y0pCki6q_DkC"
   pdf: /assets/pdfs/moby.pdf
   image: /images/papers/moby.png
+  bibtex: |
+    @inproceedings{li2023moby,
+      title = {{Moby}: Empowering {2D} Models for Efficient Point Cloud Analytics on the Edge},
+      author = {Li, Jingzong and Cai, Yik Hong and Liu, Libin and Mao, Yu and Xue, Chun Jason and Xu, Hong},
+      booktitle = {Proceedings of the 31st ACM International Conference on Multimedia},
+      year = {2023},
+      pages = {9012--9021},
+      publisher = {ACM},
+      doi = {10.1145/3581783.3612158}
+    }
 
 
 # ============================ Applied ML ============================
@@ -207,5 +421,19 @@
   title: "Variational Nested Dropout"
   authors: "Y. Cui, **Yu Mao**, Z. Liu, Q. Li, A.B. Chan, X. Liu, T.-W. Kuo, C.J. Xue"
   venue: "IEEE TPAMI 2023"
+  arxiv: "https://arxiv.org/abs/2101.11353"
+  scholar_id: "Iw3bTCAAAAAJ:2osOgNQ5qMEC"
   pdf: /assets/pdfs/variational-nested-dropout.pdf
   image: /images/papers/variational-nested-dropout.png
+  bibtex: |
+    @article{cui2023variational,
+      title = {Variational Nested Dropout},
+      author = {Cui, Yufei and Mao, Yu and Liu, Ziquan and Li, Qiao and Chan, Antoni B. and Liu, Xue and Kuo, Tei-Wei and Xue, Chun Jason},
+      journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+      year = {2023},
+      volume = {45},
+      number = {8},
+      pages = {10519--10534},
+      publisher = {Institute of Electrical and Electronics Engineers (IEEE)},
+      doi = {10.1109/tpami.2023.3241945}
+    }
