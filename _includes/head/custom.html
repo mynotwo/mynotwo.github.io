@@ -5,6 +5,11 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="stylesheet" href="/assets/css/academicons.css"/>
 
+<link rel="alternate" type="application/atom+xml" href="/feed/research.xml" title="{{ site.title }}: research notes">
+<link rel="alternate" type="application/atom+xml" href="/feed.xml" title="{{ site.title }}: all posts">
+
+{% comment %} MathJax loads only on pages that set `mathjax: true` in their front matter. {% endcomment %}
+{% if page.mathjax %}
 <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } }); </script>
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
@@ -15,5 +20,6 @@
   });
 </script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML' async></script>
+{% endif %}
 
 <!-- end custom head snippets -->

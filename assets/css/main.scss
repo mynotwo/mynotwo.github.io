@@ -360,6 +360,18 @@ body.blog-page { background-image: none !important; }
         .post-nav-link { color: #224b8d; text-decoration: none; &:hover { text-decoration: underline; } }
         .post-nav-next { margin-left: auto; text-align: right; }
     }
+    .post-share {
+        display: flex;
+        width: 100%;   // .post-content floats; a full-width row drops below it, as .post-nav does
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.4em 0.9em;
+        margin-top: 2em;
+        font-size: 0.9em;
+        .post-share-label { color: #888; }
+        a { color: #224b8d; text-decoration: none; &:hover { text-decoration: underline; } }
+        button { font: inherit; padding: 0; border: 0; background: none; color: #224b8d; cursor: pointer; &:hover { text-decoration: underline; } }
+    }
     .back-to-blog {
         display: inline-block;
         margin-top: 1.2em;
