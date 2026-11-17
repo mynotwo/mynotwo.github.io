@@ -24,43 +24,19 @@ bing_site_verification   :  # get bing_site_verification from https://www.bing.c
 baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.baidu.com/login/index?u=/site/index
 
 # Site Author
+# The sidebar links (email … orcid) render in the order and with the icons
+# defined in _data/author_links.yml; a link shows only when its key is set here.
 author:
   name             : "Yu Mao"
   avatar           : "./images/selfie-tetons-center.jpg"
   bio              : "Research Scientist at ByteDance"
   location         : "San Jose, California, USA"
-  employer         :
-  pubmed           : 
-  googlescholar    : "https://scholar.google.com/citations?user=Iw3bTCAAAAAJ&hl=en"
   email            : "mynotwo@126.com"
-  researchgate     :  # e.g., "https://www.researchgate.net/profile/yourprofile"
-  uri              :
-  bitbucket        :
-  codepen          :
-  dribbble         :
-  flickr           :
-  facebook         :
-  foursquare       :
-  github           : "mynotwo"
-  google_plus      :
-  keybase          :
-  instagram        :
-  impactstory      : # e.g., "https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
-  lastfm           :
   linkedin         : "yu-m-475219138"
   dblp             : "https://dblp.org/pid/59/5119-1.html"
+  github           : "mynotwo"
+  googlescholar    : "https://scholar.google.com/citations?user=Iw3bTCAAAAAJ&hl=en"
   orcid            : "https://orcid.org/0000-0001-9803-4927"
-  pinterest        :
-  soundcloud       :
-  stackoverflow    : # http://stackoverflow.com/users/123456/username
-  steam            :
-  tumblr           :
-  twitter          : 
-  vine             :
-  weibo            :
-  xing             :
-  youtube          :
-  wikipedia        :
 
 
 # Reading Files
@@ -171,11 +147,3 @@ whitelist:
   - jekyll-gist
   - jekyll-feed
   - jemoji
-
-
-# HTML Compression
-# - http://jch.penibelst.de/
-compress_html:
-  clippings: all
-  ignore:
-    envs: development

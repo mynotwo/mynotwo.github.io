@@ -1,0 +1,43 @@
+# Sidebar profile links, rendered by _includes/author-profile.html as a text
+# list (desktop) and an icon row (mobile). Order = display order.
+# A link shows only when `author.<key>` is set in _config.yml.
+#
+# Fields:
+#   key         field under `author:` in _config.yml holding the address
+#   url_prefix  optional; prepended to that value to form the href
+#   icon        icon classes (Font Awesome or Academicons)
+#   label       link text, and the accessible name of the icon-only link
+#
+# Two fields reproduce the markup this file replaced; the rendered HTML
+# changes if they are dropped:
+#   list_label         text in the desktop list when it differs from `label`
+#   list_icon_exposed  desktop list icon carries no aria-hidden="true"
+- key: email
+  url_prefix: "mailto:"
+  icon: "fas fa-fw fa-envelope"
+  label: "Email"
+
+- key: linkedin
+  url_prefix: "https://www.linkedin.com/in/"
+  icon: "fab fa-fw fa-linkedin"
+  label: "LinkedIn"
+
+- key: dblp
+  icon: "ai ai-dblp ai-fw"
+  label: "DBLP"
+
+- key: github
+  url_prefix: "https://github.com/"
+  icon: "fab fa-fw fa-github"
+  label: "GitHub"
+  list_label: "Github"
+
+- key: googlescholar
+  icon: "fas fa-fw fa-graduation-cap"
+  label: "Google Scholar"
+  list_icon_exposed: true
+
+- key: orcid
+  icon: "ai ai-orcid-square ai-fw"
+  label: "ORCID"
+  list_icon_exposed: true
