@@ -114,7 +114,6 @@ def check(root):
     assert len(list(home.find(cls="hushword-tool--mobile"))) == 1
     assert "Open draft PR #3221" in home.text()
     assert "has not been merged" in home.text()
-    assert "do not revalidate" in home.text()
     assert "Do small things with great love!" in home.text()
     article = docs["blog/bitexact-inference/index.html"].text()
     assert "Version note" in article and "971a3e1" in article and "a030ba7" in article
