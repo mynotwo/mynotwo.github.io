@@ -10,15 +10,13 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-Hi, I'm Yu Mao. Feel free to call me Audrey! I'm a Research Scientist at ByteDance working on AI infrastructure for LLMs. **I build LLM systems whose behavior can be checked, not just benchmarked**: byte-exact KV-cache compression, bitwise-reproducible inference, probes of what further training can unlock in a model, and tests of whether agents did what they claim.
+Hi, I'm Yu Mao. Feel free to call me Audrey! I'm a Research Scientist at ByteDance working on AI infrastructure for LLMs. **I build LLM systems whose behavior can be checked, not just benchmarked**: byte-exact KV-cache compression, bitwise-reproducible inference, probes of what further training can unlock in a model, and tests of whether agents did what they claim. I received my Ph.D. in Computer Science from City University of Hong Kong, where I worked on compression and computer systems.
 
 **Highlights**
 
 - [Best Paper Award](https://os-for-agent.github.io/papers/AgenticOS_SOSP_2026_paper_27.pdf) at AgenticOS @ SOSP 2026 for AgentPProf, a semantic profiler for AI agents
 - [Hybrid KV cache offloading](#work-kv){:target="_self"} that I built and open-sourced is in use at TikTok Infra
 - <a href="{{ site.author.googlescholar }}">Google Scholar</a><span id="scholar-summary" hidden>: <span id="scholar_citedby"></span> citations, h-index <span id="scholar_hindex"></span> (as of <span id="scholar_updated"></span>)</span>
-
-Previously: postdoctoral research at MBZUAI, visiting researcher at Imperial College London, and a Ph.D. in Computer Science from City University of Hong Kong on compression and computer systems, advised by Prof. Chun Jason Xue and Prof. Tei-Wei Kuo. [Full CV]({{ '/cv/' | relative_url }}){:target="_self"}
 
 **Research interests**
 

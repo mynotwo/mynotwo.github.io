@@ -25,7 +25,6 @@ make check          # 构建 _site，并运行页面检查与 crawler 单元测�
 | Services / Supervision | `_data/services.yml` / `_data/supervision.yml` |
 | 站点元信息 / 头像 / 邮箱 / 社交账号 | `_config.yml`（设置 `author.twitter` 后，侧栏出现 X 链接，页面带上 `twitter:site`） |
 | 侧栏社交链接的顺序、图标、文字 | `_data/author_links.yml`（模板 `_includes/author-profile.html`） |
-| CV 页的经历 / 学历 | `_data/cv.yml`（页面 `_pages/cv.md`；论文、荣誉、服务直接取自上面的数据文件） |
 | 分享卡片（og:image） | `_data/og_cards.yml` 定义，`make og-cards` 生成 `images/og/*.png`；文章在 front matter 里用 `image:` 指向自己的卡片，未指定时用 `_config.yml` 的 `og_image` |
 | 博客分类与订阅 | 研究笔记在 front matter 写 `category: research`，进入 `/feed/research.xml`；`/feed.xml` 含全部文章 |
 | 数学公式 | 需要 MathJax 的页面在 front matter 写 `mathjax: true` |
