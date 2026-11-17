@@ -1,0 +1,15 @@
+# Homepage "Services" list. Order = display order.
+- role: "Conference reviewing"
+  venues: "NeurIPS 2024–2026; ICLR 2025–2026; ICML 2025; CVPR 2024–2026; ICCV 2025; BMVC 2026; ACM MM 2023–2024; ARR"
+
+- role: "Program committees"
+  venues: "AAAI 2026; DAC 2026; GLSVLSI 2025–2026; RTCSA 2025"
+
+- role: "External review committee"
+  venues: "USENIX ATC 2024"
+
+- role: "Artifact evaluation committees"
+  venues: "EuroSys 2025; DSN 2024"
+
+- role: "Journal reviewing"
+  venues: "ACM TECS; TMLR; IEEE TKDE"

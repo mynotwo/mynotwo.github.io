@@ -8,13 +8,6 @@ redirect_from:
   - /about.html
 ---
 
-{% if site.google_scholar_stats_use_cdn %}
-{% assign gsDataBaseUrl = "https://cdn.jsdelivr.net/gh/" | append: site.repository | append: "@" %}
-{% else %}
-{% assign gsDataBaseUrl = "https://raw.githubusercontent.com/" | append: site.repository | append: "/" %}
-{% endif %}
-{% assign url = gsDataBaseUrl | append: "google-scholar-stats/gs_data_shieldsio.json" %}
-
 <span class='anchor' id='about-me'></span>
 
 Hi, I'm Yu Mao. Feel free to call me Audrey! I'm a Research Scientist at ByteDance, working on AI infrastructure and LLMs. My research interests lie at the intersection of **machine learning and computer systems**, with a focus on model capabilities, efficient training, and inference. I received my Ph.D. in Computer Science from City University of Hong Kong, where I worked on compression and computer systems.
@@ -27,122 +20,10 @@ Hi, I'm Yu Mao. Feel free to call me Audrey! I'm a Research Scientist at ByteDan
 
 # 🔬 Current Work
 
-<style>
-body.homepage { background-image: none !important; }
-body.homepage .interest-pill { background: #edf2f7; color: #334155; }
-.hushword-tool--mobile { display: none; }
-.hushword-tool { box-sizing: border-box; width: 100%; margin: 1.5rem 0 0; padding-top: 1.5rem; border-top: 1px solid #EAE7F5; color: #252538; }
-.hushword-tool__eyebrow { margin: 0 0 1rem !important; color: #60606A; font-size: .6875rem !important; font-weight: 600; letter-spacing: .0625rem; line-height: 1.2 !important; }
-.hushword-tool__header { display: flex; align-items: center; gap: .625rem; min-width: 0; }
-.hushword-tool__icon { color: #7465D5; font-size: 1.125rem; line-height: 1; }
-.hushword-tool__title { margin: 0 !important; font-family: inherit !important; font-size: 1.25rem !important; font-weight: 700; line-height: 1.15; }
-.hushword-tool__title a { color: #252538; text-decoration: none; }
-.hushword-tool__title a:hover { text-decoration: underline; text-underline-offset: .1875rem; }
-.hushword-tool__description { margin: 1rem 0 !important; color: #60606A; font-size: .9375rem !important; line-height: 1.45 !important; }
-.hushword-tool__links { display: flex; flex-wrap: wrap; gap: .25rem .5rem; color: #60606A; font-size: .875rem; line-height: 1.5; }
-.hushword-tool__links a { color: #60606A; text-decoration: none; }
-.hushword-tool__links a:hover { text-decoration: underline; text-underline-offset: .1875rem; }
-.hushword-tool a:focus-visible { outline: 2px solid #7465D5; outline-offset: .1875rem; border-radius: 2px; }
-@media (max-width: 600px) {
-  body.homepage .profile_box { display: grid; grid-template-columns: 75px minmax(0, 1fr); gap: 12px; align-items: center; }
-  body.homepage .author__content { min-width: 0; padding-left: 0; }
-  body.homepage .author__urls-wrapper { grid-column: 1 / -1; margin-left: 0; }
-  body.homepage .author__urls_sm { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; }
-  body.homepage .author__urls_sm a { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; min-height: 44px; }
-}
-.current-work-list { margin: 24px 0 36px; max-width: 850px; }
-.current-work-list .current-work-item { display: grid; grid-template-columns: minmax(280px, 340px) minmax(0, 1fr); gap: 24px; align-items: center; padding: 24px 0; }
-.current-work-list .current-work-visual { display: block; box-shadow: none; }
-.current-work-list .current-work-figure { display: block; width: 100%; height: auto; margin: 0; }
-.current-work-list .current-work-copy { min-width: 0; }
-.current-work-list .current-work-copy p + p { margin-top: 8px; }
-.current-work-list .current-work-more { margin: 28px 0 0; font-size: 1.05em; }
-.current-work-list .current-work-item:first-child { padding-top: 0; }
-.current-work-list .current-work-item:last-child { padding-bottom: 0; }
-.current-work-list .current-work-item h3 { margin: 0 0 4px; font-size: 1em; line-height: 1.4; letter-spacing: -.015em; color: #243955; }
-.current-work-list .current-work-item p { margin: 0; font-size: .92em; line-height: 1.55; color: #465369; }
-.current-work-list .current-work-item .current-work-caption { margin-top: 8px; font-size: 13px; line-height: 1.5; color: #566572; }
-.current-work-list .current-work-links { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-bottom: 8px; font-size: .82em; }
-.current-work-list .current-work-links a { display: inline-block; padding: 3px 0; color: #295d8a; font-weight: 500; line-height: 1.5; text-decoration: none; box-shadow: none; }
-.current-work-list .current-work-links a:hover { text-decoration: underline; text-underline-offset: 3px; }
-.current-work-list a:focus-visible { outline: 2px solid #295d8a; outline-offset: 3px; }
-@media (max-width: 900px) {
-  .current-work-list .current-work-item { grid-template-columns: minmax(0, 1fr); gap: 16px; padding: 24px 0; }
-  .current-work-list .current-work-copy { grid-row: 1; }
-  .current-work-list .current-work-visual { width: 440px; max-width: 100%; }
-  .current-work-list .current-work-links a { padding: 8px 0; }
-  .hushword-tool--sidebar { display: none; }
-  .hushword-tool--mobile { display: block; margin: 1.5rem 0; }
-  .hushword-tool { margin-top: 1rem; padding-top: 1rem; }
-}
-</style>
-
 <div class="current-work-list">
-<article class="current-work-item" aria-labelledby="work-rl">
-<a class="current-work-visual" href="{{ '/images/current-work-rl-v2.svg' | relative_url }}?v=research" target="_blank" rel="noopener" aria-label="View larger figure">
-<img aria-describedby="work-rl-caption" class="current-work-figure" src="{{ '/images/current-work-rl-v2.svg' | relative_url }}?v=research" width="440" height="300" loading="lazy" alt="Reported best terminal GSM accuracy at three selected OLMo-2-7B checkpoints; GT reward has 4 seeds and random reward has 8.">
-</a>
-<div class="current-work-copy">
-<h3 id="work-rl">RL as a Probe of LLM Capability</h3>
-<div class="current-work-links"><a href="{{ '/blog/rl-capability-probing/' | relative_url }}">Blog</a><a href="https://arxiv.org/abs/2610.01066">Paper</a><a href="https://github.com/mynotwo/rl-random-prob">Code</a></div>
-<p>Current accuracy does not tell us how a model will respond to further training. My first-author paper uses random-reward RL to probe that response without correctness information in the reward.</p>
-<p>Controlled comparisons show that the learner’s starting state changes what the same training signal can unlock. The paper and code are available; a reusable capability evaluation framework is in development.</p>
-<p class="current-work-caption" id="work-rl-caption"><strong>Random-reward RL probes model capabilities by measuring how models respond to further training.</strong><br>Best terminal GSM accuracy across seeds (correctness reward: 4; random reward: 8).</p>
-</div>
-</article>
-<article class="current-work-item" aria-labelledby="work-capacity">
-<a class="current-work-visual" href="{{ '/images/current-work-omni-v2.svg' | relative_url }}?v=research" target="_blank" rel="noopener" aria-label="View larger figure">
-<img aria-describedby="work-capacity-caption" class="current-work-figure" src="{{ '/images/current-work-omni-v2.svg' | relative_url }}?v=research" width="440" height="300" loading="lazy" alt="Technical schematic separating CPU time, GPU duration and live-memory weights and attribution; no measured profile values.">
-</a>
-<div class="current-work-copy">
-<h3 id="work-capacity">Omni Profiler: Continuous Profiling for RL Training</h3>
-<div class="current-work-links"><a href="{{ '/blog/omni-profiler/' | relative_url }}">Blog</a></div>
-<p>High utilization or growing memory alone does not identify the responsible code. I co-developed Omni Profiler to connect CPU/GPU memory and compute to Python and native stacks.</p>
-<p>Seed RL uses the profiler to investigate training bottlenecks and memory growth, connecting resource measurements to code that engineers can inspect.</p>
-
-<p class="current-work-caption" id="work-capacity-caption">Resource-attribution schematic. CPU time, GPU duration and live memory are distinct measurements; this is not a measured performance result.</p>
-</div>
-</article>
-<article class="current-work-item" aria-labelledby="work-kv">
-<a class="current-work-visual" href="{{ '/images/current-work-kv.svg' | relative_url }}" target="_blank" rel="noopener" aria-label="View larger figure">
-<img aria-describedby="work-kv-caption" class="current-work-figure" src="{{ '/images/current-work-kv.svg' | relative_url }}" width="440" height="300" loading="lazy" alt="Hybrid state and KV spans are encoded, stored, then decoded and checked byte for byte.">
-</a>
-<div class="current-work-copy">
-<h3 id="work-kv">AIBrix Hybrid KV Cache</h3>
-<div class="current-work-links"><a href="https://github.com/mynotwo/aibrix-hybrid-kvcache">Code</a><a href="https://github.com/vllm-project/aibrix/pull/3221">Open draft PR #3221</a><a href="{{ '/blog/hybrid-kv-cache-storage-contract/' | relative_url }}">Blog</a><a href="{{ '/kvcache-bench/' | relative_url }}">Benchmark</a></div>
-<p>Hybrid-model prefixes need recurrent state and attention history to survive offloading together. I built and open-sourced hybrid KV offloading with bounded storage and reader-safe eviction, now used by TikTok Infra.</p>
-<p>The open draft AIBrix PR proposes the byte-store contract and has not been merged. It excludes the hybrid serving connector and codecs. The public CPU quickstart verifies byte-store round trips; whole-model output equivalence remains open.</p>
-<p class="current-work-caption" id="work-kv-caption">Storage mechanism: encode hybrid state and KV spans, then restore and check the bytes. This does not establish whole-model output equivalence.</p>
-</div>
-</article>
+{% for work in site.data.current_work.featured %}{% include current-work-item.html work=work %}{% endfor -%}
 <h2 class="current-work-more">More research</h2>
-<article class="current-work-item current-work-item--related" aria-labelledby="work-kvbytepack">
-<div class="current-work-copy" style="grid-column: 1 / -1;">
-<h3 id="work-kvbytepack">KVBytePack: Byte-Exact KV-State Compression</h3>
-<div class="current-work-links"><a href="https://github.com/mynotwo/kvbytepack">Code</a><a href="https://github.com/mynotwo/kvbytepack/blob/main/docs/cpu-decode.md">CPU cost and memory measurements</a></div>
-<p>A reproducible artifact for measuring when smaller KV records pay for their codec cost, using public records and complete-record CPU and memory measurements. This is a separate artifact from the hybrid serving integration and the earlier KV cache benchmark.</p>
-</div>
-</article>
-<article class="current-work-item current-work-item--related" aria-labelledby="work-bitexact">
-<a class="current-work-visual" href="{{ '/images/current-work-bitexact-v2.svg' | relative_url }}?v=research" target="_blank" rel="noopener" aria-label="View larger figure">
-<img class="current-work-figure" src="{{ '/images/current-work-bitexact-v2.svg' | relative_url }}?v=research" width="440" height="300" loading="lazy" alt="Historical exact-mode report: zero logits and token differences against H800 over 3,696 generated positions on selected devices.">
-</a>
-<div class="current-work-copy">
-<h3 id="work-bitexact">Bitwise-Reproducible LLM Inference Across Hardware</h3>
-<div class="current-work-links"><a href="{{ '/blog/bitexact-inference/' | relative_url }}">Blog</a><a href="https://github.com/mynotwo/bitexact-llm">Project repository</a></div>
-<p>The current repository records vLLM plugin runs on one H800, including a 14-run suite with no token-sequence or logits-hash differences from the standalone integer reference. The evidence is scoped to the recorded models, versions, hardware, and configurations; CPU checks and device reports do not certify every device.</p>
-</div>
-</article>
-<article class="current-work-item current-work-item--related" aria-labelledby="work-agent">
-<a class="current-work-visual" href="{{ '/images/current-work-agent-v2.svg' | relative_url }}?v=research" target="_blank" rel="noopener" aria-label="View larger figure">
-<img class="current-work-figure" src="{{ '/images/current-work-agent-v2.svg' | relative_url }}?v=research" width="440" height="300" loading="lazy" alt="Observed case: four file calls preceded the first web call despite a web-before-file claim; call order is not elapsed time.">
-</a>
-<div class="current-work-copy">
-<h3 id="work-agent">Agent Reliability &amp; Semantic Profiling</h3>
-<div class="current-work-links"><a href="{{ '/blog/agent-execution-evidence/' | relative_url }}">Blog</a><a href="{{ '/agent-reliability/' | relative_url }}">Reliability project</a><a href="https://os-for-agent.github.io/papers/AgenticOS_SOSP_2026_paper_27.pdf">AgentPProf paper</a><a href="https://github.com/eunomia-bpf/agentsight">AgentPProf code</a></div>
-<p>I test whether agents actually execute the actions they claim. I also coauthored AgentPProf for semantic resource profiling, winner of the AgenticOS @ SOSP 2026 Best Paper Award.</p>
-</div>
-</article>
+{% for work in site.data.current_work.more %}{% include current-work-item.html work=work related=true %}{% endfor -%}
 </div>
 
 {% include hushword-tool.html placement="mobile" %}
@@ -174,15 +55,9 @@ body.homepage .interest-pill { background: #edf2f7; color: #334155; }
 {% endfor %}
 
 # 🤝 Services
-- **Conference reviewing:** NeurIPS 2024–2026; ICLR 2025–2026; ICML 2025; CVPR 2024–2026; ICCV 2025; BMVC 2026; ACM MM 2023–2024; ARR
-- **Program committees:** AAAI 2026; DAC 2026; GLSVLSI 2025–2026; RTCSA 2025
-- **External review committee:** USENIX ATC 2024
-- **Artifact evaluation committees:** EuroSys 2025; DSN 2024
-- **Journal reviewing:** ACM TECS; TMLR; IEEE TKDE
+{% for s in site.data.services %}- **{{ s.role }}:** {{ s.venues }}
+{% endfor %}
 
 # 👩‍🏫 Supervision
-- Shashwat Jaiswal, summer intern (Ph.D. student at UIUC), 2026
-- Yusheng Zheng, summer intern (Ph.D. student at UCSC), 2026
-- Jun Wang, Ph.D. student with Prof. Jason Xue (2024–2025)
-- Weilan Wang, Ph.D. student with Prof. Jason Xue (2024–2025)
-- Dongdong Tang, Ph.D. student with Prof. Jason Xue (2024–2025)
+{% for s in site.data.supervision %}- {{ s.name }}, {{ s.detail }}
+{% endfor %}

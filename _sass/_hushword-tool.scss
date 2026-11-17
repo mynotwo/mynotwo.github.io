@@ -1,0 +1,22 @@
+/* ==========================================================================
+   HUSHWORD TOOL CARD  (_includes/hushword-tool.html: sidebar + mobile copy)
+   ========================================================================== */
+
+.hushword-tool--mobile { display: none; }
+.hushword-tool { box-sizing: border-box; width: 100%; margin: 1.5rem 0 0; padding-top: 1.5rem; border-top: 1px solid #EAE7F5; color: #252538; }
+.hushword-tool__eyebrow { margin: 0 0 1rem !important; color: #60606A; font-size: .6875rem !important; font-weight: 600; letter-spacing: .0625rem; line-height: 1.2 !important; }
+.hushword-tool__header { display: flex; align-items: center; gap: .625rem; min-width: 0; }
+.hushword-tool__icon { color: #7465D5; font-size: 1.125rem; line-height: 1; }
+.hushword-tool__title { margin: 0 !important; font-family: inherit !important; font-size: 1.25rem !important; font-weight: 700; line-height: 1.15; }
+.hushword-tool__title a { color: #252538; text-decoration: none; }
+.hushword-tool__title a:hover { text-decoration: underline; text-underline-offset: .1875rem; }
+.hushword-tool__description { margin: 1rem 0 !important; color: #60606A; font-size: .9375rem !important; line-height: 1.45 !important; }
+.hushword-tool__links { display: flex; flex-wrap: wrap; gap: .25rem .5rem; color: #60606A; font-size: .875rem; line-height: 1.5; }
+.hushword-tool__links a { color: #60606A; text-decoration: none; }
+.hushword-tool__links a:hover { text-decoration: underline; text-underline-offset: .1875rem; }
+.hushword-tool a:focus-visible { outline: 2px solid #7465D5; outline-offset: .1875rem; border-radius: 2px; }
+@media (max-width: 900px) {
+  .hushword-tool--sidebar { display: none; }
+  .hushword-tool--mobile { display: block; margin: 1.5rem 0; }
+  .hushword-tool { margin-top: 1rem; padding-top: 1rem; }
+}
