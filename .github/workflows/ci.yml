@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    # Gemfile.lock pins github-pages 215 (2021). Its gems need Ruby < 3.2 and
+    # compile native extensions, so the Ruby and the runner image are pinned.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '2.6'
+          bundler-cache: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build the site and run the page and crawler checks
+        run: make check
