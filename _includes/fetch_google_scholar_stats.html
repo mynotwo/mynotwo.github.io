@@ -4,13 +4,22 @@
     var url = base + 'google-scholar-stats/gs_data.json';
 
     function render(data) {
-        var total = document.getElementById('total_cit');
-        if (total && data.citedby != null) total.innerHTML = data.citedby;
+        // Homepage summary: stays hidden unless every number and the data date arrived.
+        var summary = document.getElementById('scholar-summary');
+        var day = (data.updated || '').slice(0, 10);
+        if (summary && data.citedby != null && data.hindex != null && day) {
+            document.getElementById('scholar_citedby').textContent = data.citedby;
+            document.getElementById('scholar_hindex').textContent = data.hindex;
+            document.getElementById('scholar_updated').textContent = day;
+            summary.hidden = false;
+        }
+        // Per-paper counts show once a paper has at least MIN_SHOWN citations.
+        var MIN_SHOWN = 10;
         var pubs = data.publications || {};
         document.querySelectorAll('.show_paper_citations').forEach(function(el) {
             var id = el.getAttribute('data');
             var n = pubs[id] && pubs[id].num_citations;
-            if (n != null) el.innerHTML = '| Citations: ' + n;
+            if (n >= MIN_SHOWN) el.innerHTML = '| Citations: ' + n;
         });
     }
 

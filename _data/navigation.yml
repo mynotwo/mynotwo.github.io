@@ -6,6 +6,9 @@ main:
   - title: "Publications"
     url: "/publications/"
 
+  - title: "Blog"
+    url: "/blog/"
+
   - title: "About"
     url: "/#about-me"
 
@@ -13,8 +16,8 @@ more:
   - title: "News"
     url: "/#-news"
 
-  - title: "Blog"
-    url: "/blog/"
+  - title: "CV"
+    url: "/cv/"
 
   - title: "Photos"
     url: "/photos/"
