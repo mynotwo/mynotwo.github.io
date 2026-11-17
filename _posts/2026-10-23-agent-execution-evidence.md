@@ -5,6 +5,9 @@ lang: en
 permalink: /blog/agent-execution-evidence/
 excerpt: "Checking an agent's result, its claims about execution, and the cost of its trajectory as separate questions."
 tags: [agents, reliability, profiling]
+category: research
+image: /images/og/agent-execution-evidence.png
+image_alt: "The agent claimed web before file; the observed trace shows four file calls before the first web call."
 ---
 
 An agent can return a correct answer while describing a process it did not follow. If the evaluation only checks the answer, that discrepancy disappears from the score.

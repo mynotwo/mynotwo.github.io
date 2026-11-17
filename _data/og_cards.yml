@@ -1,0 +1,65 @@
+# Share cards (og:image / twitter:image), one 1200x630 PNG per entry in
+# images/og/<name>.png. Rendered by tools/og-card.html; regenerate with
+# `make og-cards`. A page uses a card through `image: /images/og/<name>.png`
+# in its front matter; `home` is the site default (`og_image` in _config.yml).
+#
+# Fields:
+#   name        output file name
+#   kicker      small label above the title
+#   title, sub  card text; keep `sub` to one or two lines
+#   figure      optional image path shown on the right
+#   avatar      true: crop `figure` to a circle
+#   stat        optional [value, label] shown on the right instead of a figure
+#   title_size  optional title size in px (default 50)
+- name: home
+  kicker: "Research Scientist · ByteDance"
+  title: "Yu Mao (Audrey)"
+  sub: "I build LLM systems whose behavior can be checked, not just benchmarked: inference, compression, capability probing and agent reliability."
+  figure: "/images/selfie-tetons-center.jpg"
+  avatar: true
+  title_size: 64
+
+- name: rl-capability-probing
+  kicker: "Research note"
+  title: "Random-reward RL for capability probing"
+  sub: "Training response can reveal capability that a checkpoint's current accuracy does not show."
+  figure: "/images/current-work-rl-v2.svg"
+
+- name: omni-profiler
+  kicker: "Research note"
+  title: "Continuous resource attribution for RL training"
+  sub: "Connecting CPU/GPU resource use to the code responsible for it during RL training."
+  figure: "/images/current-work-omni.svg"
+
+- name: bitexact-inference
+  kicker: "Research note"
+  title: "Cross-hardware bitwise reproducibility in LLM inference"
+  sub: "Integer arithmetic makes reproducibility an execution contract."
+  figure: "/images/current-work-bitexact-v2.svg"
+  title_size: 46
+
+- name: agent-execution-evidence
+  kicker: "Research note"
+  title: "Evaluating agent process claims against execution traces"
+  sub: "A correct result does not show that the claimed process happened."
+  figure: "/images/current-work-agent-v2.svg"
+  title_size: 46
+
+- name: hybrid-kv-cache-storage-contract
+  kicker: "Research note"
+  title: "Storage contracts for hybrid KV cache offloading"
+  sub: "Variable-sized records, reader-safe storage and honest byte accounting."
+  figure: "/images/current-work-kv-v2.svg"
+
+- name: kvcache-bench
+  kicker: "Benchmark"
+  title: "Lossless KV Cache Compression"
+  sub: "Representation and layout determine how much redundancy a lossless codec can recover."
+  stat: ["1.52×", "median best ratio · BF16 KV, real text, Qwen2.5-7B"]
+  title_size: 56
+
+- name: agent-reliability
+  kicker: "Agent reliability"
+  title: "Make the task model explicit. Then let the agent act."
+  sub: "An agent can implement the wrong interpretation perfectly. This project makes that interpretation inspectable."
+  title_size: 58

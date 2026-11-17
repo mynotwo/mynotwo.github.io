@@ -4,10 +4,6 @@
 {% endif %}
 {% assign seo_url = seo_url | default: site.github.url %}
 
-{% if site.url %}
-  {% assign canonical_url = page.url | replace: "index.html", "" | prepend: site.url %}
-{% endif %}
-
 {% assign page_title = page.title | default: site.title | markdownify | strip_html | strip_newlines %}
 {% capture seo_title %}{% if page.url == "/" %}{{ site.title }} — Research Scientist{% elsif page_title == site.title %}{{ site.title }}{% else %}{{ page_title }} — {{ site.title }}{% endif %}{% endcapture %}
 <title>{{ seo_title | escape_once }}</title>
@@ -17,19 +13,7 @@
   {% assign seo_description = seo_description | markdownify | strip_html | strip_newlines | escape_once %}
 {% endif %}
 
-{% assign seo_author = page.author | default: page.author[0] | default: site.author[0] %}
-{% if seo_author %}
-  {% if seo_author.twitter %}
-    {% assign seo_author_twitter = seo_author.twitter %}
-  {% else %}
-    {% if site.data.authors and site.data.authors[seo_author] %}
-      {% assign seo_author_twitter = site.data.authors[seo_author].twitter  %}
-    {% else %}
-      {% assign seo_author_twitter = seo_author  %}
-    {% endif %}
-  {% endif %}
-  {% assign seo_author_twitter = seo_author_twitter | replace: "@", "" %}
-{% endif %}
+{% assign page_url = page.url | prepend: seo_url | replace: "/index.html", "/" %}
 
 <meta property="og:site_name" content="{{ site.title }}">
 <meta property="og:title" content="{{ seo_title | escape_once }}">
@@ -38,8 +22,8 @@
 <meta name="twitter:description" content="{{ seo_description }}">
 
 {% if seo_url %}
-  <link rel="canonical" href="{{ page.url | prepend: seo_url | replace: "/index.html", "/" }}">
-  <meta property="og:url" content="{{ page.url | prepend: seo_url | replace: "/index.html", "/" }}">
+  <link rel="canonical" href="{{ page_url }}">
+  <meta property="og:url" content="{{ page_url }}">
 {% endif %}
 
 {% if seo_description %}
@@ -47,21 +31,27 @@
   <meta name="description" content="{{ seo_description }}">
 {% endif %}
 
-{% if site.author.avatar %}
-  {% assign og_image = site.author.avatar | replace_first: "./", "/" %}
+{% comment %}
+  Share image: a page's own `image` (1200x630, see images/og/), else the
+  site-wide card in `og_image`. Every card in images/og/ is 1200x630.
+{% endcomment %}
+{% assign og_image = page.image | default: site.og_image %}
+{% if og_image %}
   <meta property="og:image" content="{{ og_image | prepend: seo_url }}">
-  <meta property="og:image:alt" content="{{ site.author.name }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{ page.image_alt | default: seo_title | escape_once }}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="{{ og_image | prepend: seo_url }}">
 {% endif %}
 
-{% if site.twitter.username %}
-  <meta name="twitter:site" content="@{{ site.twitter.username | replace: "@", "" }}">
-  <meta name="twitter:url" content="{{ canonical_url }}">
+{% if page.layout == "post" %}
+  <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+{% endif %}
 
-  {% if seo_author_twitter %}
-    <meta name="twitter:creator" content="@{{ seo_author_twitter }}">
-  {% endif %}
+{% if site.author.twitter %}
+  <meta name="twitter:site" content="@{{ site.author.twitter }}">
+  <meta name="twitter:creator" content="@{{ site.author.twitter }}">
 {% endif %}
 
 {% if site.facebook %}
@@ -82,5 +72,45 @@
 {% endif %}
 {% if site.baidu_site_verification %}
   <meta name="baidu-site-verification" content="{{ site.baidu_site_verification }}" />
+{% endif %}
+
+{% comment %}
+  Structured data. The homepage describes the person; `sameAs` lists the
+  profile links in _data/author_links.yml (all but email), which is what lets
+  a search engine tell this Yu Mao from namesakes. Posts describe the article.
+{% endcomment %}
+{% assign author = site.author %}
+{% if page.url == "/" %}
+{% capture same_as %}{% for link in site.data.author_links %}{% if link.key != "email" and author[link.key] %}{{ link.url_prefix }}{{ author[link.key] }}|{% endif %}{% endfor %}{% endcapture %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": {{ author.name | jsonify }},
+  "alternateName": {{ author.alternate_names | jsonify }},
+  "url": {{ page_url | jsonify }},
+  "image": {{ author.avatar | replace_first: "./", "/" | prepend: seo_url | jsonify }},
+  "description": {{ page.excerpt | strip_html | strip_newlines | jsonify }},
+  "jobTitle": {{ author.job_title | jsonify }},
+  "worksFor": {"@type": "Organization", "name": {{ author.employer | jsonify }}},
+  "alumniOf": {"@type": "CollegeOrUniversity", "name": {{ author.alma_mater | jsonify }}},
+  "knowsAbout": {{ author.research_areas | jsonify }},
+  "sameAs": {{ same_as | split: "|" | jsonify }}
+}
+</script>
+{% elsif page.layout == "post" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ page.title | jsonify }},
+  "description": {{ page.excerpt | strip_html | strip_newlines | jsonify }},
+  "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
+  "inLanguage": {{ page.lang | default: "en" | jsonify }},
+  "url": {{ page_url | jsonify }},
+  "image": {{ og_image | prepend: seo_url | jsonify }},
+  "author": {"@type": "Person", "name": {{ author.name | jsonify }}, "url": {{ seo_url | append: "/" | jsonify }}}
+}
+</script>
 {% endif %}
 <!-- end SEO -->

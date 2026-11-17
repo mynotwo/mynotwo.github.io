@@ -5,6 +5,9 @@ lang: en
 permalink: /blog/bitexact-inference/
 excerpt: "Integer arithmetic makes reproducibility an execution contract, with explicit precision, overflow and serving trade-offs."
 tags: [inference, reproducibility, compression]
+category: research
+image: /images/og/bitexact-inference.png
+image_alt: "Zero logits and token differences against an H800 reference over 3,696 generated positions on H100, x86 CPU and Apple M4 Pro."
 ---
 
 **Version note · updated November 3, 2026.** The model and device results discussed here refer to the [historical implementation at `a030ba7`](https://github.com/mynotwo/bitexact-llm/tree/a030ba7421aa61b6469a79efe85a61002512c476). The [source reviewed for this update, `971a3e1`](https://github.com/mynotwo/bitexact-llm/tree/971a3e15bdba7481178a927b3f2cfeda90287f3f), adds arithmetic guards and CPU reproduction checks. Those checks do not revalidate historical whole-model or CUDA results for the changed source.

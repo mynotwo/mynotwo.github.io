@@ -5,6 +5,9 @@ lang: en
 permalink: /blog/omni-profiler/
 excerpt: "The problem behind Omni Profiler: connecting CPU/GPU resource use to the code responsible for it during RL training."
 tags: [profiling, RL, infrastructure]
+category: research
+image: /images/og/omni-profiler.png
+image_alt: "CPU time, memory and GPU kernel observations connect to Python and native stacks and a hotspot."
 ---
 
 A training job can look busy without making useful progress. GPU utilization tells us that something ran; a rising memory curve tells us that something accumulated. Neither measurement alone identifies the responsible code or establishes whether it delays the next training step.
