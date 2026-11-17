@@ -26,6 +26,13 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 # overrides it with `image:` in its front matter; see images/og/.
 og_image                 : "/images/og/home.png"
 
+# Feeds: /feed.xml carries every post; /feed/research.xml carries only posts
+# with `category: research` (jekyll-feed matches the singular key), so essays
+# do not reach research subscribers.
+feed:
+  categories:
+    - research
+
 # Site Author
 # The sidebar links (email … orcid) render in the order and with the icons
 # defined in _data/author_links.yml; a link shows only when its key is set here.

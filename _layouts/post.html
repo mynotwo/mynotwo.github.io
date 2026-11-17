@@ -6,7 +6,7 @@ layout: default
   <header class="post-header">
     <h1 class="post-title">{{ page.title }}</h1>
     <div class="post-meta">
-      <span class="post-meta-date">{{ page.date | date: "%Y-%m-%d" }}</span>
+      <time class="post-meta-date" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>
       {% if page.lang == "zh" %}
         {% assign chars = content | strip_html | strip_newlines | size %}
         <span class="post-meta-read">约 {{ chars }} 字</span>
@@ -25,6 +25,24 @@ layout: default
 
   <div class="post-content page__content" itemprop="text">
     {{ content }}
+  </div>
+
+  {% comment %} Plain share links: no third-party script loads until one is clicked. {% endcomment %}
+  {% assign share_base = site.url | default: site.github.url %}
+  {% assign share_url = page.url | prepend: share_base %}
+  {% capture share_text %}{{ page.title }} {{ share_url }}{% endcapture %}
+  {% if page.lang == "zh" %}
+    {% assign share_label = "分享" %}{% assign copy_label = "复制链接" %}{% assign copied_label = "已复制" %}
+  {% else %}
+    {% assign share_label = "Share" %}{% assign copy_label = "Copy link" %}{% assign copied_label = "Copied" %}
+  {% endif %}
+  <div class="post-share">
+    <span class="post-share-label">{{ share_label }}</span>
+    <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&amp;url={{ share_url | url_encode }}" rel="noopener">X</a>
+    <a href="https://bsky.app/intent/compose?text={{ share_text | url_encode }}" rel="noopener">Bluesky</a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ share_url | url_encode }}" rel="noopener">LinkedIn</a>
+    <a href="https://news.ycombinator.com/submitlink?u={{ share_url | url_encode }}&amp;t={{ page.title | url_encode }}" rel="noopener">Hacker News</a>
+    <button type="button" data-copy-text="{{ share_url }}" data-copied="{{ copied_label }}">{{ copy_label }}</button>
   </div>
 
   <nav class="post-nav">
