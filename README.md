@@ -23,13 +23,17 @@ make check          # 构建 _site，并运行页面检查与 crawler 单元测�
 | 论文 | `_data/publications.yml`（模板 `_includes/publication-card.html`） |
 | News / Honors | `_data/news.yml` / `_data/awards.yml` |
 | Services / Supervision | `_data/services.yml` / `_data/supervision.yml` |
-| 站点元信息 / 头像 / 邮箱 / 社交账号 | `_config.yml` |
+| 站点元信息 / 头像 / 邮箱 / 社交账号 | `_config.yml`（设置 `author.twitter` 后，侧栏出现 X 链接，页面带上 `twitter:site`） |
 | 侧栏社交链接的顺序、图标、文字 | `_data/author_links.yml`（模板 `_includes/author-profile.html`） |
+| CV 页的经历 / 学历 | `_data/cv.yml`（页面 `_pages/cv.md`；论文、荣誉、服务直接取自上面的数据文件） |
+| 分享卡片（og:image） | `_data/og_cards.yml` 定义，`make og-cards` 生成 `images/og/*.png`；文章在 front matter 里用 `image:` 指向自己的卡片，未指定时用 `_config.yml` 的 `og_image` |
+| 博客分类与订阅 | 研究笔记在 front matter 写 `category: research`，进入 `/feed/research.xml`；`/feed.xml` 含全部文章 |
+| 数学公式 | 需要 MathJax 的页面在 front matter 写 `mathjax: true` |
 | 顶部导航 | `_data/navigation.yml` |
 | 头像 / favicon | `images/` |
 | 样式 | `_sass/`，入口 `assets/css/main.scss`；首页组件在 `_sass/_homepage.scss`、`_sass/_current-work.scss`、`_sass/_hushword-tool.scss` |
 
-Google Scholar 引用数由本机 Codex 的“每日更新 Scholar 引用数”任务每天洛杉矶时间 01:17 采集，调用 `google_scholar_crawler/publish.py` 校验并原子写入 `google-scholar-stats` 分支；需要本机和 Codex 保持运行。GitHub 托管 Ubuntu/macOS runner 当前均收到 Scholar 403，因此 `.github/workflows/google_scholar_crawler.yaml` 保留手动检查入口，不承担每日采集。采集失败保留上次成功数据，主页显示数据日期。
+Google Scholar 引用数由本机 launchd 任务 `com.user.scholar-stats`（`~/Library/LaunchAgents/`）每天本地时间 09:17 采集：`~/.scholar-stats/update.sh` 拉取本仓库 `main` 上的 `google_scholar_crawler/`，运行 `publish.py` 校验并原子写入 `google-scholar-stats` 分支；需要本机开机且 `gh` 已登录，日志在 `~/.scholar-stats/update.log`。GitHub 托管 Ubuntu/macOS runner 当前均收到 Scholar 403，因此 `.github/workflows/google_scholar_crawler.yaml` 保留手动检查入口，不承担每日采集。采集失败保留上次成功数据，主页显示数据日期。
 
 ## Acknowledgments
 

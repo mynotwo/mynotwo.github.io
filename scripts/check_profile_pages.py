@@ -104,7 +104,10 @@ def check(root):
         assert links["DOI"] == expected, prefix
         assert "PDF" not in links, (prefix, "DOI must not be labeled as PDF")
     assert all(next(c.find(cls="paper-title")).text().strip() for c in pubs)
-    print("PASS publication links, unique new entries and accurate DOI labels")
+    for card in pubs:
+        entry = next(card.find("code")).text()
+        assert entry.startswith("@") and entry.count("{") == entry.count("}") > 0, entry[:60]
+    print("PASS publication links, unique new entries, accurate DOI labels and BibTeX on every paper")
 
     home = docs["index.html"]
     ids = [n.attrs["id"] for n in home.find() if "id" in n.attrs]
@@ -120,14 +123,27 @@ def check(root):
     assert "The current README also identifies incomplete overflow checks" not in article
     print("PASS project scope, version boundaries, unique IDs and preserved personal content")
 
+    person, = (json.loads(n.text()) for n in home.find("script")
+               if n.attrs.get("type") == "application/ld+json")
+    assert person["@type"] == "Person" and person["name"] == "Yu Mao"
+    assert {"https://github.com/mynotwo", "https://orcid.org/0000-0001-9803-4927"} <= set(person["sameAs"])
+    assert not any(link.startswith("mailto:") for link in person["sameAs"])
+    feeds = {name: (root / name).read_text() for name in ("feed.xml", "feed/research.xml")}
+    assert 0 < feeds["feed/research.xml"].count("<entry") < feeds["feed.xml"].count("<entry")
+    assert 'xml:lang="zh"' not in feeds["feed/research.xml"], "essay in the research feed"
+    print("PASS homepage structured data and research-only feed")
+
     # Resolve links from every rendered page, including fragments and metadata assets.
     all_docs = {p: Document(p.read_text()).root for p in root.rglob("*.html")}
+    # `X` appears once `author.twitter` is set in _config.yml.
     social_labels = {"Email", "LinkedIn", "DBLP", "GitHub", "Google Scholar", "ORCID"}
+    optional_labels = {"X"}
     for path, doc in all_docs.items():
         for social in doc.find(cls="author__urls_sm"):
             links = list(social.find("a"))
-            assert len(links) == len(social_labels), (path, "mobile social links")
-            assert {a.attrs.get("aria-label") for a in links} == social_labels, (path, "mobile link names")
+            labels = [a.attrs.get("aria-label") for a in links]
+            assert len(labels) == len(set(labels)), (path, "duplicate mobile social links")
+            assert social_labels <= set(labels) <= social_labels | optional_labels, (path, "mobile link names")
             assert all(i.attrs.get("aria-hidden") == "true" for a in links for i in a.find("i")), path
         ids = [n.attrs["id"] for n in doc.find() if "id" in n.attrs]
         assert len(ids) == len(set(ids)), (path, "duplicate IDs")
