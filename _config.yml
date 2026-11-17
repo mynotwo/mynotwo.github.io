@@ -22,6 +22,9 @@ page_views:
 google_site_verification : "Zmb453m2JQfmkhV6IRhBgSu2l7UpaNW9w-JPEXONxiw" # get google_site_verification from https://search.google.com/search-console/about
 bing_site_verification   :  # get bing_site_verification from https://www.bing.com/webmasters/about
 baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.baidu.com/login/index?u=/site/index
+# Default share image (og:image / twitter:image), 1200x630. A page or post
+# overrides it with `image:` in its front matter; see images/og/.
+og_image                 : "/images/og/home.png"
 
 # Site Author
 # The sidebar links (email … orcid) render in the order and with the icons
@@ -37,6 +40,13 @@ author:
   github           : "mynotwo"
   googlescholar    : "https://scholar.google.com/citations?user=Iw3bTCAAAAAJ&hl=en"
   orcid            : "https://orcid.org/0000-0001-9803-4927"
+  # twitter        : "handle"   # X handle without @; adds the sidebar link and twitter:site/creator
+  # Structured data only (JSON-LD on the homepage, _includes/seo.html)
+  alternate_names  : ["Audrey Mao", "Yu (Audrey) Mao"]
+  job_title        : "Research Scientist"
+  employer         : "ByteDance"
+  alma_mater       : "City University of Hong Kong"
+  research_areas   : ["LLM inference systems", "Lossless compression", "LLM capability evaluation", "Agent reliability"]
 
 
 # Reading Files

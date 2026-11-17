@@ -41,3 +41,8 @@
   icon: "ai ai-orcid-square ai-fw"
   label: "ORCID"
   list_icon_exposed: true
+
+- key: twitter
+  url_prefix: "https://x.com/"
+  icon: "fab fa-fw fa-twitter"
+  label: "X"

@@ -5,6 +5,9 @@ lang: en
 permalink: /blog/rl-capability-probing/
 excerpt: "Training response can reveal capability that a checkpoint's current accuracy does not show."
 tags: [RL, capability, evaluation]
+category: research
+image: /images/og/rl-capability-probing.png
+image_alt: "Best terminal GSM accuracy at three OLMo-2-7B checkpoints under correctness and random rewards."
 ---
 
 Current accuracy tells us what a checkpoint can do now. It does not tell us what that checkpoint can reach with more training. This distinction matters when choosing a checkpoint to post-train—and when asking whether an evaluation method exposed an ability or taught the model the answer.

@@ -4,6 +4,9 @@ date: 2026-10-20
 lang: en
 permalink: /blog/hybrid-kv-cache-storage-contract/
 excerpt: "A reproducible CPU byte path for hybrid-cache research: variable-sized records, reader-safe storage, honest byte accounting, and unresolved model acceptance."
+category: research
+image: /images/og/hybrid-kv-cache-storage-contract.png
+image_alt: "With a 12-byte capacity and one leased entry, a 9-byte write is rejected without mutation and an 8-byte write evicts the other two entries."
 ---
 
 A hybrid model can need two different kinds of state to resume a prefix:
