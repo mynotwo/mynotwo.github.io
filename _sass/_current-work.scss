@@ -1,0 +1,26 @@
+/* ==========================================================================
+   CURRENT WORK  (_includes/current-work-item.html, homepage)
+   ========================================================================== */
+
+.current-work-list { margin: 24px 0 36px; max-width: 850px; }
+.current-work-list .current-work-item { display: grid; grid-template-columns: minmax(280px, 340px) minmax(0, 1fr); gap: 24px; align-items: center; padding: 24px 0; }
+.current-work-list .current-work-visual { display: block; box-shadow: none; }
+.current-work-list .current-work-figure { display: block; width: 100%; height: auto; margin: 0; }
+.current-work-list .current-work-copy { min-width: 0; }
+.current-work-list .current-work-copy p + p { margin-top: 8px; }
+.current-work-list .current-work-more { margin: 28px 0 0; font-size: 1.05em; }
+.current-work-list .current-work-item:first-child { padding-top: 0; }
+.current-work-list .current-work-item:last-child { padding-bottom: 0; }
+.current-work-list .current-work-item h3 { margin: 0 0 4px; font-size: 1em; line-height: 1.4; letter-spacing: -.015em; color: #243955; }
+.current-work-list .current-work-item p { margin: 0; font-size: .92em; line-height: 1.55; color: #465369; }
+.current-work-list .current-work-item .current-work-caption { margin-top: 8px; font-size: 13px; line-height: 1.5; color: #566572; }
+.current-work-list .current-work-links { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-bottom: 8px; font-size: .82em; }
+.current-work-list .current-work-links a { display: inline-block; padding: 3px 0; color: #295d8a; font-weight: 500; line-height: 1.5; text-decoration: none; box-shadow: none; }
+.current-work-list .current-work-links a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.current-work-list a:focus-visible { outline: 2px solid #295d8a; outline-offset: 3px; }
+@media (max-width: 900px) {
+  .current-work-list .current-work-item { grid-template-columns: minmax(0, 1fr); gap: 16px; padding: 24px 0; }
+  .current-work-list .current-work-copy { grid-row: 1; }
+  .current-work-list .current-work-visual { width: 440px; max-width: 100%; }
+  .current-work-list .current-work-links a { padding: 8px 0; }
+}

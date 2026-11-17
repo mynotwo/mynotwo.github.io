@@ -9,7 +9,6 @@
 title                    : "Yu Mao"
 description              : "Do small things with great love!"
 repository               : "mynotwo/mynotwo.github.io"
-google_scholar_stats_use_cdn : true
 
 # google analytics
 google_analytics_id      :  "G-CVMVD1QDDP" # get google_analytics_id from https://analytics.google.com/analytics/

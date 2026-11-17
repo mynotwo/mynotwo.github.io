@@ -1,0 +1,97 @@
+# Homepage "Current Work" section; each entry renders through
+# _includes/current-work-item.html. Order = display order.
+# `featured` entries come first, `more` entries follow the "More research" heading.
+#
+# Fields:
+#   id          unique element id; also the anchor for aria-labelledby
+#   title       heading (HTML: write & as &amp;)
+#   figure      optional image path; the copy spans the full width without one
+#   figure_alt  plain-text alt, required with `figure`
+#   links       label + url (site-relative or absolute)
+#   paragraphs  body paragraphs (HTML)
+#   caption     optional figure caption (HTML), only with `figure`
+featured:
+  - id: work-rl
+    title: "RL as a Probe of LLM Capability"
+    figure: "/images/current-work-rl-v2.svg?v=research"
+    figure_alt: "Reported best terminal GSM accuracy at three selected OLMo-2-7B checkpoints; GT reward has 4 seeds and random reward has 8."
+    links:
+      - label: "Blog"
+        url: "/blog/rl-capability-probing/"
+      - label: "Paper"
+        url: "https://arxiv.org/abs/2610.01066"
+      - label: "Code"
+        url: "https://github.com/mynotwo/rl-random-prob"
+    paragraphs:
+      - "Current accuracy does not tell us how a model will respond to further training. My first-author paper uses random-reward RL to probe that response without correctness information in the reward."
+      - "Controlled comparisons show that the learner’s starting state changes what the same training signal can unlock. The paper and code are available; a reusable capability evaluation framework is in development."
+    caption: "<strong>Random-reward RL probes model capabilities by measuring how models respond to further training.</strong><br>Best terminal GSM accuracy across seeds (correctness reward: 4; random reward: 8)."
+
+  - id: work-capacity
+    title: "Omni Profiler: Continuous Profiling for RL Training"
+    figure: "/images/current-work-omni-v2.svg?v=research"
+    figure_alt: "Technical schematic separating CPU time, GPU duration and live-memory weights and attribution; no measured profile values."
+    links:
+      - label: "Blog"
+        url: "/blog/omni-profiler/"
+    paragraphs:
+      - "High utilization or growing memory alone does not identify the responsible code. I co-developed Omni Profiler to connect CPU/GPU memory and compute to Python and native stacks."
+      - "Seed RL uses the profiler to investigate training bottlenecks and memory growth, connecting resource measurements to code that engineers can inspect."
+    caption: "Resource-attribution schematic. CPU time, GPU duration and live memory are distinct measurements; this is not a measured performance result."
+
+  - id: work-kv
+    title: "AIBrix Hybrid KV Cache"
+    figure: "/images/current-work-kv.svg"
+    figure_alt: "Hybrid state and KV spans are encoded, stored, then decoded and checked byte for byte."
+    links:
+      - label: "Code"
+        url: "https://github.com/mynotwo/aibrix-hybrid-kvcache"
+      - label: "Open draft PR #3221"
+        url: "https://github.com/vllm-project/aibrix/pull/3221"
+      - label: "Blog"
+        url: "/blog/hybrid-kv-cache-storage-contract/"
+      - label: "Benchmark"
+        url: "/kvcache-bench/"
+    paragraphs:
+      - "Hybrid-model prefixes need recurrent state and attention history to survive offloading together. I built and open-sourced hybrid KV offloading with bounded storage and reader-safe eviction, now used by TikTok Infra."
+      - "The open draft AIBrix PR proposes the byte-store contract and has not been merged. It excludes the hybrid serving connector and codecs. The public CPU quickstart verifies byte-store round trips; whole-model output equivalence remains open."
+    caption: "Storage mechanism: encode hybrid state and KV spans, then restore and check the bytes. This does not establish whole-model output equivalence."
+
+more:
+  - id: work-kvbytepack
+    title: "KVBytePack: Byte-Exact KV-State Compression"
+    links:
+      - label: "Code"
+        url: "https://github.com/mynotwo/kvbytepack"
+      - label: "CPU cost and memory measurements"
+        url: "https://github.com/mynotwo/kvbytepack/blob/main/docs/cpu-decode.md"
+    paragraphs:
+      - "A reproducible artifact for measuring when smaller KV records pay for their codec cost, using public records and complete-record CPU and memory measurements. This is a separate artifact from the hybrid serving integration and the earlier KV cache benchmark."
+
+  - id: work-bitexact
+    title: "Bitwise-Reproducible LLM Inference Across Hardware"
+    figure: "/images/current-work-bitexact-v2.svg?v=research"
+    figure_alt: "Historical exact-mode report: zero logits and token differences against H800 over 3,696 generated positions on selected devices."
+    links:
+      - label: "Blog"
+        url: "/blog/bitexact-inference/"
+      - label: "Project repository"
+        url: "https://github.com/mynotwo/bitexact-llm"
+    paragraphs:
+      - "The current repository records vLLM plugin runs on one H800, including a 14-run suite with no token-sequence or logits-hash differences from the standalone integer reference. The evidence is scoped to the recorded models, versions, hardware, and configurations; CPU checks and device reports do not certify every device."
+
+  - id: work-agent
+    title: "Agent Reliability &amp; Semantic Profiling"
+    figure: "/images/current-work-agent-v2.svg?v=research"
+    figure_alt: "Observed case: four file calls preceded the first web call despite a web-before-file claim; call order is not elapsed time."
+    links:
+      - label: "Blog"
+        url: "/blog/agent-execution-evidence/"
+      - label: "Reliability project"
+        url: "/agent-reliability/"
+      - label: "AgentPProf paper"
+        url: "https://os-for-agent.github.io/papers/AgenticOS_SOSP_2026_paper_27.pdf"
+      - label: "AgentPProf code"
+        url: "https://github.com/eunomia-bpf/agentsight"
+    paragraphs:
+      - "I test whether agents actually execute the actions they claim. I also coauthored AgentPProf for semantic resource profiling, winner of the AgenticOS @ SOSP 2026 Best Paper Award."

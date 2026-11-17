@@ -1,0 +1,13 @@
+/* ==========================================================================
+   HOMEPAGE  (body.homepage overrides)
+   ========================================================================== */
+
+body.homepage { background-image: none !important; }
+body.homepage .interest-pill { background: #edf2f7; color: #334155; }
+@media (max-width: 600px) {
+  body.homepage .profile_box { display: grid; grid-template-columns: 75px minmax(0, 1fr); gap: 12px; align-items: center; }
+  body.homepage .author__content { min-width: 0; padding-left: 0; }
+  body.homepage .author__urls-wrapper { grid-column: 1 / -1; margin-left: 0; }
+  body.homepage .author__urls_sm { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; }
+  body.homepage .author__urls_sm a { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; min-height: 44px; }
+}
