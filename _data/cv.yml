@@ -1,0 +1,41 @@
+# /cv/ page (_pages/cv.md). Order = display order.
+# Publications, honors, services and supervision are not repeated here: the
+# page renders them from publications.yml, awards.yml, services.yml and
+# supervision.yml.
+#
+# Fields: title, org, optional place / period / detail.
+experience:
+  - title: "Research Scientist"
+    org: "ByteDance"
+    place: "San Jose, USA"
+    period: "2026.04 – present"
+    detail: "AI infrastructure: LLM inference systems, compression, model capability and agent reliability."
+
+  - title: "Postdoctoral research"
+    org: "MBZUAI"
+
+  - title: "Visiting researcher"
+    org: "Imperial College London"
+
+education:
+  - title: "Ph.D. in Computer Science"
+    org: "City University of Hong Kong"
+    period: "thesis defended 2024.05"
+    detail: "Advised by Prof. Chun Jason Xue (CityU) and Prof. Tei-Wei Kuo (National Taiwan University); compression and computer systems."
+
+  - title: "M.S. in Information and Communication Engineering"
+    org: "Beijing University of Posts and Telecommunications"
+
+  - title: "B.E. in Electronic and Information Engineering"
+    org: "South China University of Technology"
+
+internships:
+  - title: "Intern"
+    org: "Microsoft"
+    place: "Beijing, China"
+    period: "2018.05 – 2018.10"
+
+  - title: "Intern"
+    org: "Baidu"
+    place: "Beijing, China"
+    period: "2017.10 – 2018.05"
