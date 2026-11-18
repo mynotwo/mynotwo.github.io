@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 600" role="img" aria-labelledby="t d">
+<title id="t">Same score today, very different potential</title>
+<desc id="d">Slope chart drawn to scale from 0%: two OLMo-2-7B pre-training checkpoints (462B and 839B tokens) both score 3.5% on 200 synthetic GSM arithmetic questions before training. After the same 500-step correctness-rewarded RL, the earlier checkpoint's best run ends at 8.5% and the later checkpoint's at 55%. Evidence boundary: one model and task, best of 4 seeds per checkpoint (seed means 5.25% and 31.1%); only start and end scores are plotted, the straight lines are not training curves.</desc>
+<metadata id="research-source">https://arxiv.org/abs/2610.01066</metadata>
+<style>
+.f{font-family:system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+.kicker{font-size:22px;font-weight:700;letter-spacing:.14em;fill:#0F7C8A}
+.h{font-size:46px;font-weight:800;fill:#16212E;letter-spacing:-.01em}
+.lab{font-size:26px;font-weight:600;fill:#3A4A5E}
+.mut{font-size:22px;font-weight:500;fill:#6B7A8C}
+.note{font-size:20px;font-weight:500;fill:#6B7A8C}
+.num{font-weight:800;letter-spacing:-.02em}
+</style>
+<rect width="880" height="600" rx="28" fill="#FFFFFF"/>
+<g class="f">
+<text class="kicker" x="48" y="74">CAPABILITY PROBING</text>
+<text class="h" x="48" y="132">Same score today.</text>
+<text class="h" x="48" y="186">Very different potential.</text>
+
+<!-- hero, to scale: 3.236 px per accuracy point, 0% at y=478 -->
+<path d="M232 466.7L508 300V450.5Z" fill="#DDF1F2"/>
+<path d="M232 478H508" stroke="#DCE3EA" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M232 466.7L508 450.5" fill="none" stroke="#C4722A" stroke-width="4" stroke-linecap="round"/>
+<path d="M232 466.7L508 300" fill="none" stroke="#0F7C8A" stroke-width="4" stroke-linecap="round"/>
+<circle cx="508" cy="450.5" r="10" fill="#C4722A"/>
+<circle cx="508" cy="300" r="10" fill="#0F7C8A"/>
+<circle cx="232" cy="466.7" r="10" fill="#16212E"/>
+
+<text class="lab" x="48" y="432">both start at</text>
+<text class="num" x="48" y="486" font-size="56" fill="#16212E">3.5%</text>
+
+<text class="lab" x="544" y="244">later checkpoint</text>
+<text class="num" x="544" y="343" font-size="120" fill="#0F7C8A">55%</text>
+
+<text class="lab" x="544" y="402">earlier checkpoint</text>
+<text class="num" x="544" y="485" font-size="96" fill="#C4722A">8.5%</text>
+
+<text class="mut" x="370" y="516" text-anchor="middle">same correctness-rewarded RL</text>
+
+<text class="note" x="48" y="566">OLMo-2-7B at 462B vs 839B tokens · synthetic GSM · best of 4 runs</text>
+</g>
+</svg>

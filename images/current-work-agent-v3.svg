@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 600" role="img" aria-labelledby="t d">
+<title id="t">Right answer, wrong story: an agent's process claim versus its execution trace</title>
+<desc id="d">Two rows compare one agent response with its trace. The agent said it checked web sources first and then the attached file; the trace recorded four file calls before the first web call. The final answer was correct. This is one observed case, and positions show call order, not elapsed time.</desc>
+<metadata id="research-source">https://mynotwo.github.io/blog/agent-execution-evidence/</metadata>
+<style>
+.f{font-family:system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+.kicker{font-size:22px;font-weight:700;letter-spacing:.14em;fill:#0F7C8A}
+.h{font-size:46px;font-weight:800;fill:#16212E;letter-spacing:-.01em}
+.lab{font-size:26px;font-weight:600;fill:#3A4A5E}
+.mut{font-size:22px;font-weight:500;fill:#6B7A8C}
+.note{font-size:20px;font-weight:500;fill:#6B7A8C}
+.num{font-weight:800;letter-spacing:-.02em}
+.chip{font-size:30px;font-weight:700;text-anchor:middle}
+.a{fill:#C4722A}.t{fill:#0F7C8A}.w{fill:#FFFFFF}
+</style>
+<rect width="880" height="600" rx="28" fill="#FFFFFF"/>
+<g class="f">
+<text class="kicker" x="48" y="74">AGENT RELIABILITY</text>
+<text class="h" x="48" y="132">Right answer.</text>
+<text class="h" x="48" y="186">Wrong story.</text>
+
+<!-- what the agent said: web first, then file -->
+<text class="lab a" x="48" y="258">The agent said</text>
+<rect x="48" y="276" width="239" height="80" rx="16" fill="#C4722A"/>
+<text class="chip w" x="167.500" y="327">Web first</text>
+<path d="M307 316H405M391 303l14 13l-14 13" fill="none" stroke="#C4722A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="429" y="276" width="239" height="80" rx="16" fill="#FBEBDC"/>
+<text class="chip a" x="548.500" y="327">then file</text>
+
+<!-- what the trace recorded: four file calls, then the first web call -->
+<text class="lab t" x="48" y="414">The trace recorded</text>
+<g fill="#DDF1F2">
+<rect x="48" y="432" width="112" height="80" rx="16"/>
+<rect x="175" y="432" width="112" height="80" rx="16"/>
+<rect x="302" y="432" width="112" height="80" rx="16"/>
+<rect x="429" y="432" width="112" height="80" rx="16"/>
+</g>
+<rect x="556" y="432" width="112" height="80" rx="16" fill="#0F7C8A"/>
+<g class="chip t">
+<text x="104" y="483">File</text>
+<text x="231" y="483">File</text>
+<text x="358" y="483">File</text>
+<text x="485" y="483">File</text>
+</g>
+<text class="chip w" x="612" y="483">Web</text>
+
+<!-- one result for both stories -->
+<text class="lab" x="762" y="258" text-anchor="middle">Answer</text>
+<rect x="692" y="276" width="140" height="236" rx="16" fill="#F3F6FA"/>
+<circle cx="762" cy="372" r="32" fill="#0F7C8A"/>
+<path d="M747 373l11 11l20-23" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<text class="lab t" x="762" y="448" text-anchor="middle" font-weight="700">correct</text>
+
+<text class="note" x="48" y="566">One observed case · positions show call order, not elapsed time</text>
+</g>
+</svg>

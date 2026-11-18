@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 600" role="img" aria-labelledby="t d">
+<title id="t">Four chips, one answer, bit for bit</title>
+<desc id="d">Four processors (H800 GPU, H100 GPU, x86 Xeon CPU, Apple M4 Pro CPU) each carry the same bit pattern and feed one result: 0 differing logits rows or sampled tokens against the H800 reference in 3,696 generated positions of 16 samples. The bit patterns are symbolic, not recorded hashes. Evidence boundary: integer-arithmetic Llama-3.2-1B engine in exact mode, historical runs recorded at revision a030ba7, before the current arithmetic guards; not a certification of other devices or of the current source.</desc>
+<metadata id="research-source">https://github.com/mynotwo/bitexact-llm/blob/a030ba7421aa61b6469a79efe85a61002512c476/README.md#verified-results-exact-mode</metadata>
+<style>
+.f{font-family:system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+.kicker{font-size:22px;font-weight:700;letter-spacing:.14em;fill:#0F7C8A}
+.h{font-size:46px;font-weight:800;fill:#16212E;letter-spacing:-.01em}
+.lab{font-size:26px;font-weight:600;fill:#3A4A5E}
+.mut{font-size:22px;font-weight:500;fill:#6B7A8C}
+.note{font-size:20px;font-weight:500;fill:#6B7A8C}
+.num{font-weight:800;letter-spacing:-.02em}
+</style>
+<rect width="880" height="600" rx="28" fill="#FFFFFF"/>
+<g class="f">
+<text class="kicker" x="48" y="74">REPRODUCIBLE LLM INFERENCE</text>
+<text class="h" x="48" y="132">Four chips.</text>
+<text class="h" x="48" y="186">One answer, bit for bit.</text>
+
+<!-- four different processors -->
+<g fill="#F3F6FA">
+<rect x="48" y="222" width="181" height="86" rx="16"/>
+<rect x="249" y="222" width="181" height="86" rx="16"/>
+<rect x="450" y="222" width="181" height="86" rx="16"/>
+<rect x="651" y="222" width="181" height="86" rx="16"/>
+</g>
+<g class="lab" text-anchor="middle">
+<text x="138.5" y="254">H800 <tspan class="mut">GPU</tspan></text>
+<text x="339.5" y="254">H100 <tspan class="mut">GPU</tspan></text>
+<text x="540.5" y="254">x86 <tspan class="mut">CPU</tspan></text>
+<text x="741.5" y="254">M4 Pro <tspan class="mut">CPU</tspan></text>
+</g>
+
+<!-- the same symbolic bit pattern on every tile -->
+<g fill="none" stroke-width="11">
+<path stroke="#DCE3EA" stroke-dasharray="11 4" d="M66 274h146M66 289h146M267 274h146M267 289h146M468 274h146M468 289h146M669 274h146M669 289h146"/>
+<g stroke="#0F7C8A">
+<path d="M66 274h11m19 0h11m4 0h11m34 0h11m19 0h11m4 0h11M81 289h11m4 0h11m19 0h11m34 0h11m4 0h11"/>
+<path d="M267 274h11m19 0h11m4 0h11m34 0h11m19 0h11m4 0h11M282 289h11m4 0h11m19 0h11m34 0h11m4 0h11"/>
+<path d="M468 274h11m19 0h11m4 0h11m34 0h11m19 0h11m4 0h11M483 289h11m4 0h11m19 0h11m34 0h11m4 0h11"/>
+<path d="M669 274h11m19 0h11m4 0h11m34 0h11m19 0h11m4 0h11M684 289h11m4 0h11m19 0h11m34 0h11m4 0h11"/>
+</g>
+</g>
+
+<!-- merge into one result -->
+<path d="M138.5 308v10q0 12 12 12h579q12 0 12-12v-10M339.5 308v22M540.5 308v22M440 330v16M431 338l9 9 9-9" fill="none" stroke="#0F7C8A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="48" y="352" width="784" height="168" rx="18" fill="#DDF1F2"/>
+<text class="num" x="270" y="487" font-size="150" fill="#0F7C8A" text-anchor="middle">0</text>
+<text class="lab" x="354" y="428">differing logits or tokens</text>
+<text class="mut" x="354" y="464">in <tspan font-weight="700" fill="#16212E">3,696</tspan> generated positions</text>
+
+<text class="note" x="48" y="566">Integer-arithmetic Llama-3.2-1B, exact mode · run at an earlier revision</text>
+</g>
+</svg>

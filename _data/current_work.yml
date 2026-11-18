@@ -18,8 +18,8 @@
 featured:
   - id: work-rl
     title: "Two checkpoints with the same accuracy can respond very differently to training"
-    figure: "/images/current-work-rl-v2.svg?v=research"
-    figure_alt: "Reported best terminal GSM accuracy at three selected OLMo-2-7B checkpoints; GT reward has 4 seeds and random reward has 8."
+    figure: "/images/current-work-rl-v3.svg"
+    figure_alt: "Two lines leave one shared starting point at 3.5% accuracy and diverge: the earlier OLMo-2-7B checkpoint's best run ends at 8.5%, the later checkpoint's at 55%, after the same correctness-rewarded RL."
     links:
       - label: "Blog"
         url: "/blog/rl-capability-probing/"
@@ -30,7 +30,7 @@ featured:
     paragraphs:
       - "Two OLMo checkpoints both start at 3.5% accuracy on synthetic arithmetic. Under the same correctness-rewarded RL, their best runs reach 8.5% and 55%: current accuracy does not tell us what further training can unlock."
       - "My first-author paper uses random-reward RL to probe that training response without correctness information in the reward. With the training responses and random rewards held fixed, the later learner still gains more on average (13.7 vs 2.9 points on mid-training rollouts, 16 runs each), so the learner’s starting state matters, not only the data. A reusable capability evaluation framework is in development."
-    caption: "<strong>Random-reward RL probes model capabilities by measuring how models respond to further training.</strong><br>Best terminal GSM accuracy across seeds (correctness reward: 4; random reward: 8)."
+    caption: "<strong>The same score can hide very different training potential.</strong><br>OLMo-2-7B checkpoints at 462B and 839B pre-training tokens, synthetic GSM, best of 4 correctness-reward runs each."
 
   - id: work-capacity
     title: "Omni Profiler: tracing CPU and GPU cost in RL training back to code"
@@ -42,8 +42,8 @@ featured:
 
   - id: work-kv
     title: "AIBrix Hybrid KV Cache: offloading recurrent state and attention history together"
-    figure: "/images/current-work-kv.svg"
-    figure_alt: "Hybrid state and KV spans are encoded, stored, then decoded and checked byte for byte."
+    figure: "/images/current-work-kv-v3.svg"
+    figure_alt: "Recurrent state and attention KV go into a bounded store and come back; 48 of 48 restores across 3 trials on 8 H800 GPUs read back byte-identical."
     links:
       - label: "Code"
         url: "https://github.com/mynotwo/aibrix-hybrid-kvcache"
@@ -56,7 +56,7 @@ featured:
     paragraphs:
       - "I built and open-sourced hybrid KV offloading for AIBrix with bounded storage and reader-safe eviction; it is now used by TikTok Infra. A hybrid-model prefix can only be reused if its recurrent state and attention history survive offloading together."
       - "Upstream, the byte-store contract is proposed in an open draft PR that has not been merged, and whole-model output equivalence is still under investigation; the blog post has the details."
-    caption: "Storage mechanism: encode hybrid state and KV spans, then restore and check the bytes."
+    caption: "Both parts of a hybrid prefix went through a store capped at 1 GiB per GPU and read back byte-identical in all 48 restores; one private checkpoint, and model-output equivalence is still unresolved."
 
 more:
   - id: work-kvbytepack
@@ -71,8 +71,8 @@ more:
 
   - id: work-bitexact
     title: "Bitwise-Reproducible LLM Inference Across Hardware"
-    figure: "/images/current-work-bitexact-v2.svg?v=research"
-    figure_alt: "Historical exact-mode report: zero logits and token differences against H800 over 3,696 generated positions on selected devices."
+    figure: "/images/current-work-bitexact-v3.svg"
+    figure_alt: "Four processor tiles (H800 GPU, H100 GPU, x86 CPU, Apple M4 Pro CPU) each show the same bit pattern and merge into one panel reading 0 differing logits or tokens in 3,696 generated positions."
     links:
       - label: "Blog"
         url: "/blog/bitexact-inference/"
@@ -83,8 +83,8 @@ more:
 
   - id: work-agent
     title: "Agents can return the right answer while misreporting how they got it"
-    figure: "/images/current-work-agent-v2.svg?v=research"
-    figure_alt: "Observed case: four file calls preceded the first web call despite a web-before-file claim; call order is not elapsed time."
+    figure: "/images/current-work-agent-v3.svg"
+    figure_alt: "Two rows: the agent said web first, then file; the trace recorded four file calls before the first web call; a check mark shows the answer was still correct."
     links:
       - label: "Blog"
         url: "/blog/agent-execution-evidence/"

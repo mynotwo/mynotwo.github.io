@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 600" role="img" aria-labelledby="t d">
+<title id="t">Offload the cache. Get every byte back.</title>
+<desc id="d">A hybrid model's reusable prefix has two parts, recurrent state and attention KV. Both leave the GPU for a bounded store capped at 1 GiB per GPU and come back: in three trials on eight H800 GPUs, all 48 restored record parts (3 trials × 8 GPUs × 2 parts) read back byte-identical. Evidence boundary: three bounded trials on one private development checkpoint; one of the three still failed the model-output check, so whole-model output equivalence is unresolved, and the upstream pull request is an unmerged draft.</desc>
+<metadata id="research-source">https://github.com/mynotwo/aibrix-hybrid-kvcache/issues/1#issuecomment-6300253903</metadata>
+<style>
+.f{font-family:system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+.kicker{font-size:22px;font-weight:700;letter-spacing:.14em;fill:#0F7C8A}
+.h{font-size:46px;font-weight:800;fill:#16212E;letter-spacing:-.01em}
+.lab{font-size:26px;font-weight:600;fill:#3A4A5E}
+.mut{font-size:22px;font-weight:500;fill:#6B7A8C}
+.note{font-size:20px;font-weight:500;fill:#6B7A8C}
+.num{font-weight:800;letter-spacing:-.02em}
+.part{font-size:22px;font-weight:600}
+.line{fill:none;stroke:#0F7C8A;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+</style>
+<rect width="880" height="600" rx="28" fill="#FFFFFF"/>
+<g class="f">
+<text class="kicker" x="48" y="74">HYBRID KV CACHE</text>
+<text class="h" x="48" y="132">Offload the cache.</text>
+<text class="h" x="48" y="186">Get every byte back.</text>
+
+<!-- on the GPU: the two parts of a reusable prefix -->
+<rect x="48" y="232" width="204" height="52" rx="14" fill="#0F7C8A"/>
+<text class="part" x="150" y="266" text-anchor="middle" fill="#FFFFFF">recurrent state</text>
+<rect x="49.5" y="295.5" width="201" height="55" rx="14" fill="#DDF1F2" stroke="#0F7C8A" stroke-width="3"/>
+<text class="part" x="150" y="331" text-anchor="middle" fill="#0F7C8A">attention KV</text>
+
+<!-- restored: the same two parts, each checked -->
+<rect x="628" y="232" width="204" height="52" rx="14" fill="#0F7C8A"/>
+<path class="line" style="stroke:#FFFFFF;stroke-width:4" d="M717 258l9 10 17-20"/>
+<rect x="629.5" y="295.5" width="201" height="55" rx="14" fill="#DDF1F2" stroke="#0F7C8A" stroke-width="3"/>
+<path class="line" style="stroke-width:4" d="M717 323l9 10 17-20"/>
+
+<!-- hero -->
+<text class="num" x="440" y="326" text-anchor="middle" font-size="110" fill="#0F7C8A">48/48</text>
+<text class="lab" x="440" y="382" text-anchor="middle">restores byte-identical</text>
+<text class="mut" x="440" y="414" text-anchor="middle">3 trials × 8 H800 GPUs × 2 parts</text>
+
+<!-- round trip through the bounded store -->
+<path class="line" d="M150 364V456Q150 478 172 478H258M246 466l13 12-13 12"/>
+<path class="line" d="M622 478H708Q730 478 730 456V366M718 378l12-13 12 13"/>
+<rect x="270" y="438" width="340" height="80" rx="16" fill="#F3F6FA" stroke="#DCE3EA" stroke-width="2.5"/>
+<rect x="318" y="457" width="44" height="16" rx="6" fill="#0F7C8A"/>
+<rect x="319.25" y="480.25" width="41.5" height="20.5" rx="6" fill="#DDF1F2" stroke="#0F7C8A" stroke-width="2.5"/>
+<text class="lab" x="380" y="473">bounded store</text>
+<text class="mut" x="380" y="502">1 GiB per GPU</text>
+
+<text class="note" x="48" y="566">One private checkpoint · <tspan style="fill:#C4722A">model-output equivalence unresolved</tspan></text>
+</g>
+</svg>
