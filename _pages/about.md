@@ -12,7 +12,7 @@ redirect_from:
 
 <p class="home-thesis">I build LLM systems whose behavior can be checked, not just benchmarked.</p>
 
-Hi, I'm Yu Mao; call me Audrey. I'm a Research Scientist at ByteDance working on AI infrastructure for LLMs: byte-exact KV caching, bitwise-reproducible inference, probes of what further training can unlock, and tests of whether agents did what they claim. My Ph.D. (City University of Hong Kong) was on compression and computer systems.
+Hi, I'm Yu Mao; call me Audrey. I'm a Research Scientist at ByteDance working on AI infrastructure for LLMs: byte-exact KV-cache compression, bitwise-reproducible inference, probes of what further training can unlock in a model, and tests of whether agents did what they claim. I received my Ph.D. in Computer Science from City University of Hong Kong, where I worked on compression and computer systems.
 
 **Highlights**
 

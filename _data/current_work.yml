@@ -43,7 +43,7 @@ featured:
       - label: "Code"
         url: "https://github.com/mynotwo/bitexact-llm"
     paragraphs:
-      - "An integer-arithmetic Llama-3.2-1B engine produced identical logits and sampled tokens on H800 and H100 GPUs and on x86 and Apple M4 Pro CPUs, across 3,696 generated positions (recorded at an earlier revision). The current repository also records a 14-run vLLM plugin suite on one H800 with no token-sequence or logits-hash differences from the standalone integer reference. Reproducibility costs throughput; the blog post covers the trade-offs."
+      - "An integer-arithmetic Llama-3.2-1B engine produced identical logits and sampled tokens on H800 and H100 GPUs and on x86 and Apple M4 Pro CPUs, across 3,696 generated positions (recorded at an earlier revision). The current repository also records a 14-run vLLM plugin suite on one H800 with no token-sequence or logits-hash differences from the standalone integer reference. Reproducibility costs throughput; the blog post covers the trade-offs and what each run certifies."
 
   - id: work-rl
     title: "Two checkpoints with the same accuracy can respond very differently to training"
@@ -57,7 +57,7 @@ featured:
       - label: "Code"
         url: "https://github.com/mynotwo/rl-random-prob"
     paragraphs:
-      - "Two OLMo-2-7B checkpoints (462B and 839B pre-training tokens) both start at 3.5% accuracy on synthetic arithmetic. Under the same correctness-rewarded RL, their best runs reach 8.5% and 55%: current accuracy does not tell us what further training can unlock."
+      - "Two OLMo-2-7B checkpoints (462B and 839B pre-training tokens) both start at 3.5% accuracy on synthetic arithmetic. Under the same correctness-rewarded RL, their best runs (of 4 each) reach 8.5% and 55%: current accuracy does not tell us what further training can unlock."
       - "My first-author paper uses random-reward RL to probe that training response without correctness information in the reward. With the training responses and random rewards held fixed, the later learner still gains more on average (13.7 vs 2.9 points on mid-training rollouts, 16 runs each), so the learner’s starting state matters, not only the data."
 
   - id: work-agent
