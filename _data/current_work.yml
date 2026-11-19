@@ -1,6 +1,5 @@
 # Homepage "Current Work" section; each entry renders through
-# _includes/current-work-item.html. Order = display order, and follows the
-# order of the list in the introduction (_pages/about.md).
+# _includes/current-work-item.html. Order = display order.
 # `featured` entries come first, `more` entries follow the "More research" heading.
 #
 # Writing rule: the title states the finding or what the project does, and the
@@ -13,38 +12,10 @@
 #   title       heading (HTML: write & as &amp;)
 #   figure      optional image path; the copy spans the full width without one
 #   figure_alt  plain-text alt, required with `figure`
-#   links       label + url (site-relative or absolute); Blog, Paper, Code first
+#   links       label + url (site-relative or absolute)
 #   paragraphs  body paragraphs (HTML)
+#   caption     optional figure caption (HTML), only with `figure`
 featured:
-  - id: work-kv
-    title: "AIBrix Hybrid KV Cache: offloading recurrent state and attention history together"
-    figure: "/images/current-work-kv-v3.svg"
-    figure_alt: "Recurrent state and attention KV go into a bounded store and come back; 48 of 48 restores across 3 trials on 8 H800 GPUs read back byte-identical."
-    links:
-      - label: "Blog"
-        url: "/blog/hybrid-kv-cache-storage-contract/"
-      - label: "Code"
-        url: "https://github.com/mynotwo/aibrix-hybrid-kvcache"
-      - label: "Open draft PR #3221"
-        url: "https://github.com/vllm-project/aibrix/pull/3221"
-      - label: "Benchmark"
-        url: "/kvcache-bench/"
-    paragraphs:
-      - "I built and open-sourced hybrid KV offloading for AIBrix with bounded storage and reader-safe eviction; it is now used by TikTok Infra. A hybrid-model prefix can only be reused if its recurrent state and attention history survive offloading together: in the test shown, both went through a store capped at 1 GiB per GPU and read back byte-identical in all 48 restores (one private checkpoint)."
-      - "Upstream, the byte-store contract is proposed in an open draft PR that has not been merged, and whole-model output equivalence is still under investigation."
-
-  - id: work-bitexact
-    title: "BitExact: bitwise-reproducible LLM inference across hardware"
-    figure: "/images/current-work-bitexact-v3.svg"
-    figure_alt: "Four processor tiles (H800 GPU, H100 GPU, x86 CPU, Apple M4 Pro CPU) each show the same bit pattern and merge into one panel reading 0 differing logits or tokens in 3,696 generated positions."
-    links:
-      - label: "Blog"
-        url: "/blog/bitexact-inference/"
-      - label: "Code"
-        url: "https://github.com/mynotwo/bitexact-llm"
-    paragraphs:
-      - "An integer-arithmetic Llama-3.2-1B engine produced identical logits and sampled tokens on H800 and H100 GPUs and on x86 and Apple M4 Pro CPUs, across 3,696 generated positions (recorded at an earlier revision). The current repository also records a 14-run vLLM plugin suite on one H800 with no token-sequence or logits-hash differences from the standalone integer reference. Reproducibility costs throughput; the blog post covers the trade-offs and what each run certifies."
-
   - id: work-rl
     title: "Two checkpoints with the same accuracy can respond very differently to training"
     figure: "/images/current-work-rl-v3.svg"
@@ -57,8 +28,58 @@ featured:
       - label: "Code"
         url: "https://github.com/mynotwo/rl-random-prob"
     paragraphs:
-      - "Two OLMo-2-7B checkpoints (462B and 839B pre-training tokens) both start at 3.5% accuracy on synthetic arithmetic. Under the same correctness-rewarded RL, their best runs (of 4 each) reach 8.5% and 55%: current accuracy does not tell us what further training can unlock."
-      - "My first-author paper uses random-reward RL to probe that training response without correctness information in the reward. With the training responses and random rewards held fixed, the later learner still gains more on average (13.7 vs 2.9 points on mid-training rollouts, 16 runs each), so the learner’s starting state matters, not only the data."
+      - "Two OLMo checkpoints both start at 3.5% accuracy on synthetic arithmetic. Under the same correctness-rewarded RL, their best runs reach 8.5% and 55%: current accuracy does not tell us what further training can unlock."
+      - "My first-author paper uses random-reward RL to probe that training response without correctness information in the reward. With the training responses and random rewards held fixed, the later learner still gains more on average (13.7 vs 2.9 points on mid-training rollouts, 16 runs each), so the learner’s starting state matters, not only the data. A reusable capability evaluation framework is in development."
+    caption: "<strong>The same score can hide very different training potential.</strong><br>OLMo-2-7B checkpoints at 462B and 839B pre-training tokens, synthetic GSM, best of 4 correctness-reward runs each."
+
+  - id: work-capacity
+    title: "Omni Profiler: tracing CPU and GPU cost in RL training back to code"
+    links:
+      - label: "Blog"
+        url: "/blog/omni-profiler/"
+    paragraphs:
+      - "I co-developed Omni Profiler, a continuous profiler that connects CPU/GPU memory and compute to Python and native stacks. Seed RL uses it to investigate training bottlenecks and memory growth: high utilization or growing memory alone does not identify the responsible code."
+
+  - id: work-kv
+    title: "AIBrix Hybrid KV Cache: offloading recurrent state and attention history together"
+    figure: "/images/current-work-kv-v3.svg"
+    figure_alt: "Recurrent state and attention KV go into a bounded store and come back; 48 of 48 restores across 3 trials on 8 H800 GPUs read back byte-identical."
+    links:
+      - label: "Code"
+        url: "https://github.com/mynotwo/aibrix-hybrid-kvcache"
+      - label: "Open draft PR #3221"
+        url: "https://github.com/vllm-project/aibrix/pull/3221"
+      - label: "Blog"
+        url: "/blog/hybrid-kv-cache-storage-contract/"
+      - label: "Benchmark"
+        url: "/kvcache-bench/"
+    paragraphs:
+      - "I built and open-sourced hybrid KV offloading for AIBrix with bounded storage and reader-safe eviction; it is now used by TikTok Infra. A hybrid-model prefix can only be reused if its recurrent state and attention history survive offloading together."
+      - "Upstream, the byte-store contract is proposed in an open draft PR that has not been merged, and whole-model output equivalence is still under investigation; the blog post has the details."
+    caption: "Both parts of a hybrid prefix went through a store capped at 1 GiB per GPU and read back byte-identical in all 48 restores; one private checkpoint, and model-output equivalence is still unresolved."
+
+more:
+  - id: work-kvbytepack
+    title: "KVBytePack: when do smaller KV records pay for their codec cost?"
+    links:
+      - label: "Code"
+        url: "https://github.com/mynotwo/kvbytepack"
+      - label: "CPU cost and memory measurements"
+        url: "https://github.com/mynotwo/kvbytepack/blob/main/docs/cpu-decode.md"
+    paragraphs:
+      - "Rearranging KV bytes by channel and byte plane raises the median Zstd level 1 compression ratio of BF16 KV payloads from 1.29× to 1.60× (50 cells across two Qwen models, repeated-paragraph inputs), and the codec is byte-exact. Against a matched raw-Zstd control on complete records from one small model, a serial-transfer model puts break-even near 0.05–0.10 GB/s: on faster links the extra CPU cost outweighs the bytes saved. Records, timings and memory measurements are public."
+
+  - id: work-bitexact
+    title: "Bitwise-Reproducible LLM Inference Across Hardware"
+    figure: "/images/current-work-bitexact-v3.svg"
+    figure_alt: "Four processor tiles (H800 GPU, H100 GPU, x86 CPU, Apple M4 Pro CPU) each show the same bit pattern and merge into one panel reading 0 differing logits or tokens in 3,696 generated positions."
+    links:
+      - label: "Blog"
+        url: "/blog/bitexact-inference/"
+      - label: "Project repository"
+        url: "https://github.com/mynotwo/bitexact-llm"
+    paragraphs:
+      - "An integer-arithmetic Llama-3.2-1B engine produced identical logits and sampled tokens on H800 and H100 GPUs and on x86 and Apple M4 Pro CPUs, across 3,696 generated positions (recorded at an earlier revision). The current repository also records a 14-run vLLM plugin suite on one H800 with no token-sequence or logits-hash differences from the standalone integer reference. Reproducibility costs throughput; the blog post covers the trade-offs and what each run certifies."
 
   - id: work-agent
     title: "Agents can return the right answer while misreporting how they got it"
@@ -76,22 +97,3 @@ featured:
     paragraphs:
       - "In a behavior-probing experiment, an agent said it had checked web sources before the attached file; the trace shows four file calls before the first web call. The result was correct and the process claim was not, so I evaluate results, execution evidence and resource use separately."
       - "I also coauthored AgentPProf, a semantic profiler for AI agents and winner of the AgenticOS @ SOSP 2026 Best Paper Award."
-
-more:
-  - id: work-kvbytepack
-    title: "KVBytePack: when do smaller KV records pay for their codec cost?"
-    links:
-      - label: "Code"
-        url: "https://github.com/mynotwo/kvbytepack"
-      - label: "CPU cost and memory measurements"
-        url: "https://github.com/mynotwo/kvbytepack/blob/main/docs/cpu-decode.md"
-    paragraphs:
-      - "Rearranging KV bytes by channel and byte plane raises the median Zstd level 1 compression ratio of BF16 KV payloads from 1.29× to 1.60× (50 cells across two Qwen models, repeated-paragraph inputs), and the codec is byte-exact. Against a matched raw-Zstd control on complete records from one small model, a serial-transfer model puts break-even near 0.05–0.10 GB/s: on faster links the extra CPU cost outweighs the bytes saved."
-
-  - id: work-capacity
-    title: "Omni Profiler: tracing CPU and GPU cost in RL training back to code"
-    links:
-      - label: "Blog"
-        url: "/blog/omni-profiler/"
-    paragraphs:
-      - "I co-developed Omni Profiler, a continuous profiler that connects CPU/GPU memory and compute to Python and native stacks; Seed RL uses it to investigate training bottlenecks and memory growth."

@@ -8,8 +8,9 @@
 #   icon        icon classes (Font Awesome or Academicons)
 #   label       link text, and the accessible name of the icon-only link
 #
-# One field reproduces the markup this file replaced; the rendered HTML
-# changes if it is dropped:
+# Two fields reproduce the markup this file replaced; the rendered HTML
+# changes if they are dropped:
+#   list_label         text in the desktop list when it differs from `label`
 #   list_icon_exposed  desktop list icon carries no aria-hidden="true"
 - key: email
   url_prefix: "mailto:"
@@ -29,6 +30,7 @@
   url_prefix: "https://github.com/"
   icon: "fab fa-fw fa-github"
   label: "GitHub"
+  list_label: "Github"
 
 - key: googlescholar
   icon: "fas fa-fw fa-graduation-cap"

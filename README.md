@@ -18,7 +18,7 @@ make check          # 构建 _site，并运行页面检查与 crawler 单元测�
 
 | 想改 | 文件 |
 |---|---|
-| 首页论点 / 个人介绍 | `_pages/about.md` |
+| 个人介绍 / 研究兴趣 | `_pages/about.md` |
 | Current Work 条目 | `_data/current_work.yml`（模板 `_includes/current-work-item.html`） |
 | 论文 | `_data/publications.yml`（模板 `_includes/publication-card.html`） |
 | News / Honors | `_data/news.yml` / `_data/awards.yml` |

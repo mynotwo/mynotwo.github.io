@@ -587,6 +587,23 @@ body {
   }
 }
 
+/* --- 3. Research interests colorful tag pills --- */
+.interest-pill {
+  display: inline-block;
+  padding: 6px 16px;
+  margin: 4px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  font-weight: 600;
+  color: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
 /* --- 4. News timeline with glowing dots --- */
 .news-timeline {
   ul {
