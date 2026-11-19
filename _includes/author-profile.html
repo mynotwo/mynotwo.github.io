@@ -25,7 +25,7 @@
         <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> {{ author.location }}</li>
       {% endif %}
       {% for link in site.data.author_links %}{% if author[link.key] %}
-        <li><a href="{{ link.url_prefix }}{{ author[link.key] }}"><i class="{{ link.icon }}"{% unless link.list_icon_exposed %} aria-hidden="true"{% endunless %}></i> {{ link.list_label | default: link.label }}</a></li>
+        <li><a href="{{ link.url_prefix }}{{ author[link.key] }}"><i class="{{ link.icon }}"{% unless link.list_icon_exposed %} aria-hidden="true"{% endunless %}></i> {{ link.label }}</a></li>
       {% endif %}{% endfor %}
     </ul>
       <div class="author__urls_sm">
