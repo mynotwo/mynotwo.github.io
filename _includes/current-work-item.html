@@ -6,7 +6,7 @@
 <article class="current-work-item{% if include.related %} current-work-item--related{% endif %}" aria-labelledby="{{ include.work.id }}">
 {%- if include.work.figure %}
 <a class="current-work-visual" href="{{ include.work.figure | relative_url }}" target="_blank" rel="noopener" aria-label="View larger figure">
-<img {% if include.work.caption %}aria-describedby="{{ include.work.id }}-caption" {% endif %}class="current-work-figure" src="{{ include.work.figure | relative_url }}" width="440" height="300" loading="lazy" alt="{{ include.work.figure_alt | escape }}">
+<img class="current-work-figure" src="{{ include.work.figure | relative_url }}" width="440" height="300" loading="lazy" alt="{{ include.work.figure_alt | escape }}">
 </a>
 {%- endif %}
 <div class="current-work-copy"{% unless include.work.figure %} style="grid-column: 1 / -1;"{% endunless %}>
@@ -15,8 +15,5 @@
 {%- for paragraph in include.work.paragraphs %}
 <p>{{ paragraph }}</p>
 {%- endfor %}
-{%- if include.work.caption %}
-<p class="current-work-caption" id="{{ include.work.id }}-caption">{{ include.work.caption }}</p>
-{%- endif %}
 </div>
 </article>
