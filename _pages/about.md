@@ -28,8 +28,6 @@ Hi, I'm Yu Mao; call me Audrey. I'm a Research Scientist at ByteDance working on
 {% for work in site.data.current_work.more %}{% include current-work-item.html work=work related=true %}{% endfor -%}
 </div>
 
-{% include hushword-tool.html placement="mobile" %}
-
 # 🔥 News
 <div class="news-timeline" markdown="1">
 {% for item in site.data.news limit:4 %}- *{{ item.date }}*: &nbsp; {{ item.content }}
@@ -63,3 +61,5 @@ Hi, I'm Yu Mao; call me Audrey. I'm a Research Scientist at ByteDance working on
 # 👩‍🏫 Supervision
 {% for s in site.data.supervision %}- {{ s.name }}, {{ s.detail }}
 {% endfor %}
+
+{% include hushword-tool.html placement="mobile" %}
