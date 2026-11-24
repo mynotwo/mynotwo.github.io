@@ -23,7 +23,7 @@
   kicker: "Research note"
   title: "Random-reward RL for capability probing"
   sub: "Training response can reveal capability that a checkpoint's current accuracy does not show."
-  figure: "/images/current-work-rl-v3.svg"
+  figure: "/images/current-work-rl-v4.svg"
 
 - name: omni-profiler
   kicker: "Research note"
@@ -35,21 +35,21 @@
   kicker: "Research note"
   title: "Cross-hardware bitwise reproducibility in LLM inference"
   sub: "Integer arithmetic makes reproducibility an execution contract."
-  figure: "/images/current-work-bitexact-v3.svg"
+  figure: "/images/current-work-bitexact-v4.svg"
   title_size: 46
 
 - name: agent-execution-evidence
   kicker: "Research note"
   title: "Evaluating agent process claims against execution traces"
   sub: "A correct result does not show that the claimed process happened."
-  figure: "/images/current-work-agent-v3.svg"
+  figure: "/images/current-work-agent-v4.svg"
   title_size: 46
 
 - name: hybrid-kv-cache-storage-contract
   kicker: "Research note"
   title: "Storage contracts for hybrid KV cache offloading"
   sub: "Variable-sized records, reader-safe storage and honest byte accounting."
-  figure: "/images/current-work-kv-v3.svg"
+  figure: "/images/current-work-kv-v4.svg"
 
 - name: kvcache-bench
   kicker: "Benchmark"

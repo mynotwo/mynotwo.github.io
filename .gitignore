@@ -4,3 +4,8 @@ push.sh
 
 # full-resolution photo originals (web copies live in images/photos/)
 photos_src/
+
+# editor and agent scratch that lives in the working tree
+.agent-harness/
+.obsidian/
+blog/
