@@ -18,8 +18,8 @@
 featured:
   - id: work-rl
     title: "Two checkpoints with the same accuracy can respond very differently to training"
-    figure: "/images/current-work-rl-v3.svg"
-    figure_alt: "Two lines leave one shared starting point at 3.5% accuracy and diverge: the earlier OLMo-2-7B checkpoint's best run ends at 8.5%, the later checkpoint's at 55%, after the same correctness-rewarded RL."
+    figure: "/images/current-work-rl-v4.svg"
+    figure_alt: "Two anglers sit on the same water, each above a 3.5% surface reading; one line reaches 8.5% over a shallow shelf, the other 55% over a deep trough, after the same correctness-rewarded RL."
     links:
       - label: "Blog"
         url: "/blog/rl-capability-probing/"
@@ -42,8 +42,8 @@ featured:
 
   - id: work-kv
     title: "AIBrix Hybrid KV Cache: offloading recurrent state and attention history together"
-    figure: "/images/current-work-kv-v3.svg"
-    figure_alt: "Recurrent state and attention KV go into a bounded store and come back; 48 of 48 restores across 3 trials on 8 H800 GPUs read back byte-identical."
+    figure: "/images/current-work-kv-v4.svg"
+    figure_alt: "Attention KV and recurrent state offload from an H800 GPU into a bounded store capped at 1 GiB per GPU and restore unchanged; 48 of 48 restores read back byte-identical."
     links:
       - label: "Code"
         url: "https://github.com/mynotwo/aibrix-hybrid-kvcache"
@@ -71,8 +71,8 @@ more:
 
   - id: work-bitexact
     title: "Bitwise-Reproducible LLM Inference Across Hardware"
-    figure: "/images/current-work-bitexact-v3.svg"
-    figure_alt: "Four processor tiles (H800 GPU, H100 GPU, x86 CPU, Apple M4 Pro CPU) each show the same bit pattern and merge into one panel reading 0 differing logits or tokens in 3,696 generated positions."
+    figure: "/images/current-work-bitexact-v4.svg"
+    figure_alt: "An H800 GPU, an H100 GPU, an x86 CPU and an Apple M4 Pro CPU all point at a single shared waveform running through 3,696 generated positions."
     links:
       - label: "Blog"
         url: "/blog/bitexact-inference/"
@@ -83,8 +83,8 @@ more:
 
   - id: work-agent
     title: "Agents can return the right answer while misreporting how they got it"
-    figure: "/images/current-work-agent-v3.svg"
-    figure_alt: "Two rows: the agent said web first, then file; the trace recorded four file calls before the first web call; a check mark shows the answer was still correct."
+    figure: "/images/current-work-agent-v4.svg"
+    figure_alt: "An agent says \"Web first, then file.\" while its footprints go to the file hut first, numbered 1 to 4, and only then to the web tower; the answer was still correct."
     links:
       - label: "Blog"
         url: "/blog/agent-execution-evidence/"
